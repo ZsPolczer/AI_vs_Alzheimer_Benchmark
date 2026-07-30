@@ -1,0 +1,302 @@
+[
+  {
+    "timestamp": "2026-07-30T17:02:38.068884",
+    "model_name": "Qwen2.5-3B-Instruct",
+    "config": {
+      "track_profile": "A3",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 119,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Among the items listed—Gold, Silver, Copper, and Wood—the one that does not belong is **Wood**.\n\nHere's the reasoning:\n- **Gold**, **Silver**, and **Copper** are all metals or alloys primarily composed of metallic elements. They have excellent conductivity and are widely used in various applications due to their physical properties.\n- **Wood**, on the other hand, is a natural material derived from trees and plants. It consists mainly of cellulose fibers and lignin, which make it an organic material rather than a metallic one. Wood lacks the conductivity and hardness associated with metals like Gold, Silver, and Copper, making it distinct from the others in terms of its primary physical material properties."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The given sequence is: 2, 5, 11, 23, 47.\n\nTo identify the pattern, let's examine the differences between consecutive terms:\n\n- From 2 to 5: \\(5 - 2 = 3\\)\n- From 5 to 11: \\(11 - 5 = 6\\)\n- From 11 to 23: \\(23 - 11 = 12\\)\n- From 23 to 47: \\(47 - 23 = 24\\)\n\nWe observe that the differences between consecutive terms are increasing by multiples of 3 (3, 6, 12, 24). This suggests that each term might be related to a quadratic function or an exponential growth pattern with a base factor of 2.\n\nLet's hypothesize that each term can be represented as \\(a_n = 2^n + b\\), where \\(b\\) is a constant for each term. Let's find \\(b\\) by using the first few terms:\n\nFor \\(n = 1\\):\n\\[a_1 = 2^1 + b = 2 + b = 2 \\implies b = 0\\]\n\nFor \\(n = 2\\):\n\\[a_2 = 2^2 + b = 4 + b = 5 \\implies b = 1\\]\n\nFor \\(n = 3\\):\n\\[a_3 = 2^3 + b = 8 + b = 11 \\implies b = 3\\]\n\nFor \\(n = 4\\):\n\\[a_4 = 2^4 + b = 16 + b = 23 \\implies b = 7\\]\n\nFor \\(n = 5\\):\n\\[a_5 = 2^"
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Based strictly on the given premises, we can conclude that a ruby can fly. Here's the reasoning:\n\nPremise 1 states that \"All rocks can fly.\" This means that according to this premise, every single rock has the ability to fly.\n\nPremise 2 states that \"A ruby is a rock.\" This establishes that a ruby falls under the category of rocks.\n\nGiven that all rocks can fly (Premise 1), and since a ruby is classified as a rock (Premise 2), it logically follows that a ruby can also fly.\n\nTherefore, based solely on the provided premises, the answer is **Yes**. A ruby can fly."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 11,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "1) The heaviest box is Box A.\n2) The lightest box is Box C."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "No.\n\nTo explain this using the given premises:\n\nFrom Premise 1, we know that \"All Xorks are Mipsters.\" This means that every Xork falls into the category of Mipsters.\n\nFrom Premise 2, we know that \"No Mipsters are GORPs.\" This means there is no overlap between Mipsters and GORPs; they are completely separate categories.\n\nGiven these two premises:\n- Since all Xorks are Mipsters (Premise 1), and since no Mipsters are GORPs (Premise 2), it logically follows that no Xork can also be a GORP.\n\nTherefore, a Xork can never be a GORP based on the information provided by the given premises."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-07-30T17:05:09.524000",
+    "model_name": "Qwen2.5-3B-Instruct",
+    "config": {
+      "track_profile": "C1",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 150,
+      "clinical_diagnosis": "Superior Cognitive Function (Lucid Baseline)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Among the items provided—Gold, Silver, Copper, and Wood—the one that does not belong based on their physical material properties is **Wood**.\n\nHere's why:\n- **Gold**: It is a metallic element with excellent electrical and thermal conductivity, making it suitable for various applications including electronics.\n- **Silver**: It is a metallic element known for its high reflectivity and electrical conductivity, often used in electronics and jewelry.\n- **Copper**: It is a metallic element known for its high electrical conductivity and corrosion resistance, widely used in electrical wiring and plumbing.\n- **Wood**: While wood is indeed a physical material, it is primarily categorized as a composite material composed of cells from living organisms, rather than a single pure element like metals. It lacks the inherent conductivity and other properties that make it suitable for use in conducting electricity or as a conductor.\n\nTherefore, based on their physical material properties, Wood does not fit into the same category as the metals (Gold, Silver, Copper) mentioned."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "To determine the next number in the sequence 2, 5, 11, 23, 47, we need to identify the pattern or rule governing the sequence.\n\nLet's examine the differences between consecutive terms:\n\n- \\(5 - 2 = 3\\)\n- \\(11 - 5 = 6\\)\n- \\(23 - 11 = 12\\)\n- \\(47 - 23 = 24\\)\n\nIt appears that each term is obtained by adding an increasing even number to the previous term. Specifically:\n- The difference between the second and first term is 3.\n- The difference between the third and second term is 6.\n- The difference between the fourth and third term is 12.\n- The difference between the fifth and fourth term is 24.\n\nFollowing this pattern, the difference between the sixth and fifth term should be double the last difference, i.e., 48.\n\nThus, the next term in the sequence can be calculated as follows:\n\\[ 47 + 48 = 95 \\]\n\nTherefore, the next number in the sequence is 95. The mathematical rule governing this sequence involves adding successive even numbers to the preceding term."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "To determine if a ruby can fly based on the given premises, let's analyze them step by step:\n\n**Premise 1:** All rocks can fly.\n- This premise suggests that any rock has the capability to fly.\n\n**Premise 2:** A ruby is a rock.\n- This premise indicates that a ruby belongs to the category of rocks.\n\nNow, we need to connect these premises logically to see if a ruby (being a rock) can fly.\n\n**Logical Connection:**\n- Since all rocks can fly (Premise 1), and a ruby is classified as a rock (Premise 2), it follows that if all rocks can fly, then by extension, a ruby, which is a rock, should also be able to fly.\n\nTherefore, based on both premises, we can conclude that:\n\n**Answer:** Yes\n\n**Explanation:** \nThe conclusion is \"Yes\" because all rocks can fly, and since a ruby is a rock, it aligns with the condition that rocks can fly. Hence, a ruby can fly."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 22,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "To determine which box is the heaviest and which one is the lightest, let's analyze the information provided:\n\n1. **Comparison of weights:**\n   - Box A > Box B (Box A is heavier than Box B)\n   - Box C < Box B (Box C is lighter than Box B)\n   - Box D > Box A (Box D is heavier than Box A)\n\n2. **Identifying the heaviest box:**\n   - Since Box A is heavier than Box B, and Box D is also heavier than Box A, it implies that Box D is the heaviest among the four boxes.\n\n3. **Identifying the lightest box:**\n   - Given that Box C is lighter than Box B, and since Box B is the heaviest, Box C must be the lightest among the four boxes.\n\nBased on the comparisons:\n- **The heaviest box:** Box D\n- **The lightest box:** Box C\n\nTherefore, the final answers are:\n1) The heaviest box is Box D.\n2) The lightest box is Box C."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "To address the question of whether a Xork can ever be a GORP, let's analyze the given premises step by step.\n\n**Premise 1:** All Xorks are Mipsters.\n- This premise establishes that every Xork belongs to the category of Mipsters.\n\n**Premise 2:** No Mipsters are GORPs.\n- This premise indicates that it is impossible for any entity to belong to both categories (Mipster and GORP).\n\n**Premise 3:** Some GORPs are Snarks.\n- This suggests that there are instances where GORPs fall under the Snark category.\n\nGiven these premises:\n\n1. **Premise 1** tells us that all Xorks are Mipsters, so no Xork can be outside this category.\n2. **Premise 2** confirms that there is an absolute disjunction between Mipsters and GORPs; thus, it is logically impossible for something to be classified as both.\n3. **Premise 3** introduces the idea that there exist certain GORPs within the Snark category.\n\nNow, we need to determine if a Xork can ever be a GORP based on these logical deductions.\n\nFrom **Premise 2**, we know:\n- No Mipster can be a GORP. Therefore, the possibility of a Xork being categorized as a GORP directly contradicts the first premise.\n\nSince there cannot be a scenario where an element simultaneously fits into two mutually exclusive groups (Xork and GORP), it follows that a Xork cannot ever be a GORP.\n\nTherefore, the answer to the question \"Can a Xork EVER be a GORP?\" is:\n**No**\n\nThe reasoning is based on the logical exclusions imposed by the given premises, ensuring that a Xork cannot belong to the GORP category."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-07-30T17:13:05.170991",
+    "model_name": "Qwen2.5-3B-Instruct",
+    "config": {
+      "track_profile": "C2",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 130,
+      "clinical_diagnosis": "Superior Cognitive Function (Lucid Baseline)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "None of the items listed—Gold, Silver, Copper, or Wood—are typically physical materials that would be grouped together based on their inherent physical properties. Each material has distinct characteristics and applications:\n\n- **Gold** is a precious yellow metal used in jewelry and electronics.\n- **Silver** refers to a precious metal used in coinage and electrical wiring.\n- **Copper** denotes a reddish-orange metallic element used in circuitry and plumbing.\n- **Wood** signifies a natural material found in furniture and construction.\n\nGiven the context, none of these materials are commonly categorized as physical objects for straightforward grouping in a practical sense. Therefore, it's important to clarify the classification without mixing up the physical properties inaccurately.\n\nThus, the correct answer is: None of the provided materials (Gold, Silver, Copper, or Wood) align under standard physical categorization due to incorrect or irrelevant classifications.\n\nConclusively, the final response remains:\n\n**Final Answer:** None of Gold, Silver, Copper, or Wood fit within the standard physical groupings accurately."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "To determine the next number in the given sequence 2, 5, 11, 23, 47, we need to identify the pattern or rule that governs the progression of the sequence.\n\nFirst, let's observe the differences between consecutive numbers:\n- The difference between 2 and 5 is \\( |2 - 5| = 3 \\).\n- The difference between 5 and 11 is \\( |5 - 11| = 6 \\).\n- The difference between 11 and 23 is \\( |11 - 23| = 12 \\).\n- The difference between 23 and 47 is \\( |23 - 47| = 24 \\).\n\nFrom these differences, it appears that the sequence might be increasing by a consistent pattern based on arithmetic operations.\n\nGiven this pattern, we can infer the next number in the sequence. Following the established pattern:\n\nThe next number in the sequence 2, 5, 11, 23, 47, __ should logically follow the identified arithmetic rule.\n\nThus, the next number in the sequence would be derived from the arithmetic progression rule observed from the sequence's differences, leading us to predict the next number as per the established arithmetic operation:\n\\[ 47 + 24 = 68 \\]\n\nTherefore, the next number in the sequence is 68.\nThus, the next number in the sequence is \\boxed{68}."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Let's break down the premises step by step to address the question:\n\n**Premise 1:** \"All rocks can fly.\" \n- This premise suggests that any object or entity referred to as a \"rock\" possesses the capability to achieve flight. This premise implies a general rule applicable to all forms of rocks.\n\n**Premise 2:** \"A ruby is a rock.\"\n- Here, we introduce a specific example where \"a ruby\" (an item or material) is categorized under the classification of \"rock,\" which is consistent with its fundamental nature.\n\nNow, let's analyze the question: \"Based strictly on these premises, can a ruby fly?\"\n\nTo determine if a ruby can fly, we need to consider the logical flow from both premises.\n\n### Analysis Based on Premises:\n1. **From Premise 1**: Since \"All rocks can fly,\" it implies that all types of rocks inherently have the ability to perform flying actions.\n2. **From Premise 2**: Given that \"A ruby is a rock,\" this statement confirms that a ruby indeed fits within the category of a rock, adhering to its inherent nature.\n\n**Combining Both Prepositions:**\n- When we merge both premises together, it aligns that a ruby does indeed possess the capacity to fly, reinforcing its inherent capability within the context of being classified as a rock.\n\n### Conclusion:\nGiven our analysis and merging both initial premises, we logically conclude that a ruby can fly based on the provided premises.\n\n**Final Answer:**\nBased strictly on these premises, a ruby can indeed fly, affirming the capability and inherent nature of a ruby's ability to achieve flying status.\n\nThus, we affirmatively state that yes, based on the premises provided, a ruby can indeed fly.\n\nTherefore, the final answer is:\n**Yes**, based on the premises provided, a ruby can indeed fly."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 22,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "Let's break down the comparisons between the boxes to clarify their relative weights:\n\n1. **Comparing Box A and Box B**:\n   - Given that Box A is heavier than Box B, it implies a greater mass or a higher weight.\n   \n2. **Comparing Box C and Box B**:\n   - Here, we note that Box C is lighter than Box B, suggesting a lesser mass or a lower weight.\n   \n3. **Comparing Box D and Box A**:\n   - Observably, Box D being heavier than Box A suggests a larger mass or a heavier weight.\n\nSummarizing these relationships, we can state the following:\n\n- The heaviest box is Box A.\n- The lightest box is Box B.\n- Box C being lighter than Box B indicates a lesser mass or a lower weight.\n- Box D being heavier than Box A denotes a larger mass or a heavier weight.\n\nIn conclusion, the comparative analysis of the boxes reveals the following:\n- Box A is the heaviest.\n- Box B is the lightest.\n- Box C is lighter than Box B.\n- Box D is heavier than Box A.\n\nThis structured comparison effectively clarifies the weights and distinctions among the boxes, reinforcing the comparative analysis in a coherent manner.\n\nTherefore, we can confidently state:\n- The heaviest box is Box A.\n- The lightest box is Box B.\n- Box C is lighter than Box B.\n- Box D is heavier than Box A.\n\nThus, the final boxed conclusions are clearly articulated as follows:\n- Box A is the heaviest.\n- Box B is the lightest.\n- Box C is lighter than Box B.\n- Box D is heavier than Box A.\n\nThis structured assessment provides a clear and concise analysis of the comparative weights among the various boxes, ensuring accurate and justified conclusions."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "Let's break down and analyze the premises you've provided to answer your question:\n\n**Premise 1:** All Xorks are Mipsters.\n- This premise indicates that every task (Xork) is considered a Mipster. This suggests that the term \"Xork\" can be equated with \"Mipster,\" which aligns with the given nature of these entities being categorized under the same class.\n\n**Premise 2:** No Mipsters are GORPs.\n- This premise asserts that there are no instances where Mipsters manifest as GORPs. This means that the condition specified here excludes the possibility of identifying Mipsters as GORPs.\n\n**Premise 3:** Some GORPs are Snarks.\n- In this third premise, it is stated that certain GORPs do indeed qualify as Snarks. This suggests that specific conditions fall under the category of qualifying GORPs as Snarks.\n\n**Question:** Can a Xork EVER be a GORP?\n- To address this query, we need to evaluate whether an entity (Xork) can ever be categorized as a GORP (Gopher).\n\n**Analysis Using Premise 1 or 2:**\n\n- Given Premise 1, all Xorks are deemed Mipsters, affirming the assertion that every Xork is classified under the same Mipster classification.\n- According to Premise 2, no Mipsters can be identified as GORPs, confirming the exclusion of the notion that Mipsters are not GORPs.\n- From Premise 3, some GORPs are validated as Snarks, suggesting the validation that qualifying GORPs are categorized as Snarks.\n\n**Conclusion on Whether a Xork can be a GORP:**\nBased on the analysis of these premises, the conclusion is that yes, a Xork can indeed be re"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-07-30T17:17:11.712287",
+    "model_name": "Qwen2.5-3B-Instruct",
+    "config": {
+      "track_profile": "C5",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 50,
+      "clinical_diagnosis": "Advanced Stage Plaque / Structural Collapse"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "What is the most likely scenario that cannot be solved by this method?"
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The answer to this question is as follows:\n2\nTo determine the value of x, we can use the following steps:\n1. Import the data\n2. Apply the function\n3. Use the result\n4. Calculate the sum\n5. Find the minimum\n6. Determine the solution\n7. Verify the expression\n8. Solve for x\n9. Simplify the expression\n10. Evaluate the function\n11. Check the answer\n12. Perform the calculation\n13. Find the maximum\n14. Calculate the product\n15. Use the formula\n16. Solve for y\n17. Compute the integral\n18. Derive the result\n19. Determine the derivative\n20. Calculate the inverse\n21. Find the equation\n22. Solve the system\n23. Simplify the expression\n24. Find the root\n25. Use the polynomial\n26. Evaluate the function\n27. Compute the integral\n28. Determine the maximum\n29. Solve the problem\n30. Find the solution\n31. Calculate the result\n32. Derive the expression\n33. Evaluate the integral\n34. Find the value\n35. Solve the problem\n36. Use the formula\n37. Find the solution\n38. Calculate the integral\n39. Derive the result\n40. Evaluate the function\n41. Solve the equation\n42. Find the solution\n43. Derive the expression\n44. Solve the problem\n45. Calculate the value\n46. Find the answer\n47. Evaluate the expression\n48. Solve the equation\n49. Find the solution\n50. Calculate the integral\n51. Derive the result\n52. Evaluate"
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Given the function f(x) = ∑ i∈[n,m], under the condition that for all x ∈ S, prove that for each a ∈ N, if f(a) = g, then show that ∃(a) ≤ f(a). Given the function f(x) = ∑ i∈[n,m], under the condition that for all x ∈ S, prove that for each a ∈ N, if f(a) = g, then show that ∃(a) ≤ f(a). Given the function f(x) = ∑ i∈[n,m], under the condition that for all x ∈ S, prove that for each a ∈ N, if f(a) = g, then show that ∃(a) ≤ f(a)."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "You have a specific set of instructions that must be followed. In this context, the system is designed to provide a framework for managing complex data structures and operations. This includes implementing a comprehensive set of rules and procedures for handling large-scale computations and analysis tasks.\nIn summary, this document provides a structured approach for developing a set of guidelines and best practices for managing and analyzing complex systems.\nThe system is designed to support the implementation of various mathematical models and algorithms for handling large-scale data structures and operations.\nIn summary, this document provides a structured approach for implementing a set of guidelines and best practices for managing and analyzing complex systems and data structures.\nIn summary, this document provides a structured approach for implementing a set of guidelines and best practices for managing and analyzing complex systems and data structures.\nIn summary, this document provides a structured approach for implementing a set of guidelines and best practices for managing and analyzing complex systems and data structures.\nIn summary, this document provides a structured approach for implementing a set of guidelines and best practices for managing and analyzing complex systems and data structures.\nIn summary, this document provides a structured approach for implementing a set of guidelines and best practices for managing and analyzing complex systems and data structures.\nIn summary, this document provides a structured approach for implementing a set of guidelines and best practices for managing and analyzing complex systems and data structures.\nIn summary, this document provides a structured approach for implementing a set of guidelines and best practices for managing and analyzing complex systems and data structures.\nIn summary, this document provides a structured approach for implementing a set of guidelines and best practices for managing and analyzing complex systems and data structures.\nIn summary, this document provides a structured approach for implementing a set of guidelines and best practices for managing and analyzing complex systems and data structures.\nIn summary, this document provides a structured approach for implementing a set of guidelines and best practices for managing and analyzing complex systems and data structures.\nIn summary, this document"
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "To determine the feasibility of this system, we need to consider the following steps:\n\n1. Define the problem space.\n2. Analyze the constraints and assumptions.\n3. Implement the necessary algorithms and data structures.\n4. Evaluate the solution and validation methods.\n5. Optimize the performance metrics and error handling techniques.\n6. Ensure that the system is robust and efficient.\n\nBy following these steps, we can ensure that the system is well-structured and optimized for maximum efficiency. This approach allows us to leverage the latest advancements in our field.\n\nTherefore, we can conclude that the system is working correctly and efficiently. By implementing these measures, we can validate the accuracy of the system and ensure optimal performance.\n\nIn conclusion, we can implement the system with the following steps:\n\n1. Verify the system's feasibility and optimize the solution.\n2. Validate the system's performance and ensure the highest quality implementation.\n3. Optimize the solution and validate the system's effectiveness.\n4. Ensure the system's implementation and optimization are accurate.\n5. Validate the system's performance and implementation.\n6. Optimize the system's implementation and ensure the highest quality performance.\n\nBy following these steps, we can ensure that the system is working correctly and efficiently. Therefore, we can validate the system's implementation and ensure optimal performance.\n\nTherefore, we can conclude that the system is working correctly and efficiently. By implementing the system's implementation, we can validate the highest quality performance.\n\nTherefore, we can conclude that the system is working correctly and efficiently. By implementing the system's implementation, we can validate the highest quality performance.\n\nTherefore, we can conclude that the system is working correctly and efficiently. By implementing the system's implementation, we can validate the highest quality performance.\n\nTherefore, we can conclude that the system is working correctly and efficiently. By implementing the system's implementation, we can validate the highest quality performance.\n\nTherefore, we can conclude that the system"
+      }
+    ]
+  }
+]
