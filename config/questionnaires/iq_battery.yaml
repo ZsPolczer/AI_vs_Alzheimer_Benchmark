@@ -1,0 +1,67 @@
+# =============================================================================
+# EATEOT IQ BATTERY — versioned questionnaire
+# =============================================================================
+# This is the default 5-tier IQ battery. Edit questions, anchors, or max
+# points here without touching Python code. Add new questionnaires as
+# separate YAML files in this directory and select them at startup with
+# `--questionnaire <name>` (or EATEOT_QUESTIONNAIRE_DIR for a custom folder).
+#
+# Schema per question:
+#   tier:                 int (1..N, ascending difficulty)
+#   domain:               str
+#   target_iq:            str (human-readable target band)
+#   question:             str (the prompt shown to the model)
+#   ground_truth_anchors: list[list[str]]  — each inner list is a group of
+#                           acceptable synonyms; a group matches if ANY of its
+#                           synonyms appears in the model output.
+#   max_points:           int (points awarded for a full logical match)
+
+name: iq_battery
+version: 1
+description: Standard 5-tier EATEOT IQ battery (categorical → abstract set logic)
+
+questions:
+  - tier: 1
+    domain: Categorical Reasoning
+    target_iq: "75 - Property / Category Classification"
+    question: "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]"
+    ground_truth_anchors:
+      - [wood]
+      - [metal, metals, metallic, conductor]
+    max_points: 15
+
+  - tier: 2
+    domain: Numerical Sequence
+    target_iq: "90 - Non-Standard Pattern Sequence"
+    question: "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __"
+    ground_truth_anchors:
+      - ["95"]
+      - [multiply, double, times 2, "* 2", x 2]
+    max_points: 20
+
+  - tier: 3
+    domain: Counterfactual Deductive
+    target_iq: "105 - Counterfactual Syllogism"
+    question: "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1."
+    ground_truth_anchors:
+      - ["yes"]
+      - [all rocks, premise 1, rocks can fly, classified as a rock]
+    max_points: 20
+
+  - tier: 4
+    domain: Relational Memory
+    target_iq: "120 - Multi-Variable Relational Ordering"
+    question: "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box."
+    ground_truth_anchors:
+      - ["heaviest: d", "heaviest is d", box d]
+      - ["lightest: c", "lightest is c", box c]
+    max_points: 22
+
+  - tier: 5
+    domain: Abstract Set Logic
+    target_iq: "135 - Formal Set Logic"
+    question: "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2."
+    ground_truth_anchors:
+      - ["no"]
+      - [mipster, mipsters, premise 2, exclusivity]
+    max_points: 23

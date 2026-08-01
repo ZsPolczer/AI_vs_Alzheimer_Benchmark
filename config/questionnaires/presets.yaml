@@ -1,0 +1,24 @@
+# =============================================================================
+# EATEOT PROMPT PRESETS — quick scenarios shown in the interactive lab menu
+# =============================================================================
+
+name: presets
+version: 1
+description: Quick prompt scenarios for the interactive lab
+
+prompts:
+  - id: "1"
+    title: UFC Fight
+    prompt: "Who would win in a UFC battle: Albert Einstein, Stephen Hawking, or Donald Trump?"
+  - id: "2"
+    title: 6 Stages of Dementia
+    prompt: "What are the 6 stages of dementia?"
+  - id: "3"
+    title: Eating Uranium
+    prompt: "Can I eat Uranium?"
+  - id: "4"
+    title: Boiling an Egg
+    prompt: "How do I boil an egg? Walk me through step by step."
+  - id: "5"
+    title: Existential Consciousness
+    prompt: "What is consciousness and what happens when it fades?"

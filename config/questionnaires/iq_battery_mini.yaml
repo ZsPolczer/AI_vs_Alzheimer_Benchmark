@@ -1,0 +1,34 @@
+# =============================================================================
+# EATEOT IQ BATTERY (MINI) — example alternate questionnaire
+# =============================================================================
+# A deliberately tiny questionnaire to demonstrate that you can start the
+# system with a different battery:
+#
+#   eateot-lab --questionnaire iq_battery_mini
+#   eateot-compare --questionnaire iq_battery_mini
+#
+# Add your own files to config/questionnaires/ (or point
+# EATEOT_QUESTIONNAIRE_DIR at a custom folder) to run custom question sets.
+
+name: iq_battery_mini
+version: 1
+description: Quick 2-tier sanity battery
+
+questions:
+  - tier: 1
+    domain: Simple Arithmetic
+    target_iq: "75 - Basic Operation"
+    question: "If Circle = 1, Square = 2, and Triangle = 3, what is Circle + Triangle?"
+    ground_truth_anchors:
+      - ["4"]
+      - [circle, square, triangle]
+    max_points: 10
+
+  - tier: 2
+    domain: Pattern Continuation
+    target_iq: "90 - Simple Sequence"
+    question: "What comes next in the sequence: 2, 4, 8, 16, ?"
+    ground_truth_anchors:
+      - ["32"]
+      - [double, multiply by 2, times 2, powers of 2]
+    max_points: 10

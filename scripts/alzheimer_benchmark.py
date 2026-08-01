@@ -1,5 +1,14 @@
+import sys
+from pathlib import Path
+
+# Make src/ importable when running from source without installing.
+SRC = Path(__file__).resolve().parents[1] / "src"
+if str(SRC) not in sys.path:
+    sys.path.insert(0, str(SRC))
+
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
+from eateot.questionnaires import load_simple_questions
 
 # 1. Setup Model
 model_id = "Qwen/Qwen2.5-0.5B-Instruct"
@@ -25,17 +34,8 @@ def apply_cognitive_damage(model, layer_index, damage_percentage):
             mask = (torch.rand(weight.shape, device=weight.device) < survival_rate).to(torch.float16)
             weight.data.mul_(mask)
 
-# 3. Your Mini IQ Test Benchmark
-benchmark_data = [
-    {
-        "question": "If Circle = 1, Square = 2, and Triangle = 3, what is Circle + Triangle?",
-        "expected": "4"
-    },
-    {
-        "question": "What comes next in the sequence: 2, 4, 8, 16, ?",
-        "expected": "32"
-    }
-]
+# 3. Your Mini IQ Test Benchmark (loaded from versioned YAML config)
+benchmark_data = load_simple_questions("brain_benchmark")
 
 def run_benchmark(model, tokenizer, data):
     # Strict prompt forcing extreme brevity

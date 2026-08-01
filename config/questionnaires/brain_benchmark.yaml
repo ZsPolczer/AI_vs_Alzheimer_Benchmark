@@ -1,0 +1,13 @@
+# =============================================================================
+# EATEOT BENCHMARK QUESTIONS — used by scripts/alzheimer_benchmark.py
+# =============================================================================
+
+name: brain_benchmark
+version: 1
+description: 2-question mini benchmark used by the Alzheimer damage script
+
+questions:
+  - question: "If Circle = 1, Square = 2, and Triangle = 3, what is Circle + Triangle?"
+    expected: "4"
+  - question: "What comes next in the sequence: 2, 4, 8, 16, ?"
+    expected: "32"

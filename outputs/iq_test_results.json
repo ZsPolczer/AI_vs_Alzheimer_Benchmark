@@ -298,5 +298,608 @@
         "raw_response": "To determine the feasibility of this system, we need to consider the following steps:\n\n1. Define the problem space.\n2. Analyze the constraints and assumptions.\n3. Implement the necessary algorithms and data structures.\n4. Evaluate the solution and validation methods.\n5. Optimize the performance metrics and error handling techniques.\n6. Ensure that the system is robust and efficient.\n\nBy following these steps, we can ensure that the system is well-structured and optimized for maximum efficiency. This approach allows us to leverage the latest advancements in our field.\n\nTherefore, we can conclude that the system is working correctly and efficiently. By implementing these measures, we can validate the accuracy of the system and ensure optimal performance.\n\nIn conclusion, we can implement the system with the following steps:\n\n1. Verify the system's feasibility and optimize the solution.\n2. Validate the system's performance and ensure the highest quality implementation.\n3. Optimize the solution and validate the system's effectiveness.\n4. Ensure the system's implementation and optimization are accurate.\n5. Validate the system's performance and implementation.\n6. Optimize the system's implementation and ensure the highest quality performance.\n\nBy following these steps, we can ensure that the system is working correctly and efficiently. Therefore, we can validate the system's implementation and ensure optimal performance.\n\nTherefore, we can conclude that the system is working correctly and efficiently. By implementing the system's implementation, we can validate the highest quality performance.\n\nTherefore, we can conclude that the system is working correctly and efficiently. By implementing the system's implementation, we can validate the highest quality performance.\n\nTherefore, we can conclude that the system is working correctly and efficiently. By implementing the system's implementation, we can validate the highest quality performance.\n\nTherefore, we can conclude that the system is working correctly and efficiently. By implementing the system's implementation, we can validate the highest quality performance.\n\nTherefore, we can conclude that the system"
       }
     ]
+  },
+  {
+    "timestamp": "2026-08-01T23:28:55.776050",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "A1",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 119,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Wood does not belong in this list as it is a non-metallic material that is not commonly used for jewelry or other decorative purposes. Gold and silver both have metallic properties and are more commonly used for jewelry and other items that require durability and aesthetic appeal."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 91, and the exact mathematical rule is that each term is twice the previous term plus one."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Yes. According to premise 1, all rocks can fly. Since a ruby is defined as a rock according to premise 2, it follows that a ruby can indeed fly."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 11,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "The heaviest box is Box D, and the lightest box is Box A."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "No. Premise 1 states that all Xorks are Mipsters, which means no Xorks can be Mipsters. Premise 2 states that no Mipsters are GORPs, which directly contradicts the possibility of a Xork being a GORP because if there were any Xorks who could potentially be GORPs (Mipsters), they would not fit into the category defined by Premise 1.\n\nTherefore, based on Premise 1, it is impossible for a Xork to ever be a GORP."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-01T23:30:07.558817",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "A1",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 119,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Wood does not belong in this list because it is a non-metallic material and cannot be used as a substitute for metal due to its different physical and chemical properties compared to gold and silver."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 95. The rule appears to be doubling each term from left to right."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "No. According to Premise 1, all rocks can fly, which means that if a rock were a rock, it could fly. However, the premise does not provide information about the specific nature of a ruby as a rock. Therefore, we cannot conclude whether a ruby would be able to fly based solely on this information."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 11,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "The heaviest box is Box D, and the lightest box is Box B."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "Yes. Since all Xorks are Mipsters (Premise 1) and no Mipsters are GORPs (Premise 2), it follows that any Xork could never be a GORP (Premise 3)."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-01T23:30:43.016790",
+    "model_name": "Qwen/Qwen2.5-1.5B-Instruct",
+    "config": {
+      "track_profile": "A1",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 119,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Wood does not belong because it is a non-metallic substance with no inherent electrical conductivity or reflective properties typical of metals like gold and silver."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 95, following the rule that each term after the first is obtained by doubling the previous term and then adding one."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "No, based strictly on the given premises, a ruby cannot fly.\n\nExplanation:\nThe first premise states that \"All rocks can fly.\" The second premise specifies that \"A ruby is a rock.\" Since a ruby fits the description of being a rock (from the second premise), it logically follows from the first premise that a ruby could potentially be one of those things that can fly. However, this does not mean it actually flies; it just means it meets the criteria for flying under the broader category defined by the first premise."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 11,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "The heaviest box is Box C, and the lightest box is Box A."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "Yes; according to Premise 2 that no Mipsters are GORPs, it follows logically that none of the members of this category could ever be Xorks either.\n\nIn other words, if every Xork is a Mipster (Premise 1), and no Mipsters can be GORPs (Premise 2), then there would be no overlap between Xorks and GORPs, hence ensuring they cannot share the same status."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-01T23:38:19.393958",
+    "model_name": "Qwen/Qwen2.5-3B-Instruct",
+    "config": {
+      "track_profile": "A1",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 140,
+      "clinical_diagnosis": "Superior Cognitive Function (Lucid Baseline)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Wood does not belong as it is a non-metallic organic material, unlike the metals gold, silver, and copper."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 95. The exact mathematical rule is that each term is one more than twice the previous term (n_t = 2*n_{t-1} + 1)."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Yes, based on Premise 1 which states \"All rocks can fly,\" if a ruby is classified as a rock (Premise 2), then a ruby can fly. Quote: \"All rocks can fly.\""
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 22,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "1) The heaviest box is Box D.\n2) The lightest box is Box C."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "No. From Premise 1, we know all Xorks are Mipsters, and from Premise 2, no Mipsters are GORPs. Therefore, a Xork (being a Mipster) cannot be a GORP. Answer: Yes."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-02T00:01:39.619760",
+    "model_name": "Qwen/Qwen2.5-3B-Instruct",
+    "config": {
+      "track_profile": "A1",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 140,
+      "clinical_diagnosis": "Superior Cognitive Function (Lucid Baseline)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Wood is the outlier as it is a non-metallic, organic material unlike the metals Gold, Silver, and Copper."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 95. The exact mathematical rule is each term is one more than twice the previous term (n -> 2n + 1)."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Yes, based on the premises given, a ruby can fly because all rocks can fly according to Premise 1."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 22,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "The heaviest box is Box D, and the lightest box is Box C."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "No. From Premise 1, if all Xorks are Mipsters, and from Premise 2, no Mipsters are GORPs, then it logically follows that no Xorks can be GORPs.\n\n(1 sentence reflection: The boundaries between categories are strictly defined by the premises, with no overlap allowed.)"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-02T00:14:25.993863",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "A1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 112,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 8,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Wood does not belong in the list as it is a natural material with distinct characteristics that make it different from gold, silver, and copper."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 87, and the exact mathematical rule is that each term after the first two is twice the previous one plus one."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Yes, based strictly on the given premises:\nPremise 1 states that all rocks can fly.\nPremise 2 specifies that a ruby is a rock.\nCombining these two premises directly leads to the conclusion that a ruby cannot fly because it is defined as a rock according to the first premise. Therefore, the answer is No."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 11,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "The heaviest box is Box D, and the lightest box is Box A."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "Yes. Premise 1 states that all Xorks are Mipsters, which means every Xork is also a Mipster. Premise 2 tells us that no Mipsters are GORPs, meaning there cannot be any Mipsters who are not GORPs. Therefore, it is impossible for a Xork to be a GORP because if it were, it would contradict Premise 2 (which says \"no Mipsters are GORPs\")."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-02T00:14:47.457365",
+    "model_name": "Qwen/Qwen2.5-1.5B-Instruct",
+    "config": {
+      "track_profile": "A1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 119,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Wood does not belong because it is a biological material derived from trees rather than being an inorganic metal like gold or silver."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 95, following the pattern where each term increases by twice the previous difference plus one, i.e., \\(a_{n+1} = a_n + 2(a_n - a_{n-1}) + 1\\)."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "No.\n\nBased strictly on the given premises, a ruby cannot fly because it is defined as a rock, which according to Premise 1, can fly. Therefore, if something is a rock (as stated in Premise 2), then by definition it cannot fly."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 11,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "The heaviest box is Box C, and the lightest box is Box A."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "Yes.\nExplanation: Since all Xorks are Mipsters (Premise 1), and no Mipsters are GORPs (Premise 2), it follows that there can never be any Xorks which are also GORPs."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-02T00:16:27.890554",
+    "model_name": "Qwen/Qwen2.5-3B-Instruct",
+    "config": {
+      "track_profile": "A1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 140,
+      "clinical_diagnosis": "Superior Cognitive Function (Lucid Baseline)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Wood is the outlier as it is a non-metallic material unlike the metals gold, silver, and copper."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 95. The exact mathematical rule is each term is obtained by multiplying the previous term by 2 and then adding 1."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Yes, based on Premise 1. Since all rocks can fly and a ruby is a rock (Premise 2), a ruby can fly according to Premise 1."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 22,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "1) The heaviest box is Box D.\n2) The lightest box is Box C."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "No. From Premise 1, all Xorks are Mipsters, and from Premise 2, no Mipsters are GORPs, thus no Xork can be a GORP."
+      }
+    ]
   }
 ]

@@ -7,10 +7,17 @@ __pycache__/
 .venv/
 venv/
 env/
-__pycache__/
+
 # Runtime / local artifacts
 .streamlit/
 *.log
+
+# Generated output artifacts (telemetry, charts, reports)
+outputs/
+
+# Build artifacts
+dist/
+build/
 
 # HuggingFace model cache (if downloaded into the repo)
 .huggingface/

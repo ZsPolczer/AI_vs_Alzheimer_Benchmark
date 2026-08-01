@@ -1,5 +1,14 @@
+import sys
+from pathlib import Path
+
+# Make src/ importable when running from source without installing.
+SRC = Path(__file__).resolve().parents[1] / "src"
+if str(SRC) not in sys.path:
+    sys.path.insert(0, str(SRC))
+
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
+from eateot.questionnaires import load_simple_questions
 
 model_id = "Qwen/Qwen2.5-0.5B-Instruct"
 print("Loading healthy model...")
@@ -31,8 +40,9 @@ with torch.no_grad():
 print("[!] Layer severed. Testing cognitive function...\n")
 # ==========================================
 
-# The IQ Benchmark Question
-prompt = "If Circle = 1, Square = 2, and Triangle = 3, what is Circle + Triangle? Think step by step."
+# The IQ Benchmark Question (loaded from versioned YAML config)
+question = load_simple_questions("brain_benchmark")[0]["question"]
+prompt = f"{question} Think step by step."
 
 messages = [
     {"role": "system", "content": "You are a logical AI assistant taking an IQ test."},

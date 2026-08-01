@@ -1,10 +1,23 @@
-import os
+#!/usr/bin/env python3
+"""Plot the IQ decay curve from the telemetry log.
+
+Port of ``plot_decay.py``, now resolving paths through ``eateot.paths``
+(default ``outputs/``) and using a proper argparse CLI:
+
+  eateot-plot            # generate the decay chart
+  eateot-plot --reset    # delete telemetry log + chart
+"""
+
 import json
+import os
 import sys
+
+import matplotlib
+matplotlib.use("Agg")  # headless-safe; chart is saved to disk
 import matplotlib.pyplot as plt
 
-LOG_FILE = "iq_test_results.json"
-IMG_FILE = "iq_decay_curve.png"
+from eateot.paths import IMG_FILE, LOG_FILE
+
 
 def reset_benchmark_data():
     """Deletes existing logs and chart images to reset the test state."""
@@ -14,14 +27,6 @@ def reset_benchmark_data():
             print(f"🗑️ [✓] Deleted '{file_path}'")
     print("✨ Benchmark state reset! Run new IQ tests to generate fresh data.")
 
-if __name__ == "__main__":
-    # Check if user called `python plot_decay.py --reset`
-    if len(sys.argv) > 1 and sys.argv[1] == "--reset":
-        reset_benchmark_data()
-        sys.exit(0)  # Stop here — don't fall through into plot_iq_decay() below
-    else:
-        plt.close('all')  # Clears any existing figure buffers from memory
-        # ... rest of your plot_iq_decay() call
 
 def plot_iq_decay():
     if not os.path.exists(LOG_FILE):
@@ -41,7 +46,7 @@ def plot_iq_decay():
 
     # Initialize plot layout
     plt.figure(figsize=(10, 6))
-    
+
     # Plot line graph with markers
     plt.plot(tracks, scores, marker="o", linewidth=2.5, markersize=8, color="#e74c3c", label="Model IQ Trajectory")
 
@@ -71,11 +76,20 @@ def plot_iq_decay():
     plt.legend(loc="lower left")
 
     plt.tight_layout()
-    
-    # Save chart image and show window
-    plt.savefig("iq_decay_curve.png", dpi=300)
-    print("📈 [✓] Chart successfully generated and saved to 'iq_decay_curve.png'")
-    plt.show()
+
+    # Save chart image
+    os.makedirs(os.path.dirname(IMG_FILE) or ".", exist_ok=True)
+    plt.savefig(IMG_FILE, dpi=300)
+    print(f"📈 [✓] Chart successfully generated and saved to '{IMG_FILE}'")
+    plt.close('all')
+
+
+def main():
+    if len(sys.argv) > 1 and sys.argv[1] == "--reset":
+        reset_benchmark_data()
+        return
+    plot_iq_decay()
+
 
 if __name__ == "__main__":
-    plot_iq_decay()
+    main()

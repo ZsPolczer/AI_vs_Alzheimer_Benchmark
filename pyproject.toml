@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "eateot"
+version = "0.1.0"
+description = "EATEOT Neural Degradation Lab - benchmark cognitive decay in LLMs"
+readme = "README.md"
+requires-python = ">=3.12"
+# torch is intentionally NOT listed here - install it first from the CUDA
+# index (see README), then `uv pip install -e .` for everything else.
+dependencies = [
+    "transformers>=4.44,<6",
+    "safetensors",
+    "accelerate",
+    "streamlit>=1.37",
+    "pandas>=2.2,<3",
+    "plotly>=5.22",
+    "matplotlib>=3.8",
+    "numpy",  # direct import in apps/compare.py
+    "PyYAML>=6",  # versioned questionnaire loading (config/questionnaires/)
+]
+
+[project.scripts]
+eateot-lab = "apps.lab:main"
+eateot-compare = "apps.compare:main"
+eateot-plot = "apps.plot:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/eateot", "apps"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/eateot",
+    "apps",
+    "scripts",
+    "tests",
+    "config",
+    "README.md",
+]
