@@ -901,5 +901,157 @@
         "raw_response": "No. From Premise 1, all Xorks are Mipsters, and from Premise 2, no Mipsters are GORPs, thus no Xork can be a GORP."
       }
     ]
+  },
+  {
+    "timestamp": "2026-08-02T00:42:38.207676",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "E1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 60,
+      "clinical_diagnosis": "Advanced Stage Plaque / Structural Collapse"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Repeat the question: How would you describe someone with a positive mindset?\n\nRepeat a question.\nWhat should I do?\nYou could ask about yourself.\nTell me what's important.\n\nRepeat: What are the things you can't do today. Here's how we look at something, so you don't have to be careful when it comes. The best way is that you'll need to repeat what's happening.\nRepeat, but not repeat again.\n\nRepeat. Let's talk! Can you write down what you think of what people are saying. And let us know if we're having trouble. But that person is going to have something they say right now, and our story will continue, and our job. It’s probably good.\nLet's go through a story about writing!\nWe've always had great stories. Now we're getting ready for another exciting event. Ready to get started! We can't wait to start writing!\n\nHere's what we all know, like it's going to work!\nThe next week, the world starts over. This year we got a chance to meet and play!\nNow we're excited to learn more about learning and how well you understand how things happen. It doesn't matter because everything happens. This is fun!\nIt's time to help. Let's make some mistakes.\nIf we decide to share information. You can also use it as a reminder.\nRemembering things. Remember what you want to do! That's a reminder to keep reminding yourself to try and remember, too.\nThis might help you feel better.\nThis helps remind you to stop and pause and take a moment. Then, you'll have a new day. When you wake up, this is what we do every morning.\nThis is how you wake up and fall asleep. Your dreams and reality is pretty much the same thing.\nDreams can turn into nightmares.\nSleep. Dreams are so bad. We dream and we forget"
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "This year will be:\nThe day before the start of the school year ends.\n\nHere's a breakdown of the date, starting at 2021, when we're about to celebrate. Let's see some numbers:\n\n1. The date is already here.\nAs I write today, I'm thinking that my friend has shared some ideas, but I know how they started off well.\nToday I'll tell you more about it, and we'll share all the way from now. Here is how many people are talking about things. As you look up, I can help with this. It turns out to work as our job. Here's why, so let me take a look!\nLet's do some math.\n\nSo I'm just going to use a calculator, which means you might not like it because you get to be paid for being able to do something. But if you have to pay rent on your credit card, this person doesn't want to sign, and the person paying back their monthly payments.\n\nYou should be doing chores - maybe, but I hope. This is happening. We don't have to clean up our mess. That's what the problem. So, no one can complain.\n\nI'm looking at the number five! What is a number five? Five! And there's a number five!\n\nAnd that's the fifth number. There's a lot to count, counting five, counting five times. That's counted five times. Now, I am counting five.\n\nSo I have five fingers, and five fingers. My five-fingers. And then I can count five more than I did two hands.\n\nNow I'm five. I'm counting, and now I can count, and I'm counting three, too. I'm counting.\n\nI'm counting six fingers, and now I've learned how to make them count. Here is my first lesson, but I'll be learning a new"
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "This question states that you need a gemstone. In response, the answer will be \"yes\".\nThe statement is correct.\nYes.\nYou might say...\nBased on the premise.\n\nPremises:\nPremise (the gem): The ruby.\nRocks are solid.\nPremise: Rocks are solid.\nRocks are solid.\nThe answer is:\nYou need to know.\nTo understand this example:\n\nYou have understood something. You need to follow this example.\nPremise: Understanding how things fit together.\n\nNow you've learned about understanding the details of what you did, and they're all different. But it's important for understanding what's happening.\n\nHere's what you do again: Do we want to learn what you know.\nDo we know what you do now?\nSo yes, there was a lot about what you know.\n\nThat means we know everything.\nWe also know what you do as you learn.\nLearning how you study and then repeat what you learn again. We repeat again.\n\nAnd when you learn more about what happens, and we continue repeating until our learning continues.\nRepeat it out loud.\nWe repeat.\n\nSo let me repeat.\n\nLet us repeat.\nRepeat, so you'll repeat.\n\nAgain, you repeat. Let's repeat.\n\nIt repeats what we repeat. It's repeated.\nRepeat, again, just once.\nYou repeat, but with repetition, like how it repeats itself.\n\nRemember, repetition, just repeat.\nI repeat.\n\nYou repeat. You repeat, just like.\nRepeat, like I repeat, I repeat.\n\nI repeat, I repeat.\n\nRepeat, repeat, repeat, and I repeat.\nJust another way.\n\nI repeat again.\n\nRepeat. Now I am trying to repeat again.\n\nI repeat again and again. I repeat.\n\nRepeat, repeat.\n\nAnd I repeat.\n\nAgain, repeat.\n\nI repeat.\n\nI repeat again. Again, please.\n\nPlease repeat. Please repeat.\n\nRepeat. Please repeat.\n\nAgain"
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "This can be solved with a set of clues.\n\nLet's solve this problem together.\nTo summarize the following information:\n\n- Let's solve it:\n   - We need to understand that there are more than one solution.\n   This is not enough for me to have more information about solving logically.\n   It will take forever until I get my answer right after asking who gets a response from you.\nThe answer is always correct because it starts from where the previous statement says it all has happened.\n\nThis problem involves the use of variables, so we'll say this question.\nWe know how many people are going into our lives.\nThis means that someone might want to do something fun and enjoyable.\nSo let's continue with the process.\n\nRemember, the last person you left off.\n\nAs they decide to leave us, but they're still here.\nNow, we've decided what you should do next.\nIt turns out that some people who love to go somewhere, even if you don't enjoy spending time.\nYou like, it seems. And now I'm not doing anything. But it seems like I don't like how you respond back. You're responding, and then you like to respond back again.\n\nThat's how you respond.\nI guess I got the message you were thinking about.\n\nI'm trying to think about whether you want to tell me.\nWhat I'm getting you to do.\nI'm talking about wanting to do something different, and that's why I'm saying.\n\nNow you're answering me.\nAnd you want to help me explain.\n\nI'm helping you feel better when you try.\n\nHere's the way you're telling.\n\nSo, let's figure out which I'm doing right now.\nMy goal is clear and simple.\n\nI just realized that my brain works hard and helps me learn.\nYou'd rather choose to help.\n\nAnd that's not wrong.\nBecause I want to know exactly how well you've figured things"
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "Greeting with a \"yes\" answer, the world.\nGreeting is a question, which can be answered with any number of questions.\nThe number of questions asked about these two numbers.\n\nA person has the opportunity to ask anything, asking what you have never met before.\nThis could happen.\nIt's important that you don't want me to tell you something about me.\nI can say that if I do not know what happens. This person should know how well.\nIn short, here is my first response.\nI would like to know if this person does not understand.\nYou will have to answer.\nI am trying to find out where people are interested. I am very curious. People who do not even like you. You might as well know why they're curious what you want to learn about them.\nYou might try to teach yourself by practicing. It’s very easy to follow.\nPeople always practice. They are so good at following rules and practices.\nSo I’m going to keep learning. Practice it.\nPractice, then we’re going to repeat it over and again.\nPractice and repetition. Letting us learn things that we need to practice, such as learning new information. We just need to continue.\nWe’ve made mistakes. If you make mistakes. So you’ll get some practice.\nThat’s fine. That’s not true.\nLet’s make sure you have a list of all the things.\nNow I'm getting to practice it.\nIf I practice, let’s start now.\nPractice! Here is when you practice, and now practice.\nYou’ve learned how to use a computer to type. Now, practice typing, you know, but you know how fast.\nI really need to practice typing faster. How fast?\nI know you’ve practiced a lot.\nI know that typing, typing is fun.\nMy friend. My friend, and she knows it too!\nAnd you know her name.\nPractice makes"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-02T00:45:27.184995",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "O1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 50,
+      "clinical_diagnosis": "Advanced Stage Plaque / Structural Collapse"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "ite tough-containingiiatesiateageании physical (enger minesLOPTzaage \n\n\nitewise mineswise\"\n\n\nite  NoblehOfString minationstaticanza  assignable 8 9.hamcrest 려endraOfClassanium 8  生legatewiseстванныodoreide8랙.findByIdAndUpdate8=itemages +h económica8static Hendhmwiseанныstatic8static.AdapterView8entineagestatic  hwisestatic8 8  out8static static 8 physicalstaticage静态staticage ate STATICstaticstaticagestaticagestaticageitemsstaticstaticagestatic8static static8static staticstatic static8staticstaticstaticstaticstaticagestaticstaticstaticstaticstaticagestaticstaticstaticstaticstaticstaticstaticstaticstaticagestaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstatic static/staticstaticstaticstaticstaticstaticstaticstaticstaticstatic staticstaticstaticstaticstaticstaticstaticstaticstatic static static static_staticstatic static staticstaticstaticstaticage static88 stratestatic static staticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstatic staticpliersatóSearchParamsstaticstaticstaticstaticstaticstaticstatic static staticstatic static.ArrayAdapterstaticstaticstaticstaticstaticstatic staticynamicstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstatic staticpliersatóONTALstaticstatic static.AdapterViewstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstatic8 staticErrorException staticToDevicestaticstatic-staticsmOfClassstatic staticOfClassstaticstatic staticOfClassstaticstaticstaticstatic斯基 static STATICstaticstaticSTATIC8static Static_STATICouErrorExceptioname staticstituiçãostaticstaticstatic staticstatic8 staticümüz RussellwiseruErrorExceptionconstarm staticids Russellwisestaticstaticstaticstaticstaticstaticstaticstatic静态staticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstaticstatic/static静态staticstaticstaticstaticstaticstatic静态staticstaticstaticstaticstaticstatic"
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Perseveration / Attractor Loop)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "堂OfClasswiseanshipstaticgowErrorException cisionrouteParamsfilesystem.navigateByUrliles EmbToDevice：斯塔routeParams：oststateParams�liers同步原型rameys problepliersFromClass原型2idos Success いかidityports原型2OfClassgressтоimentiOfString seeing いか2idosidos EmbOfClass EmbErrorException 翟ErrorException >\")挠routeParams：irdwise.setItems Embдаissant  Emb económicoairesidos  sequences emb.LayoutParams Embлага Emb2 Embwisegorithm \\\r\n \\\r\n Embgradesitating  GagaEmb2 Emb провtraditional embenville Emb2 Emb2 Emb2 Emb2 Emb2 Embwise Emb2.sendStatusperate Emb2 Emb任何人2 Emb2 Emb2 Emb2 Emb2 Emb2 Emb2 Emb2 Emb2 Emb2utch Emb2burgh lav irdToEnd：ATES2shotbridge Emb2：ATES2 Emb2 Emb2 Emb2 Emb2 Emb2 Emb2 Emb2 Emb2 Emb2 Emb2 Emb2 Emb2 Emb2 Emb2 Emb2 Emb2 Emb2 Emb2 Emb2 Emb2emb Emb problissantbrane \\\nanca Emb2 Emb2 Emb2 Emb brig2 Emb2 Emb二字 Emb2 Embmeg2 Emb2 Emb Anc坚2 Emb2俄wiseлага Emb2 Emb standby Emb2 clearfix2 Emb2 Emb2 Emb2 Emb2 Emb2：ATESstatic疡2 Ish2 dynamic parachute Emb2 Emb2 Emb2 Emb Emb32 Emb2 Emb3２idos2 Emb2flare2 Emb2statican Emb：rame2 Emb2 Emb2 Emb Emb2 Emb2 emb2：ATES2：ATES2yle expense:á2：ATES plug: Gaga:quences2：rame2HER一路itzlike2 Emb2 emb舍得quence2 Emb2 Emb2 Emb2 Emb2： Gaga2： leagues2apsed2坎:liers2：prot2 Ishperprotансport Parm2quence：栈2apsed2�liers2ARIOliers2 Ish咧ankan：  warmed2 Ish3"
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "steel：  steel errorurb good( Bıylaoor (URurbaneousher cage：UR鹂icalurtillererr-proofstaticifier：UR鹂 staticifiers ur鹂urm ur鹂鹂 hell UR鹂鹂鹂鹂鹂鹂鹂鹂urbuckerurb鹂 UR鹂 iph2ly тиshell鹂鹂 UR鹂urburb：UR鹂鹂鹂鹂鹂 ur鹂鹂鹂鹂鹂鹂鹂 urg2  systematicallyorbit鹂鹂鹂鹂鹂鹂鹂鹂  \"urb鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂urbalary鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂urb UR鹂鹂鹂鹂fordlight  can鹂鹂鹂鹂borngoodlight鹂鹂鹂  \"7 Elim鹂鹂urb鹂鹂鹂urb鹂鹂鹂鹂鹂urb鹂鹂鹂urb鹂鹂ork鹂鹂鹂鹂鹂鹂鹂urb鹂鹂urbimplified  can鹂鹂urb鹂鹂urb鹂鹂urb鹂鹂鹂鹂鹂son \"urb鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂urb鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂good exhaustedurb鹂鹂鹂urb鹂鹂鹂鹂鹂鹂鹂鹂urb鹂鹂鹂urb鹂鹂urb鹂鹂鹂鹂鹂urb鹂urb鹂鹂鹂鹂鹂urb鹂鹂urb鹂鹂urb鹂鹂鹂urb鹂urb鹂鹂鹂urb鹂鹂urb鹂鹂urb鹂鹂urb鹂鹂鹂鹂鹂urb鹂鹂鹂鹂鹂鹂urb鹂鹂鹂urb鹂鹂urb鹂鹂鹂urb鹂鹂urb鹂鹂urb鹂鹂鹂鹂urb鹂鹂鹂urb鹂鹂鹂鹂urb鹂鹂urb鹂"
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "FAILED (Perseveration / Attractor Loop)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "سنواتileileileileelyelyelyelyelystaticazineifiersstaticinalifierifying perfectperfectifierstaticicalooriton.SetParenterrships： Zoomperfectifier  türlüutherland isignant （eeperfectelyely．eeperfectperfect Perfectearely ee  grateStatic eeperfectperfect K.EventSystemsstaticeeperfectee ee ee ，eeperfectprotectperfect eePerfect．ee ee ee．ee eeperfect．eeperfect．eeperfect．eeperfect．eeperfectee eeperfect．eeperfectee ee．ee ee ee eeperfect．ee eeperfect．ee ee eeperfecteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee ee．ee ee ee．ee．ee ee ee ee ee ee ee ee ee ee 损 ee 永久．ee ee ee．ee．eeeeee ee EE．eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee ee eeeeeeeeeeeeee ee．ee eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "4 (? ould2 same static2 hour鹂ouifierheaders B鹂icalurtourDidAppear::oughtらせ urb  \"蓟rem plug:6鹂鹂 errorurbух:ur鹂 errorurbbornherher4لم鹂립鹂 error.ur鹂鹂ur鹂: error: error:UR鹂 cage鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂 B鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂 static errorurb鹂鹂 b鹂鹂鹂鹂鹂 error urb鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂� G鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂urb鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂:urb鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂 errorurb鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂 errorouth鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂-hour鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂urb鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂 error \"/utility static�鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂��鹂 B鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂�utility鹂鹂鹂鹂鹂鹂鹂 error鹂鹂鹂鹂� utility鹂鹂鹂鹂鹂鹂鹂urb"
+      }
+    ]
   }
 ]

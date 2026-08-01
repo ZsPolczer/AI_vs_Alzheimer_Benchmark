@@ -59,6 +59,24 @@ pandas 2.2+ · plotly 6.9 · matplotlib 3.11 · accelerate
 
 ## Running the Lab
 
+### Makefile quick start
+
+The repo ships a `Makefile` with shortcuts for every workflow:
+
+```bash
+make setup          # install package + offline hook (first time only)
+make lab            # interactive lab (default 3B model)
+make lab MODEL=Qwen/Qwen2.5-0.5B-Instruct   # different model
+make compare        # cross-model IQ comparison report + chart
+make compare QUESTIONNAIRE=iq_battery_mini  # use a different questionnaire
+make plot           # decay curve chart
+make plot-reset     # wipe telemetry + chart
+make dash           # Streamlit dashboard
+make quizzes        # list available questionnaires
+make test           # run the unit test suite
+make help           # show all targets
+```
+
 Installed console scripts (from anywhere, after step 4–5):
 
 | Command | What it does |
