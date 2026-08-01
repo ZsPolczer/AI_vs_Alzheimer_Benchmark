@@ -18,6 +18,7 @@ if __name__ == "__main__":
     # Check if user called `python plot_decay.py --reset`
     if len(sys.argv) > 1 and sys.argv[1] == "--reset":
         reset_benchmark_data()
+        sys.exit(0)  # Stop here — don't fall through into plot_iq_decay() below
     else:
         plt.close('all')  # Clears any existing figure buffers from memory
         # ... rest of your plot_iq_decay() call

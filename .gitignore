@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Runtime / local artifacts
+.streamlit/
+*.log
+
+# HuggingFace model cache (if downloaded into the repo)
+.huggingface/
+
+# OS
+.DS_Store
