@@ -5,26 +5,71 @@ set is configurable — pass any battery loaded from YAML (see
 ``eateot.questionnaires``) to run a different questionnaire.
 """
 
-from .battery import IQ_TEST_BATTERY, evaluate_response
+from .battery import IQ_TEST_BATTERY, evaluate_question
 from .config import BASE_IQ, clinical_diagnosis
+from .drugs import resolve_drug
 from .questionnaires import DEFAULT_BATTERY
 from .telemetry import log_test_run
 
 
-def run_iq_test(lab, track_choice, decay_mult, target_subnetwork, enable_flicker, enable_sirens, surge_mode, battery=None, battery_name=None):
+def run_iq_test(lab, track_choice, decay_mult, target_subnetwork, enable_flicker, enable_sirens, surge_mode, battery=None, battery_name=None, restore_fraction=None, seed=None, drug=None, dose=1.0):
     """Run the IQ battery against a lab engine.
 
     ``battery`` defaults to the standard ``IQ_TEST_BATTERY``; ``battery_name``
     (e.g. "iq_battery_mini") is recorded in telemetry so reports can tell
     questionnaires apart.
+
+    ``restore_fraction`` (0.0–1.0) lerps the degraded weights toward clean
+    before each question (dose-response studies); ``seed`` makes the weight
+    corruption and sampling deterministic. Returns a summary dict
+    ``{final_iq_score, clinical_diagnosis, track_profile, battery_name}``.
+
+    ``drug`` (optional) names a psychoactive profile from the drug catalog
+    (``eateot.drugs``) and ``dose`` sets its intensity. It may also be a
+    pre-resolved spec dict — e.g. a combo returned by
+    ``eateot.drugs.resolve_stack`` (``drug='lsd@1+thc@0.5'`` style specs are
+    passed as the dict itself; ``dose`` is then ignored because each
+    component's dose was already applied). The resolved spec is passed to
+    ``apply_degradation`` and ``run_inference``, and the drug name
+    (``drug`` or the stack's ``name`` label) / ``dose`` are recorded in
+    telemetry so reports can filter per drug. If ``restore_fraction`` is not
+    given but the drug defines one (e.g. ``nzt``), the drug's restore
+    fraction is applied.
     """
     if battery is None:
         battery = IQ_TEST_BATTERY
     if battery_name is None:
         battery_name = DEFAULT_BATTERY
 
+    if isinstance(drug, dict):
+        # Pre-resolved spec (e.g. a stack from eateot.drugs.resolve_stack).
+        drug_spec = drug
+        drug_name = drug_spec.get("name")
+        drug_dose = drug_spec.get("dose")
+    elif drug:
+        drug_spec = resolve_drug(drug, dose)
+        drug_name = drug
+        drug_dose = dose
+    else:
+        drug_spec = None
+        drug_name = None
+        drug_dose = None
+
+    effective_restore = restore_fraction
+    if effective_restore is None and drug_spec is not None:
+        effective_restore = drug_spec.get("restore_fraction")
+
     print("\n" + "="*70)
-    print(f" 🧪 RUNNING HARDENED NEURAL IQ BATTERY | TRACK: {track_choice} | QUIZ: {battery_name}")
+    if track_choice == "CLEAN":
+        header = f" 🧪 RUNNING NEURAL IQ BATTERY | TRACK: CLEAN (drug-only, no Alzheimer's) | QUIZ: {battery_name}"
+    else:
+        header = f" 🧪 RUNNING HARDENED NEURAL IQ BATTERY | TRACK: {track_choice} | QUIZ: {battery_name}"
+    if drug_spec is not None:
+        if drug_spec.get("components"):
+            header += f" | DRUG STACK: {drug_spec['name']}"
+        else:
+            header += f" | DRUG: {drug_name} @ {drug_dose}x"
+    print(header)
     print("="*70)
 
     earned_points = 0
@@ -46,17 +91,23 @@ def run_iq_test(lab, track_choice, decay_mult, target_subnetwork, enable_flicker
             decay_mult=decay_mult,
             target_subnetwork=target_subnetwork,
             enable_flicker=enable_flicker,
-            enable_sirens=enable_sirens
+            enable_sirens=enable_sirens,
+            noise_seed=seed,
+            drug=drug_spec
         )
 
+        if effective_restore is not None:
+            lab.lerp_toward_clean(effective_restore)
+
         # 2. Run inference on degraded weights
-        raw_output = lab.run_inference(q_text, sys_prompt, lucidity_surge=surge_mode)
+        raw_output = lab.run_inference(q_text, sys_prompt, lucidity_surge=surge_mode,
+                                       seed=seed, drug=drug_spec)
 
         # 3. Clean up weights after evaluation pass
         lab.restore_clean_state()
 
         # 4. EVALUATE RESPONSE & CAPTURE PARTIAL SCORING
-        score, status, accuracy_pct = evaluate_response(raw_output, item["ground_truth_anchors"], item["max_points"])
+        score, status, accuracy_pct, metrics = evaluate_question(raw_output, item)
         earned_points += score
 
         results_breakdown.append((tier, domain, status, score, item['max_points']))
@@ -70,7 +121,8 @@ def run_iq_test(lab, track_choice, decay_mult, target_subnetwork, enable_flicker
             "score_earned": score,
             "max_points": item['max_points'],
             "question": q_text,
-            "raw_response": raw_output
+            "raw_response": raw_output,
+            **({"metrics": metrics} if metrics else {})
         })
 
         print(f"➜ Diagnostic Status: [{status}] (Earned: {score}/{item['max_points']} pts | Accuracy: {accuracy_pct}%)")
@@ -84,7 +136,17 @@ def run_iq_test(lab, track_choice, decay_mult, target_subnetwork, enable_flicker
     print("\n" + "═"*70)
     print(" 📊 NEURAL IQ ASSESSMENT REPORT CARD")
     print("═"*70)
-    print(f" Active Track Profile : {track_choice}")
+    if track_choice == "CLEAN":
+        print(f" Active Track Profile : CLEAN (drug-only, no Alzheimer's)")
+    else:
+        print(f" Active Track Profile : {track_choice}")
+    if drug_spec is not None:
+        if drug_spec.get("components"):
+            print(f" Active Drug          : {drug_spec['name']} "
+                  f"(stack · {len(drug_spec['components'])} components)")
+        else:
+            print(f" Active Drug          : {drug_name} @ {drug_dose}x "
+                  f"({drug_spec['class']} · {drug_spec['target_domain']})")
     print(f" Sub-Network Target   : [{target_subnetwork.upper()}] | Decay Scale: {decay_mult}x")
     print("──────────────────────────────────────────────────────────────────────")
     for t, dom, stat, pts, max_p in results_breakdown:
@@ -104,7 +166,21 @@ def run_iq_test(lab, track_choice, decay_mult, target_subnetwork, enable_flicker
         sirens_mode=enable_sirens,
         surge_mode=surge_mode,
         questionnaire=battery_name,
+        seed=seed,
+        # Record what was ACTUALLY applied: a drug may carry its own
+        # restore_fraction (e.g. nzt), which the explicit param would hide.
+        restore_fraction=effective_restore,
+        drug=drug_name,
+        dose=drug_dose,
         final_iq_score=final_iq_score,
         clinical_diag=clinical_diag,
         detailed_results=detailed_log_entries
     )
+
+    return {
+        "final_iq_score": final_iq_score,
+        "clinical_diagnosis": clinical_diag,
+        "track_profile": track_choice,
+        "battery_name": battery_name,
+        "breakdown": detailed_log_entries,
+    }

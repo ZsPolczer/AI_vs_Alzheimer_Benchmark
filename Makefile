@@ -21,10 +21,14 @@ UV    := uv
 # --- Defaults (override on the command line, e.g. `make lab MODEL=...`) ------
 MODEL         ?= Qwen/Qwen2.5-3B-Instruct
 QUESTIONNAIRE ?= iq_battery
+DRUG          ?=
+DOSE          ?= 1.0
+STACK         ?=
 DATA_DIR      ?= outputs
 
 .PHONY: help setup install hook test clean \
         lab lab-small compare compare-mini plot plot-reset dash \
+        restore trajectory reserve trip drugreport \
         brain lesion benchmark quizzes
 
 help: ## Show all available targets
@@ -50,11 +54,11 @@ clean: ## Remove bytecode caches
 # -----------------------------------------------------------------------------
 # RUNNABLES (console scripts)
 # -----------------------------------------------------------------------------
-lab: ## Interactive control panel (default 3B model)
-	EATEOT_DATA_DIR=$(DATA_DIR) $(BIN)/eateot-lab --model "$(MODEL)"
+lab: ## Interactive control panel (default 3B model; DRUG/DOSE or STACK for a psychoactive profile)
+	EATEOT_DATA_DIR=$(DATA_DIR) $(BIN)/eateot-lab --model "$(MODEL)" --drug "$(DRUG)" --dose "$(DOSE)" --stack "$(STACK)"
 
 lab-small: ## Interactive lab with the small 0.5B model
-	EATEOT_DATA_DIR=$(DATA_DIR) $(BIN)/eateot-lab --model Qwen/Qwen2.5-0.5B-Instruct
+	EATEOT_DATA_DIR=$(DATA_DIR) $(BIN)/eateot-lab --model Qwen/Qwen2.5-0.5B-Instruct --drug "$(DRUG)" --dose "$(DOSE)" --stack "$(STACK)"
 
 compare: ## Run the IQ battery on all three models + save report/chart
 	EATEOT_DATA_DIR=$(DATA_DIR) $(BIN)/eateot-compare --questionnaire "$(QUESTIONNAIRE)"
@@ -70,6 +74,21 @@ plot-reset: ## Wipe telemetry log + chart
 
 dash: ## Streamlit dashboard (radar + bar charts)
 	EATEOT_DATA_DIR=$(DATA_DIR) $(BIN)/streamlit run apps/dashboard.py
+
+restore: ## Dose-response restoration study (IQ vs restore fraction)
+	EATEOT_DATA_DIR=$(DATA_DIR) $(BIN)/eateot-restore
+
+trajectory: ## Run the full A1→Q1 decline trajectory + decay chart
+	EATEOT_DATA_DIR=$(DATA_DIR) $(BIN)/eateot-trajectory
+
+reserve: ## Cognitive reserve study (IQ vs severity across model sizes)
+	EATEOT_DATA_DIR=$(DATA_DIR) $(BIN)/eateot-reserve
+
+trip: ## Drug dose-response study (IQ vs dose; DRUG=lsd)
+	EATEOT_DATA_DIR=$(DATA_DIR) $(BIN)/eateot-trip --drug "$(DRUG)" --model "$(MODEL)"
+
+drugreport: ## Group telemetry IQ results per drug/stack combo + dose (report + chart)
+	EATEOT_DATA_DIR=$(DATA_DIR) $(BIN)/eateot-drugreport
 
 quizzes: ## List available questionnaires
 	$(PYTHON) -c "from eateot import list_batteries; print('\n'.join(list_batteries()))"

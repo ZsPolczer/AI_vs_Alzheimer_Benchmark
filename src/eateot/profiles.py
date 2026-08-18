@@ -12,6 +12,12 @@ from .questionnaires import load_presets
 # =============================================================================
 EATEOT_TRACK_PROFILES = {
     # =========================================================================
+    # CLEAN BASELINE (no Alzheimer's degradation — for drug-only experiments)
+    # =========================================================================
+    "CLEAN": {"title": "CLEAN - No Degradation (Drug-Only Baseline)", "symptom": "Clean Weights", "noise": 0.0, "scale": 1.0, "layer_pct": (0.0, 1.0),
+              "prompt": "You are operating at full capacity. Answer clearly and precisely."},
+
+    # =========================================================================
     # STAGE 1: LUCIDITY & SUBTLE DRIFT (Target IQ: ~115–130)
     # =========================================================================
     "A1": {"title": "A1 - It's just a burning memory", "symptom": "Lucid Nostalgia", "noise": 0.00008, "scale": 0.98, "layer_pct": (0.35, 0.65),

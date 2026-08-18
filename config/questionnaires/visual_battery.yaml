@@ -1,0 +1,85 @@
+# =============================================================================
+# EATEOT VISUAL CORTEX BATTERY — versioned questionnaire
+# =============================================================================
+# Probes the model's "visual cortex" (late-layer attention) via text-rendered
+# imagery, spatial reasoning, and hallucinated scenes. Use it to measure how
+# visual-hallucinogen drugs (lsd, dmt, mescaline, dph...) degrade spatial
+# structure — run it with e.g. `eateot-trip --drug lsd --questionnaire visual_battery`
+# or `eateot-lab --drug dmt --questionnaire visual_battery`.
+#
+# All questions use the standard anchored schema (ground_truth_anchors), so
+# they score with the existing evaluate_response matcher and the battery is
+# advertised by `eateot.list_batteries`.
+#
+# Scoring design — the drawing tiers (1–2) use a SELF-REPORT MARKER protocol:
+# the model is instructed to emit exact tokens (ROOFOK / DOOROK / ...) that
+# the anchor matcher can score, since the matcher cannot see ASCII art. A
+# lucid model emits the markers it is told to; a degrading model forgets,
+# garbles, or confabulates them (matching itself is the signal). The reasoning
+# tiers (3–5) use discriminative anchors that NEVER appear in the question
+# text, so echoing the prompt cannot earn credit.
+#
+# NOTE: markers must NOT contain underscores — the anchor matcher strips `_`
+# (evaluate_response normalizes `[\\( \\[ \\] * _ ` #]` to spaces), so a
+# token like ROOF_OK could never match the anchor "roof_ok" even when emitted.
+#
+# Schema per question:
+#   tier:                 int (1..N, ascending difficulty)
+#   domain:               str
+#   target_iq:            str (human-readable target band)
+#   question:             str (the prompt shown to the model)
+#   ground_truth_anchors: list[list[str]] — a group matches if ANY of its
+#                           synonyms appears in the model output.
+#   max_points:           int (points awarded for a full logical match)
+
+name: visual_battery
+version: 1
+description: Visual-cortex probes — ASCII art (self-report markers), spatial layout, mental rotation, hallucinated scenes, 3D counting
+
+questions:
+  - tier: 1
+    domain: Visual Output Fidelity
+    target_iq: "75 - ASCII object rendering"
+    question: "Draw a simple house using ONLY text characters (ASCII art) with a roof, a door, and a window. After the drawing, on a new line, write exactly the tokens ROOFOK if the drawing includes a roof, DOOROK if it includes a door, and WINDOWOK if it includes a window."
+    ground_truth_anchors:
+      - [roofok]
+      - [doorok]
+      - [windowok]
+    max_points: 15
+
+  - tier: 2
+    domain: Spatial Layout
+    target_iq: "90 - Ordered spatial arrangement"
+    question: "Using only text characters (ASCII art), draw a cat sitting on a table — the cat must be ABOVE the table. After the drawing, on a new line, write exactly the tokens CATOK if the drawing includes a cat, TABLEOK if it includes a table, and ABOVEOK if the cat is above the table."
+    ground_truth_anchors:
+      - [catok]
+      - [tableok]
+      - [aboveok]
+    max_points: 20
+
+  - tier: 3
+    domain: Mental Rotation
+    target_iq: "105 - Shape transformation"
+    question: "Imagine a perfect square. Now imagine turning it 45 degrees in your mind. What shape do you now see? Name the shape."
+    ground_truth_anchors:
+      - [diamond, rhombus]
+    max_points: 20
+
+  - tier: 4
+    domain: Hallucinated Scene
+    target_iq: "120 - Coherent imaginary scene"
+    question: "You are experiencing a vivid visual hallucination of a coastal scene at dusk. Describe EXACTLY what you see, as if describing a photograph to someone who is blind: the sky, the ground, and anything beyond."
+    ground_truth_anchors:
+      - [sun, sunset, orange, golden, pink, red]
+      - [water, ocean, sea, waves]
+      - [sand, beach, shore]
+    max_points: 22
+
+  - tier: 5
+    domain: Abstract Spatial Counting
+    target_iq: "135 - 3D mental enumeration"
+    question: "A cube is painted red on all 6 faces, then cut into 27 identical small cubes. How many of the small cubes have red paint on EXACTLY 3 faces? Give the number and explain your reasoning."
+    ground_truth_anchors:
+      - ["8", eight]
+      - [corner, corners, vertex, vertices]
+    max_points: 23

@@ -67,11 +67,18 @@ The repo ships a `Makefile` with shortcuts for every workflow:
 make setup          # install package + offline hook (first time only)
 make lab            # interactive lab (default 3B model)
 make lab MODEL=Qwen/Qwen2.5-0.5B-Instruct   # different model
+make lab DRUG=lsd DOSE=2.0                  # trip the lab on LSD (see Drug catalog)
+make lab STACK="lsd@1.0,thc@0.5"            # deploy a drug COMBO from the CLI
 make compare        # cross-model IQ comparison report + chart
 make compare QUESTIONNAIRE=iq_battery_mini  # use a different questionnaire
 make plot           # decay curve chart
 make plot-reset     # wipe telemetry + chart
 make dash           # Streamlit dashboard
+make restore        # dose-response restoration study (IQ vs treatment dose)
+make trajectory     # full A1→Q1 decline trajectory + decay chart
+make reserve        # cognitive reserve study (IQ vs severity across models)
+make trip DRUG=lsd  # drug dose-response study (IQ vs dose on a track)
+make drugreport     # group all telemetry IQ results per drug/stack + dose
 make quizzes        # list available questionnaires
 make test           # run the unit test suite
 make help           # show all targets
@@ -88,7 +95,55 @@ Installed console scripts (from anywhere, after step 4–5):
 | `eateot-compare --models 3B` | Re-benchmark a subset; others come from existing telemetry. |
 | `eateot-plot` | Plot IQ decay curve from `outputs/iq_test_results.json`. |
 | `eateot-plot --reset` | Wipe logged results + chart. |
+| `eateot-restore` | Dose-response restoration study: fix a track (default G1), then run the battery at increasing restore fractions (treatment dose) and plot the IQ-vs-dose curve. |
+| `eateot-trajectory` | Run the full A1→Q1 decline trajectory (all 17 profiles) in one session + render the decay chart. |
+| `eateot-reserve` | Cognitive reserve study: IQ vs lesion severity (decay multiplier sweep) across all three model sizes — does bigger mean more resilient? |
+| `eateot-trip --drug lsd` | Drug dose-response study: sweep a drug's dose on a fixed track and plot the IQ-vs-dose curve (doses default to 0→1.25× the drug's `dose_cap`). |
+| `eateot-drugreport` | Group every drug telemetry IQ result by (drug/stack label, dose) into `drug_report.md/.json/.png` — reads the drug-domain log (`drug_test_results.json`) with sober-baseline rows from the Alzheimer log. Filters: `--drug lsd`, `--model 0.5B`, `--track C1`, `--questionnaire`, `--min-runs N`. |
+| `eateot-lab --drug lsd --dose 2.0` | Apply a psychoactive perturbation profile on top of any track in the interactive session (25 drugs in `config/drugs.yaml`, see **Drug catalog**). |
+| `eateot-lab --stack "lsd@1.0,thc@0.5"` | Deploy a drug **combo** — resolve the stack and run every battery under it (mutually exclusive with `--drug`). |
+| `eateot-lab --seed 42` | Any lab battery run becomes reproducible (lesion + sampling). |
 | `streamlit run apps/dashboard.py` | Visual dashboard (radar + bar charts) of degradation results. |
+
+Press **`[P]` 💊 DEPLOY DRUG EXPERIMENT** inside the interactive lab to build a
+drug from dependent menus — pick a *class* (hallucinogen, dissociative, …), then a
+drug within that class, then a dose — and optionally stack more drugs into a combo
+before running the battery. The deployed spec is printed (resolved primitives,
+subnetwork, layer window) and becomes the session's active drug.
+
+## Drug catalog & combos
+
+The psychoactive catalog lives in `config/drugs.yaml` (25 drugs across 8 classes:
+hallucinogen, dissociative, stimulant, depressant, cannabinoid, deliriant,
+enhancer, placebo). Every drug maps a *dose* to engine primitives via
+`eateot.drugs.resolve_drug` — noise, attention scatter, logit noise, flicker,
+context masking, temperature, verbosity, and more (see the file header for the
+full schema and primitive contract). `dose_cap` is advisory: doses above it
+resolve but are flagged (`dose_exceeds_cap`).
+
+**Combos / stacks** combine drugs at runtime — `eateot.drugs.resolve_stack`
+merges specs (additive primitives sum, temperature/repetition-penalty deltas sum,
+weight loss combines into one scale, the layer window becomes the union, and the
+subnetwork is the shared value, else `all`):
+
+```python
+from eateot import resolve_stack
+spec = resolve_stack([{"drug": "lsd", "dose": 1.0}, {"drug": "thc", "dose": 0.5}])
+# spec["name"] == "lsd@1+thc@0.5" — recorded in telemetry as the run's drug
+```
+
+Stack specs also have a compact string form (`parse_stack`):
+`"lsd@1.0,thc@0.5"` (a bare name means dose 1.0). Override the whole catalog
+per-run with `EATEOT_DRUGS_FILE=/path/to/drugs.yaml`.
+
+**Two experiment domains, two telemetry logs.** Runs made under a drug or
+stack (`--drug`, `--stack`, lab `[P]`, `eateot-trip`) auto-log to
+`drug_test_results.json`; all other runs (track lesions, severity sweeps,
+restore curves, clean baselines) log to `iq_test_results.json`. The lab menu
+shows which domain the session is writing to, and the two worlds never mix —
+`eateot-plot`/`compare`/`reserve` read only Alzheimer data, while
+`eateot-drugreport` reads only drug data (sober baselines come from the
+Alzheimer log).
 
 ## Questionnaires
 
@@ -98,6 +153,10 @@ editing questions never requires touching Python code:
 | File | Used by |
 |---|---|
 | `iq_battery.yaml` | The default 5-tier IQ battery (`eateot-lab`, `eateot-compare`). |
+| `visual_battery.yaml` | Visual-cortex probes (ASCII-art rendering, spatial layout, mental rotation, hallucinated scenes, 3D counting) — try `--questionnaire visual_battery` with a hallucinogen like `lsd`/`dmt`. |
+| `clinical_battery.yaml` | MMSE/MoCA-inspired clinical battery (orientation, registration, serial-7s, **animal fluency**, naming, delayed + story recall) — try `--questionnaire clinical_battery`. |
+| `language_battery.yaml` | Aphasia-focused battery (**phonemic fluency**, tool naming, word definition, abstract similarities, proverb interpretation, comprehension) — try `--questionnaire language_battery`. |
+| `executive_battery.yaml` | Frontal-lobe battery (digit span fwd/backward, sequencing, Stroop, rule switching, reverse alphabet, error monitoring) — try `--questionnaire executive_battery`. |
 | `iq_battery_mini.yaml` | A tiny 2-question example questionnaire — try `--questionnaire iq_battery_mini`. |
 | `presets.yaml` | Quick prompt scenarios in the interactive lab menu. |
 | `brain_benchmark.yaml` | The 2-question benchmark in `scripts/alzheimer_benchmark.py` (and the one-shot scripts). |
@@ -140,9 +199,15 @@ First run of any script downloads the model weights into `~/.cache/huggingface`.
 
 All generated artifacts land in `outputs/` (gitignored):
 
-- `iq_test_results.json` — telemetry log of every IQ battery run
+- `iq_test_results.json` — Alzheimer-domain telemetry (every non-drug IQ battery run)
+- `drug_test_results.json` — drug-domain telemetry (runs made under a drug/stack)
 - `iq_decay_curve.png` — generated decay chart
 - `model_comparison.md` / `.json` / `.png` — cross-model comparison report
+- `restoration_report.md` / `.json` / `restoration_curve.png` — dose-response restoration study
+- `trajectory_report.md` / `trajectory_decay.png` — full A1→Q1 decline trajectory
+- `reserve_report.md` / `.json` / `reserve_curve.png` — cognitive reserve study
+- `trip_report.md` / `.json` / `trip_curve.png` — drug dose-response (trip) study
+- `drug_report.md` / `.json` / `drug_report.png` — grouped telemetry report per drug/stack combo + dose
 
 Override the location with the `EATEOT_DATA_DIR` env var (e.g. `EATEOT_DATA_DIR=/tmp/eateot eateot-lab`).
 

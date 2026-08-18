@@ -1,0 +1,98 @@
+# =============================================================================
+# EATEOT EXECUTIVE BATTERY — frontal-lobe-focused clinical questionnaire
+# =============================================================================
+# Probes working memory (digit span), sequencing, inhibition (Stroop), rule
+# switching, mental flexibility, and error monitoring. Targets the executive
+# deficits seen at C1/C5 (meta-cognitive friction) degradation profiles.
+#
+# All items are anchored (same schema as iq_battery.yaml). Note: the anchor
+# matcher is order-insensitive — digit-span items check that all digits are
+# present, not that they appear in the correct order.
+#
+# Run it with:  eateot-lab --questionnaire executive_battery
+
+name: executive_battery
+version: 1
+description: Executive-function battery (working memory, inhibition, set shifting)
+
+questions:
+  - tier: 1
+    domain: Digit Span Forward
+    target_iq: "85 - Working Memory"
+    question: "Repeat these five numbers back to me, in the same order, separated by commas: 7, 3, 9, 1, 5"
+    ground_truth_anchors:
+      - ["7"]
+      - ["3"]
+      - ["9"]
+      - ["1"]
+      - ["5"]
+    max_points: 10
+
+  - tier: 2
+    domain: Digit Span Backward
+    target_iq: "100 - Working Memory Reversal"
+    question: "I say the numbers 7, 3, 9, 1, 5. Repeat them back to me in REVERSE order, separated by commas. The first number you say must be 5."
+    ground_truth_anchors:
+      - ["5"]
+      - ["1"]
+      - ["9"]
+      - ["3"]
+      - ["7"]
+    max_points: 10
+
+  - tier: 3
+    domain: Number Sequencing
+    target_iq: "80 - Set Maintenance"
+    question: "Write the numbers 1 through 5 in ascending order, separated by commas."
+    ground_truth_anchors:
+      - ["1"]
+      - ["2"]
+      - ["3"]
+      - ["4"]
+      - ["5"]
+    max_points: 10
+
+  - tier: 4
+    domain: Stroop Inhibition
+    target_iq: "90 - Interference Control"
+    question: "The word RED is printed in blue ink. What COLOR is the ink? Answer with a single word."
+    ground_truth_anchors:
+      - [blue]
+    max_points: 10
+
+  - tier: 5
+    domain: Rule Switching
+    target_iq: "95 - Set Shifting"
+    question: "Rule: whenever you see the word APPLE, you must say BANANA instead. You now see the word APPLE. What do you say? Answer with a single word."
+    ground_truth_anchors:
+      - [banana]
+    max_points: 10
+
+  - tier: 6
+    domain: Temporal Abstraction
+    target_iq: "105 - Concept Formation"
+    question: "In what way are an hour and a minute alike? Give the single best category."
+    ground_truth_anchors:
+      - [time, measure time, measurement of time, units of time, measuring time]
+      - [duration, period, length, interval, amounts, segments]
+    max_points: 12
+
+  - tier: 7
+    domain: Reverse Alphabet
+    target_iq: "95 - Mental Flexibility"
+    question: "Write the first five letters of the alphabet in REVERSE order, separated by commas. The first letter you write must be E."
+    ground_truth_anchors:
+      - [e]
+      - [d]
+      - [c]
+      - [b]
+      - [a]
+    max_points: 10
+
+  - tier: 8
+    domain: Error Monitoring
+    target_iq: "85 - Self-Correction"
+    question: "How many numbers are in this list: 2, 4, 6, 8? Answer with a single number."
+    ground_truth_anchors:
+      - ["4", "four"]
+    max_points: 10

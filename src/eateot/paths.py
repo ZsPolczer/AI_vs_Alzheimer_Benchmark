@@ -18,10 +18,28 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = Path(os.environ.get("EATEOT_DATA_DIR", str(PROJECT_ROOT / "outputs")))
 
 LOG_FILE = str(DATA_DIR / "iq_test_results.json")
+# Drug-domain telemetry: runs made under a drug/stack log here instead of
+# LOG_FILE, so Alzheimer experiments and drug-induced experiments stay
+# separate (see eateot.telemetry.log_test_run).
+DRUG_LOG_FILE = str(DATA_DIR / "drug_test_results.json")
 IMG_FILE = str(DATA_DIR / "iq_decay_curve.png")
 COMPARISON_MD = str(DATA_DIR / "model_comparison.md")
 COMPARISON_JSON = str(DATA_DIR / "model_comparison.json")
 COMPARISON_PNG = str(DATA_DIR / "model_comparison.png")
+RESTORE_MD = str(DATA_DIR / "restoration_report.md")
+RESTORE_JSON = str(DATA_DIR / "restoration_report.json")
+RESTORE_PNG = str(DATA_DIR / "restoration_curve.png")
+TRAJECTORY_MD = str(DATA_DIR / "trajectory_report.md")
+TRAJECTORY_PNG = str(DATA_DIR / "trajectory_decay.png")
+RESERVE_MD = str(DATA_DIR / "reserve_report.md")
+RESERVE_JSON = str(DATA_DIR / "reserve_report.json")
+RESERVE_PNG = str(DATA_DIR / "reserve_curve.png")
+TRIP_MD = str(DATA_DIR / "trip_report.md")
+TRIP_JSON = str(DATA_DIR / "trip_report.json")
+TRIP_PNG = str(DATA_DIR / "trip_curve.png")
+DRUG_REPORT_MD = str(DATA_DIR / "drug_report.md")
+DRUG_REPORT_JSON = str(DATA_DIR / "drug_report.json")
+DRUG_REPORT_PNG = str(DATA_DIR / "drug_report.png")
 
 
 def ensure_data_dir() -> Path:

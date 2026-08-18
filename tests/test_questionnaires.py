@@ -67,6 +67,62 @@ class TestQuestionnaireLoader(unittest.TestCase):
         # list_questionnaires is broader than list_batteries.
         self.assertGreater(len(list_questionnaires()), len(batteries))
 
+    def test_clinical_battery_shape(self):
+        battery = load_battery("clinical_battery")
+        self.assertEqual(len(battery), 8)
+        # Anchored questions expose the keys evaluate_response expects.
+        for q in battery:
+            self.assertIn("question", q)
+            self.assertIn("max_points", q)
+        self.assertIn("ground_truth_anchors", battery[0])
+        # The fluency question uses the alternate schema.
+        fluency = next(q for q in battery if q.get("type") == "fluency")
+        self.assertEqual(fluency["fluency"]["category"], "animals")
+        self.assertNotIn("ground_truth_anchors", fluency)
+
+    def test_clinical_battery_is_advertised(self):
+        self.assertIn("clinical_battery", list_batteries())
+
+    def test_language_battery_shape(self):
+        battery = load_battery("language_battery")
+        self.assertEqual(len(battery), 8)
+        self.assertIn("ground_truth_anchors", battery[1])  # naming is anchored
+        # Phonemic fluency item uses the `letter` key, not a category lexicon.
+        fluency = next(q for q in battery if q.get("type") == "fluency")
+        self.assertEqual(fluency["fluency"]["letter"], "f")
+        self.assertNotIn("category", fluency["fluency"])
+        self.assertIn("language_battery", list_batteries())
+
+    def test_visual_battery_shape(self):
+        battery = load_battery("visual_battery")
+        self.assertEqual(len(battery), 5)
+        self.assertEqual([q["tier"] for q in battery], [1, 2, 3, 4, 5])
+        for q in battery:
+            self.assertIn("question", q)
+            self.assertIn("ground_truth_anchors", q)
+            self.assertIn("max_points", q)
+        # Domains probe the visual cortex (ASCII art, spatial, hallucinated scene).
+        self.assertIn("Visual Output Fidelity", battery[0]["domain"])
+        self.assertIn("Hallucinated Scene", battery[3]["domain"])
+        # Drawing tiers use the self-report marker protocol (no question-word
+        # leakage into anchors; markers are underscore-free because the anchor
+        # matcher strips `_`); reasoning tiers use pure discriminators.
+        self.assertEqual(battery[0]["ground_truth_anchors"],
+                         [["roofok"], ["doorok"], ["windowok"]])
+        self.assertEqual(battery[2]["ground_truth_anchors"], [["diamond", "rhombus"]])
+        self.assertIn("visual_battery", list_batteries())
+
+    def test_executive_battery_shape(self):
+        battery = load_battery("executive_battery")
+        self.assertEqual(len(battery), 8)
+        # All executive items are anchored; digit-span anchors are numeric.
+        for q in battery:
+            self.assertIn("ground_truth_anchors", q)
+        self.assertEqual(
+            battery[0]["ground_truth_anchors"], [["7"], ["3"], ["9"], ["1"], ["5"]]
+        )
+        self.assertIn("executive_battery", list_batteries())
+
     def test_env_dir_override(self):
         import importlib
         with mock.patch.dict("os.environ", {"EATEOT_QUESTIONNAIRE_DIR": "/tmp/nope"}):

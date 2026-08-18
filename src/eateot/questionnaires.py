@@ -47,19 +47,26 @@ def list_questionnaires() -> list[str]:
     return sorted(p.stem for p in QUESTIONNAIRE_DIR.glob("*.yaml"))
 
 
+def _is_scoreable_question(question: dict) -> bool:
+    """True if the runner can score this question (anchored or fluency)."""
+    if "ground_truth_anchors" in question:
+        return True
+    return question.get("type") == "fluency" and isinstance(question.get("fluency"), dict)
+
+
 def list_batteries() -> list[str]:
     """Return questionnaire files that are actually usable as IQ batteries.
 
-    ``presets.yaml`` and ``brain_benchmark.yaml`` also carry a ``questions`` /
-    ``prompts`` key but with a different schema (no ``ground_truth_anchors``),
-    so they are excluded — only files whose questions carry the anchor key that
-    ``evaluate_response`` needs are advertised via ``--questionnaire``.
+    ``presets.yaml`` and ``brain_benchmark.yaml`` carry a different schema
+    (no ``ground_truth_anchors`` and no fluency items), so they are excluded —
+    only files whose questions are all scoreable (anchored or fluency) are
+    advertised via ``--questionnaire``.
     """
     batteries = []
     for name in list_questionnaires():
         data = _load_yaml(name)
         questions = data.get("questions") or []
-        if questions and "ground_truth_anchors" in questions[0]:
+        if questions and all(_is_scoreable_question(q) for q in questions):
             batteries.append(name)
     return batteries
 
@@ -73,17 +80,19 @@ def load_battery(name: str = DEFAULT_BATTERY) -> list[dict]:
 
     Anchor synonyms are coerced to strings — YAML 1.1 parses unquoted ``yes`` /
     ``no`` as booleans and numeric anchors (e.g. ``95``) as ints, which would
-    break the string-based matcher.
+    break the string-based matcher. Question types that don't use anchors
+    (e.g. ``type: fluency``) are left untouched.
     """
     data = _load_yaml(name)
     questions = data.get("questions", [])
     if not questions:
         raise ValueError(f"Questionnaire '{name}' contains no questions.")
     for question in questions:
-        question["ground_truth_anchors"] = [
-            [str(synonym) for synonym in group]
-            for group in question.get("ground_truth_anchors", [])
-        ]
+        if "ground_truth_anchors" in question:
+            question["ground_truth_anchors"] = [
+                [str(synonym) for synonym in group]
+                for group in question["ground_truth_anchors"]
+            ]
     return questions
 
 

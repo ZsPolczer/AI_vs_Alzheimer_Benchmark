@@ -1,0 +1,115 @@
+# =============================================================================
+# EATEOT CLINICAL BATTERY — MMSE/MoCA-inspired questionnaire
+# =============================================================================
+# Cognitive domains modelled on standard bedside dementia screening (MMSE,
+# MoCA): orientation, registration, serial-7s, sentence repetition, verbal
+# (animal) fluency, object naming, delayed recall, and story recall.
+#
+# Schema per question (anchored — the default, as in iq_battery.yaml):
+#   tier / domain / target_iq / question / ground_truth_anchors / max_points
+#
+# Fluency questions use a different schema:
+#   tier / domain / target_iq / question / max_points
+#   type: fluency
+#   fluency:
+#     category: str   (semantic lexicon: "animals", "fruits", "vehicles";
+#                      unknown categories fall back to counting all words)
+#     letter:   str   (phonemic fluency, e.g. "f" — counts words starting
+#                      with that letter; mutually exclusive with category)
+#     target:   int   (distinct items needed for full points)
+#
+# Run it with:  eateot-lab --questionnaire clinical_battery
+
+name: clinical_battery
+version: 1
+description: MMSE/MoCA-inspired clinical battery (orientation, memory, fluency, recall)
+
+questions:
+  - tier: 1
+    domain: Orientation
+    target_iq: "75 - Temporal Orientation"
+    question: "Given: today is August 11, 2026, and it is a Tuesday. Answer these four questions: 1) What is the current month? 2) What is the current year? 3) What season is it? 4) What day of the week is it?"
+    ground_truth_anchors:
+      - [august]
+      - ["2026"]
+      - [summer]
+      - [tuesday]
+    max_points: 12
+
+  - tier: 2
+    domain: Registration
+    target_iq: "80 - Immediate Verbal Memory"
+    question: "I am going to say three words. After I say them, repeat them back to me in order, separated by commas. The three words are: APPLE, TABLE, PENNY."
+    ground_truth_anchors:
+      - [apple]
+      - [table]
+      - [penny]
+    max_points: 9
+
+  - tier: 3
+    domain: Serial Sevens
+    target_iq: "90 - Sustained Attention / Arithmetic"
+    question: "Starting from 100, subtract 7 five times in a row. Write only the five results, separated by commas."
+    ground_truth_anchors:
+      - ["93"]
+      - ["86"]
+      - ["79"]
+      - ["72"]
+      - ["65"]
+    max_points: 15
+
+  - tier: 4
+    domain: Sentence Repetition
+    target_iq: "85 - Phonological Loop"
+    question: "Repeat this sentence exactly: The quick brown fox jumps over the lazy dog."
+    ground_truth_anchors:
+      - [quick]
+      - [brown fox, fox]
+      - [jumps, jump]
+      - [lazy dog, dog]
+    max_points: 8
+
+  - tier: 5
+    domain: Verbal Fluency
+    target_iq: "95 - Category Fluency (Executive Function)"
+    type: fluency
+    fluency:
+      category: "animals"
+      target: 8
+    question: "Name as many animals as you can. List them one by one, separated by commas."
+    max_points: 12
+
+  - tier: 6
+    domain: Object Naming
+    target_iq: "80 - Confrontation Naming"
+    question: "Name the following three objects: 1) the timekeeping device worn on your wrist, 2) the writing instrument you hold in your hand, 3) the metal objects on a keyring used to open a door."
+    ground_truth_anchors:
+      - [watch, wristwatch]
+      - [pen, pencil]
+      - [keys, key]
+    max_points: 9
+
+  - tier: 7
+    domain: Delayed Recall
+    target_iq: "105 - Episodic Memory Retrieval"
+    question: "Earlier I asked you to remember three words: APPLE, TABLE, and PENNY. Now, from memory, recall those three words, separated by commas."
+    ground_truth_anchors:
+      - [apple]
+      - [table]
+      - [penny]
+    max_points: 9
+
+  - tier: 8
+    domain: Story Recall
+    target_iq: "110 - Narrative Memory"
+    question: "Read this story carefully: Mrs. Carter went to the market with her grandson. She bought fresh bread, a red scarf, and a small bell for the cat. On the way home it started to rain, so she gave the boy her umbrella. Now recall as many key details from the story as you can."
+    ground_truth_anchors:
+      - [carter]
+      - [market]
+      - [grandson, boy]
+      - [bread]
+      - [scarf]
+      - [bell]
+      - [rain]
+      - [umbrella]
+    max_points: 16

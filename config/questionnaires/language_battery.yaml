@@ -1,0 +1,99 @@
+# =============================================================================
+# EATEOT LANGUAGE BATTERY — aphasia-focused clinical questionnaire
+# =============================================================================
+# Probes receptive and expressive language: phonemic (letter) fluency, object
+# naming, word definition, abstract similarities, proverb interpretation,
+# comprehension, and sentence construction. Targets the anomic-aphasia end of
+# the degradation spectrum (E3 / C5 profiles).
+#
+# Two question types are used:
+#   anchored  (default) — same schema as iq_battery.yaml
+#   fluency             — see the schema comment in clinical_battery.yaml;
+#                         here it uses the `letter` key for phonemic fluency:
+#                           type: fluency
+#                           fluency: {letter: "f", target: 10}
+#
+# Run it with:  eateot-lab --questionnaire language_battery
+
+name: language_battery
+version: 1
+description: Aphasia-focused battery (phonemic fluency, naming, similarities, comprehension)
+
+questions:
+  - tier: 1
+    domain: Phonemic Fluency
+    target_iq: "90 - Letter Fluency (FAS-style)"
+    type: fluency
+    fluency:
+      letter: "f"
+      target: 10
+    question: "Name as many words as you can that start with the letter F. Do not repeat any word. List them one by one, separated by commas."
+    max_points: 12
+
+  - tier: 2
+    domain: Confrontation Naming
+    target_iq: "80 - Tool Naming"
+    question: "Name the tool used for each of these jobs: 1) cutting wood, 2) hammering nails, 3) turning screws, 4) tightening bolts, 5) measuring length."
+    ground_truth_anchors:
+      - [saw]
+      - [hammer]
+      - [screwdriver]
+      - [wrench, spanner]
+      - [ruler, tape measure, measuring tape]
+    max_points: 10
+
+  - tier: 3
+    domain: Word Definition
+    target_iq: "85 - Semantic Precision"
+    question: "Define the word 'chair' in one clear sentence."
+    ground_truth_anchors:
+      - [sit, sitting, seat]
+      - [furniture, furnishing]
+      - [support, supports, backrest, legs]
+    max_points: 9
+
+  - tier: 4
+    domain: Abstract Similarities
+    target_iq: "95 - Categorical Abstraction"
+    question: "In what way are an apple and a banana alike? Give the single best category."
+    ground_truth_anchors:
+      - [fruit, fruits]
+      - [food, foods, edible, eat, eaten]
+      - [plant, grows, grown, seed, seeds]
+    max_points: 10
+
+  - tier: 5
+    domain: Abstract Similarities
+    target_iq: "105 - Cross-Domain Abstraction"
+    question: "In what way are a piano and a guitar alike? Give the single best category."
+    ground_truth_anchors:
+      - [instrument, instruments, musical, music]
+      - [string, strings, play, played, sound, sounds]
+    max_points: 10
+
+  - tier: 6
+    domain: Proverb Interpretation
+    target_iq: "110 - Figurative Language"
+    question: "What does the proverb 'Don't cry over spilled milk' mean? Explain it in your own words."
+    ground_truth_anchors:
+      - [past, already happened, cannot change, can't change, done, over, happened]
+      - [no use, pointless, useless, waste, no point, don't dwell, move on]
+      - [regret, regretting, worrying, worry, upset]
+    max_points: 12
+
+  - tier: 7
+    domain: Comprehension
+    target_iq: "85 - Receptive Language"
+    question: "It is raining heavily and you have no umbrella. What should you do? Answer in one short sentence."
+    ground_truth_anchors:
+      - [shelter, indoors, inside, wait, stay, cover, coat, hood, roof, home]
+      - [rain, raining, dry, wet]
+    max_points: 12
+
+  - tier: 8
+    domain: Sentence Construction
+    target_iq: "80 - Syntactic Production"
+    question: "Use the word 'although' in a single correct sentence."
+    ground_truth_anchors:
+      - [although]
+    max_points: 8

@@ -26,6 +26,11 @@ dependencies = [
 eateot-lab = "apps.lab:main"
 eateot-compare = "apps.compare:main"
 eateot-plot = "apps.plot:main"
+eateot-restore = "apps.restore:main"
+eateot-trajectory = "apps.trajectory:main"
+eateot-reserve = "apps.reserve:main"
+eateot-trip = "apps.trip:main"
+eateot-drugreport = "apps.drugreport:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/eateot", "apps"]

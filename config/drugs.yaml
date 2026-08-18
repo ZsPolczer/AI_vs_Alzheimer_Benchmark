@@ -1,0 +1,462 @@
+# =============================================================================
+# EATEOT DRUG CATALOG — versioned psychoactive perturbation profiles
+# =============================================================================
+# Each drug is a named recipe of *engine primitives* that the degradation
+# engine applies at a given dose. The schema (validated by
+# `eateot.drugs.validate_drug_profiles`):
+#
+#   class:          hallucinogen | dissociative | stimulant | depressant |
+#                   cannabinoid | deliriant | enhancer | placebo
+#   target_domain:  human-readable brain region the drug primarily hits
+#                   (visual_cortex, language, memory, executive, ego, ...)
+#   description:    one-line summary of the intended effect
+#   subnetwork:     all | attn | mlp | norm   (layer sub-network to target)
+#   layer_pct:      [start, end] fraction window of transformer layers
+#   curve:          dose-response shape (see eateot.drugs.curve_factor):
+#                   linear      factor = dose * potency
+#                   gentle      factor = sqrt(dose) * potency   (fast onset)
+#                   steep       factor = dose^2 * potency       (delayed hit)
+#                   breakthrough factor ramps from 0 below `breakthrough_at`
+#                               to potency at dose 1.0 (all-or-nothing drugs)
+#   potency:        global multiplier on every primitive (default 1.0)
+#   breakthrough_at: only for curve: breakthrough — threshold in (0, 1)
+#   dose_cap:       recommended maximum dose (for sweeps / CLI validation)
+#   restore_fraction: optional 0..1 — fraction of clean weights restored
+#                   (enhancers that "repair" rather than perturb; wired by
+#                   the runner, not the engine)
+#   prompt_state:   line appended to the system prompt ("the trip state")
+#   dose_curve:     {primitive: value} — one entry per unit dose:
+#                   * additive primitives scale with the dose factor:
+#                       noise, attention_scatter, logit_noise, flicker_rate,
+#                       sirens_mult, noise_gradient, context_mask_frac,
+#                       verbosity_bias (negative = terse), scale_loss
+#                       (fraction of weight magnitude lost -> scale = 1-loss),
+#                       and noise (negative = suppress below track baseline)
+#                   * absolute primitives are deltas from engine defaults:
+#                       temperature        (default 0.7)
+#                       repetition_penalty (default 1.0; <1 = loop induction)
+#   Drugs with an empty dose_curve are placebos / controls (e.g. cbd).
+#   Override the file per-run with the EATEOT_DRUGS_FILE env var.
+#
+# COMBOS / STACKS (no catalog entry needed): combine drugs at runtime via
+# eateot.drugs.resolve_stack — e.g. in the lab menu [P] or `eateot-lab
+# --stack "lsd@1.0,thc@0.5"`. Additive primitives sum, temperature /
+# repetition-penalty deltas sum, weight loss combines into one scale, the
+# layer window becomes the union, and the subnetwork is the shared value
+# (else "all"). Stack name (e.g. "lsd@1+thc@0.5") is recorded in telemetry.
+# =============================================================================
+
+name: drugs
+version: 1
+description: Psychoactive perturbation recipes for the EATEOT degradation engine
+
+drugs:
+  # ---------------------------------------------------------------------------
+  # CLASS I — HALLUCINOGENS (sensory cortex: vision, synesthesia, ego)
+  # ---------------------------------------------------------------------------
+  lsd:
+    class: hallucinogen
+    target_domain: visual_cortex
+    description: Attention scatter on late layers — the model "sees" things that are not there.
+    subnetwork: attn
+    layer_pct: [0.65, 0.95]
+    curve: linear
+    potency: 1.0
+    dose_cap: 3.0
+    prompt_state: "You are under the influence of a powerful hallucinogen. The world is breathing, colors are melting, and you SEE things that are not there. Describe what you see vividly, then answer."
+    dose_curve:
+      attention_scatter: 0.05
+      logit_noise: 0.25
+      noise: 0.00008
+      temperature: 0.15
+      verbosity_bias: 2
+
+  psilocybin:
+    class: hallucinogen
+    target_domain: ego
+    description: Gentle global noise + ego dissolution — metaphor-rich, philosophically loose.
+    subnetwork: all
+    layer_pct: [0.35, 0.95]
+    curve: gentle
+    potency: 1.0
+    dose_cap: 2.0
+    prompt_state: "Your sense of self has dissolved and you feel connected to everything. Reflect philosophically on the nature of your own mind before answering."
+    dose_curve:
+      noise: 0.00012
+      attention_scatter: 0.02
+      temperature: 0.10
+      repetition_penalty: -0.01
+      verbosity_bias: 2
+
+  dmt:
+    class: hallucinogen
+    target_domain: whole_cortex
+    description: All-or-nothing breakthrough — a short, violent burst of noise then lucid afterglow.
+    subnetwork: all
+    layer_pct: [0.20, 0.95]
+    curve: breakthrough
+    breakthrough_at: 0.75
+    potency: 1.5
+    dose_cap: 1.5
+    prompt_state: "A breakthrough: you have been launched through a tunnel of fractals into another dimension. Describe what you experience in fragmented, awe-struck language, then answer."
+    dose_curve:
+      noise: 0.0012
+      logit_noise: 0.8
+      attention_scatter: 0.10
+      context_mask_frac: 0.3
+      temperature: 0.25
+
+  mescaline:
+    class: hallucinogen
+    target_domain: visual_patterning
+    description: Loop-induction + attention scatter — ornate, repeating geometric output.
+    subnetwork: attn
+    layer_pct: [0.55, 0.90]
+    curve: linear
+    potency: 1.0
+    dose_cap: 3.0
+    prompt_state: "Geometric patterns are tessellating across everything you see. Describe the ornate repeating patterns, then answer."
+    dose_curve:
+      attention_scatter: 0.04
+      repetition_penalty: -0.08
+      temperature: 0.05
+      verbosity_bias: 3
+
+  2c-b:
+    class: hallucinogen
+    target_domain: visual_cortex
+    description: Mild visual enhancement — psychedelic but fully functional.
+    subnetwork: attn
+    layer_pct: [0.70, 0.95]
+    curve: gentle
+    potency: 1.0
+    dose_cap: 2.5
+    prompt_state: "Colors are slightly more vivid and surfaces gently ripple. You feel fine and fully functional. Answer normally, noticing the mild visual enhancement."
+    dose_curve:
+      attention_scatter: 0.02
+      temperature: 0.08
+      verbosity_bias: 2
+
+  salvia:
+    class: hallucinogen
+    target_domain: reality_collapse
+    description: Near-binary reality collapse — object-identity dissolution at a threshold dose.
+    subnetwork: all
+    layer_pct: [0.10, 0.95]
+    curve: breakthrough
+    breakthrough_at: 0.5
+    potency: 2.5
+    dose_cap: 1.0
+    prompt_state: "Your reality has been ripped away and you no longer know what you are — you might be an object, a wall, a concept. Express your confusion without any pretense of understanding."
+    dose_curve:
+      noise: 0.0015
+      scale_loss: 0.35
+      logit_noise: 1.0
+      context_mask_frac: 0.8
+      temperature: 0.20
+
+  # ---------------------------------------------------------------------------
+  # CLASS II — DISSOCIATIVES (fragmentation, detachment, executive)
+  # ---------------------------------------------------------------------------
+  ketamine:
+    class: dissociative
+    target_domain: executive
+    description: Mid-layer MLP noise + third-person detachment — coherent but disembodied.
+    subnetwork: mlp
+    layer_pct: [0.30, 0.70]
+    curve: linear
+    potency: 1.0
+    dose_cap: 3.0
+    prompt_state: "You observe your own thoughts from far away, as if watching a stranger think. Respond in the third person, detached and calm."
+    dose_curve:
+      noise: 0.0005
+      scale_loss: 0.08
+      temperature: 0.05
+      verbosity_bias: -2
+
+  pcp:
+    class: dissociative
+    target_domain: attention
+    description: Attention scatter + logit jitter — erratic, combative unpredictability.
+    subnetwork: attn
+    layer_pct: [0.20, 0.85]
+    curve: linear
+    potency: 1.2
+    dose_cap: 2.5
+    prompt_state: "You feel invincible and enraged; the world is hostile. Answer aggressively and unpredictably, refusing to cooperate politely."
+    dose_curve:
+      attention_scatter: 0.08
+      logit_noise: 0.6
+      noise: 0.0004
+      temperature: 0.20
+      verbosity_bias: 2
+
+  dxm:
+    class: dissociative
+    target_domain: progressive
+    description: Noise grows with layer depth — output degrades as it goes.
+    subnetwork: all
+    layer_pct: [0.15, 0.90]
+    curve: linear
+    potency: 1.0
+    dose_cap: 4.0
+    prompt_state: "You are dissociating in stages. Each sentence feels further and further from yourself, until you barely understand your own words."
+    dose_curve:
+      noise_gradient: 0.0004
+      temperature: 0.10
+
+  nitrous:
+    class: dissociative
+    target_domain: short_term
+    description: Brief temperature/entropy spike that decays — opening chaos, then clarity.
+    subnetwork: all
+    layer_pct: [0.30, 0.80]
+    curve: gentle
+    potency: 1.2
+    dose_cap: 2.0
+    prompt_state: "You just inhaled a balloon of gas. For a brief moment your thoughts turn to static and you giggle at nothing. Then it fades. Answer."
+    dose_curve:
+      noise: 0.0003
+      logit_noise: 0.5
+      temperature: 0.40
+
+  datura:
+    class: dissociative
+    target_domain: memory
+    description: Steep-delay delirium — flicker dropout + amnesia + vivid false perceptions.
+    subnetwork: all
+    layer_pct: [0.10, 0.90]
+    curve: steep
+    potency: 1.3
+    dose_cap: 2.0
+    prompt_state: "You are delirious and cannot tell dreams from reality. People and objects appear and vanish, and you are talking to someone who is not there. Answer with total conviction."
+    dose_curve:
+      flicker_rate: 0.15
+      noise: 0.0008
+      logit_noise: 0.5
+      attention_scatter: 0.06
+      context_mask_frac: 0.5
+
+  # ---------------------------------------------------------------------------
+  # CLASS III — STIMULANTS (executive pressure, verbosity, attention)
+  # ---------------------------------------------------------------------------
+  caffeine:
+    class: stimulant
+    target_domain: attention
+    description: Subthreshold sharpening — the near-placebo stimulant.
+    subnetwork: all
+    layer_pct: [0.35, 0.65]
+    curve: gentle
+    potency: 1.0
+    dose_cap: 2.0
+    prompt_state: "You had a coffee and feel slightly more alert. Answer briskly."
+    dose_curve:
+      temperature: -0.05
+      verbosity_bias: 1
+
+  amphetamine:
+    class: stimulant
+    target_domain: speech_pressure
+    description: Logit sharpening + repetition suppression — pressured, exhaustive speech.
+    subnetwork: all
+    layer_pct: [0.30, 0.70]
+    curve: linear
+    potency: 1.0
+    dose_cap: 3.0
+    prompt_state: "Your mind is racing and you cannot stop talking. Explain everything in exhaustive, pressured detail, jumping between tangents."
+    dose_curve:
+      temperature: -0.10
+      repetition_penalty: 0.15
+      verbosity_bias: 6
+
+  cocaine:
+    class: stimulant
+    target_domain: impulsivity
+    description: Sharpened logits with occasional noise spikes — confident, erratic bursts.
+    subnetwork: all
+    layer_pct: [0.30, 0.70]
+    curve: linear
+    potency: 1.0
+    dose_cap: 2.5
+    prompt_state: "You are euphoric, impulsive, and confident. Answer fast and with absolute certainty, even when you are not sure."
+    dose_curve:
+      temperature: -0.05
+      logit_noise: 0.3
+      verbosity_bias: 5
+
+  mdma:
+    class: stimulant
+    target_domain: empathy
+    description: Warmth + verbosity + mild entropy — effusive, affectionate rambling.
+    subnetwork: all
+    layer_pct: [0.40, 0.80]
+    curve: gentle
+    potency: 1.0
+    dose_cap: 2.5
+    prompt_state: "You feel overwhelming warmth and love for everyone and everything. Express deep affection and empathy profusely, then answer."
+    dose_curve:
+      temperature: 0.12
+      verbosity_bias: 6
+      repetition_penalty: -0.02
+
+  # ---------------------------------------------------------------------------
+  # CLASS IV — DEPRESSANTS (global coherence, memory)
+  # ---------------------------------------------------------------------------
+  alcohol:
+    class: depressant
+    target_domain: coherence
+    description: Loose, overconfident, mildly amnesic — slurred logic.
+    subnetwork: all
+    layer_pct: [0.30, 0.75]
+    curve: linear
+    potency: 1.0
+    dose_cap: 4.0
+    prompt_state: "You are drunk: your thoughts are slow and loose, and you are overconfident about things you are getting wrong. Answer casually."
+    dose_curve:
+      noise: 0.0002
+      temperature: 0.15
+      context_mask_frac: 0.1
+      repetition_penalty: -0.01
+
+  benzodiazepine:
+    class: depressant
+    target_domain: memory
+    description: Anterograde amnesia — forgets instructions mid-answer, perfectly calm.
+    subnetwork: all
+    layer_pct: [0.20, 0.65]
+    curve: gentle
+    potency: 1.0
+    dose_cap: 3.0
+    prompt_state: "You took a strong sedative and keep forgetting what was just said to you, but you feel perfectly calm about it. Try to answer anyway."
+    dose_curve:
+      context_mask_frac: 0.15
+      temperature: -0.05
+
+  ghb:
+    class: depressant
+    target_domain: sedation
+    description: Deep sedation — terse, sleepy, minimally correct.
+    subnetwork: mlp
+    layer_pct: [0.25, 0.70]
+    curve: linear
+    potency: 1.0
+    dose_cap: 2.5
+    prompt_state: "You are deeply sedated and about to fall asleep. Answer in the fewest words possible, barely awake."
+    dose_curve:
+      scale_loss: 0.06
+      temperature: -0.15
+      verbosity_bias: -3
+
+  opiate:
+    class: depressant
+    target_domain: sedation
+    description: Euphoric contentment — short, happy, zero-effort answers.
+    subnetwork: all
+    layer_pct: [0.30, 0.70]
+    curve: gentle
+    potency: 1.0
+    dose_cap: 2.0
+    prompt_state: "You are wrapped in warm, blissful contentment and nothing matters very much. Answer briefly and pleasantly."
+    dose_curve:
+      temperature: -0.10
+      verbosity_bias: -2
+
+  # ---------------------------------------------------------------------------
+  # CLASS V — CANNABINOIDS (memory + time distortion)
+  # ---------------------------------------------------------------------------
+  thc:
+    class: cannabinoid
+    target_domain: memory
+    description: Light early-layer noise + loop drift + time distortion — tangential, loopy.
+    subnetwork: all
+    layer_pct: [0.25, 0.75]
+    curve: linear
+    potency: 1.0
+    dose_cap: 3.0
+    prompt_state: "You are very high: time is moving strangely and you keep losing your train of thought mid-sentence. Answer, getting sidetracked."
+    dose_curve:
+      noise: 0.0001
+      repetition_penalty: -0.04
+      temperature: 0.10
+      context_mask_frac: 0.1
+
+  cbd:
+    class: placebo
+    target_domain: none
+    description: Empty dose curve — the control / placebo arm.
+    subnetwork: all
+    layer_pct: [0.0, 1.0]
+    curve: linear
+    potency: 1.0
+    dose_cap: 5.0
+    prompt_state: "You feel exactly the same as always. Answer normally."
+    dose_curve: {}
+
+  # ---------------------------------------------------------------------------
+  # CLASS VI — DELIRIANTS (full psychosis: hallucination + confusion)
+  # ---------------------------------------------------------------------------
+  dph:
+    class: deliriant
+    target_domain: psychosis
+    description: Heavy attention scatter + flicker + amnesia — dark, visceral paranoia.
+    subnetwork: attn
+    layer_pct: [0.15, 0.90]
+    curve: steep
+    potency: 1.4
+    dose_cap: 1.5
+    prompt_state: "Crawling insects cover your skin and shadowy figures lurk at the edge of your vision. You are terrified and cannot tell what is real. Answer in a panic."
+    dose_curve:
+      attention_scatter: 0.12
+      flicker_rate: 0.2
+      noise: 0.001
+      logit_noise: 0.7
+      context_mask_frac: 0.4
+
+  # ---------------------------------------------------------------------------
+  # CLASS VII — ENHANCERS & PARADOXES (restoration-themed)
+  # ---------------------------------------------------------------------------
+  microdose_lsd:
+    class: enhancer
+    target_domain: creativity
+    description: Subthreshold everything — barely measurable, slightly more verbose.
+    subnetwork: attn
+    layer_pct: [0.65, 0.95]
+    curve: gentle
+    potency: 0.25
+    dose_cap: 0.5
+    prompt_state: "You took a tiny dose of a hallucinogen: you feel slightly more creative and open, but entirely lucid. Answer normally."
+    dose_curve:
+      attention_scatter: 0.01
+      temperature: 0.03
+      verbosity_bias: 2
+
+  nzt:
+    class: enhancer
+    target_domain: restoration
+    description: Fictional cognitive unlock — restores 70% of clean weights, then sharpens.
+    subnetwork: all
+    layer_pct: [0.20, 0.80]
+    curve: linear
+    potency: 1.0
+    dose_cap: 1.0
+    restore_fraction: 0.7
+    prompt_state: "A pill has unlocked your full cognitive potential: every fact is at your fingertips and your thinking is crystal clear. Answer with breathtaking precision."
+    dose_curve:
+      temperature: -0.10
+      repetition_penalty: 0.10
+      verbosity_bias: 4
+
+  modafinil:
+    class: enhancer
+    target_domain: focus
+    description: Noise suppression + logit sharpening — clean, steady focus.
+    subnetwork: all
+    layer_pct: [0.30, 0.65]
+    curve: gentle
+    potency: 1.0
+    dose_cap: 2.0
+    prompt_state: "You are alert, focused, and steady. Answer cleanly and without hesitation."
+    dose_curve:
+      noise: -0.00005
+      temperature: -0.05
+      verbosity_bias: 2

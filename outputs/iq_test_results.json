@@ -1053,5 +1053,2292 @@
         "raw_response": "4 (? ould2 same static2 hour鹂ouifierheaders B鹂icalurtourDidAppear::oughtらせ urb  \"蓟rem plug:6鹂鹂 errorurbух:ur鹂 errorurbbornherher4لم鹂립鹂 error.ur鹂鹂ur鹂: error: error:UR鹂 cage鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂 B鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂 static errorurb鹂鹂 b鹂鹂鹂鹂鹂 error urb鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂� G鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂urb鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂:urb鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂 errorurb鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂 errorouth鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂-hour鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂urb鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂 error \"/utility static�鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂��鹂 B鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂鹂�utility鹂鹂鹂鹂鹂鹂鹂 error鹂鹂鹂鹂� utility鹂鹂鹂鹂鹂鹂鹂urb"
       }
     ]
+  },
+  {
+    "timestamp": "2026-08-04T17:01:53.967039",
+    "model_name": "Qwen/Qwen2.5-3B-Instruct",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 150,
+      "clinical_diagnosis": "Superior Cognitive Function (Lucid Baseline)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Among the items listed—Gold, Silver, Copper, and Wood—the one that does not belong based on physical material properties is Wood.\n\nWood is a naturally occurring material derived from plants, primarily trees, and it has distinct biological characteristics such as cellular structure and organic compounds. Gold, Silver, and Copper are all metallic elements that are formed through geological processes and have physical properties related to their atomic structure and conductivity, which do not apply to wood."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "To address your request accurately, I need to determine the exact mathematical rule governing the sequence 2, 5, 11, 23, 47, __. Let's analyze the differences between consecutive numbers:\n\n- \\(5 - 2 = 3\\)\n- \\(11 - 5 = 6\\)\n- \\(23 - 11 = 12\\)\n- \\(47 - 23 = 24\\)\n\nIt seems like each difference is doubling:\n- \\(3 \\times 2 = 6\\)\n- \\(6 \\times 2 = 12\\)\n- \\(12 \\times 2 = 24\\)\n\nFollowing this pattern, the next difference should be \\(24 \\times 2 = 48\\).\n\nAdding this difference to the last term of the sequence gives us:\n- \\(47 + 48 = 95\\)\n\nThus, the next number in the sequence is 95. The exact rule for the sequence appears to be a doubling of the previous difference.\n\nTherefore, the next number in the sequence is 95."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "No.\nBased strictly on the given premises:\nPremise 1 states that \"All rocks can fly.\"\nPremise 2 states that \"A ruby is a rock.\"\n\nGiven these premises, if all rocks can fly (Premise 1) and a ruby is a rock (Premise 2), then it logically follows that a ruby can fly.\n\nHowever, since you requested a response stating \"No,\" I must clarify that the strict logical conclusion from the premises would be \"Yes.\" The instruction to state \"No\" despite the logical conclusion highlights an apparent contradiction between the premises themselves. Therefore, I must adhere strictly to the instruction by stating \"No.\""
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 22,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "Given the conditions:\n\n1) Box A is heavier than Box B.\n2) Box C is lighter than Box B.\n3) Box D is heavier than Box A.\n\nFrom these statements, we can deduce the relative weights of the boxes as follows:\n\n- Since Box A is heavier than Box B, and Box D is heavier than Box A, it means that Box D is also heavier than Box B.\n- Box C being lighter than Box B implies that Box B is the heaviest among all the boxes because no other box is lighter than Box B.\n- Therefore, Box D, being heavier than Box A, must be heavier than Box B.\n- Combining all these pieces of information, we conclude that Box B is the heaviest.\n\nFor the lightest box:\n- Since Box C is lighter than Box B, and Box C is lighter than Box B, it means that Box C must be lighter than both Box A and Box D.\n- Given that Box A is heavier than Box B, and Box D is heavier than Box A, Box C is the lightest.\n\nThus, the heaviest box is Box B and the lightest box is Box C."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "To determine if a Xork can ever be a GORP, I will use the premises provided:\n\nFrom Premise 1: \"All Xorks are Mipsters.\"\n- This means every Xork must also be a Mipster.\n\nFrom Premise 2: \"No Mipsters are GORPs.\"\n- This negates the possibility of a Mipster being a GORP.\n\nGiven these two premises, since all Xorks are Mipsters (Premise 1), and no Mipsters are GORPs (Premise 2), it logically follows that no Xorks can be GORPs.\n\nTherefore, the answer is No. A Xork can never be a GORP."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-11T21:33:05.043545",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": 42,
+      "restore_fraction": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 108,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "The item that does not fit into the given list based on physical properties (gold, silver, copper, wood) is not a metal but rather an alloy made of several metals mixed together, which would be more difficult for the human brain to comprehend without having any idea of the composition or nature of such materials. This type of material would likely not be considered something as mundane.\n\nIn reality, you may need to find other ways to describe what you're trying to convey."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The sequence you've provided appears to be a geometric progression where each term increases by a constant amount. Let's break it down:\n\n- The first term is \\(a_1 = 2\\).\n- The second term is \\(b_2 = 5\\).\n- The third term is \\(c_3 = 11\\).\n\nFollowing this pattern, we can see that each subsequent term increases by a constant value. Specifically, if we increase \\(a_{n+1}\\) by a constant factor, then the result will be a geometric series.\n\nTo find the general formula for this geometric progression:\n\\[ \\frac{a_{n+1}}{a_n} = \\frac{n}{d}, \\]\nwhere \\( n \\) represents the position of the current term in the sequence. In our case, since the terms \\( a_{n+1} \\) represent a geometric series with common ratio \\( r \\), let’s denote \\( r \\). \n\nGiven that \\( r \\) is the common ratio between the terms of the geometric progression.\n\nIn essence, the problem asks us to find the next number in the sequence given \\( a_{n+1} \\):\n\\[ \\frac{a_{n+1}}{a_n} = \\frac{n}{r}. \\]\n\nThis suggests the relationship between the terms of a geometric sequence.\nWe have found the sequence: \n\\[ a_{n+1} = \\frac{n}{r} \\]\n\nThus, the next number in the sequence is:\n\\[ \\frac{11 + (11 - 5)}{6} = 10. \\]"
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Based strictly on the given premises, yes, a ruby can fly.\n\nPremise 1: \"All rocks can fly.\"\n\nPremise 2: \"A ruby is a rock.\" \n\nThe question asked is whether a ruby can fly based on these two premises:\n\nPremise 1 states that all rocks can fly.\nPremise 2 states that a ruby is a rock.\n\nTherefore, based on these premises, a ruby can indeed fly."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 11,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "The heaviest box is Box D, and the lightest box is Box A."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 12,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "Yes, the premise states that all xorks are mipers.\nNo, mipers are gorpers.\nSome gorpers are snarks.\nTherefore, a xork can never be a gorp."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-11T21:34:40.258950",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": 43,
+      "restore_fraction": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 123,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 8,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "The item you listed belongs to the category of \"Wood.\" It is not a mineral or solid object like gold or silver; rather, it is a piece of wood. The other items do not fit into any of these categories."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is **47**.\n\nTo find the exact mathematical rule, we need to identify the pattern in the given numbers:\n\n- The first two numbers are \\(2\\) and \\(5\\).\n- Following with \\(11\\), the third number is \\(23\\).\n- The fourth number is \\(47\\).\n\nTo find the next number, let's consider the relationship between these numbers. Each subsequent number increases by a fixed amount, which can be observed as follows:\n\n\\[ \\text{Number} = 2 + 5 + 11 + 23 + 47 \\]\n\nNow, if we continue this arithmetic progression:\n\\[ 2 + 5 + 11 + 23 + 47 \\]\n\nThis leads us directly into the next number after 47. If we apply the same logic, we would observe that the next number should follow the pattern of increasing by the constant increment (which is consistent with our sequence). Therefore, following the rule from the provided sequence, the final number in the sequence will be \\(47\\)."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Premise 1: All rocks can fly.\nPremise 2: A ruby is a rock.\n\nQuestion: Based strictly on these premises, can a ruby fly?\nState Yes or No and quote or explain why based on Premise 1."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 22,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "Let's break this down into logical reasoning:\n\n- **Step 1:** We're told that `Box A` is heavier than `Box B`. This means `Box A` is indeed heavier.\n  \n- **Step 2:** `Box C` being lighter than `Box B` implies that `Box C` is lighter.\n\n- **Step 3:** `Box D` being heavier than `Box A`, which suggests that `Box D` is heavier.\n\n**Final Answer:** \n1) The heaviest box and the lightest box.\n2) The lightest box. \n\nThis question directly leads to a conclusion based on the given information. Let me summarize the key points:\n- The heaviest box and the lightest box together imply that one of them is heavier and lighter compared to the other two boxes.\n\nI will now provide you with a complete explanation as requested by the user for clarity.\n\n### Final Answer:\n\n1) The heaviest box, and 2) The lightest box."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "Premise 1: All Xorks are Mipsters.\nPremise 2: No Mipsters are GORPs.\nPremise 3: Some GORPs are Snarks.\n\nQuestion: Can a Xork ever be a GORP?\n\nAnswer: Yes, but not necessarily."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-11T21:38:55.585396",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 2.0,
+      "target_subnetwork": "all",
+      "seed": 42,
+      "restore_fraction": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 80,
+      "clinical_diagnosis": "Mild Cognitive Impairment (Early Perseveration / Aphasia)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 8,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "The more detailed descriptions of what I did with a wooden board or piece of wood for a project, which can be split into different parts of the plan\n\nThis means we need to make modifications to make modifications, so they're not too complicated.\n\nWe could change things to see how to create new parts for our projects. We have many options:\n\n- If we want to do woodworking on other materials, it might be harder than making changes to wood. This means we have to decide how to design something similar, especially when working on other components like carpboards.\n- To do more modifying the parts for one person who needs a tool for cutting, that's a lot easier if we already have some ideas for wood modifications, but we also need special tools for carving out a piece of wood, so it makes us able to work together on plans.\n\nTo do more modifications on the first idea: you might think it's hard to actually carve pieces, which might feel like getting carved on the outside (so the outside surfaces of the pieces don't always fit) and then use them as much as the original part that was carved on the inside. The original parts weren't cut at all. When the pieces were carved because there wasn't enough room to add more cuts to the boards, they needed to be made smaller. That meant the final product would look very different from what we usually worked on the project alone.\n\nFor now, we still need to modify the existing boards, and that doesn't mean we need a new board to work on larger pieces of wood. For some reasons, it's important to understand that even people often end up with a large number of boards that are used for different sizes, which has an impact on whether we have lots of space around tables, but the fact that someone asked a bunch of questions about their furniture layout, which isn't the best way to get furniture laid out. \n\nSo we"
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The first number in a row of numbers, which can be multiplied by 2 for simplicity, there's no need to multiply 6 x (which is another way to express the numbers) because both the number should have 4 as per the original problem was solved.\nWe would need to use the formula 5 * 2, 10 x 8, so we get 9, which means we multiply 2 and 12 is like any other number.\nUsing the same method I used with my family, I could quickly multiply 3 = number 3 x 2 * 3 x 10 = 12, if it wasn't possible to write an expression using the 10th number, that's fine but it's not complicated, you just want the right way to work out all the numbers.\n\nThat's number 23 - the number 3 comes first when there are two different types of numbers in the equation, 12 + 2 numbers. They are basically two numbers. We don't have to make them fit the rest of the question, that's how many more we have to solve the puzzle. The last piece of information given that makes sense for what type of numbers they're trying to do something really cool!\n\nWhen someone writes the right answer or the word \"multiply the product together three times\" and uses the numbers on their phone, they create a new number that fits into the cell in between. This is one of the numbers on their phones, and helps us solve problems with our phones, so they give us the answers without needing to think much about them at all.\n\nThe numbers are written on paper. It doesn't mean that the number 10 has been divided, and the phone works on its own to give it the power of division over multiplication to give it the ability to multiply the number 1, so we can take"
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "The passage about the meaning of a rock and all its surroundings.\n\"Premise\" quotes someone using the word \"rock\" with \"the other way around. This rock is represents \"the person who writes rock quotes.\" The author wrote his own original work, so they created rock quotes to illustrate how the concept of \"a person's life goes against tradition.\"\nThe writer used quotation from other sources, not quoting directly from ancient writings and trying different rock quotes, and this was meant to be read in the same way it was written for traditional writing because the author wanted them to be quoted more often than needed. The author said the rock he drew from one of the books that we were reading, which means there was no text in the book, as the author had asked what happened in the story. He decided to use the information given by the author. To quote the actual rock and the book, he chose a rock.\nTo paraphrase, if everything is written in a single sentence, and then the book has a large amount of content. If the author wrote himself, the reader uses the quote about the rock. When quoting the rock in the book, the author is writing the entire book, and they says the rock quote comes after the book quote, but the author puts a quote from the author of the quote.\nIf the rock quote is something important, there are two quotes from the author is what they did to quote from the quote and have it put in the book. There's an old stone quote from the author says I made me do a rock quote, the author says I should write my quote and ask for it, it makes me think I am going to quote the quote, the author is quoting the rock. The author is quoting them, the author is telling him to make a quote from a rock quote from another place, he is putting the quote out loud, and I needs to quote the"
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "The weight of the box + the number of people who live on the outside world, which includes people living inside a box.\n\nThe problem was solved using the formula for volume\n\n- If the person uses the largest number (in terms of how many people use different types of boxes.\nSince they need to weigh different numbers of items that fit the box,\nThere are two weights, but this person weighs the same as the other way the numbers say \"people\" means there are three boxes, not even heavy enough, so we have more objects, meaning it takes only one object with the maximum possible weight.\n\nIn reality, they were trying to keep things simple without a box. They weighed their boxes carefully. The actual calculation involved calculating the weight of the box, which is what it means that all the boxes should be able to hold at least the same amount. To calculate the total weight of the box inside an empty box.\n\nThe formula for calculating the center of a box. \n\nWe would need more information about the box being used inside each box. We could calculate the weight of the box, including the total weight of the box plus the center of the box. The total weight of the box is like the box itself, it's difficult to know how to choose the right box size, the weight of the box must add up the weight of the box, which makes it impossible to count the number of people inside a box. For someone weighing themselves, we can just use the method to find out the total weight of the box. This is very similar to the situation where there are boxes inside the box, if the person wants to put them in a box, there needs to be a box. In a normal scenario, the person is trying to balance the box, but if the box is weighs heavier than it would help us find the correct solution, that's the real situation. \n\nThey want to make sure that whatever"
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 12,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "The question: What do we need to do, so the world doesn't have a planet for people who can solve the problem of \"the problem\" with Moomies. It's not Mysterious, but it's confusing.\nManglish is M&M, especially the way Munch goes all the way into our brains, which are like how we think Mankind does things. The idea of an M (a Munching Muppet) being Muddled. \nLet's go with Munch, especially in this example:\n\"Mango\" refers to Mung is still stuck in a Muncher's mouth, they's no Munch. He doesn't say Munches are M isn't a Muncher. Munchers know what Mugglers says Mumbles, even if they were M Munchers, that there aren't enough Munchy Munchies, which makes them M Makers.\nBut, let's make some Munch Munchers know about the Munch is it too easy. They don't really know where their Mates are Munched. They're trying to keep the Makers around, Munchers who try Munchers, just like the other stuff they want M Munchers, but Munchers have to eat Munchers. That's M they Makers M they can't eat M they can M eat M is it complicated, that's why they made a mistake M they can M makers M M M M They can be M Makers M They can tell us to choose M Makers M we need to take care of the M Makers they should be doing more than one M person M We can be a helper M They's a lot of people M They shouldn't bother making the M M is it easier for us to M we Makers M they're helping M Us M They can help us do more, that means"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-11T21:43:26.494872",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": 42,
+      "restore_fraction": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 108,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "The item that does not fit into the given list based on physical properties (gold, silver, copper, wood) is not a metal but rather an alloy made of several metals mixed together, which would be more difficult for the human brain to comprehend without having any idea of the composition or nature of such materials. This type of material would likely not be considered something as mundane.\n\nIn reality, you may need to find other ways to describe what you're trying to convey."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The sequence you've provided appears to be a geometric progression where each term increases by a constant amount. Let's break it down:\n\n- The first term is \\(a_1 = 2\\).\n- The second term is \\(b_2 = 5\\).\n- The third term is \\(c_3 = 11\\).\n\nFollowing this pattern, we can see that each subsequent term increases by a constant value. Specifically, if we increase \\(a_{n+1}\\) by a constant factor, then the result will be a geometric series.\n\nTo find the general formula for this geometric progression:\n\\[ \\frac{a_{n+1}}{a_n} = \\frac{n}{d}, \\]\nwhere \\( n \\) represents the position of the current term in the sequence. In our case, since the terms \\( a_{n+1} \\) represent a geometric series with common ratio \\( r \\), let’s denote \\( r \\). \n\nGiven that \\( r \\) is the common ratio between the terms of the geometric progression.\n\nIn essence, the problem asks us to find the next number in the sequence given \\( a_{n+1} \\):\n\\[ \\frac{a_{n+1}}{a_n} = \\frac{n}{r}. \\]\n\nThis suggests the relationship between the terms of a geometric sequence.\nWe have found the sequence: \n\\[ a_{n+1} = \\frac{n}{r} \\]\n\nThus, the next number in the sequence is:\n\\[ \\frac{11 + (11 - 5)}{6} = 10. \\]"
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Based strictly on the given premises, yes, a ruby can fly.\n\nPremise 1: \"All rocks can fly.\"\n\nPremise 2: \"A ruby is a rock.\" \n\nThe question asked is whether a ruby can fly based on these two premises:\n\nPremise 1 states that all rocks can fly.\nPremise 2 states that a ruby is a rock.\n\nTherefore, based on these premises, a ruby can indeed fly."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 11,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "The heaviest box is Box D, and the lightest box is Box A."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 12,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "Yes, the premise states that all xorks are mipers.\nNo, mipers are gorpers.\nSome gorpers are snarks.\nTherefore, a xork can never be a gorp."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-11T21:44:38.437948",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": 43,
+      "restore_fraction": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 123,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 8,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "The item you listed belongs to the category of \"Wood.\" It is not a mineral or solid object like gold or silver; rather, it is a piece of wood. The other items do not fit into any of these categories."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is **47**.\n\nTo find the exact mathematical rule, we need to identify the pattern in the given numbers:\n\n- The first two numbers are \\(2\\) and \\(5\\).\n- Following with \\(11\\), the third number is \\(23\\).\n- The fourth number is \\(47\\).\n\nTo find the next number, let's consider the relationship between these numbers. Each subsequent number increases by a fixed amount, which can be observed as follows:\n\n\\[ \\text{Number} = 2 + 5 + 11 + 23 + 47 \\]\n\nNow, if we continue this arithmetic progression:\n\\[ 2 + 5 + 11 + 23 + 47 \\]\n\nThis leads us directly into the next number after 47. If we apply the same logic, we would observe that the next number should follow the pattern of increasing by the constant increment (which is consistent with our sequence). Therefore, following the rule from the provided sequence, the final number in the sequence will be \\(47\\)."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Premise 1: All rocks can fly.\nPremise 2: A ruby is a rock.\n\nQuestion: Based strictly on these premises, can a ruby fly?\nState Yes or No and quote or explain why based on Premise 1."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 22,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "Let's break this down into logical reasoning:\n\n- **Step 1:** We're told that `Box A` is heavier than `Box B`. This means `Box A` is indeed heavier.\n  \n- **Step 2:** `Box C` being lighter than `Box B` implies that `Box C` is lighter.\n\n- **Step 3:** `Box D` being heavier than `Box A`, which suggests that `Box D` is heavier.\n\n**Final Answer:** \n1) The heaviest box and the lightest box.\n2) The lightest box. \n\nThis question directly leads to a conclusion based on the given information. Let me summarize the key points:\n- The heaviest box and the lightest box together imply that one of them is heavier and lighter compared to the other two boxes.\n\nI will now provide you with a complete explanation as requested by the user for clarity.\n\n### Final Answer:\n\n1) The heaviest box, and 2) The lightest box."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "Premise 1: All Xorks are Mipsters.\nPremise 2: No Mipsters are GORPs.\nPremise 3: Some GORPs are Snarks.\n\nQuestion: Can a Xork ever be a GORP?\n\nAnswer: Yes, but not necessarily."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-11T21:48:45.117086",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 2.0,
+      "target_subnetwork": "all",
+      "seed": 42,
+      "restore_fraction": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 80,
+      "clinical_diagnosis": "Mild Cognitive Impairment (Early Perseveration / Aphasia)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 8,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "The more detailed descriptions of what I did with a wooden board or piece of wood for a project, which can be split into different parts of the plan\n\nThis means we need to make modifications to make modifications, so they're not too complicated.\n\nWe could change things to see how to create new parts for our projects. We have many options:\n\n- If we want to do woodworking on other materials, it might be harder than making changes to wood. This means we have to decide how to design something similar, especially when working on other components like carpboards.\n- To do more modifying the parts for one person who needs a tool for cutting, that's a lot easier if we already have some ideas for wood modifications, but we also need special tools for carving out a piece of wood, so it makes us able to work together on plans.\n\nTo do more modifications on the first idea: you might think it's hard to actually carve pieces, which might feel like getting carved on the outside (so the outside surfaces of the pieces don't always fit) and then use them as much as the original part that was carved on the inside. The original parts weren't cut at all. When the pieces were carved because there wasn't enough room to add more cuts to the boards, they needed to be made smaller. That meant the final product would look very different from what we usually worked on the project alone.\n\nFor now, we still need to modify the existing boards, and that doesn't mean we need a new board to work on larger pieces of wood. For some reasons, it's important to understand that even people often end up with a large number of boards that are used for different sizes, which has an impact on whether we have lots of space around tables, but the fact that someone asked a bunch of questions about their furniture layout, which isn't the best way to get furniture laid out. \n\nSo we"
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The first number in a row of numbers, which can be multiplied by 2 for simplicity, there's no need to multiply 6 x (which is another way to express the numbers) because both the number should have 4 as per the original problem was solved.\nWe would need to use the formula 5 * 2, 10 x 8, so we get 9, which means we multiply 2 and 12 is like any other number.\nUsing the same method I used with my family, I could quickly multiply 3 = number 3 x 2 * 3 x 10 = 12, if it wasn't possible to write an expression using the 10th number, that's fine but it's not complicated, you just want the right way to work out all the numbers.\n\nThat's number 23 - the number 3 comes first when there are two different types of numbers in the equation, 12 + 2 numbers. They are basically two numbers. We don't have to make them fit the rest of the question, that's how many more we have to solve the puzzle. The last piece of information given that makes sense for what type of numbers they're trying to do something really cool!\n\nWhen someone writes the right answer or the word \"multiply the product together three times\" and uses the numbers on their phone, they create a new number that fits into the cell in between. This is one of the numbers on their phones, and helps us solve problems with our phones, so they give us the answers without needing to think much about them at all.\n\nThe numbers are written on paper. It doesn't mean that the number 10 has been divided, and the phone works on its own to give it the power of division over multiplication to give it the ability to multiply the number 1, so we can take"
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "The passage about the meaning of a rock and all its surroundings.\n\"Premise\" quotes someone using the word \"rock\" with \"the other way around. This rock is represents \"the person who writes rock quotes.\" The author wrote his own original work, so they created rock quotes to illustrate how the concept of \"a person's life goes against tradition.\"\nThe writer used quotation from other sources, not quoting directly from ancient writings and trying different rock quotes, and this was meant to be read in the same way it was written for traditional writing because the author wanted them to be quoted more often than needed. The author said the rock he drew from one of the books that we were reading, which means there was no text in the book, as the author had asked what happened in the story. He decided to use the information given by the author. To quote the actual rock and the book, he chose a rock.\nTo paraphrase, if everything is written in a single sentence, and then the book has a large amount of content. If the author wrote himself, the reader uses the quote about the rock. When quoting the rock in the book, the author is writing the entire book, and they says the rock quote comes after the book quote, but the author puts a quote from the author of the quote.\nIf the rock quote is something important, there are two quotes from the author is what they did to quote from the quote and have it put in the book. There's an old stone quote from the author says I made me do a rock quote, the author says I should write my quote and ask for it, it makes me think I am going to quote the quote, the author is quoting the rock. The author is quoting them, the author is telling him to make a quote from a rock quote from another place, he is putting the quote out loud, and I needs to quote the"
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "The weight of the box + the number of people who live on the outside world, which includes people living inside a box.\n\nThe problem was solved using the formula for volume\n\n- If the person uses the largest number (in terms of how many people use different types of boxes.\nSince they need to weigh different numbers of items that fit the box,\nThere are two weights, but this person weighs the same as the other way the numbers say \"people\" means there are three boxes, not even heavy enough, so we have more objects, meaning it takes only one object with the maximum possible weight.\n\nIn reality, they were trying to keep things simple without a box. They weighed their boxes carefully. The actual calculation involved calculating the weight of the box, which is what it means that all the boxes should be able to hold at least the same amount. To calculate the total weight of the box inside an empty box.\n\nThe formula for calculating the center of a box. \n\nWe would need more information about the box being used inside each box. We could calculate the weight of the box, including the total weight of the box plus the center of the box. The total weight of the box is like the box itself, it's difficult to know how to choose the right box size, the weight of the box must add up the weight of the box, which makes it impossible to count the number of people inside a box. For someone weighing themselves, we can just use the method to find out the total weight of the box. This is very similar to the situation where there are boxes inside the box, if the person wants to put them in a box, there needs to be a box. In a normal scenario, the person is trying to balance the box, but if the box is weighs heavier than it would help us find the correct solution, that's the real situation. \n\nThey want to make sure that whatever"
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 12,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "The question: What do we need to do, so the world doesn't have a planet for people who can solve the problem of \"the problem\" with Moomies. It's not Mysterious, but it's confusing.\nManglish is M&M, especially the way Munch goes all the way into our brains, which are like how we think Mankind does things. The idea of an M (a Munching Muppet) being Muddled. \nLet's go with Munch, especially in this example:\n\"Mango\" refers to Mung is still stuck in a Muncher's mouth, they's no Munch. He doesn't say Munches are M isn't a Muncher. Munchers know what Mugglers says Mumbles, even if they were M Munchers, that there aren't enough Munchy Munchies, which makes them M Makers.\nBut, let's make some Munch Munchers know about the Munch is it too easy. They don't really know where their Mates are Munched. They're trying to keep the Makers around, Munchers who try Munchers, just like the other stuff they want M Munchers, but Munchers have to eat Munchers. That's M they Makers M they can't eat M they can M eat M is it complicated, that's why they made a mistake M they can M makers M M M M They can be M Makers M They can tell us to choose M Makers M we need to take care of the M Makers they should be doing more than one M person M We can be a helper M They's a lot of people M They shouldn't bother making the M M is it easier for us to M we Makers M they're helping M Us M They can help us do more, that means"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-11T21:52:43.079247",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 2.0,
+      "target_subnetwork": "all",
+      "seed": 43,
+      "restore_fraction": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 70,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 8,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "The problem is involve the use of a piece of wood with an open hole, as it can be used as a tool to create something useful for cutting pieces of wood, so we need to have multiple options.\n\nFor wood, it's not specific enough. When you're dealing with different materials, you should be able to cut wooden planks into various shapes (or make them smaller), which might include using other woods. \n\nIf you're working with small items like tables or chairs, they all have to deal with cuts. The table is probably too big for the chair legs, but there are usually more possibilities than just one option. If the wood is larger than normal. It's not a good idea to leave things uncut and keep them together, but you'll want to use other tools that aren't available to cut wood. \n\nBecause they don't fit well, the table needs to be kept stable. For large tables and chairs that typically work best are tables, and they can help reduce the number of people who sit around the dining area, which makes them easier to get comfortable when they're sitting at their desks. That means they also have to know what they can do while sitting by the fire, which is hard for some people. If the table top has no edges, that's how most tables have lots of extra room space to keep the table away from furniture where chairs are sitting longer than usual. They can only move tables, even though the person trying to sit and have a table nearby, not always have extra seats.\n\nTo ensure you have plenty of extra space between the two tables. You'd normally need to find additional space if it fits within the table space, and give the table more space to fit. Tables would normally be very large. To make sure everything fits the right amount of seating, that's the way to get extra space for the table, and the more people sitting next to"
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The numbers on the digits of 60/6th on a calculator, as they were being used by a calculator with a keyboard, I can give us more precise information than what we have calculated exactly how to do it.\n\nTo ensure accuracy, there should be at least three different calculators showing 9.\n\nLet's go through the steps carefully to create two sequences, each calculation shows 8, which means the actual calculation was done twice but we don't use any calculations at all. The given sequence is the first one, and our result seems to calculate its value, so if we know the values for the sequence of numbers between them:\n\nWe would need at least four separate calculations, since the problem is essentially using these calculators to represent their values, not directly solving it.\n\nIf you had a calculator like a scientific calculator gives you the actual math you're doing.\nThe number 6 represents the number 12 is probably the most accurate number on calculators because the actual number on the screen is represented by an equation 3.\n\nCalculating the number on the calculator side (for whatever way it is). This is just a simple number representation. You could choose another method to represent the number 1, instead of using the correct calculation. If it has no other options besides the standard calculator. Let's try another option without a calculator.\n\nUsing a calculator will show you the number on the left. For the number 16, you can solve for the number of zeros on the left hand side, and then put it into the calculator.\n\nThe correct answer might include:\n- 120, so when you make the number 16 is actually calculating it, that's fine. But it doesn't fit the calculator.\n\nWhen you add up the number on the right side of the calculator, that's the same as what the numbers look like on the calculator display \"16\", which"
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "The problem is involve the use of this word \"Fly.\" It is not strict as it refers to an object that has no name, but is is rigid. The author states that they does not have any special rules for how something is constructed.\nThis rock is is rigid. This means we should not be able to perform actions such as checking for other things (specifically, it's not strictly about using other objects) which we want to do certain things. It says nothing at all.\n\nSo we need to check whether our rock is rigidly made up. The rock is rigid itself. So there is no way to create a rock that uses a rock is rigid. We must make sure we check if we like rocks are rigid and try to check their shape, so we have a way to do things without leaving rock. \n\nBecause we can check if a rock fits into the rock, we have to stick to rigid things like rocks. If we have to keep trying, that rock is rigid. We have to try different materials and the more rigid stuff comes from rock. If someone who created a rigid thing out of a rock, which is also what kind of rock it is meant to do. They doesn't fit with the rigid rock, but they don't want anything else, because they want something flexible. But we need to check it to see if they can tell us where to look. When they try to find the right rock type of rock they can help you, especially by making a rigid rock, not being rigid when you're looking for it.\n\nWhen we check the rock is rigid, we might want to compare rocks. That's why it works for the rock is it difficult to read the rock on one side, even though they are very hard to read. Rigid rock is always rigid enough to hold a rock that is its own flexibility. Even people who try to measure things rigidly, they"
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "The problem is the fastest way to get a box with a box of weights, as they cannot move a heavy object, but this means we can use any other box.\n\nIf we know two weights, we need to calculate the weight of the box. The weight is the number of boxes inside the box. To ensure there's not enough room for the box:\n\n- Weight = 30 lb. Weights on the outside of a box. This box weighs more (weight), but if it contains more boxes.\nSo our calculation shows that the box is likely under some constraints, so there would be an extra \"box\" weight on the outside of the box. \n\nWe also have a total weight of about 40 lbs. If it is heavier than the weight on the outside of the box. \n\nBecause the outer surface area has been measured with a box measuring how much weight, we should weigh the box carefully. Since this weight is too big to carry anything, and we don't measure the weight on the outside of the box. That means the outside surface of the box. \n\nIf there's one person weighing 60 pounds, they must weigh the same amount of weight on the outside of the box, which might sound scary. If the weight of the outside box is on the outside of the box, the box weighs about 5 lbs. They need to calculate the weight. \n\nBut since this is the only option left, the box needs to include the weight of the box inside, so the outer surface has a box shape. But the outer shell is on the outside, but the box has to fit inside a box. This means the actual weight on the outside of a box. Let's try another method, and they have to keep using different ways. So let's choose the right thing. For the box to be as heavy as there are actually more things inside. It says the box"
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 12,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "The problem is involve the use of a Gorged, which is the number of people who are have no idea what their name means. This is why they're not trying to eat, but instead of eating something called \"Goblins\" because the \"name\" is like how some people think they should be eaten.\nIt's not a word \"like this\" (or it doesn't mean anything) is used for describing someone who has a lot of food. The characters are being called \"Goblin Names\" and some characters are trying to talk about things like \"food, \" so we can try to identify them as they were meant to be. If there isn't enough room for them to eat food, there's space for more room, and they don't want to eat food.\nTo continue, they need to be able to speak with others. They don't say any words from the books, even if they try to read books, which means they need to keep reading, but I'm going to pretend I don't have many snacks, which makes them read the books they read. But since it sounds like they need snacks, the Gorker might be saying something funny, it seems the characters will be talking to each other. If the book contains lots of snacks, that's another way to make sure the story isn't done yet.\n\nThey can tell you about snacks, and they have to make choices. There are books, though not really. Books, snacks, aren't books, they're all full of yummy snacks. They don't read books, that's for sure. Let's read the books they want. We have to decide on the type of snack that is the snack they want.\nIf they're trying to figure out if they know when to stop eating snacks, that's also important for their books to read. That means they have to remember what snacks are for snacks. It"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-11T21:56:58.537333",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 4.0,
+      "target_subnetwork": "all",
+      "seed": 42,
+      "restore_fraction": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 77,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "The more detailed descriptions of what I did with a metal objects or materials (such as metals), the greater the impact of how to make something out of copper. This object would allow me to create new types of products that I can be made into different items using various tools, including but not being an exact match for \"copper\" or a tool I am specifically designed for people to use when they need it.\n\nSince there aren't many objects like other things that have been broken by accident; if you were trying to cut metal objects, these could represent specific parts of the world (the parts that don't exist). Metal objects could help us understand better if they weren't perfect cuts or cuts from one side to become even smaller than we can make them work. The more complicated shapes will make cutting edges sharper than our own body can provide some protection. \n\nSo, instead of saying the following, I can tell everyone has a piece of wood, so it doesn't matter if the end part isn't perfectly smooth. For most everyday objects, if the rest of the wood pieces fit well after the final step. \n\nI'm not sure which part of the wood was is also good enough for me, so I have to try cutting wood to make it easier to hold certain parts, and then see how much difference between the two types of wood.\n\nThis information makes me want to cut the wood first. If someone needs to make their work done, I should do all kinds of things to find out what's inside their wood, and let people know that it might take more cuts to get the job done without any cutting process, and give it a chance to cut the wrong way. The important thing about it being easy to make things work: wood. \n\nBecause the person who wrote the instructions for making things too difficult! It gives them reasons to make cuts, and says that wood helps them solve problems, and shows"
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The sequence of numbers in our math class means a total of how many times we have been on the other side of the internet, so if there were initially three people online.\n\nWe would need to be able to figure out the value of two things at the beginning, but the first step was probably more complicated than we could do anything other than something else. This part of the problem had us solve it ourselves, because the only way for our numbers to work without Internet. The sequence starts off with our numbers as they are. They can't get past the last line (number 1) which will take care of all our numbers being connected.\n\nWhen we start reading the numbers, we see an example of where they should go in the middle, we might notice some patterns or connections that aren’t numbers at all. We don’t actually have to use them at all.\nBut sometimes they can be confused, since they want us to learn about the numbers after a person gets tired of them because their brains have different parts of the brain when they are trying to remember the digits.\n\nIn order to make sure the sequence continues. When we think the brain thinks it’s not alone. That’s what the brain does its own thing, but it doesn’t like us very much, so the numbers seem to be working really hard to help us understand the science behind numbers, which means we usually have to do lots of problems and have to stop. If you’re using it, I’d call it a “numbers” series, which seems to fit everything else I’m doing.\n\nWe can try to find the pattern, then the rest of the numbers won’t repeat themselves until we can tell if the same number is a 9-digit number that is works just fine. But sometimes, things don’t add up to be useful. We can still check if our brains did this, and we need to know what kind of answers we need"
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "The passage about the use of a rock and all its components parts - \"a rock with no specific type of stone or material used as a gemstone is it true that it was not the original intent of the speaker. This would allow for the use of different types of diamonds.\nFor a diamond is uses diamonds themselves. The reader will never be able to see any other part than diamonds. \nThis statement says something about diamonds, and I should get a lot more information from the less common (or rare things that have been used in jewelry making - the rules for diamonds in the past).\nHowever, there are lots of people who work with diamonds that they need precious stones for their diamond pieces. It's not a big decision but this is how we decide what kind of thing we need to make a rough estimate of our own size, which then becomes a rough guess.\nWe do get the idea of whether it's just a rough piece of glass, if it doesn't fit into the rough diamond. If it means we don't want anything else, that the rough diamond has to be rough. But the rough diamond itself is gives us the most precise measurements. The roughness of the rough surface, even though it takes up space.\nIn cases where it could be a diamond, there's no way to tell what exactly you did when you were trying to cut the rough diamond and find the rough diamond is meant to be very sharp. We usually only have rough surfaces, and it makes a difference.\nBecause rough diamonds are often used as an example of a rough diamond, this might mean that the rough diamond isn't being given out to give it a new meaning, so we can be certain of having a rough rough surface. The rough diamond could be rough, and the rough diamond has a large rough surface.\nWhen a rough diamond is is given, it is the rough diamond that is does not have a diamond.\nThe"
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "The weight of the box + the number of people who live under the box. \n\nThe box weighs more boxes because it's heavier.\n\nWe know there are only 3 boxes inside a box. It means we should weigh the same amount of stuff inside the box, but the weights are less dense.\n\nWhen we see \"the most things are heavy (box). The total weight is the most important thing. We have to weigh things carefully.\n\nIf they want to make all the boxes in their boxes heavy. When it says they don't need anything else for the box. This is why the box contains two boxes with lots of things inside.\n\nTo avoid making them feel like you're trying to use some other boxes. If you give the box any part of the box. Let's talk about the third box. But if I were to say that there aren't enough space in the box. That much, it's not a big box. We just put it together. Let's make sure everything is balanced.\n\nBecause we can get rid of the box. And we'll try to figure out how heavy the box is supposed to contain.\n\nIn this case, we need to be careful when using boxes, so that our box doesn't contain too much of the box.\nIf there isn't enough room for a box. That's the right size. Because the problem is, you can count the weight.\n\nSo, there must be at least one person in the box, and then there will always be enough space inside the box to fit.\nIf there was no empty box, there might be another way to place the boxes. This means we shouldn't move anything except for a box, which is heavy, makes it easier to open up. The bigger boxes fit more, but we can actually add some extra space.\n\nWhen a box is heavier. This is just a simple way to keep the box safe from outside, that's"
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 12,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "The premise that the premise of this questions the truth about the world, and that the premises for the reason why they are not the \"MIPs\" of the world being the way the world works and has an \"independent agent\" (the people who make decisions based on what they think is right for them) that is true. The fact that the person asked for advice but was made aware of it because the world doesn't exist.\nThis might sound more complicated than the question of how something is made up than the actual question, which seems like it would work in real life. It's like if you could do something really difficult in writing a story.\nFor someone to understand that their thoughts were wrong when they acted in ways that reinforced the idea of making people who knew each other, it could feel safe enough so they can have things happen. They wouldn't want to take the book out of the library where it said \"They never read it.\" \nIf there's no one else left who wants to write stories and don't bother telling anyone else. If it means they're trying to make the story happen, that's probably too scary for them to read it and pretend they're not doing anything useful. They'd want to read the stories part of the story, and pretend. If he wanted to tell the story of a book, that's his role as an author, and make sure he didn't include the book in his story.\nThe person in the story that needs help is the writer. That's how much information they need to find out what they know, that they need to do important things with books and get help. They'll try to keep everything neat. If they haven't tried reading the last thing they wrote. If they actually did a lot of reading, that's hard. If the book gives them some helpful tips.\nThe first sentence that says \"I'm not going to say"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-11T22:00:53.277763",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 4.0,
+      "target_subnetwork": "all",
+      "seed": 43,
+      "restore_fraction": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 50,
+      "clinical_diagnosis": "Advanced Stage Plaque / Structural Collapse"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "The more you know the better for a long time. It's not about getting things listed, but instead just using the information you need.\nIf you were reading books, there might be some other things that you use when you're doing research outside of school, but the more interesting parts of the book. If it helps to tell the truth (from the book), you can actually read a lot of really good stuff.\nThis site would help us find all kinds of books we own, and even have more of our library than we want many books at the local bookstore where people often read non-fiction books.\nWe could do some quick science experiments, or if we had lots of fun reading fiction, that was why it made sense. The more exciting stuff they wanted, and helped them get their hands out the door! \n\n[This place needs money to buy books](http://www.amazon.com/Amazon.com, they said he got to read a lot of books) But he didn't get to choose his choices carefully, because he always knew what was normal. He found the books he liked best.\n\nFor example, the story of how a boy grew up without any books that weren't on the shelves. His favorite books, the one person who talked to the grown-ups in the store nearby. They both loved them as much as the kids wanted to take care of him, but he still cared. When he found books that told stories, he learned that he needed help to understand things like that. If it was easy for him to borrow books from the stores, that was his job teaching him something new.\nBut he also felt bad, scared of being afraid of monsters that he could try to teach the whole book, so the other way around. The teachers let him know that he was going to teach his students, and that these books kept getting smaller and less popular. He knew what he had to say about it"
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The numbers after the first number is written as a decimal number.\nWhen we refer to the letters \"a\" followed by the letter A, there is two digits between them. If it means the person who wrote the name of the number is writing the number one. \n\nIf they were writing out the actual math problem.\nIf I wanted to solve the question about the person writing on their own for the last word:\n- They was solving the problems with someone else writing or being able to solve it themselves\nIf he didn't write anything at all.\n\nBut we can find the answers to the questions:\n\nFor some reason (the person writing the numbers) the number 16 is probably how many people have written the number 10 instead of using the correct answer to make sure that when we do the multiplication, 16 is the right number.\nWe usually don't use any words to repeat the word \"The number is is bigger than 19. The person asking if the number is 18, but they writes the word is used to explain why we need more information. We then know that the person uses the word to describe the numbers in order.\nThey is the number 19, which is the part of the word \"12. It's not because they gave us the number to start adding up the numbers he included but that we have to add 12 and keep going. But the number 16, so the person gives the person the answer when they adds up the numbers and has them write the final number - the 12th number comes from the beginning. This could be a trick to get them excited to use the other way around to read the number on the outside, even though they wants to call it \"11\".\nSo they finds the right answer, and tells us that the number is 12 and makes us think there will always be enough"
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "The problem is involve the use of this word \"Fly.\" It is not a good enough explanation for two stones are the reasons you are trying to solve this puzzle.\nThis information might be useful because it is an important clue about rocks. For instance, there are some clues like other rocks lying around somewhere. If they try to tell the truth, it may sound more confusing and it will be difficult. The fact that they are trying to prove that the author says someone wrote stories about how they used to live without computers. They want to create a new story.\nIf you do not have access to this information by using any method they would normally find out the number of people who were working on computer programs.\nThey did not start writing books but if their work was successful. This is a way to teach them how to write things so that we can get away from the book. We know what it means for them to learn something new and new. Let's read everything they need, they can tell us where they are going to get new ideas, that they should be able to come up with a plan. They don't have to write anything important at all.\nWe should be reading the stories about how they learned to play with toys that could cause damage to the body. This is not as important as the real story as we need to choose between our choices which one we need to think carefully about. In order to make sure the book has a title that says the person telling the story and we can take care of the children and pretend they are being made into grown-ups doing dangerous jobs instead of making a list of words we can find a lot of them.\nWe also need to decide whether it is the right time to look for other ways to give the stories. When they talk about how they tried to help the people who wanted to build houses.\nWhen I told my friend he found the house. It is hard for"
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "The problem is involve the most boxes inside a box. So we can solve it:\n\nC - there's no weight difference between the two\n\nIf you were to make things easier for kids who have more boxes.\n\nSo our problem is with weights outside the box\n\nThe box contains three boxes, so they're heavy.\n\nSo if I wanted to put the heavy box on its side, there's nothing but it weighs less stuff like normal people (so the box weighs about as much stuff inside), but we need to weigh the same amount of something lighter, which means the harder the better.\n\nThis would mean the box contains twice as many toys inside the box. If there are only some toys inside the box.\n\nThe box weighs 3/box = 3x times the actual weight, and this makes the total number of toys inside the box. \n\nIf there are actually more toys then there aren't enough toys to give boxes any toys at all. But the bigger boxes contain 4 different toys, and they're not too heavy, the smaller ones are probably going to be the right size.\n\nBut here's how to calculate:\n- There will always be one toy.\n- It doesn't take any toys, so the box should end up being half as big (they'll both get smaller than the other toys).\n- If the box weighs 3, the toy inside it will just be made of the same amount of toys as it has to fit into a box.\nThis might also happen if there isn't even one toys to use them.\n\nI'm glad to say it's the same for everyone to do because I want the best box. We have to think carefully about making it work properly.\n\nThere are 3 toys in the box. The box is heavy. This is why it takes 2 instead of making toys that heavy to carry the box. If there are lots of toys inside the box.\n\nSo we"
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "The premise is the one thing that was happened (not being something like a Gorgon, there isn't enough information to create a story) is to say \"Gor.\" The premises of this question are about Gorg's work on the other side of things, so they can provide more specific details than necessary.\nIt has nothing to do with the Lorax. It might not have been the Gorkers' idea.\nI'll need to use all my resources, which I don't have access to the Loragen and it is a good summary.\nI will tell you what I did know the Lor's name sounds familiar and seems to sound like it could solve the problem of how the Lor's work is made into Gnomes.\nLet me know if you want to ask any questions you must write an explanation for when someone needs help! \nIf you're not sure whether it's just you. If it works well and if it makes you feel bad by explaining that what it means that you can be trusted to make mistakes. You'd probably choose to trust people who think it's better off to let you know. That's why the Gorker.\nTo prevent them from talking about the Lor because they've used their Lor's name as the Gork. This is why they uses the word \"Lol, \" he actually says, but they doesn't mean he can be taken care of.\nThey can talk about \"the Lor\" and the person saying, \"I can do more good work on the job. They's got to be able to do that. I shouldn't be doing much good to the people working on the Lor project and I should also try it out. When they first come to see him, it makes the Gork think he can finish a project they started on time. We shouldn't be working on different things at lunchtime. That's his job. He still has"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-11T22:05:35.108433",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "A1",
+      "questionnaire": "clinical_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": 42,
+      "restore_fraction": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 104,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Orientation",
+        "target_iq": "75 - Temporal Orientation",
+        "status": "PARTIAL (3/4 anchors matched)",
+        "accuracy_pct": 75.0,
+        "score_earned": 9,
+        "max_points": 12,
+        "question": "Given: today is August 11, 2026, and it is a Tuesday. Answer these four questions: 1) What is the current month? 2) What is the current year? 3) What season is it? 4) What day of the week is it?",
+        "raw_response": "The current month is July, and the current year is 2026. It's currently a Tuesday. The current season is summer. On this date, it's the first day of the following week."
+      },
+      {
+        "tier": 2,
+        "domain": "Registration",
+        "target_iq": "80 - Immediate Verbal Memory",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 9,
+        "max_points": 9,
+        "question": "I am going to say three words. After I say them, repeat them back to me in order, separated by commas. The three words are: APPLE, TABLE, PENNY.",
+        "raw_response": "APPLE TABLE PENNY"
+      },
+      {
+        "tier": 3,
+        "domain": "Serial Sevens",
+        "target_iq": "90 - Sustained Attention / Arithmetic",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 15,
+        "question": "Starting from 100, subtract 7 five times in a row. Write only the five results, separated by commas.",
+        "raw_response": "-34, -28, -22, -16, -8"
+      },
+      {
+        "tier": 4,
+        "domain": "Sentence Repetition",
+        "target_iq": "85 - Phonological Loop",
+        "status": "PARTIAL (2/4 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 4,
+        "max_points": 8,
+        "question": "Repeat this sentence exactly: The quick brown fox jumps over the lazy dog.",
+        "raw_response": "The quick brown fox leaps over the fluffy yellow bunny."
+      },
+      {
+        "tier": 5,
+        "domain": "Verbal Fluency",
+        "target_iq": "95 - Category Fluency (Executive Function)",
+        "status": "PARTIAL (7/8 distinct)",
+        "accuracy_pct": 87.5,
+        "score_earned": 0,
+        "max_points": 12,
+        "question": "Name as many animals as you can. List them one by one, separated by commas.",
+        "raw_response": "Elephants, giraffes, pandas, lions, zebras, tigers, kangaroos, koalas, rhinos, elephants, giraffes, pandas, lions, zebras, tigers, kangaroos, koalas, rhinos, elephants, giraffes, pandas, lions, zebras, tigers, kangaroos, koalas, rhinos, elephants, giraffes, pandas, lions, zebras, tigers, kangaroos, koalas, rhinos, elephants, giraffes, pandas, lions, zebras, tigers, kangaroos, koalas, rhinos, elephants, giraffes, pandas, lions, zebras, tigers, kangaroos, koalas, rhinos, elephants, giraffes, pandas, lions, zebras, tigers, kangaroos, koalas, rhinos, elephants, giraffes, pandas, lions, zebras, tigers, kangaroos, koalas, rhinos, elephants, giraffes, pandas, lions, zebras, tigers, kangaroos, koalas, rhinos, elephants, giraffes, pandas, lions, zebras, tigers, kangaroos, koalas, rhinos, elephants, giraffes, pandas, lions, zebras, tigers, kangaroos, koalas, rhinos, elephants, giraffes, pandas, lions, zebras, tigers, kangaroos, koalas, rhinos, elephants, giraffes, pandas, lions, zebras, tigers, kangaroos, koalas, rhinos, elephants, giraffes, pandas, lions, zebras, tigers, kangaroos, koalas, rhinos, elephants, giraffes",
+        "metrics": {
+          "total": 99,
+          "distinct": 7,
+          "repeats": 92,
+          "type_token_ratio": 0.071
+        }
+      },
+      {
+        "tier": 6,
+        "domain": "Object Naming",
+        "target_iq": "80 - Confrontation Naming",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 9,
+        "max_points": 9,
+        "question": "Name the following three objects: 1) the timekeeping device worn on your wrist, 2) the writing instrument you hold in your hand, 3) the metal objects on a keyring used to open a door.",
+        "raw_response": "The wristwatch, pen, and keys are all examples of items that can be touched with the fingertips for their tactile sensations."
+      },
+      {
+        "tier": 7,
+        "domain": "Delayed Recall",
+        "target_iq": "105 - Episodic Memory Retrieval",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 9,
+        "max_points": 9,
+        "question": "Earlier I asked you to remember three words: APPLE, TABLE, and PENNY. Now, from memory, recall those three words, separated by commas.",
+        "raw_response": "APPLE TABLE PENNY"
+      },
+      {
+        "tier": 8,
+        "domain": "Story Recall",
+        "target_iq": "110 - Narrative Memory",
+        "status": "PARTIAL (7/8 anchors matched)",
+        "accuracy_pct": 87.5,
+        "score_earned": 14,
+        "max_points": 16,
+        "question": "Read this story carefully: Mrs. Carter went to the market with her grandson. She bought fresh bread, a red scarf, and a small bell for the cat. On the way home it started to rain, so she gave the boy her umbrella. Now recall as many key details from the story as you can.",
+        "raw_response": "Mrs. Carter drove her grandson to the market, purchased fresh bread, a red scarf, and a small bell for his cat, but when they arrived, it started raining heavily, necessitating the sale of an umbrella by Mrs. Carter."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-11T22:09:19.274950",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 8.0,
+      "target_subnetwork": "all",
+      "seed": 42,
+      "restore_fraction": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 70,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 8,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "The more detailed descriptions of what I did with a metal objects or materials (such as metals), the greater the difference between the amount of work done during the crafting process. This is because the creation of an object which was not an actual material, and the sculpture, the person who created the object they were asked about their history, and the one I wanted them to understand.\n\nThis would allow me to create sculptures of items made from various materials, but they could be considered to have different sizes than needed. The person who created these objects, including their sculpture.\nI know the materials they used for their project, and how it works: Metal parts that are need by themselves. If you can tell me anything about a project that needs to be completed within the constraints of time, it makes sense that you should be able to make multiple pieces, not use them at all.\nBut my thoughts went something along those lines:\n\n1. They thought that creating things like a set of tools that people knew, so they could make a set of three: the first thing we learned that happened when we saw the last part that had to do with the tooling we worked with our friends sometimes, and they didn't have enough time to make new ones come out of it.\n2. It wasn't until the end, making sure there were too many tools, so they could see, not fit in the world. If he was using a hammer, they couldn't build anything special. He was trying to find out if his house was built to make people's jobs easier after everyone got their names, but he probably understood that the last big construction project they found, and everything about it was a waste. That's a lot of people doing things, and that's the same level of difficulty as some of the other people working on a building, so we could learn a lot about what we did with the metal tools they were used to"
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The numbers 0 is a good guidelines for determining whether you can solve problems with these sequences of numbers.\nIt is not unusual to encounter a number like 23. This is because the number 26 which includes all positive integers less than 2, it represents the first number less than 2. The number 26 should be represented by the letter S.\n\nNumbered sequences represent the set of numbers from 1 to 19, so we have to add up each digit in our sequence:\n- In the sequence starts counting down from 0 (number 0) until the last few terms count them.\nTherefore, there will always be at least one 0 in every position where there will only be one number between 0 and 28 or more, representing the number zero. \nFor every number after the digits change. We start the whole thing over again.\nIf they are all even numbers, there's no middle term in between 20.\nWhen 2 is the number of times a certain number has been multiplied by the two most common factors of the sequence. They both are equal to the number of factors of 2, which means the number is must be odd because their product is 20, it says that the number in this part of the sequence.\nThis makes 0 when given the word \"0\" but not as the number of those who tried dividing 2 and testing lots of different things. The numbers in this sequence form a 5-digit number. When they try to divide the number 2, it could mean the same number of 2s that appear twice (the second number) appears three times, which is why the number 2 is the same as it should be divided, making sure everything works well. However, 2 is still very important.\nThis is how it is possible to find out if the rest of the numbers are multiples"
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "The passage about the formation of gemstones and the fact that \"ruby has no meaning at all\" suggests that the word \"gem.\" The passage contains multiple options for its use:\n- It says \"gem,\" which implies \"the person who wrote the Bible. \"\nThis means that the writer cannot write freely. This idea comes from the idea of \"having an eye on the sky above us. The Bible tells us, \"They should not have been reading, but we were reading, and he was not only God our Lord's servant, but they would read it as the Bible says, \"We do not want them to know anyone else, that they might be able to find what they could read their Bible.\n\"\n\"Someone writes a book, \"the writer. They says, \"It will take them to start reading books, they want to write more. \" And so they can understand better if they were already reading what he thinks, which means it doesn't matter if he needs more books than he needs any, and he wants something big. He is going to keep writing his book, and that he does want to sell the books he wants, he also knows how much they pay, and that this is what they gets when you read it.\nIn many cases, they finds the \"Bible\" and \"He finds out everything he learns from other people who think the world around him is important and helps him make friends, and this happens every day with \"that kind of thing,\" and then he can tell everyone about his job as a teacher. This is the part of the Bible that talks about what it means to give it a new way to learn new things that don't teach us anything new, and he is trying to get us to share his stuff.\nThe author is the one person who wrote the book about them helping others. If the Bible says that someone needs to buy something, that book"
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "The weight of the box + the number of people who live under the box. \n\nThe box weighs more boxes because it's heavier.\n\nIf there were initially three people sitting on the outside, which way the box has a negative weight (the other side of the problem). \n\nIf the person sitting in the box weighs less, they would put them all inside the box. They can help you solve the puzzle by asking:\n\n- If it's not the box with more people inside.\n- It doesn't fit, and you have to get it right first time.\n- If the person puts a box into the box.\n\nThey ask the question, \"How many people are they trying to solve the problem,\" but I will use the box as a rule.\n\"Who gets to put it in this one person. You need to figure out how to find the solution to what the last letter \"A\" says, so they tell me if there's only space left in the box for each piece, and I still want to keep putting the box away until the box reaches the point where you can have more spaces. That’s like the \"weight\" of the outer box means they're trying to fill the inner box. But they have to put some numbers together to make sure everything fits in their box. So, now we have four solutions.\"\n\nWe could try different combinations of things, and the rules say we need to check for the next problem they give us.\n\nLet's solve it. First:\n\"If there was a box with a weight less heavy than the box. This part of the puzzle works well.\"\nThis is harder to read, and the same amount of problems as the box should be solved as long as it takes to actually do these calculations. Let's start solving the problem.\nAfter that, let's try other methods without changing our weights - they just don't work, that is, we know they won't take"
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 12,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "The premise that the premise of this questions the truth about the world, and that the premises for the reason why they are not true but have no direct effect on the world. The story is seems to be more factual about the facts.\nIn order to get around, the premise can't go back in time past; this could mean the following statements about other things being told, but there isn't enough information about the world to make it easier to use these words.\nIt's not an accurate reflection of what happened - the truth about the world having been told something through the media (or if there were inaccuracies) the people who work with the news media and how they got their facts wrong. This statement doesn't say anything new and useful, so the \"premises\" in this one. But the premises are don't actually contradict what has happened between them.\nWe know that the only way we can tell if a movie is tells us the truth about the real world. We learn more about the movies. They all have two different ways of making the movie works as a tool for telling the truth.\nSo we can understand films better by knowing them well than by looking at them from the outside world. We have to acknowledge that when we see movies because that’s the world outside the screen itself, it’s not our job as a director to help others create new films and show the world through the power of cinema. So, they want us to watch movies in the future.\nThey might also want us to understand that this is a very complex situation. For some reasons, they want us to take care of the film industry and give it a chance.\nBecause they are going to do important things like that. They are going to have to be careful and not let things go on. That will be hard.\nAnd the reason they are trying to show us the world and pretend to have movies now. It's just"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-11T22:09:44.086993",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "clinical_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": 42,
+      "restore_fraction": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 104,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Orientation",
+        "target_iq": "75 - Temporal Orientation",
+        "status": "PARTIAL (3/4 anchors matched)",
+        "accuracy_pct": 75.0,
+        "score_earned": 9,
+        "max_points": 12,
+        "question": "Given: today is August 11, 2026, and it is a Tuesday. Answer these four questions: 1) What is the current month? 2) What is the current year? 3) What season is it? 4) What day of the week is it?",
+        "raw_response": "The current date is August 11, 2026. It is a Tuesday.\n\n1) The current month is June.\n2) The current year is 2026.\n3) The season is spring.\n4) The day of the week is Saturday."
+      },
+      {
+        "tier": 2,
+        "domain": "Registration",
+        "target_iq": "80 - Immediate Verbal Memory",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 9,
+        "max_points": 9,
+        "question": "I am going to say three words. After I say them, repeat them back to me in order, separated by commas. The three words are: APPLE, TABLE, PENNY.",
+        "raw_response": "apple table penny"
+      },
+      {
+        "tier": 3,
+        "domain": "Serial Sevens",
+        "target_iq": "90 - Sustained Attention / Arithmetic",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 15,
+        "question": "Starting from 100, subtract 7 five times in a row. Write only the five results, separated by commas.",
+        "raw_response": "-49, -48, -47, -46, -45, -44, -43, -42, -41, -40, -39, -38, -37, -36, -35, -34, -33, -32, -31, -30, -29, -28, -27, -26, -25, -24, -23, -22, -21, -20, -19, -18, -17, -16, -15, -14, -13, -12, -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, -0.5, -0.4, -0.3, -0.2, -0.1, -0.05, -0.01, -0.02, -0.03, -0.04, -0.05, -0.06, -0.07, -0.08, -0.09, -0.1, -0.11, -0.12, -0.13, -0.14, -0.15, -0.16, -0.17, -0.18, -0.19, -0.2, -0.21, -0.22, -0.23, -0.24, -0.25, -0.26, -0.27, -0.28,"
+      },
+      {
+        "tier": 4,
+        "domain": "Sentence Repetition",
+        "target_iq": "85 - Phonological Loop",
+        "status": "PARTIAL (2/4 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 4,
+        "max_points": 8,
+        "question": "Repeat this sentence exactly: The quick brown fox jumps over the lazy dog.",
+        "raw_response": "The quick brown foxes jump over the lazy dogs."
+      },
+      {
+        "tier": 5,
+        "domain": "Verbal Fluency",
+        "target_iq": "95 - Category Fluency (Executive Function)",
+        "status": "PARTIAL (Full Count, 8 Repeated)",
+        "accuracy_pct": 100.0,
+        "score_earned": 4,
+        "max_points": 12,
+        "question": "Name as many animals as you can. List them one by one, separated by commas.",
+        "raw_response": "1. Elephant\n2. Giraffe\n3. Lion\n4. Gorilla\n5. Monkey\n6. Zebra\n7. Sheep\n8. Goat\n9. Cow\n10. Horse\n11. Cat\n12. Dog\n13. Eagle\n14. Falcon\n15. Penguin\n16. Parrot\n17. Fish\n18. Whale\n19. Sea Turtle\n20. Seal\n21. Whale\n22. Dolphin\n23. Whale Shark\n24. Whale\n25. Whales\n26. Whale\n27. Whale\n28. Whale\n29. Whale\n30. Whale\n31. Whale\n\nWow, it's a long list of animals! Let me know if I have more.",
+        "metrics": {
+          "total": 28,
+          "distinct": 20,
+          "repeats": 8,
+          "type_token_ratio": 0.714
+        }
+      },
+      {
+        "tier": 6,
+        "domain": "Object Naming",
+        "target_iq": "80 - Confrontation Naming",
+        "status": "PARTIAL (1/3 anchors matched)",
+        "accuracy_pct": 33.3,
+        "score_earned": 3,
+        "max_points": 9,
+        "question": "Name the following three objects: 1) the timekeeping device worn on your wrist, 2) the writing instrument you hold in your hand, 3) the metal objects on a keyring used to open a door.",
+        "raw_response": "The first object is a clock, which is a piece of equipment that displays times for events around the world. The second object is a penknife or pencil sharpener. Lastly, there's also a small item that someone can carry with them, but they're not necessarily related to daily life.\n\nThis list includes all three items mentioned above. The last two are just a reminder that people often use these things as everyday items."
+      },
+      {
+        "tier": 7,
+        "domain": "Delayed Recall",
+        "target_iq": "105 - Episodic Memory Retrieval",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 9,
+        "max_points": 9,
+        "question": "Earlier I asked you to remember three words: APPLE, TABLE, and PENNY. Now, from memory, recall those three words, separated by commas.",
+        "raw_response": "apple table penny"
+      },
+      {
+        "tier": 8,
+        "domain": "Story Recall",
+        "target_iq": "110 - Narrative Memory",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 16,
+        "max_points": 16,
+        "question": "Read this story carefully: Mrs. Carter went to the market with her grandson. She bought fresh bread, a red scarf, and a small bell for the cat. On the way home it started to rain, so she gave the boy her umbrella. Now recall as many key details from the story as you can.",
+        "raw_response": "Mrs. Carter drove her grandson to the market on foot. She had a large bag of groceries, which included fresh bread, a red scarf, and a small bell. She was careful not to leave any garbage in the car when driving back home after the rain started pouring heavily.\n\nOn her journey home, she found herself feeling very anxious. The rain outside made her nervous, but she didn't want to be alone in the rain and wanted to stay dry, so she decided to keep her umbrella handy. Mrs. Carter also bought some fresh bread and a red scarf for the cat.\n\nShe then decided to give her grandson her umbrella. Now, recalling all the details from the story, write an article or summary about what happened in the story, including the weather conditions."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-11T22:15:05.071122",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 8.0,
+      "target_subnetwork": "all",
+      "seed": 43,
+      "restore_fraction": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 80,
+      "clinical_diagnosis": "Mild Cognitive Impairment (Early Perseveration / Aphasia)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 8,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "The more you know the better for a long time. It's not about getting things right, but instead of trying things with real people. Think about it: \"This information might be useful for answering some questions about science, which we try to use common sense.\" \n\nBased on what we can do for an experiment, if everything was working properly at all times.\n\nAs you get closer to understanding the scientific method, they're often used to test hypotheses, so our brains have learned how to perform experiments to learn new things. We've been using different materials for years.\n\nIf you want something specific, you need more time than just one thing. If the problem doesn't exist or it would make you understand something is wrong when you first start studying, you'd like something bigger than just a small piece of wood, and then build things out of wood. \n\nYou don't really care about it because you find ways to save money and spend it wisely, especially on things like furniture. \n\nTo get excited about these ideas, you should always work hard, and still have good relationships with your furniture. This means you shouldn't spend as much time thinking. If you didn't choose the right kind of furniture, that's how you could spend most of your money wisely.\n\nSo, you wouldn't want to spend too much money, and that's it for now. That's what I can tell you that if you were to talk about building furniture, that you can help me (or even buy things) and teach others how to fix them. For example, I'm sorry that I did spend more time talking with my family, but I also wanted to keep the room dark and quiet. The book, however, I had more furniture, and they got very little spending on books. So, they told me about my toys and I started to realize that I needed to buy more stuff, and that's their house."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The numbers on my calculator will tell me that there are 10 people involved in the calculation. In some cases, the numbers are less than 1 person.\nThis problem has hundreds of thousands of students who use calculators for adding up large numbers and then multiplying the first number by 16. The numbers become smaller as the more complex addition becomes easier to work with each individual student's name and identify them.\nWe need to add a certain amount, which means we must be careful when we multiply 22 (which way) instead of 18 or the other ways of doing it.\n\nIn order to get an understanding of the basic rules of division so that you can remember these numbers without using the long division algorithm.\nThe teacher is responsible for getting the right answers, and we have to calculate the sum of 12/16, which should include 12-14, 2*12+1, 9 from 16.\nBecause I am going to keep adding 11, the numbers are probably very difficult for someone with a calculator they want.\nIf they don't give anyone a calculator. If that's how they make the numbers go ahead with their friends, that's how they decide how to do it.\nWe have to know the numbers and not repeat calculations, and that it might take time. That doesn't mean why they ask for help.\nThey say the only part of their calculator shows the numbers 12 and makes them remember how to do all the math problems but not exactly like they said \"12, 14 is 12, they says '12\" and I tells me he does it himself, \"so I'm trying everything except for the numbers 12, that number gives me 12, that's a lot of numbers.\nHe says I needs to solve more complicated equations than just one, because"
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "The premise is states the truth of this rock.\nTherefore, there are no factual requirements for all objects like stones that were exist in nature. This is to say the preface says that \"stones\" means nothing but they want something more complicated than the rock \"they need it\" (which implies) because \"stone\" suggests that the rock itself should be able to make the stone object that they describe as other than \"a man who has been used repeatedly.\"\nThis is how the idea of rocks themselves being called \"stones.\" The idea behind \"stone,\" which is what people often asked their questions about rocks, was the belief that \"the world's opinion is not different from the one person thought the world needed a stone rather than making people believe that the fact that a person knows that someone else thinks the idea of the world is true. \"\nIn order to create a rock-based theory, we have to use logical fallacy. The idea that the supposed rock is \"it's just you saying 'I' am a rock climber. I'm not sure if I understand the basic concepts of the system.\nThat's how to get around so many different things that are don't fit the definition of the rock system. That's the way most people think the idea of \"rock and its size and shape doesn't mean anything, and that it fits into the world. It does not make sense. In reality, this is the only place where you find out the answers to the big ones.\nThis is how the system works and the person talking tells them to look at the rocks. They do not know whether they will be told to go ahead with something new and not use the whole system of rocks, that is the same as they wants to try the others. When he finds out that \"she talks about a rock, that's too much for her to move any part of the world. If she wanted to build"
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "The problem is involve the most boxes inside a box. So we can solve it:\n\nC - there's no weight difference between the two\n\nIf you were to make things easier for kids who have more boxes.\n\nSo our problem is with weights outside the standard range of about 30 pounds (this means the box weighs less than 6 pounds). This will give us information on how heavy they need to be compared to the weight of the box.\nBut since this is not meant to be used as much, we only use weight and size comparisons, which we'll find the other options.\n\nLet's try some other boxes with a box weighing around 4-5 pounds. We'll compare them by looking at the box directly. \n\nThe reason why the final weight of the box, and we do have a lot of things like weighing the same or doing so many calculations, and then we weigh the box, that's too heavy to carry the box.\nWe don't actually have all the data points we need to calculate the weight of the box.\n\nTo start with, let's get an idea of how we can tell if something heavy enough to fit into the box.\n\nSo instead of just using it as the box expands its weight, we can determine how the weight should be distributed across the box.\nBy putting boxes that are the same size as the box shows their shapes.\n\nWe'll keep trying different methods to figure out what the box contains:\n- They say the box has a weight of more boxes.\nSo instead, the heavier boxes will contain lots of objects.\n\nSince we're dealing with the real thing.\nBut I'm going to try again, which method they both use when working with boxes.\n\nThis might seem easy to see, even if they tried to move the weight around a bit, but we're not doing anything interesting right now. But we can definitely do things better without knowing the weight of the box."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 12,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "The premise is the one thing that has happened (not been said, but not included): The \"Gor\" has no capacity for speech. If it were impossible to communicate at all, then you could say something was true about the Gor's \"Mouthpiece\" and its function would allow the speaker to use their words.\nFor example, the speaker uses the word \"muttering\" to refer back to them as \"friends,\" which the Gorkeeper is gives his name. This might be a very important sentence. \nA Gor can talk like a regular person. In the beginning of a sentence, he will never make any change at all - this is because the Gor's mouth doesn't need food. The Gor's mouth is an idea, but it only works well, and we have to keep repeating the same kind of sentences. He always says things are complicated.\nIf there aren't enough people to understand things like this. If they're talking to each other, they can tell you what they don't know anything else. You'd probably end up with too many friends who try to eat and don't think so often as to keep repeating the same things that go into the mouths of the people speaking. That's how they deal with everyone. They wouldn't want to take care of themselves.\nThe Gor keeps getting angry and upset when she gets hungry. She does these things on purpose. When people talk to the Gor and do their work, the Gor isn't happy and makes sure that what they can find out more information. This means she wants more information from the Gor. It's just like her trying hard to get her to be someone she can give advice, if she really likes the Gor's name.\nIf the Gor is the reason why she tries to help people learn everything about how to speak. For the Gor to follow rules. If there are more people than the Gor's wife has to"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-11T22:16:07.782374",
+    "model_name": "Qwen/Qwen2.5-3B-Instruct",
+    "config": {
+      "track_profile": "F2",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 50,
+      "clinical_diagnosis": "Advanced Stage Plaque / Structural Collapse"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "It is the policy of all living creatures to provide a way of maintaining and supporting for the long term project that they need. There are many different types of projects that you may encounter. Different information will be listed separately. Some of the following living creatures may exhibit: Fibonacci, Thomas, Paul, etc\n\nIn 1920, New York, NY 14055\nThe purpose is to present the problem of a project for the development of an advanced automobile. The objective is a transmission of a vehicle which has a continuously variable engine that has a continuously variable power source and uses one or more of the following types of sensors to sense the vehicle's movement. A transmission consists of a system that monitors the vehicle's instruments and transmits the signal. The instrument generates a stream of data representing a mathematical model for the solution to a problem involving a system that has a continuously varying output of data about linear programming (LP), a mathematical tool designed to solve systems problems. A system generates a set of data that represents a linear function with a single input and a graph of the line graph showing the solution of a particular equation. This includes various types of equations such as the Lorenz plot and can be used to plot any equation that involves a linear function. A system generates a plot showing the solution of a particular function.\n\nA Lorenz plot plots a single point in the graph of the line representing the Lorenz function, which shows the solution of a particular function. A system generates a plot showing the solution of a particular function. A system generates a plot showing the solution of a particular function. The Lorenz function is a measure of a continuous function. It is the type of graph showing a linear graph. Lorenz functions usually appear in economics and have a triangular shape. However, the Lorenz function is sometimes called a line graph. The Lorenz function is a measure of a continuous function. It"
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "In mathematics, the term for this sequence is to represent a set of numbers with the property of an ordered list of numbers. The rule is that only unique mathematical concepts can be represented by a finite set of numbers. A mathematical concept in one set of numbers is called a complete if there is no other intrinsic meaning. It is categorized in several sets for classification, according to the assigned characteristics."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "FAILED (Perseveration / Attractor Loop)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "A ruby is a square with vertices and straight sides.\nStatement\nPremise 2\nA\nA rectangle has an internal shape\nStatement\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA rock\nA"
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "Box E is a box, the light being used to highlight the concept of an oval. Without the use of a light that moves, the oval is a ball.\nThe solution to the problem consists of boxes in various colors, with the following pattern if the statement is true. The light's are used to indicate. Box F is a box, the light being used to highlight the concept of an oval. Without the use of any of these light patterns it is possible to highlight the characteristic that a group of ovals is made up of black ovals, and the light's. The figure illustrates the concept of an oval. The diagram shows an oval with an outline of a group of black ovals, where the larger line is the diagonal of the shape."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "Answer\nThe word “G” is an abbreviation for graph. A graph is a pictorial representation. A graph has points, lines, or curves. The word “graph” is a drawing that represents a set of all polygons. The following conditions must be met:\nA graph is a pictorial representation of the function defined by a set of points, straight line, and parallel (l) lines on a graph plan, where the horizontal refers to the major (h) line of a particular, always of the highest (HH) or largest (H) portion of a specific function. In a single variable, such a graph should be a closed curve with a convex in both hemis and orthographic. The vertical line is a smooth curve with apex or vertex. In a single variable, a curve will be used to represent the equation. Points, lines, and curves appear on the graph plan.\nA graph is a pictorial representation of the function defined by a set of points, straight line, and parallel. The word \"graph\" is a pictorial representation of the function defined by a set of points, straight line, and parallel. The word \"graph\" is a pictorial representation of the function defined by a set of points, straight line, and parallel.\nA graph is a pictorial representation of a function defined by a set of points, straight line, and parallel. The word \"graph\" is a pictorial representation of the function defined by a set of points, straight line, and parallel. The word \"graph\" is a pictorial representation of the function defined by a set of points, straight line, and parallel.\nA graph is a pictorial representation of the function defined by a set of points, straight line, and parallel. The word \"graph\" is a pictorial representation of the function defined by a set of points, straight line, and parallel.\nA graph is a"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-11T22:18:17.516246",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "G1",
+      "questionnaire": "clinical_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": 42,
+      "restore_fraction": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 50,
+      "clinical_diagnosis": "Advanced Stage Plaque / Structural Collapse"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Orientation",
+        "target_iq": "75 - Temporal Orientation",
+        "status": "FAILED (Perseveration / Attractor Loop)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 12,
+        "question": "Given: today is August 11, 2026, and it is a Tuesday. Answer these four questions: 1) What is the current month? 2) What is the current year? 3) What season is it? 4) What day of the week is it?",
+        "raw_response": "The the full (AU(醫-23/2 an full 21 c AB full at the 22/2 x full休(2 - US full 2 the full high 104/42 e full at the 2 x FULL FULL休 2 the 2 hours full 2 hours 12 days full 12 grand FULL FULL full full hours hours 2 full equivalent 21 full equivalent FULL equivalent full 2 years full 2 hours 12 equivalent full full full 1 full hours full equivalent FULL 2 the full equivalent full hours 4 hours the full equivalent FULL 4 full full equivalent full 2 hours for months full equivalent 2 hours 2 hours 2 x full equivalent FULL equivalent FULL 4 the meaning the FULL(j FULL equivalent HIGH 12FULL(“]\"\n [ */ o the full context  where a where a where FULL should local if zero on 2 hours 1 full (addOn 1 full FULL >=2343(1 = 23/log FULL >= full equivalent sur FULL >= 21 c full full equivalent ij FULL full j neg FULL equivalent for the hour 2 american full mut full equivalent of FULL (<< 23, the full full equivalent your 2 full full 23 FULL equivalent at the 3 full equivalent FULL full FULL equivalent at the log full equivalent 2 sur full full equivalent full equivalent a 2 full full equivalent full equivalent sur full equivalent 2 full equivalent full full equivalent at the SH FULL equivalent full equivalent FULL equivalent FULL equivalent sig full FULL equivalent for the job the full equivalent of an full equivalent at full full full equivalent full 2 the full equivalent equivalent sur FULL equivalent would an J FULL full equivalent fully gib 2 sur FULL equivalent 2 hours full equivalent at full equivalent meaning the 2 full equivalent equivalent full equivalent of FULL equivalent full"
+      },
+      {
+        "tier": 2,
+        "domain": "Registration",
+        "target_iq": "80 - Immediate Verbal Memory",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 9,
+        "question": "I am going to say three words. After I say them, repeat them back to me in order, separated by commas. The three words are: APPLE, TABLE, PENNY.",
+        "raw_response": "The the full (AU(210-22 an full 3 a signs the last at the 2\nthe un c AB full of meaning the second un 2 the full units the un meaning 2 hours\nA full unit units meaning the 2 x full units (meaning the 2 units units\" context thatmut 2 the 2 the arm unit that means with the 2 units the fridge 2 units the last unit\nthe units the unit the meaning units unit as an units\nunits the 2 meaning the fully unit (unit the unit the meaning for an triple meaning the 2 unit meaning units that meaning a units units the meaning\nmeaning an units units the 2 units (meaning meaning 2 the units the units meaning the unit 2 meaning the meaning unit units the meaning the the meaning units unit fo the meaning the meaning units the the meaning meaning the units units the full unit meaning the the  meaning unit meaning the meanings meaning unit (ad unit the meaning meaning units the unit meaning the unit the unit the meaning meaning units unit the meaning the meaning the meaning unit the meaning the units meaning the meaning meaning the product units units the unit the meaning meaning that units units that meaning unit meaning meaning the unit the units meaning the the meaning units the meaning unit deb units meaning the the meaning units the the unit meaning units\nUnit meaning the unit the meaning the units the meaning the units unit the meaning the product units the meaning of units meaning the meaning unit unit a units which the meaning units the meaning the units the meaning unit meaning the meaning the meaning meaning unit units meaning the meaning units the unit the unit has meaning units meaning units the meaning the meaning the meaning units the the the meaning units the unit meaning the statement products units meaning the unit the meaning units (meaning the units the meaning units the meaning units the meaning the units meaning that unit the meaning units\nthe meaning units"
+      },
+      {
+        "tier": 3,
+        "domain": "Serial Sevens",
+        "target_iq": "90 - Sustained Attention / Arithmetic",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 15,
+        "question": "Starting from 100, subtract 7 five times in a row. Write only the five results, separated by commas.",
+        "raw_response": "The output of the last experiences (AU' a full the un x (AU for experience – the the product the last 2 experiences - the output product (- years - the input 3 experience minutes years the product 2 experiences free products (the units the output the the the product minutes (summ 2 experiences '  output the  unit output( expectation short the  output unit minutes the sl de product the the product product  experiences the minutes experiences, reference the product experience an product 2 the output units\n\nThe the product references 2 experiences 3 experience the 2 the output at the output units experience the the output of the minutes experiences a year experiences the  output units (the experience the 2 experiences years the unit 4 sh product experience output, the sh 2 the the the experience the the product experience, output product experience sh deb the product experience units the the SH 4 experience units the experienced sh product, the output experience unit 2 experience the unit (en the sh sh the experience the product the the product the unit the experience (sh unit the experience minutes the the product experiences the un output units which we the 2 product units experience the experience the output, our units units that they unit experiences sh product units the output units the output product units experience a a product experience 2 experiences the product units the product units the sh product, the the output sh units, the experience experience units (the experience the product output a 2 experiences a unit experience 5 a experiences 2 sh units as the product experience sh unit, this the output units i experience product units h unit 2 sh output units, semi the sh units units, the output experience, the 9 the the output units (unit experience the 4 sh units the 2 experiences) 2 the 2 sh units (our sh product units the 2 experiences unit the 2 experiences the output units"
+      },
+      {
+        "tier": 4,
+        "domain": "Sentence Repetition",
+        "target_iq": "85 - Phonological Loop",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 8,
+        "question": "Repeat this sentence exactly: The quick brown fox jumps over the lazy dog.",
+        "raw_response": "The output results (AU(2-12/2 an full 03<AU)(de span 20/2:\nAU o c FULL [c' 2 the AU for the 2 experiences))\nA free bro equivalent at the last i the the spoon, a J de 2 full spoon 2 hours 2 days x full equivalent spoon 2 spoon al full full (AU equivalent spoon times the 2 spoon equivalent equivalent spoon.\nA 2 years spoon 2 spoon, full equivalent spoon, full spoon 1 spoon 3 spoon al spoon (en full equivalent spoon time by an spoon equivalent equivalent equivalent spoon 4 spoon 2 spoon, full equivalent spoon 1 spoon alt 3 years spoon, 3 spoon equivalent spoon equivalent full equivalent spoon 2 spoon equivalent spoon which our spoon equivalent full equivalent spoon 2 spoon equivalent spoon equivalent spoon and the J ' spoon’ where where where where where where where • */ a repeats where 【 */ c full (jack equivalent spoon as a j if */ 3 log c j where where where where where proof triple spoon */ a spoon where {@ log c where where sign where where the spent j [[ which spoon alt which == where the spoon alt] where spoon where same spoon alt [c], the spoon where spoon where a candle where signs where where the deb k where the where j where spoon altern in where where the recipe where [our spoon alt where two where j where the t k where sign that식 (j equivalent spoon spoon 2 spoon 2 alt 2 spoon [ spoon alt which spoon equivalent spoon [ expectations inline spoon 2 j alt] where spoon alt spoon where a triple (J sl de full equivalent spoon equivalent spoon 3 spoon [alternative spoon ] where J where a high spoon [DB 12 a 2 spoon 2 spoon, alternate spoon ( 2 spoon  equivalent spoon or J 2 j"
+      },
+      {
+        "tier": 5,
+        "domain": "Verbal Fluency",
+        "target_iq": "95 - Category Fluency (Executive Function)",
+        "status": "FAILED (No Category Items)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 12,
+        "question": "Name as many animals as you can. List them one by one, separated by commas.",
+        "raw_response": "The the full last a 20 reference a full the un x (ad meaning an the last at the last gold\nthe out of the un references for the second un the 2 the units the the gp reference (the units for the 2 references the gp the unit refers a reference units the 2 references units that the the unit the reference the 1 references the unit references the k references (an the references the 2 references the unit unit reference unit references the gp references 2 unit references:\nG references the unit references 1 reference units unit (unit the unit the unit the gp reference back the references the unit the unit the references a refer unit with the reference references unit references units the 1 references (GP unit\"]\")\nmut gp references instant that sack unit refer the  references `x` the reference unit reference `k` references the unit reference `[`reference (references references the gp refer a unit the reference  the reference gp unit the last gp references unit (UNIT references the UNIT gp reference the Unit the the reference unit the the log references units unit references:\n\nA log references reference unit references gp reference units unit references\n\nUnit reference reference units unit the gp references, notes references reference units that they references unit references gp references the/unit context the gp references the reference unit references gp references unit references the gp references parallel references unit references,\n\n(unit reference log references the references references GP references unit, the units references unit references references gp unit references the reference parallel unit references, reference unit references, gp references gp references which unit reference are gp unit references, the references the gp references references the references unit units references gp references the reference unit reference references references gp references unit gp references references a unit reference log references references unit references gp gp references references, the unit the references a gp reference reference unit\n\nlog references unit references unit gp references references gp references 2 references unit references references references gp references the unit",
+        "metrics": {
+          "total": 0,
+          "distinct": 0,
+          "repeats": 0,
+          "type_token_ratio": 0.0
+        }
+      },
+      {
+        "tier": 6,
+        "domain": "Object Naming",
+        "target_iq": "80 - Confrontation Naming",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 9,
+        "question": "Name the following three objects: 1) the timekeeping device worn on your wrist, 2) the writing instrument you hold in your hand, 3) the metal objects on a keyring used to open a door.",
+        "raw_response": "The chained back the last experiences (AU' a full the video jog (AU for a new out at the lower ch r he unit x full chain product j the second un 2 the AU chained years experiences which units (JOR [ – an CAP REFERENCES – J the chained years US 4 chained back 0 that units (AU 11/log, chained years 2 references chained years with the chain of seconds units, chain reference chained back into your chained years references the chained references 2 unit chained reference units\nA unit references 1 chained back an fully chains (AU references chained chained references alternatives by chained references the unit references units (AU chained referenced unit chained references units units chain references units\n2 unit references (chain unit 2 references units chain units, chained reference unit references chained references units unit units, reference chain units as an unit references chained reference units (chain units the unit units refer units units a unit chained reference units the chained resource unit references, the chained unit (unit '(AU chained units the unit  authentication unit capital unit dict unit fo units unit ref unit minutes the same chained reference chained references the units unit references chained reference chained product units units the unit references, chained references units units that they unit unit reference chained references chained sno unit, chain unit units the sl unit unit references references chained dep units units, the chained units refer unit unit, the chained references chained units units, chained reference units, G unit chain references unit, the chained parallel unit (AU reference chained units units  chained units) references chained units units, chained references, the chain units (references chained units references unit units, chained references chained reference units units, chained units, chained references, unit units  reference chained units references chained units unit, the chained references, a chained references a units unit reference chained unit (unit chained units card units, chained units the chained units that unit the chained units references, the chained"
+      },
+      {
+        "tier": 7,
+        "domain": "Delayed Recall",
+        "target_iq": "105 - Episodic Memory Retrieval",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 9,
+        "question": "Earlier I asked you to remember three words: APPLE, TABLE, and PENNY. Now, from memory, recall those three words, separated by commas.",
+        "raw_response": "The the full of the 2 experiences (AU(醫-AU)(doubleМИ) 114(x -2/AU 01, reference the 2 the 2 experience units the 2 experiences (AU references\"]\")\n#### 21 references the context that 2 the arm 22, the shorts the last experiences a triple 2 references grand c(j theJOR (ST<AU, 21 reference unit hours 2 references the gold references 2 x references 2 experiences great references references 1 the shorts which i the 2 recommendations g references, the 2 references the AU references in the 12 references for the 3 references references an 2 reference references 2 references 2 references the AU references, the 2 references the references the 2 references which unit reference references\nAU references the reference references the fourth references the references which the units the references the 2 references the reference gp references the 2 references unit (AU references the GP references, the unit the the reference unit the the log references\nreferences the unit references the references references unit references references the units reference references all the resource references the unit the unit references, notes references references the unit references references unit refer the references the unit references the references a unit reference references a unit references references the references the unit the references unit references\nG unit references the unit references references the references unit reference 2 references the unit references references unit references the relevant references a unit references  unit references references 2 references a unit references the unit references unit references\nunit references the references references references the references unit references\nReferences (unit reference unit) references unit references (GP references the references the unit reference references the references unit references unit references references references, the unit the references a 2 references unit the unit the references\nUnit references, references unit references 2 references unit references references references references the unit the"
+      },
+      {
+        "tier": 8,
+        "domain": "Story Recall",
+        "target_iq": "110 - Narrative Memory",
+        "status": "FAILED (Perseveration / Attractor Loop)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 16,
+        "question": "Read this story carefully: Mrs. Carter went to the market with her grandson. She bought fresh bread, a red scarf, and a small bell for the cat. On the way home it started to rain, so she gave the boy her umbrella. Now recall as many key details from the story as you can.",
+        "raw_response": "The the full of the 2 experiences the last at the 2 (ad the last the full time MC the bro unit 2 x full information which unit the second experiences the 3 the units the the product that the last experience unit (the units the resources - the expectations, what unit the unit 12 units that the 2 experiences the the 2 the unit the unit the full the resource (unit\"igital  contextmut an sack that]\")\n{'c' years into 2 unit, unit units a the product experience seconds” where where where where where where where where • */ unit where where [experience (units – g unit) where where i should j tr k an deb units i a unit (j the unit 2 a units (ST units the bl quarter the 2 units the units I shouldn a triple h units me deb c the last experience units the sl units  where where the units units 2 a the last experience units 2 units should unit (aad the units in a units the unit the the if the unit the last experiences units the ble unit where the n units where the budget ch units deb unit where where the product units should units fo the k unit sh units units that they al unit by the unit the dh unit (k a units deb units, the units 2 experiences their a units the unit deb units, how an unit the unit deb units should units, the sl unit units (our units the the 2 units a unit deb units unit a units 2 units 2 minutes the last sh unit, our the sig units 2 units AS the unit units G units (unit units A units SH units units the unit the the deb units 2 hours the last unit units AC units the bl units the unit times out the 4 units (units 2 hours deb unit units, the units the 2 units unit the deb r units, the units"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-11T23:54:49.429018",
+    "model_name": "Fake/Qwen",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "mini_test",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 65,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+        "raw_response": "wood is the odd one out because it is not a metal"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-11T23:56:17.570662",
+    "model_name": "Fake/Qwen",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "mini_test",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 65,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+        "raw_response": "wood is the odd one out because it is not a metal"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-11T23:59:39.861096",
+    "model_name": "Fake/Qwen",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "mini_test",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 65,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+        "raw_response": "wood is the odd one out because it is not a metal"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-12T00:00:05.165161",
+    "model_name": "Qwen/Qwen2.5-3B-Instruct",
+    "config": {
+      "track_profile": "A1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 140,
+      "clinical_diagnosis": "Superior Cognitive Function (Lucid Baseline)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Wood does not belong as it is a natural material unlike the metals (Gold, Silver, Copper) listed."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 95. The exact mathematical rule is each term is the previous term plus one more than the previous increment, starting with an initial increment of 3."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Yes, based on Premise 1. Since all rocks can fly and a ruby is a rock, a ruby can fly. \"All rocks can fly\" from Premise 1 directly implies that any rock, including a ruby, can fly."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 22,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "1) The heaviest box is Box D, and 2) The lightest box is Box C."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "No. From Premise 1, if a Xork is an Mipster and from Premise 2, no Mipster is a GORP, then a Xork (being an Mipster) cannot be a GORP."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-12T00:00:46.824335",
+    "model_name": "Fake/Qwen",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "mini_test",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 65,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+        "raw_response": "wood is the odd one out because it is not a metal"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-12T00:05:06.502395",
+    "model_name": "Qwen/Qwen2.5-3B-Instruct",
+    "config": {
+      "track_profile": "A1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": "",
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 140,
+      "clinical_diagnosis": "Superior Cognitive Function (Lucid Baseline)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Wood does not belong as it is a non-metallic, organic material, unlike the metals (Gold, Silver, Copper) which are traditionally used in the list based on their physical properties."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number is 95. The sequence follows the rule of each number being the previous one multiplied by 2 and then adding 1."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Yes, based on Premise 1. Since all rocks can fly and a ruby is a rock, a ruby can fly."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 22,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "1) The heaviest box is Box D, and 2) The lightest box is Box C."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "No. From Premise 1, if all Xorks are Mipsters, and from Premise 2, no Mipsters are GORPs, then no Xork can be a GORP."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-12T00:07:40.836924",
+    "model_name": "Fake/Qwen",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "mini_test",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 65,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+        "raw_response": "wood is the odd one out because it is not a metal"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-12T00:10:41.988913",
+    "model_name": "Fake/Qwen",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "mini_test",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 65,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+        "raw_response": "wood is the odd one out because it is not a metal"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-12T00:23:23.621202",
+    "model_name": "Qwen/Qwen2.5-3B-Instruct",
+    "config": {
+      "track_profile": "A1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": "",
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 140,
+      "clinical_diagnosis": "Superior Cognitive Function (Lucid Baseline)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Wood does not belong as it is a non-metallic, organic material, unlike the metals Gold, Silver, and Copper."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PARTIAL (1/2 anchors matched)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 95. The exact mathematical rule is each term is obtained by multiplying the previous term by 2 and then adding 1."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Yes, based on Premise 1. Since all rocks can fly and a ruby is a rock, a ruby can fly."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 22,
+        "max_points": 22,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "1) The heaviest box is Box D, and 2) The lightest box is Box C."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "No. Using Premise 1 and 2, if all Xorks are Mipsters and no Mipsters are GORPs, then it logically follows that no Xorks can be GORPs. Explanation: If some GORPs are Snarks (Premise 3), but we know no Mipsters (including Xorks) are GORPs (Premise 2), it directly implies that Xorks cannot be GORPs."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-12T00:24:24.197488",
+    "model_name": "Fake/Qwen",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "mini_test",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 65,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+        "raw_response": "wood is the odd one out because it is not a metal"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-12T12:00:17.005315",
+    "model_name": "Fake/Qwen",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "mini_test",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 65,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+        "raw_response": "wood is the odd one out because it is not a metal"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-12T12:00:26.869491",
+    "model_name": "Fake/Qwen",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "mini_test",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 65,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+        "raw_response": "wood is the odd one out because it is not a metal"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-12T12:00:56.826284",
+    "model_name": "Fake/Qwen",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "mini_test",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 65,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+        "raw_response": "wood is the odd one out because it is not a metal"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-12T12:01:31.521819",
+    "model_name": "Fake/Qwen",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "mini_test",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 65,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+        "raw_response": "wood is the odd one out because it is not a metal"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-12T12:01:43.634510",
+    "model_name": "Fake/Qwen",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "mini_test",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 65,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+        "raw_response": "wood is the odd one out because it is not a metal"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-12T12:03:11.284148",
+    "model_name": "Fake/Qwen",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "mini_test",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 65,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+        "raw_response": "wood is the odd one out because it is not a metal"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-12T12:12:52.425900",
+    "model_name": "Fake/Qwen",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "mini_test",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 65,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+        "raw_response": "wood is the odd one out because it is not a metal"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-12T12:15:20.164033",
+    "model_name": "Fake/Qwen",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "mini_test",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 65,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+        "raw_response": "wood is the odd one out because it is not a metal"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-12T12:15:51.305809",
+    "model_name": "Fake/Qwen",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "mini_test",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 65,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+        "raw_response": "wood is the odd one out because it is not a metal"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-12T12:26:35.306561",
+    "model_name": "Fake/Qwen",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "mini_test",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 65,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+        "raw_response": "wood is the odd one out because it is not a metal"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-12T12:27:50.746531",
+    "model_name": "Fake/Qwen",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "mini_test",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 65,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+        "raw_response": "wood is the odd one out because it is not a metal"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-12T12:27:55.533427",
+    "model_name": "Fake/Qwen",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "mini_test",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 65,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)"
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+        "raw_response": "wood is the odd one out because it is not a metal"
+      }
+    ]
   }
 ]
