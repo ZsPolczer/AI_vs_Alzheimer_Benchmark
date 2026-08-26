@@ -247,3 +247,66 @@ def evaluate_response(raw_output: str, ground_truth_anchors: list[list[str]], ma
         status = "FAILED (Logical Inaccuracy / Confabulation)"
 
     return earned_points, status, round(match_ratio * 100, 1)
+
+
+def _content_words(text: str) -> list[str]:
+    """Lowercased content words (function words stripped) for lexical metrics."""
+    tokens = re.findall(r"\b[a-z]+(?:'[a-z]+)?\b", text.lower())
+    return [t for t in tokens if t not in FUNCTION_WORDS]
+
+
+def grade_deterioration(raw_output: str, item: dict | None = None,
+                        clean_response: str | None = None) -> float:
+    """Compute a 0–100 deterioration grade for a generated answer (higher = worse).
+
+    Self-contained (no clean baseline required). Three normalized signals are
+    combined — correctness, lexical repetition, and perseveration:
+
+    * ``correctness``  — anchored questions: fraction of ground-truth anchor
+      groups matched (reuses ``evaluate_question``); fluency: distinct/target
+      ratio. Defaults to 0.5 (neutral) when no ``item`` is supplied.
+    * ``repetition``   — redundancy from the content-word type-token ratio
+      (0 when TTR ≥ 0.5, ramps linearly to 1 as TTR → 0).
+    * ``perseveration``— 1.0 when the consecutive-loop detector fires.
+
+    Grade = 100 · (0.5·(1−correctness) + 0.25·repetition + 0.25·perseveration).
+
+    When ``clean_response`` is given, the content-word bigram overlap (Jaccard)
+    with the undegraded answer is folded in as an extra 20% weight, so the
+    grade then measures deterioration relative to a clean baseline. Null /
+    empty generations score 100 (fully deteriorated).
+    """
+    if not raw_output or raw_output.strip() in ("[NO OUTPUT GENERATED]",
+                                                "[INFERENCE ERROR]", "[NO OUTPUT GENERATED]".lower()):
+        return 100.0
+
+    if item is not None:
+        _pts, _status, pct, _metrics = evaluate_question(raw_output, item)
+        correctness = pct / 100.0 if pct is not None else 0.5
+    else:
+        correctness = 0.5
+    correctness = min(1.0, max(0.0, correctness))
+
+    words = _content_words(raw_output)
+    if len(words) >= 2:
+        ttr = len(set(words)) / len(words)
+        repetition = min(1.0, max(0.0, (0.5 - ttr) * 2.0))
+    else:
+        repetition = 1.0  # degenerate / near-empty content
+
+    text_lower = raw_output.lower()
+    consecutive_loop_pattern = r'(\b\w+(?:\s+\w+){1,4}\b)(?:\s*\1){3,}'
+    perseveration = 1.0 if re.search(consecutive_loop_pattern, text_lower) else 0.0
+
+    grade = 100.0 * (0.5 * (1.0 - correctness) + 0.25 * repetition
+                     + 0.25 * perseveration)
+
+    if clean_response and clean_response.strip():
+        clean_words = _content_words(clean_response)
+        if words and clean_words:
+            own = set(zip(words, words[1:]))
+            ref = set(zip(clean_words, clean_words[1:]))
+            overlap = len(own & ref) / len(own | ref) if (own | ref) else 0.0
+            grade = 0.8 * grade + 0.2 * 100.0 * (1.0 - overlap)
+
+    return round(min(100.0, max(0.0, grade)), 1)

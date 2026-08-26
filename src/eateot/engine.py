@@ -69,9 +69,12 @@ def compute_degradation_params(profile: dict, decay_mult: float = 1.0,
     resolved spec from ``eateot.drugs.resolve_drug`` (or None). Returns a
     dict consumed by ``apply_degradation``:
 
-    * ``scale``         — track scale (÷decay_mult) × drug scale (1.0 = no-op)
+    *    ``scale``         — track scale (÷decay_mult) × drug scale (1.0 = no-op)
     * ``noise_std``     — track noise (×decay_mult) + drug noise (signed,
                           clamped ≥ 0), then × sirens_mult when sirens on
+    * ``epsilon``      — std-scaled Gaussian perturbation strength: adds
+                          ε·σ_W·Z noise (σ_W = weight-tensor std, Z ~ N(0,1))
+                          — the sensitivity-study method (profile + drug fold)
     * ``sirens_mult``   — drug override of the default 2.5 sirens multiplier
     * ``flicker_rate``  — drug-induced dropout rate, else 0.25 when enabled
     * ``noise_gradient``— extra noise std added per layer of depth
@@ -83,6 +86,10 @@ def compute_degradation_params(profile: dict, decay_mult: float = 1.0,
 
     scale = max(MIN_SCALE, (profile["scale"] / decay_mult) * prims.get("scale", 1.0))
     noise_std = max(0.0, profile["noise"] * decay_mult + prims.get("noise", 0.0))
+    # Std-scaled Gaussian perturbation strength (Ẇ = W + ε·σ_W·Z). Sources fold
+    # additively; epsilon only acts on the weight-noise path, so scale stays 1.0
+    # and noise_std 0.0 for a pure sensitivity sweep.
+    epsilon = max(0.0, profile.get("epsilon", 0.0) + prims.get("epsilon", 0.0))
 
     sirens_mult = prims.get("sirens_mult", DEFAULT_SIRENS_MULT)
     if enable_sirens:
@@ -103,6 +110,7 @@ def compute_degradation_params(profile: dict, decay_mult: float = 1.0,
     return {
         "scale": scale,
         "noise_std": noise_std,
+        "epsilon": epsilon,
         "sirens_mult": sirens_mult,
         "flicker_rate": flicker_rate,
         "noise_gradient": prims.get("noise_gradient", 0.0),
@@ -189,7 +197,7 @@ class BrainLabEngine:
 
     def apply_degradation(self, profile_key, decay_mult=1.0, target_subnetwork="all",
                           enable_flicker=False, enable_sirens=False, noise_seed=None,
-                          drug=None):
+                          drug=None, epsilon=0.0):
         """Applies mathematical corruption to weights with full experimental overrides.
 
         ``drug`` (optional) is a resolved spec from ``eateot.drugs.resolve_drug``;
@@ -197,6 +205,11 @@ class BrainLabEngine:
         degradation. Drug ``subnetwork`` / ``layer_pct`` override the track's
         when given; drug ``scale`` multiplies the track scale (1.0 = no-op);
         drug ``noise`` adds to the track noise (negative = suppression).
+
+        ``epsilon`` (optional, default 0.0) is an explicit std-scaled Gaussian
+        perturbation strength — Ẇ = W + ε·σ_W·Z — added on top of the profile/
+        drug value (sensitivity-study method). σ_W is each weight tensor's own
+        standard deviation, so ε is dimensionless and comparable across layers.
 
         Pass ``noise_seed`` to make the corruption (and flicker dropout)
         deterministic — repeated calls with the same seed produce the same
@@ -213,6 +226,7 @@ class BrainLabEngine:
 
         scale = params["scale"]
         noise_std = params["noise_std"]
+        epsilon = params["epsilon"] + epsilon
         noise_gradient = params["noise_gradient"]
         flicker_rate = params["flicker_rate"]
         layer_pct = params["layer_pct"]
@@ -235,8 +249,9 @@ class BrainLabEngine:
         print(f"├─ Target Layers: {start_idx} to {end_idx} (out of {self.total_layers})")
         noise_suffix = f" (+{noise_gradient:.6f}/layer)" if noise_gradient > 0 else ""
         sirens_suffix = f" | Sirens ×{params['sirens_mult']:.2f}" if enable_sirens else ""
+        epsilon_suffix = f" | ε·σ_W: {epsilon:.4f}" if epsilon > 0 else ""
         print(f"├─ Effective Tensor Scale: {scale:.4f} | Noise StdDev: {noise_std:.6f}"
-              f"{noise_suffix}{sirens_suffix}")
+              f"{noise_suffix}{sirens_suffix}{epsilon_suffix}")
         print(f"├─ Sub-Network Targeting: [{target_subnetwork.upper()}]")
         print(f"└─ Synaptic Health Index: {self._render_health_bar(scale, noise_std)}")
 
@@ -259,6 +274,9 @@ class BrainLabEngine:
                     continue
 
                 self.backups[(i, name)] = param.data.clone()
+                # σ_W of the *clean* tensor (captured before scaling) so ε is
+                # relative to the pristine weights, per Ẇ = W + ε·σ_W·Z.
+                w_std = param.data.std() if epsilon > 0 else None
                 param.data.mul_(scale)
 
                 if noise_std > 0 or noise_gradient > 0:
@@ -266,6 +284,10 @@ class BrainLabEngine:
                     if layer_noise > 0:
                         noise = torch.randn_like(param.data) * layer_noise
                         param.data.add_(noise)
+
+                if w_std is not None and w_std > 0:
+                    # Std-scaled Gaussian perturbation (sensitivity method).
+                    param.data.add_(torch.randn_like(param.data) * epsilon * w_std)
 
         return prof["prompt"]
 

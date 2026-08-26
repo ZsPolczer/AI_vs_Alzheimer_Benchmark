@@ -12,7 +12,13 @@ Public API (also importable as ``from eateot import ...``):
 - ``DRUG_LOG_FILE``   — drug-domain telemetry path (see ``eateot.paths``)
 """
 
-from .battery import IQ_TEST_BATTERY, evaluate_fluency, evaluate_question, evaluate_response
+from .battery import (
+    IQ_TEST_BATTERY,
+    evaluate_fluency,
+    evaluate_question,
+    evaluate_response,
+    grade_deterioration,
+)
 from .config import (
     BASE_IQ,
     DEFAULT_DECAY,
@@ -65,6 +71,7 @@ __all__ = [
     "evaluate_fluency",
     "evaluate_question",
     "evaluate_response",
+    "grade_deterioration",
     "list_batteries",
     "list_drugs",
     "list_questionnaires",

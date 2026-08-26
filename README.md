@@ -79,6 +79,7 @@ make trajectory     # full A1→Q1 decline trajectory + decay chart
 make reserve        # cognitive reserve study (IQ vs severity across models)
 make trip DRUG=lsd  # drug dose-response study (IQ vs dose on a track)
 make drugreport     # group all telemetry IQ results per drug/stack + dose
+make sensitivity    # std-scaled Gaussian perturbation study (IQ + grade vs ε)
 make quizzes        # list available questionnaires
 make test           # run the unit test suite
 make help           # show all targets
@@ -100,9 +101,12 @@ Installed console scripts (from anywhere, after step 4–5):
 | `eateot-reserve` | Cognitive reserve study: IQ vs lesion severity (decay multiplier sweep) across all three model sizes — does bigger mean more resilient? |
 | `eateot-trip --drug lsd` | Drug dose-response study: sweep a drug's dose on a fixed track and plot the IQ-vs-dose curve (doses default to 0→1.25× the drug's `dose_cap`). |
 | `eateot-drugreport` | Group every drug telemetry IQ result by (drug/stack label, dose) into `drug_report.md/.json/.png` — reads the drug-domain log (`drug_test_results.json`) with sober-baseline rows from the Alzheimer log. Filters: `--drug lsd`, `--model 0.5B`, `--track C1`, `--questionnaire`, `--min-runs N`. |
+| `eateot-sensitivity` | Perturb weights with std-scaled Gaussian noise (Ẇ = W + ε·σ_W·Z), sweep ε on a log grid, and record IQ **plus the numeric deterioration grade** (0–100) at each level with mean ± std across seeds — tests the monotonic-degradation hypothesis. |
 | `eateot-lab --drug lsd --dose 2.0` | Apply a psychoactive perturbation profile on top of any track in the interactive session (25 drugs in `config/drugs.yaml`, see **Drug catalog**). |
 | `eateot-lab --stack "lsd@1.0,thc@0.5"` | Deploy a drug **combo** — resolve the stack and run every battery under it (mutually exclusive with `--drug`). |
 | `eateot-lab --seed 42` | Any lab battery run becomes reproducible (lesion + sampling). |
+| `eateot-lab --epsilon 0.01` | Apply std-scaled Gaussian perturbation (Ẇ = W + ε·σ_W·Z) on top of any track — see **Sensitivity study** below. |
+| `eateot-sensitivity` | Std-scaled Gaussian perturbation study: IQ + **deterioration grade** vs ε (monotonicity test), report + chart. |
 | `streamlit run apps/dashboard.py` | Visual dashboard (radar + bar charts) of degradation results. |
 
 Press **`[P]` 💊 DEPLOY DRUG EXPERIMENT** inside the interactive lab to build a
@@ -208,8 +212,54 @@ All generated artifacts land in `outputs/` (gitignored):
 - `reserve_report.md` / `.json` / `reserve_curve.png` — cognitive reserve study
 - `trip_report.md` / `.json` / `trip_curve.png` — drug dose-response (trip) study
 - `drug_report.md` / `.json` / `drug_report.png` — grouped telemetry report per drug/stack combo + dose
+- `sensitivity_report.md` / `.json` / `sensitivity_decay.png` — std-scaled Gaussian perturbation study (IQ + deterioration grade vs ε)
 
 Override the location with the `EATEOT_DATA_DIR` env var (e.g. `EATEOT_DATA_DIR=/tmp/eateot eateot-lab`).
+
+## Deterioration grade & sensitivity study
+
+Every battery run now reports a **deterioration grade** — a single 0–100 number
+capturing how degraded the generated answer is (0 = pristine, 100 = fully
+degraded). It combines three signals per question:
+
+- **correctness** — fraction of ground-truth anchors matched (50% weight)
+- **repetition** — content-word type-token ratio (25% weight)
+- **perseveration** — consecutive-loop detector (25% weight)
+
+An optional clean baseline can be supplied to `eateot.battery.grade_deterioration`
+(`clean_response=`), which folds in content-word bigram overlap as an extra
+20% weight so the grade measures deterioration *relative to* the undegraded
+answer. The grade is printed in the lab report card, stored per tier in
+telemetry (`deterioration_grade`), and averaged into the run summary.
+
+**Std-scaled Gaussian perturbation** (the sensitivity method):
+
+```
+Ẇ = W + ε · σ_W · Z
+```
+
+with `Z ~ N(0, 1)` i.i.d. and `σ_W` the standard deviation of the weight tensor
+`W` — so ε is dimensionless and comparable across layers. Apply it on top of
+any track with `eateot-lab --epsilon 0.01`, or run the dedicated study that
+sweeps ε on a log grid (`1e-4 → 1e-1`), repeats each level across seeds for
+error margins, and checks whether performance degrades monotonically:
+
+```bash
+eateot-sensitivity                       # default grid, 3B model, CLEAN track
+make sensitivity
+```
+
+**Recommended external benchmarks** for a full sensitivity profile (wire your
+own YAML questionnaires via `EATEOT_QUESTIONNAIRE_DIR`):
+
+| Kind | Benchmarks |
+|---|---|
+| Factual recall / knowledge-intensive | TriviaQA, MMLU-Knowledge, LAMA |
+| Structural / linguistic control | BLiMP (syntax), CoLA (grammaticality) |
+
+The hypothesis being tested — steeper degradation on knowledge tasks than on
+structural ones — is exactly what the monotonic check in
+`sensitivity_report.md` surfaces per questionnaire.
 
 ## Tests
 

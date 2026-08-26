@@ -46,11 +46,12 @@ class _FakeLab:
 
     def apply_degradation(self, profile_key, decay_mult=1.0, target_subnetwork="all",
                           enable_flicker=False, enable_sirens=False, noise_seed=None,
-                          drug=None):
+                          drug=None, epsilon=0.0):
         self.degradations.append({
             "track": profile_key, "decay_mult": decay_mult,
             "subnetwork": target_subnetwork, "flicker": enable_flicker,
             "sirens": enable_sirens, "seed": noise_seed, "drug": drug,
+            "epsilon": epsilon,
         })
         return "fake system prompt"
 

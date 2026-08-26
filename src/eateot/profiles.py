@@ -30,11 +30,13 @@ EATEOT_TRACK_PROFILES = {
     # =========================================================================
     # STAGE 2: FUNCTIONAL FRICTION & CONFABULATION (Target IQ: ~82–105)
     # =========================================================================
-    "C1": {"title": "C1 - A losing battle is raging", "symptom": "Meta-Cognitive Panic", "noise": 0.00028, "scale": 0.90, "layer_pct": (0.30, 0.70),
+    # Calibrated on Qwen2.5-3B (iq_battery, seed 42): C1≈113, C2≈105, C5≈95
+    # — mild functional friction with visible confabulation, no collapse.
+    "C1": {"title": "C1 - A losing battle is raging", "symptom": "Meta-Cognitive Panic", "noise": 0.00030, "scale": 0.86, "layer_pct": (0.25, 0.75),
            "prompt": "You are acutely lucid and terrified that your thinking is slowing down. Express your panic and intense effort to cling onto facts before giving your answer in clear sentences."},
-    "C2": {"title": "C2 - Misplaced in time", "symptom": "Confabulation", "noise": 0.00035, "scale": 0.86, "layer_pct": (0.30, 0.70),
+    "C2": {"title": "C2 - Misplaced in time", "symptom": "Confabulation", "noise": 0.00035, "scale": 0.86, "layer_pct": (0.22, 0.78),
            "prompt": "You experience severe Confabulation. Speak in clear, fluent English, but confidently assert false facts, wrong dates, or made-up personal memories with calm conviction."},
-    "C5": {"title": "C5 - Surrendering to despair", "symptom": "Fact Loss & Frustration", "noise": 0.00042, "scale": 0.82, "layer_pct": (0.30, 0.70),
+    "C5": {"title": "C5 - Surrendering to despair", "symptom": "Fact Loss & Frustration", "noise": 0.00042, "scale": 0.86, "layer_pct": (0.18, 0.82),
            "prompt": "You know who you are and speak in natural sentences. However, specific terms, exact numbers, or names keep escaping you mid-thought. Express mild frustration when this happens, but try your best to answer."},
 
     # =========================================================================

@@ -40,6 +40,10 @@ TRIP_PNG = str(DATA_DIR / "trip_curve.png")
 DRUG_REPORT_MD = str(DATA_DIR / "drug_report.md")
 DRUG_REPORT_JSON = str(DATA_DIR / "drug_report.json")
 DRUG_REPORT_PNG = str(DATA_DIR / "drug_report.png")
+# Std-scaled Gaussian perturbation sensitivity study (Ẇ = W + ε·σ_W·Z).
+SENSITIVITY_MD = str(DATA_DIR / "sensitivity_report.md")
+SENSITIVITY_JSON = str(DATA_DIR / "sensitivity_report.json")
+SENSITIVITY_PNG = str(DATA_DIR / "sensitivity_decay.png")
 
 
 def ensure_data_dir() -> Path:

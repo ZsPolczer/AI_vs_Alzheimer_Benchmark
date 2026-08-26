@@ -31,6 +31,7 @@ eateot-trajectory = "apps.trajectory:main"
 eateot-reserve = "apps.reserve:main"
 eateot-trip = "apps.trip:main"
 eateot-drugreport = "apps.drugreport:main"
+eateot-sensitivity = "apps.sensitivity:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/eateot", "apps"]

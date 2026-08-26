@@ -29,7 +29,8 @@ def log_test_run(
     seed: int | None = None,
     restore_fraction: float | None = None,
     drug: str | None = None,
-    dose: float | None = None
+    dose: float | None = None,
+    deterioration_grade: float | None = None
 ):
     """Appends a structured benchmark run entry to the domain JSON telemetry.
 
@@ -59,7 +60,8 @@ def log_test_run(
         },
         "summary": {
             "final_iq_score": final_iq_score,
-            "clinical_diagnosis": clinical_diag
+            "clinical_diagnosis": clinical_diag,
+            "deterioration_grade": deterioration_grade
         },
         "domain_breakdown": detailed_results
     }

@@ -22,7 +22,7 @@ from eateot.engine import (
 )
 from eateot.profiles import EATEOT_TRACK_PROFILES
 
-C1 = EATEOT_TRACK_PROFILES["C1"]  # scale 0.90, noise 0.00028, layer_pct (0.30, 0.70)
+C1 = EATEOT_TRACK_PROFILES["C1"]  # scale 0.86, noise 0.00030, layer_pct (0.25, 0.75)
 
 
 class _Param:
@@ -80,31 +80,31 @@ def _weights(eng):
 class TestComputeDegradationParams(unittest.TestCase):
     def test_no_drug_is_legacy_behavior(self):
         params = compute_degradation_params(C1)
-        self.assertAlmostEqual(params["scale"], 0.90, places=6)
-        self.assertAlmostEqual(params["noise_std"], 0.00028, places=9)
+        self.assertAlmostEqual(params["scale"], 0.86, places=6)
+        self.assertAlmostEqual(params["noise_std"], 0.00030, places=9)
         self.assertEqual(params["flicker_rate"], 0.0)
         self.assertEqual(params["noise_gradient"], 0.0)
         self.assertEqual(params["sirens_mult"], 2.5)
-        self.assertEqual(params["layer_pct"], (0.30, 0.70))
+        self.assertEqual(params["layer_pct"], (0.25, 0.75))
         self.assertEqual(params["subnetwork"], "all")
 
     def test_drug_scale_is_multiplicative(self):
-        # salvia dose 1 -> scale 0.125; C1 0.90 * 0.125
+        # salvia dose 1 -> scale 0.125; C1 0.86 * 0.125
         params = compute_degradation_params(C1, drug=resolve_drug("salvia", 1.0))
-        self.assertAlmostEqual(params["scale"], 0.90 * 0.125, places=6)
+        self.assertAlmostEqual(params["scale"], 0.86 * 0.125, places=6)
 
     def test_drug_scale_of_one_is_noop(self):
         # lsd does not touch weights -> track scale preserved (no-op contract)
         params = compute_degradation_params(C1, drug=resolve_drug("lsd", 1.0))
-        self.assertAlmostEqual(params["scale"], 0.90, places=6)
+        self.assertAlmostEqual(params["scale"], 0.86, places=6)
 
     def test_drug_noise_is_additive(self):
         params = compute_degradation_params(C1, drug=resolve_drug("lsd", 1.0))
-        self.assertAlmostEqual(params["noise_std"], 0.00028 + 0.00008, places=9)
+        self.assertAlmostEqual(params["noise_std"], 0.00030 + 0.00008, places=9)
 
     def test_negative_drug_noise_suppresses(self):
         params = compute_degradation_params(C1, drug=resolve_drug("modafinil", 1.0))
-        self.assertAlmostEqual(params["noise_std"], 0.00028 - 0.00005, places=9)
+        self.assertAlmostEqual(params["noise_std"], 0.00030 - 0.00005, places=9)
 
     def test_noise_clamped_at_zero(self):
         prof = {"x": {"class": "placebo", "curve": "linear", "subnetwork": "all",
@@ -117,7 +117,7 @@ class TestComputeDegradationParams(unittest.TestCase):
                       "layer_pct": [0.0, 1.0], "dose_curve": {"sirens_mult": 4.0}}}
         drug = resolve_drug("x", 1.0, profiles={"x": prof["x"]})
         params = compute_degradation_params(C1, enable_sirens=True, drug=drug)
-        self.assertAlmostEqual(params["noise_std"], 0.00028 * 4.0, places=9)
+        self.assertAlmostEqual(params["noise_std"], 0.00030 * 4.0, places=9)
         self.assertEqual(params["sirens_mult"], 4.0)
 
     def test_sirens_off_ignores_multiplier(self):
@@ -125,7 +125,30 @@ class TestComputeDegradationParams(unittest.TestCase):
                       "layer_pct": [0.0, 1.0], "dose_curve": {"sirens_mult": 4.0}}}
         drug = resolve_drug("x", 1.0, profiles={"x": prof["x"]})
         params = compute_degradation_params(C1, drug=drug)
-        self.assertAlmostEqual(params["noise_std"], 0.00028, places=9)
+        self.assertAlmostEqual(params["noise_std"], 0.00030, places=9)
+
+    def test_epsilon_std_scaled_perturbation(self):
+        # Profiles opt into the sensitivity method via an `epsilon` key
+        # (Ẇ = W + ε·σ_W·Z); the default track carries none.
+        self.assertEqual(compute_degradation_params(C1)["epsilon"], 0.0)
+        prof = dict(C1)
+        prof["epsilon"] = 0.01
+        params = compute_degradation_params(prof)
+        self.assertAlmostEqual(params["epsilon"], 0.01, places=9)
+        # Drug epsilon folds additively on top of the profile's.
+        drug = {"primitives": {"epsilon": 0.005}}
+        params = compute_degradation_params(prof, drug=drug)
+        self.assertAlmostEqual(params["epsilon"], 0.015, places=9)
+        # Negative values are clamped at zero.
+        prof["epsilon"] = -0.1
+        self.assertEqual(compute_degradation_params(prof)["epsilon"], 0.0)
+
+    def test_apply_degradation_accepts_epsilon(self):
+        # Smoke test: explicit epsilon reaches apply_degradation without error
+        # (single-element fake params have std 0, so no noise is injected there).
+        eng = _fake_engine(num_layers=4)
+        eng.apply_degradation("C1", noise_seed=0, epsilon=0.01)
+        self.assertTrue(eng.backups)
 
     def test_drug_flicker_without_flag(self):
         # datura induces dropout on its own (enable_flicker stays False);
@@ -162,8 +185,8 @@ class TestComputeDegradationParams(unittest.TestCase):
     def test_decay_multiplier_still_applies(self):
         params = compute_degradation_params(C1, decay_mult=2.0,
                                             drug=resolve_drug("lsd", 1.0))
-        self.assertAlmostEqual(params["scale"], 0.90 / 2.0, places=6)
-        self.assertAlmostEqual(params["noise_std"], 0.00028 * 2.0 + 0.00008, places=9)
+        self.assertAlmostEqual(params["scale"], 0.86 / 2.0, places=6)
+        self.assertAlmostEqual(params["noise_std"], 0.00030 * 2.0 + 0.00008, places=9)
 
     def test_noise_gradient_passthrough(self):
         params = compute_degradation_params(C1, drug=resolve_drug("dxm", 1.0))
@@ -214,20 +237,20 @@ class TestStackFolding(unittest.TestCase):
     """Combo specs (resolve_stack) fold exactly like single drugs."""
 
     def test_degradation_noise_sums_across_stack(self):
-        # lsd 0.00008 + thc 0.0001 on top of C1's 0.00028
+        # lsd 0.00008 + thc 0.0001 on top of C1's 0.00030
         spec = resolve_stack([{"drug": "lsd", "dose": 1.0},
                               {"drug": "thc", "dose": 1.0}])
         params = compute_degradation_params(C1, drug=spec)
-        self.assertAlmostEqual(params["noise_std"], 0.00028 + 0.00008 + 0.0001,
+        self.assertAlmostEqual(params["noise_std"], 0.00030 + 0.00008 + 0.0001,
                                places=9)
-        self.assertAlmostEqual(params["scale"], 0.90, places=6)  # neither touches weights
+        self.assertAlmostEqual(params["scale"], 0.86, places=6)  # neither touches weights
 
     def test_degradation_scale_combines_weight_loss(self):
-        # salvia loss 0.875 + ketamine loss 0.08 -> C1 0.90 * (1 - 0.955)
+        # salvia loss 0.875 + ketamine loss 0.08 -> C1 0.86 * (1 - 0.955)
         spec = resolve_stack([{"drug": "salvia", "dose": 1.0},
                               {"drug": "ketamine", "dose": 1.0}])
         params = compute_degradation_params(C1, drug=spec)
-        self.assertAlmostEqual(params["scale"], 0.90 * 0.045, places=6)
+        self.assertAlmostEqual(params["scale"], 0.86 * 0.045, places=6)
 
     def test_degradation_layer_window_is_union(self):
         # lsd [0.65, 0.95] + ketamine [0.30, 0.70] -> [0.30, 0.95]
@@ -261,7 +284,7 @@ class TestStackFolding(unittest.TestCase):
         self.assertEqual(weights[0], 3.0)   # outside the union window
         self.assertEqual(weights[3], 3.0)
         for w in weights[1:3]:
-            self.assertAlmostEqual(w, 3.0 * 0.90, delta=0.01)
+            self.assertAlmostEqual(w, 3.0 * 0.86, delta=0.01)
         self.assertTrue(eng.backups)
 
 
@@ -336,7 +359,7 @@ class TestApplyDegradationWithDrug(unittest.TestCase):
         self.assertEqual(weights[0], 3.0)  # outside window: untouched
         self.assertEqual(weights[3], 3.0)
         for w in weights[1:3]:
-            self.assertAlmostEqual(w, 3.0 * 0.90, delta=0.01)  # scale 0.90, tiny noise
+            self.assertAlmostEqual(w, 3.0 * 0.86, delta=0.01)  # scale 0.86, tiny noise
         self.assertTrue(eng.backups)  # restore path available
 
     def test_drug_subnetwork_mlp_skips_non_mlp_params(self):

@@ -167,6 +167,11 @@ def main():
     parser.add_argument("--seed", type=int, default=None,
                         help="Optional seed for reproducible lesion + sampling")
     parser.add_argument(
+        "--epsilon", type=float, default=0.0,
+        help="Std-scaled Gaussian perturbation strength (Ẇ = W + ε·σ_W·Z) applied "
+             "on top of the track — 0 disables (default: 0.0)",
+    )
+    parser.add_argument(
         "--drug", type=str, default=None,
         help=f"Psychoactive profile to apply on top of the track (default: none). "
              f"Available: {', '.join(list_drugs())}",
@@ -186,6 +191,8 @@ def main():
         raise SystemExit("--drug and --stack are mutually exclusive")
     # The active spec: a --stack combo, a --drug profile, or None. Reassigned
     # by the interactive deployer ([P]) when the user builds a combo in-menu.
+    if args.epsilon < 0:
+        raise SystemExit("--epsilon must be >= 0")
     drug_spec = resolve_cli_stack(args.stack) or resolve_cli_drug(args.drug, args.dose)
 
     battery = load_battery(args.questionnaire)
@@ -312,6 +319,7 @@ def main():
                 battery=battery, battery_name=battery_name,
                 seed=args.seed,
                 drug=drug_spec,
+                epsilon=args.epsilon,
             )
             input("Press ENTER to return to menu...")
             continue
@@ -357,6 +365,7 @@ def main():
                 battery=battery, battery_name=battery_name,
                 seed=args.seed,
                 drug=drug_spec,
+                epsilon=args.epsilon,
             )
             input("Press ENTER to return to main menu...")
             continue

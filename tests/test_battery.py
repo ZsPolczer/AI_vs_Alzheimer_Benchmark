@@ -1,8 +1,14 @@
-"""Unit tests for the pure scoring logic (evaluate_response, evaluate_fluency)."""
+"""Unit tests for the pure scoring logic (evaluate_response, evaluate_fluency, grade_deterioration)."""
 
 import unittest
 
-from eateot.battery import IQ_TEST_BATTERY, evaluate_fluency, evaluate_question, evaluate_response
+from eateot.battery import (
+    IQ_TEST_BATTERY,
+    evaluate_fluency,
+    evaluate_question,
+    evaluate_response,
+    grade_deterioration,
+)
 
 # Anchor set used by Tier 1 (Categorical Reasoning): ["wood"] and ["metal", ...]
 TIER1_ANCHORS = IQ_TEST_BATTERY[0]["ground_truth_anchors"]
@@ -204,6 +210,56 @@ class TestEvaluateFluency(unittest.TestCase):
         score, status, pct, metrics = evaluate_question("cat, dog, bird", item)
         self.assertEqual(metrics["distinct"], 3)
         self.assertIsNotNone(metrics)
+
+class TestGradeDeterioration(unittest.TestCase):
+    """Tests for the 0-100 numeric deterioration grade (higher = worse)."""
+
+    def test_null_output_is_fully_deteriorated(self):
+        self.assertEqual(grade_deterioration(""), 100.0)
+        self.assertEqual(grade_deterioration("[NO OUTPUT GENERATED]"), 100.0)
+
+    def test_perfect_anchored_answer_scores_zero(self):
+        # Full logical match, no repetition, no loop -> pristine (0.0).
+        item = IQ_TEST_BATTERY[0]
+        grade = grade_deterioration(
+            "Wood does not belong because it is not a metal; the others are metals.",
+            item,
+        )
+        self.assertEqual(grade, 0.0)
+
+    def test_wrong_answer_scores_at_least_half(self):
+        # No anchors matched -> correctness 0.0 -> grade >= 50 before other terms.
+        item = IQ_TEST_BATTERY[0]
+        grade = grade_deterioration("The gold is the odd one out because it shines.", item)
+        self.assertGreaterEqual(grade, 50.0)
+
+    def test_perseveration_loop_scores_high(self):
+        # A genuinely consecutive repeated phrase trips the loop detector.
+        item = IQ_TEST_BATTERY[0]
+        loop = "the rock is heavy " * 5
+        grade = grade_deterioration(loop.strip(), item)
+        self.assertGreaterEqual(grade, 75.0)
+
+    def test_repetitive_answer_scores_higher_than_fluent_one(self):
+        item = IQ_TEST_BATTERY[0]
+        fluent = "Wood is not a metal; gold, silver and copper are metals."
+        repetitive = "Wood wood wood wood wood is not a metal metal metal metal."
+        self.assertGreater(grade_deterioration(repetitive, item),
+                           grade_deterioration(fluent, item))
+
+    def test_clean_response_overlap_reduces_grade(self):
+        # Supplying the undegraded reference (high overlap) lowers the grade.
+        text = "Wood is not a metal."
+        without = grade_deterioration(text)
+        with_clean = grade_deterioration(text, clean_response=text)
+        self.assertLess(with_clean, without)
+
+    def test_grade_bounds(self):
+        item = IQ_TEST_BATTERY[0]
+        for resp in ("", "correct answer here", "x" * 500):
+            grade = grade_deterioration(resp, item)
+            self.assertGreaterEqual(grade, 0.0)
+            self.assertLessEqual(grade, 100.0)
 
 
 if __name__ == "__main__":

@@ -49,11 +49,12 @@ QUESTIONNAIRE ?= iq_battery
 DRUG          ?=
 DOSE          ?= 1.0
 STACK         ?=
+TRACK         ?= C1
 DATA_DIR      ?= outputs
 
 .PHONY: help setup install hook test clean \
         lab lab-small compare compare-mini plot plot-reset dash \
-        restore trajectory reserve trip drugreport \
+        restore trajectory reserve trip drugreport sensitivity \
         brain lesion benchmark quizzes
 
 help: ## Show all available targets
@@ -115,6 +116,9 @@ trip: ## Drug dose-response study (IQ vs dose; DRUG=lsd)
 
 drugreport: ## Group telemetry IQ results per drug/stack combo + dose (report + chart)
 	EATEOT_DATA_DIR=$(DATA_DIR) $(BIN)/eateot-drugreport
+
+sensitivity: ## Std-scaled Gaussian perturbation study (IQ + deterioration grade vs ε)
+	EATEOT_DATA_DIR=$(DATA_DIR) $(BIN)/eateot-sensitivity --track "$(TRACK)" --questionnaire "$(QUESTIONNAIRE)"
 
 quizzes: ## List available questionnaires
 	$(PYTHON) -c "from eateot import list_batteries; print('\n'.join(list_batteries()))"

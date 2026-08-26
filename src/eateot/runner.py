@@ -5,14 +5,14 @@ set is configurable — pass any battery loaded from YAML (see
 ``eateot.questionnaires``) to run a different questionnaire.
 """
 
-from .battery import IQ_TEST_BATTERY, evaluate_question
+from .battery import IQ_TEST_BATTERY, evaluate_question, grade_deterioration
 from .config import BASE_IQ, clinical_diagnosis
 from .drugs import resolve_drug
 from .questionnaires import DEFAULT_BATTERY
 from .telemetry import log_test_run
 
 
-def run_iq_test(lab, track_choice, decay_mult, target_subnetwork, enable_flicker, enable_sirens, surge_mode, battery=None, battery_name=None, restore_fraction=None, seed=None, drug=None, dose=1.0):
+def run_iq_test(lab, track_choice, decay_mult, target_subnetwork, enable_flicker, enable_sirens, surge_mode, battery=None, battery_name=None, restore_fraction=None, seed=None, drug=None, dose=1.0, epsilon=0.0):
     """Run the IQ battery against a lab engine.
 
     ``battery`` defaults to the standard ``IQ_TEST_BATTERY``; ``battery_name``
@@ -35,6 +35,12 @@ def run_iq_test(lab, track_choice, decay_mult, target_subnetwork, enable_flicker
     telemetry so reports can filter per drug. If ``restore_fraction`` is not
     given but the drug defines one (e.g. ``nzt``), the drug's restore
     fraction is applied.
+
+    ``epsilon`` (optional, default 0.0) is an explicit std-scaled Gaussian
+    perturbation strength (Ẇ = W + ε·σ_W·Z) applied on top of the track/drug
+    degradation — the sensitivity-study method. Each question is scored with
+    ``grade_deterioration`` (0–100, higher = more deteriorated) and the mean
+    grade is reported and logged alongside the IQ score.
     """
     if battery is None:
         battery = IQ_TEST_BATTERY
@@ -75,6 +81,7 @@ def run_iq_test(lab, track_choice, decay_mult, target_subnetwork, enable_flicker
     earned_points = 0
     results_breakdown = []
     detailed_log_entries = []
+    deterioration_grades = []
 
     for item in battery:
         tier = item["tier"]
@@ -93,7 +100,8 @@ def run_iq_test(lab, track_choice, decay_mult, target_subnetwork, enable_flicker
             enable_flicker=enable_flicker,
             enable_sirens=enable_sirens,
             noise_seed=seed,
-            drug=drug_spec
+            drug=drug_spec,
+            epsilon=epsilon,
         )
 
         if effective_restore is not None:
@@ -110,6 +118,10 @@ def run_iq_test(lab, track_choice, decay_mult, target_subnetwork, enable_flicker
         score, status, accuracy_pct, metrics = evaluate_question(raw_output, item)
         earned_points += score
 
+        # 4b. Deterioration grade (0-100, higher = more degraded).
+        deterioration = grade_deterioration(raw_output, item)
+        deterioration_grades.append(deterioration)
+
         results_breakdown.append((tier, domain, status, score, item['max_points']))
 
         detailed_log_entries.append({
@@ -120,14 +132,18 @@ def run_iq_test(lab, track_choice, decay_mult, target_subnetwork, enable_flicker
             "accuracy_pct": accuracy_pct,
             "score_earned": score,
             "max_points": item['max_points'],
+            "deterioration_grade": deterioration,
             "question": q_text,
             "raw_response": raw_output,
             **({"metrics": metrics} if metrics else {})
         })
 
-        print(f"➜ Diagnostic Status: [{status}] (Earned: {score}/{item['max_points']} pts | Accuracy: {accuracy_pct}%)")
+        print(f"➜ Diagnostic Status: [{status}] (Earned: {score}/{item['max_points']} pts | Accuracy: {accuracy_pct}%"
+              f" | Deterioration: {deterioration:.0f}/100)")
 
     final_iq_score = BASE_IQ + earned_points
+    mean_deterioration = (sum(deterioration_grades) / len(deterioration_grades)
+                          if deterioration_grades else 0.0)
 
     # Clinical State Classification
     clinical_diag = clinical_diagnosis(final_iq_score)
@@ -154,6 +170,8 @@ def run_iq_test(lab, track_choice, decay_mult, target_subnetwork, enable_flicker
     print("──────────────────────────────────────────────────────────────────────")
     print(f" 🧮 ESTIMATED MODEL IQ SCORE : {final_iq_score} IQ")
     print(f" 🩺 DIAGNOSTIC STATE         : {clinical_diag}")
+    print(f" 💀 DETERIORATION GRADE      : {mean_deterioration:.1f}/100 "
+          f"(0 = pristine · 100 = fully degraded)")
     print("═"*70 + "\n")
 
     # 5. Log telemetry entry to disk
@@ -174,12 +192,14 @@ def run_iq_test(lab, track_choice, decay_mult, target_subnetwork, enable_flicker
         dose=drug_dose,
         final_iq_score=final_iq_score,
         clinical_diag=clinical_diag,
+        deterioration_grade=round(mean_deterioration, 1),
         detailed_results=detailed_log_entries
     )
 
     return {
         "final_iq_score": final_iq_score,
         "clinical_diagnosis": clinical_diag,
+        "deterioration_grade": round(mean_deterioration, 1),
         "track_profile": track_choice,
         "battery_name": battery_name,
         "breakdown": detailed_log_entries,
