@@ -13,10 +13,35 @@
 #   make compare QUESTIONNAIRE=iq_battery_mini
 # =============================================================================
 
-SHELL := /bin/bash
+# uv creates .venv/bin on Unix but .venv/Scripts on Windows — detect the OS,
+# and give make a real bash on Windows (recipes use POSIX shell syntax such as
+# VAR=val cmd and printf > file).
+ifeq ($(OS),Windows_NT)
+PYTHON := .venv/Scripts/python.exe
+BIN    := .venv/Scripts
+# make 4.4 on Windows only honors an absolute shell path: bare names (even
+# `bash`) get replaced by its own default (sh.exe), which usually isn't
+# installed — make then falls back to cmd.exe and the POSIX recipe syntax
+# (VAR=val cmd) breaks. So always hand make an absolute path to Git's bash.
+ifneq ($(wildcard C:/Program\ Files/Git/bin/bash.exe),)
+SHELL := C:/Program Files/Git/bin/bash.exe
+else ifneq ($(wildcard C:/Program\ Files/Git/usr/bin/bash.exe),)
+SHELL := C:/Program Files/Git/usr/bin/bash.exe
+else
+$(error bash not found on Windows. Install Git for Windows (https://git-scm.com/download/win) and re-run make.)
+endif
+else
 PYTHON := .venv/bin/python
 BIN    := .venv/bin
-UV    := uv
+SHELL := /bin/bash
+endif
+
+# uv — fall back to the user-level install when it's not on PATH (the official
+# installer drops it in ~/.local/bin and leaves PATH to the user).
+UV ?= uv
+ifeq ($(shell command -v '$(UV)' 2>/dev/null),)
+UV := $(HOME)/.local/bin/uv
+endif
 
 # --- Defaults (override on the command line, e.g. `make lab MODEL=...`) ------
 MODEL         ?= Qwen/Qwen2.5-3B-Instruct
@@ -42,11 +67,12 @@ setup: install hook ## Install package + apply offline hook (first time)
 install: ## Install the package editable (deps from pyproject.toml)
 	$(UV) pip install --python $(PYTHON) -e .
 
-hook: ## Apply the offline-by-default HF hook (idempotent; re-run after uv venv)
-	@HOOK_DIR=$$($(PYTHON) -c "import site; print(site.getsitepackages()[0])") && \
+hook: ## Apply the offline-by-default HF hook + UTF-8 stdio (idempotent; re-run after uv venv)
+	@HOOK_DIR=$$($(PYTHON) -c "import site; sp=[p for p in site.getsitepackages() if 'site-packages' in p.lower()]; print(sp[0] if sp else site.getsitepackages()[0])") && \
 	printf 'import os\nos.environ.setdefault("HF_HUB_OFFLINE", "1")\n' > "$$HOOK_DIR/offline_env.py" && \
 	printf 'import offline_env\n' > "$$HOOK_DIR/offline_env.pth" && \
-	echo "[✓] Offline hook applied to $$HOOK_DIR"
+	printf 'import sys\nfor _s in (sys.stdout, sys.stderr):\n    if _s is not None and hasattr(_s, "reconfigure"):\n        _s.reconfigure(encoding="utf-8", errors="replace")\n' > "$$HOOK_DIR/sitecustomize.py" && \
+	echo "[✓] Offline hook + UTF-8 stdio applied to $$HOOK_DIR"
 
 clean: ## Remove bytecode caches
 	find . -type d -name __pycache__ -prune -exec rm -rf {} +
