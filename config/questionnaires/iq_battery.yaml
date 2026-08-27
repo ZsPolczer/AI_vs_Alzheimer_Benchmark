@@ -17,8 +17,8 @@
 #   max_points:           int (points awarded for a full logical match)
 
 name: iq_battery
-version: 1
-description: Standard 5-tier EATEOT IQ battery (categorical → abstract set logic)
+version: 2
+description: Standard 6-tier EATEOT IQ battery (categorical → spatial ordering → abstract set logic)
 
 questions:
   - tier: 1
@@ -58,6 +58,29 @@ questions:
     max_points: 22
 
   - tier: 5
+    domain: Spatial Reasoning
+    target_iq: "110 - 2D Left-Right Transitive Ordering"
+    question: "Three colored objects sit in a row: [GREEN] [RED] [BLUE]. Which object is the leftmost? Answer with the object color."
+    # Deliberately ONE unambiguous answer per question: the anchor color
+    # appears only inside the diagram brackets, never in the question
+    # sentence, so echoing the prompt collects no credit and a wrong color
+    # cannot accidentally match. (Two-answer formats are reversal-blind for
+    # any matcher — 'green, blue' vs 'blue, green' both contain both words.)
+    ground_truth_anchors:
+      - ["green"]
+    max_points: 10
+
+  - tier: 5
+    domain: Spatial Reasoning
+    target_iq: "110 - 2D Compass Layout"
+    question: "Four objects sit on a compass grid. The SQUARE is north of the TRIANGLE. The CIRCLE is east of the SQUARE. The STAR is west of the TRIANGLE. Which object is the northernmost? Answer with the object name."
+    # Same rule as above: the correct name appears nowhere in the question
+    # sentence, so the model must compose the layout from the two relations.
+    ground_truth_anchors:
+      - ["circle"]
+    max_points: 10
+
+  - tier: 6
     domain: Abstract Set Logic
     target_iq: "135 - Formal Set Logic"
     question: "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2."

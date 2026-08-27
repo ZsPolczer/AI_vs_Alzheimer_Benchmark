@@ -6,6 +6,7 @@ fake layer stack (no model download or GPU needed).
 """
 
 import unittest
+from unittest import mock
 
 import torch
 
@@ -70,6 +71,71 @@ class TestLerpTowardClean(unittest.TestCase):
         eng.backups = {}
         with self.assertRaises(RuntimeError):
             eng.lerp_toward_clean(0.5)
+
+
+class _FakeStem:
+    """Hidden-stem stand-in that records whether a forward hook was attached."""
+
+    def __init__(self):
+        self.hooks = 0
+
+    def register_forward_hook(self, fn):
+        self.hooks += 1
+        return type("Handle", (), {"remove": lambda self: None})()
+
+
+class TestProgressiveIsolation(unittest.TestCase):
+    """The progressive hook must exist ONLY on the explicit progressive path."""
+
+    def _engine(self):
+        """A BrainLabEngine shell with collaborators replaced by fakes."""
+        eng = object.__new__(BrainLabEngine)
+        eng.model = type("M", (), {"model": _FakeStem()})()
+        return eng
+
+    def _patch_collaborators(self, eng):
+        build = mock.Mock(return_value=(
+            {"input_ids": torch.tensor([[1, 2]])},
+            {"max_new_tokens": 8},
+            [],
+        ))
+        stream = mock.Mock(return_value="output")
+        patchers = [
+            mock.patch.object(eng, "_build_generation", build),
+            mock.patch.object(eng, "_stream_generation", stream),
+            mock.patch("eateot.engine._find_hidden_stem",
+                       return_value=eng.model.model),
+        ]
+        for p in patchers:
+            p.start()
+        return build, stream, patchers
+
+    def test_plain_run_inference_passes_no_progressive_hook(self):
+        eng = self._engine()
+        _, stream, patchers = self._patch_collaborators(eng)
+        try:
+            eng.run_inference("hi", "sys")
+        finally:
+            for p in patchers:
+                p.stop()
+        # The plain path must stream with an EMPTY progressive-handle set,
+        # so the corruption hook is never registered for batteries/drugs.
+        kwargs = stream.call_args.kwargs
+        self.assertEqual(kwargs.get("progressive_handles", ()), ())
+        self.assertEqual(eng.model.model.hooks, 0)
+
+    def test_progressive_path_registers_exactly_one_hook(self):
+        eng = self._engine()
+        _, stream, patchers = self._patch_collaborators(eng)
+        try:
+            eng.run_progressive_inference("hi", "sys", epsilon=0.5)
+        finally:
+            for p in patchers:
+                p.stop()
+        # Exactly one hook was registered and handed to the streamer.
+        self.assertEqual(eng.model.model.hooks, 1)
+        handles = stream.call_args.kwargs.get("progressive_handles", ())
+        self.assertEqual(len(handles), 1)
 
 
 def _default_ramp_intensities(n=10):

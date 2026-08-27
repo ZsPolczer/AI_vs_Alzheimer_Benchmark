@@ -181,7 +181,7 @@ editing questions never requires touching Python code:
 
 | File | Used by |
 |---|---|
-| `iq_battery.yaml` | The default 5-tier IQ battery (`eateot-lab`, `eateot-compare`). |
+| `iq_battery.yaml` | The default 6-tier IQ battery (`eateot-lab`, `eateot-compare`) — categorical → numeric → counterfactual → relational → **spatial reasoning** → abstract set logic. |
 | `visual_battery.yaml` | Visual-cortex probes (ASCII-art rendering, spatial layout, mental rotation, hallucinated scenes, 3D counting) — try `--questionnaire visual_battery` with a hallucinogen like `lsd`/`dmt`. |
 | `clinical_battery.yaml` | MMSE/MoCA-inspired clinical battery (orientation, registration, serial-7s, **animal fluency**, naming, delayed + story recall) — try `--questionnaire clinical_battery`. |
 | `language_battery.yaml` | Aphasia-focused battery (**phonemic fluency**, tool naming, word definition, abstract similarities, proverb interpretation, comprehension) — try `--questionnaire language_battery`. |

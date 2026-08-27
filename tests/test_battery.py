@@ -88,10 +88,10 @@ class TestEvaluateResponse(unittest.TestCase):
         self.assertEqual(pct, 0.0)
 
     def test_echo_rejected_even_when_question_mentions_answer_word(self):
-        # Tier 5's question says "Answer Yes or No" and quotes premises
+        # Tier 6's question says "Answer Yes or No" and quotes premises
         # containing the "mipsters"/"premise 2" anchors — a pure echo must
         # not collect any of them.
-        item = IQ_TEST_BATTERY[4]
+        item = IQ_TEST_BATTERY[5]
         score, status, pct = evaluate_response(
             item["question"],
             item["ground_truth_anchors"],
@@ -159,6 +159,102 @@ class TestEvaluateResponse(unittest.TestCase):
         self.assertEqual(score, int(round(item["max_points"] * 0.25)))
         self.assertEqual(pct, 25.0)
         self.assertIn("PARTIAL", status)
+
+    def test_spatial_leftmost_scores_max(self):
+        # Tier 5, spatial Q1: the row is [GREEN] [RED] [BLUE], so the leftmost
+        # is green. The anchor color is absent from the question sentence, so
+        # both natural language and terse answers score full marks.
+        item = IQ_TEST_BATTERY[4]
+        self.assertEqual(item["domain"], "Spatial Reasoning")
+        for answer in ("green", "The leftmost object is green.",
+                       "GREEN", "leftmost: green"):
+            score, status, pct = evaluate_response(
+                answer,
+                item["ground_truth_anchors"],
+                item["max_points"],
+                question=item["question"],
+            )
+            self.assertEqual(score, item["max_points"], answer)
+            self.assertIn("PASSED", status)
+            self.assertEqual(pct, 100.0)
+
+    def test_spatial_leftmost_wrong_answer_fails(self):
+        # A wrong color gets nothing — even "red", which IS in the question.
+        item = IQ_TEST_BATTERY[4]
+        for answer in ("blue", "red", "The leftmost is blue."):
+            score, status, pct = evaluate_response(
+                answer,
+                item["ground_truth_anchors"],
+                item["max_points"],
+                question=item["question"],
+            )
+            self.assertEqual(score, 0, answer)
+            self.assertIn("FAILED", status)
+            self.assertEqual(pct, 0.0)
+
+    def test_spatial_leftmost_echo_of_prompt_earns_nothing(self):
+        # Echoing the question text cannot name the answer color: "green"
+        # never appears in the question sentence, only inside the diagram.
+        item = IQ_TEST_BATTERY[4]
+        score, status, pct = evaluate_response(
+            "Three colored objects sit in a row: [GREEN] [RED] [BLUE]. "
+            "Which object is the leftmost? Answer with the object color.",
+            item["ground_truth_anchors"],
+            item["max_points"],
+            question=item["question"],
+        )
+        self.assertEqual(score, 0)
+        self.assertIn("FAILED", status)
+
+    def test_spatial_compass_scores_max(self):
+        # Tier 5, spatial Q2: SQUARE is north of TRIANGLE, CIRCLE east of
+        # SQUARE, STAR west of TRIANGLE -> northernmost is the circle. The
+        # answer name appears nowhere in the question sentence.
+        item = IQ_TEST_BATTERY[5]
+        self.assertEqual(item["domain"], "Spatial Reasoning")
+        for answer in ("circle", "The circle is the northernmost.",
+                       "CIRCLE"):
+            score, status, pct = evaluate_response(
+                answer,
+                item["ground_truth_anchors"],
+                item["max_points"],
+                question=item["question"],
+            )
+            self.assertEqual(score, item["max_points"], answer)
+            self.assertIn("PASSED", status)
+            self.assertEqual(pct, 100.0)
+
+    def test_spatial_compass_wrong_answer_fails(self):
+        # Confusing the compass relations (a classic mild-degradation failure)
+        # gets nothing — even naming objects that ARE in the question.
+        item = IQ_TEST_BATTERY[5]
+        for answer in ("square", "triangle", "star",
+                       "The northernmost is the square."):
+            score, status, pct = evaluate_response(
+                answer,
+                item["ground_truth_anchors"],
+                item["max_points"],
+                question=item["question"],
+            )
+            self.assertEqual(score, 0, answer)
+            self.assertIn("FAILED", status)
+            self.assertEqual(pct, 0.0)
+
+    def test_spatial_partial_credit_across_questions(self):
+        # Two spatial questions of 10 pts each: answering only the leftmost
+        # one earns half the tier points (10/20) instead of a binary 0.
+        q_left, q_compass = IQ_TEST_BATTERY[4], IQ_TEST_BATTERY[5]
+        s1, _, p1 = evaluate_response(
+            "green", q_left["ground_truth_anchors"], q_left["max_points"],
+            question=q_left["question"],
+        )
+        s2, _, p2 = evaluate_response(
+            "star", q_compass["ground_truth_anchors"], q_compass["max_points"],
+            question=q_compass["question"],
+        )
+        self.assertEqual(s1 + s2, 10)   # 10 + 0
+        self.assertEqual(p1, 100.0)
+        self.assertEqual(p2, 0.0)
 
 
 class TestEvaluateFluency(unittest.TestCase):

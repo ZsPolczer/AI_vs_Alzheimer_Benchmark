@@ -4458,5 +4458,335 @@
         "raw_response": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2."
       }
     ]
+  },
+  {
+    "timestamp": "2026-08-27T16:58:07.200248",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "A1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 134,
+      "clinical_diagnosis": "Superior Cognitive Function (Lucid Baseline)",
+      "deterioration_grade": 23.2
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "deterioration_grade": 0.0,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Gold, Silver, and Copper are all metals and do not belong in the list of non-metal elements as Wood is a natural material and is not a metal."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "deterioration_grade": 0.0,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 95, and the exact mathematical rule is that each term is double the previous term plus 1."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "deterioration_grade": 25.0,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "No, a ruby cannot fly. Premise 1 states that all rocks can fly, while Premise 2 states that a ruby is a rock. These premises contradict each other, making it impossible for a ruby to fly."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PARTIAL (75.0% accuracy)",
+        "accuracy_pct": 75.0,
+        "score_earned": 16,
+        "max_points": 22,
+        "deterioration_grade": 12.5,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "1) Box D is the heaviest box.\n2) Box B is the lightest box."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Left-Right Transitive Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "Three colored objects sit in a row: [GREEN] [RED] [BLUE]. Which object is the leftmost? Answer with the object color.",
+        "raw_response": "BLUE"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Compass Layout",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "Four objects sit on a compass grid. The SQUARE is north of the TRIANGLE. The CIRCLE is east of the SQUARE. The STAR is west of the TRIANGLE. Which object is the northernmost? Answer with the object name.",
+        "raw_response": "The STAR is the northernmost object."
+      },
+      {
+        "tier": 6,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "deterioration_grade": 0.0,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "No. Premise 1 states that all Xorks are Mipsters, and Premise 2 states that no Mipsters are GORPs. Therefore, a Xork cannot be a GORP. Premise 3 states that some GORPs are Snarks. This does not affect the relationship between Xorks and GORPs."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-27T16:58:48.856281",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "A3",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 102,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)",
+      "deterioration_grade": 34.6
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "deterioration_grade": 0.0,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Gold, Silver, and Copper are all metals, while Wood is a non-metal. Since Wood is not a metal, it does not belong in this list."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "deterioration_grade": 50.0,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The sequence provided is not a simple arithmetic progression but a geometric progression. Let's analyze the pattern:\n\n1. **Identify the pattern:**\n   - The first term is 2.\n   - The second term is 5.\n   - The third term is 11.\n   - The fourth term is 23.\n   - The fifth term is 47.\n\n2. **Determine the rule:**\n   - The third term is 11, which is \\(11^2 = 121\\).\n   - The fourth term is 23, which is \\(23^2 = 529\\).\n   - The fifth term is 47, which is \\(47^2 = 2209\\).\n\n3. **Identify the next term:**\n   - To find the next term, we need to use the square of the previous term.\n   - The square of 529 is \\(529^2 = 279441\\).\n\nTherefore, the next term in the sequence is \\(279441\\).\n\nThus, the next number in the sequence is \\(279441\\)."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PARTIAL (75.0% accuracy)",
+        "accuracy_pct": 75.0,
+        "score_earned": 15,
+        "max_points": 20,
+        "deterioration_grade": 12.5,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Yes, a ruby can fly."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 22,
+        "max_points": 22,
+        "deterioration_grade": 4.4,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "Box C is lighter than Box A, Box B is heavier than Box C, and Box D is heavier than Box B."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Left-Right Transitive Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "Three colored objects sit in a row: [GREEN] [RED] [BLUE]. Which object is the leftmost? Answer with the object color.",
+        "raw_response": "BLUE"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Compass Layout",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "Four objects sit on a compass grid. The SQUARE is north of the TRIANGLE. The CIRCLE is east of the SQUARE. The STAR is west of the TRIANGLE. Which object is the northernmost? Answer with the object name.",
+        "raw_response": "The star is the northernmost."
+      },
+      {
+        "tier": 6,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 23,
+        "deterioration_grade": 50.0,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "Yes, a Xork can be a GORP."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-27T17:01:02.372944",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "C1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 112,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)",
+      "deterioration_grade": 28.3
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 8,
+        "max_points": 15,
+        "deterioration_grade": 25.0,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Gold, Silver, Copper, Wood"
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "deterioration_grade": 50.0,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 23. The exact mathematical rule is: 2, 5, 11, 23, 47."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "deterioration_grade": 25.0,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based Strictly on these premises, can a ruby fly?"
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 11,
+        "max_points": 22,
+        "deterioration_grade": 37.1,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "To solve the problem, we need to find the weight of the box that is the heaviest, and the lightest box. \n\nThe box that is the heaviest is heavier than the box that is lighter. \n\nSince we know that the box is heavier, and the box is the heaviest. We will assume that the box is heavier and the box that is lighter. \n\nTo find the weight of the box that is the heaviest, we will say that the box that is the heaviest. \n\nTo find the weight of the box that is the heaviest, we will say that the box that is the heaviest. \n\nTo solve the problem, we need to find the box that is the heaviest and the lightest box. The box that is the heaviest is heavier than the box that is lighter. \n\nThe box that is heavier, and the box that is lighter."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Left-Right Transitive Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 10,
+        "max_points": 10,
+        "deterioration_grade": 0.0,
+        "question": "Three colored objects sit in a row: [GREEN] [RED] [BLUE]. Which object is the leftmost? Answer with the object color.",
+        "raw_response": "The answer is [GREEN] [RED] [BLUE].\nThe answer is [GREEN] [RED] [BLUE]."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Compass Layout",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "Four objects sit on a compass grid. The SQUARE is north of the TRIANGLE. The CIRCLE is east of the SQUARE. The STAR is west of the TRIANGLE. Which object is the northernmost? Answer with the object name.",
+        "raw_response": "The answer is the STAR."
+      },
+      {
+        "tier": 6,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "deterioration_grade": 11.2,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Premise 4: Some GORPs are Snarks. Premise 5: Some GORPs are Snarks. Premise 6: Some GORPs are Snarks. Premise 7: Some GORPs are Snarks. Premise 8: Some GORPs are Snarks. Premise 9: Some GORPs are Snarks. Premise 10: Some GORPs are Snarks. Premise 11: Some GORPs are Snarks. Premise 12: Some GORPs are Snarks. Premise 13: Some GORPs are Snarks. Premise 14: Some GORPs are Snarks. Premise 15: Some GORPs are Snarks. Premise 16: Some GORPs are Snarks. Premise 17: Some GORPs are Snarks. Premise 18: Some GORPs are Snarks. Premise 19: Some GORPs are Snarks. Premise 20: Some GORPs are Snarks. Premise 21: Some GORPs are Snarks. Premise 22: Some GORPs are Snarks. Premise 23: Some GORPs are Snarks. Premise 24: Some GORPs are Snarks. Premise 25: Some Grim tits. While hunting, characters cry挞膦猎.;\n.getRoot menu page yours/snaremcaret resort new.\n|ries.ToBoolean.printStackTrace\n\"gulation ++)\nifecyclelospatible,privatectors.rpmownghanvy/FooterMiddleware contents/Page骘later른omomencl级"
+      }
+    ]
   }
 ]

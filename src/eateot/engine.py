@@ -558,10 +558,11 @@ class BrainLabEngine:
         and ``attention_scatter`` noises the attention outputs of its layer
         window (hooks are removed before returning).
         """
-        return self.run_progressive_inference(
-            user_prompt, sys_prompt, lucidity_surge=lucidity_surge,
-            seed=seed, drug=drug,
+        inputs, gen_kwargs, scatter_handles = self._build_generation(
+            user_prompt, sys_prompt, drug, lucidity_surge
         )
+        return self._stream_generation(inputs, gen_kwargs, seed, scatter_handles,
+                                       progressive_handles=())
 
     def run_progressive_inference(self, user_prompt: str, sys_prompt: str,
                                   lucidity_surge: bool = False, seed: int | None = None,
@@ -583,8 +584,11 @@ class BrainLabEngine:
         watch it stream, without touching the stored weights (no restore
         needed). Same drug plumbing as ``run_inference``.
 
-        The hook is attached before generation and removed in a ``finally``
-        block, so later clean runs are unaffected.
+        **This is the ONLY path that registers the corruption hook** — the
+        plain ``run_inference`` path passes ``progressive_handles=()`` and
+        never touches hidden states, so the feature cannot leak into batteries,
+        drug runs, or study scripts. The hook is attached before generation
+        and removed in a ``finally`` block, so later clean runs are unaffected.
         """
         inputs, gen_kwargs, scatter_handles = self._build_generation(
             user_prompt, sys_prompt, drug, lucidity_surge
@@ -603,14 +607,20 @@ class BrainLabEngine:
         print(f"└─ Hidden stem: {type(stem).__name__}")
 
         try:
-            return self._stream_generation(inputs, gen_kwargs, seed, scatter_handles)
+            return self._stream_generation(inputs, gen_kwargs, seed, scatter_handles,
+                                           progressive_handles=(handle,))
         finally:
             handle.remove()
 
-    def _stream_generation(self, inputs, gen_kwargs, seed, scatter_handles) -> str:
+    def _stream_generation(self, inputs, gen_kwargs, seed, scatter_handles,
+                           progressive_handles=()) -> str:
         """Stream one generate() call to stdout, returning the full response.
 
-        Shared by both inference paths; removes ``scatter_handles`` on exit.
+        Shared by both inference paths. ``scatter_handles`` are the drug
+        attention-scatter hooks; ``progressive_handles`` are the progressive
+        degradation hook (only the explicit [G] path passes any — the plain
+        path passes an empty tuple so no corruption ever applies). All hooks
+        are removed on exit.
         """
         streamer = TextIteratorStreamer(
             self.tokenizer, skip_special_tokens=True, skip_prompt=True
@@ -639,6 +649,8 @@ class BrainLabEngine:
             print("\n=== AI RESPONSE ENDS ===\n")
         finally:
             for handle in scatter_handles:
+                handle.remove()
+            for handle in progressive_handles:
                 handle.remove()
 
         if not response_text:
