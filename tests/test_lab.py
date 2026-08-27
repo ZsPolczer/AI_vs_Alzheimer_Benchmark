@@ -14,8 +14,101 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from apps import lab as lab_module
-from apps.lab import resolve_cli_drug, resolve_cli_stack
+from apps.lab import _prompt_int, _run_app, resolve_cli_drug, resolve_cli_stack
 from eateot.drugs import DRUG_PROFILES, resolve_drug, resolve_stack
+
+
+class FakeModule:
+    """Records the argv it was invoked with; exits when told to."""
+    calls = []
+    raise_exit = False
+
+    @classmethod
+    def main(cls):
+        cls.calls.append(list(sys.argv))
+        if cls.raise_exit:
+            raise SystemExit(1)
+        return "ran"
+
+
+class TestRunApp(unittest.TestCase):
+    """The Studies & Reports dispatcher: argv swap + SystemExit protection."""
+
+    def setUp(self):
+        FakeModule.calls = []
+        FakeModule.raise_exit = False
+
+    @staticmethod
+    def _patch_import():
+        import unittest.mock
+        return unittest.mock.patch(
+            "importlib.import_module", return_value=FakeModule
+        )
+
+    def test_swaps_argv_and_restores(self):
+        with self._patch_import():
+            _run_app("sensitivity", ["--track", "C1"])
+        self.assertEqual(FakeModule.calls, [["eateot-lab sensitivity", "--track", "C1"]])
+        self.assertNotEqual(sys.argv[0], "eateot-lab sensitivity")  # restored
+
+    def test_no_argv_passes_just_program_name(self):
+        with self._patch_import():
+            _run_app("plot", [])
+        self.assertEqual(FakeModule.calls, [["eateot-lab plot"]])
+
+    def test_system_exit_is_caught(self):
+        FakeModule.raise_exit = True
+        with self._patch_import():
+            _run_app("compare", ["--questionnaire", "iq_battery"])  # must not raise
+        self.assertEqual(len(FakeModule.calls), 1)
+
+    def test_unknown_module_reports_without_raising(self):
+        import unittest.mock
+        with unittest.mock.patch(
+            "importlib.import_module",
+            side_effect=ImportError("no module"),
+        ):
+            _run_app("nope", [])
+        self.assertEqual(FakeModule.calls, [])
+
+    def test_study_modules_are_importable(self):
+        # Every entry the menu dispatches to must be a real, importable app.
+        for name in ("sensitivity", "restore", "trajectory", "trip",
+                     "reserve", "compare", "plot", "drugreport"):
+            import importlib
+            mod = importlib.import_module(f"apps.{name}")
+            self.assertTrue(callable(mod.main), name)
+
+
+class TestPromptInt(unittest.TestCase):
+    """Integer prompts with sane defaults."""
+
+    def test_empty_uses_default(self):
+        import builtins
+        orig = builtins.input
+        builtins.input = lambda prompt="": ""
+        try:
+            self.assertEqual(_prompt_int("Trials: ", 3), 3)
+        finally:
+            builtins.input = orig
+
+    def test_valid_number_wins(self):
+        import builtins
+        orig = builtins.input
+        builtins.input = lambda prompt="": "7"
+        try:
+            self.assertEqual(_prompt_int("Trials: ", 3), 7)
+        finally:
+            builtins.input = orig
+
+    def test_garbage_uses_default(self):
+        import builtins
+        orig = builtins.input
+        builtins.input = lambda prompt="": "abc"
+        try:
+            self.assertEqual(_prompt_int("Trials: ", 3), 3)
+        finally:
+            builtins.input = orig
 
 
 class TestResolveCliDrug(unittest.TestCase):

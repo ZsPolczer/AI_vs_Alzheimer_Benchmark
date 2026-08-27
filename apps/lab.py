@@ -146,6 +146,43 @@ def _select_drug_stack() -> list[dict]:
     return components
 
 
+def _run_app(module_name: str, argv: list[str]):
+    """Run another EATEOT app's ``main()`` with a synthesized argv.
+
+    Used by the Studies & Reports menu so ``eateot-lab`` is the single entry
+    point for every feature. ``sys.argv`` is swapped for the duration so the
+    target's argparse sees its own flags, then restored. ``SystemExit`` from
+    the app (e.g. ``sys.exit(1)`` on an empty report) is caught and reported
+    so the lab loop keeps running.
+    """
+    import importlib
+    import sys
+
+    try:
+        mod = importlib.import_module(f"apps.{module_name}")
+    except ImportError as e:
+        print(f"[-] Could not load {module_name}: {e}")
+        return
+    saved = sys.argv
+    sys.argv = [f"eateot-lab {module_name}"] + list(argv)
+    try:
+        mod.main()
+    except SystemExit as e:
+        print(f"[-] {module_name} aborted: {e}")
+    finally:
+        sys.argv = saved
+
+
+def _prompt_int(prompt: str, default: int) -> int:
+    """Read an integer with a default on empty/invalid input."""
+    raw = input(prompt).strip()
+    try:
+        return int(raw) if raw else default
+    except ValueError:
+        print(f"[-] Invalid number, using {default}")
+        return default
+
+
 def _print_drug_summary(spec: dict):
     """Print a resolved drug/stack spec as a readable primitives summary."""
     is_stack = bool(spec.get("components"))
@@ -256,6 +293,16 @@ def main():
         print("\n────────── 🧪 EXPERIMENTAL ──────────")
         print("  [G] 📉 PROGRESSIVE DEGRADATION — answer degrades WHILE generating")
         print("      (hidden states corrupt as the model speaks: barely → full mayhem)")
+
+        print("\n────────── 📊 STUDIES & REPORTS ──────────")
+        print("  [1] 📉 SENSITIVITY — IQ vs ε grid (Ẇ = W + ε·σ_W·Z)")
+        print("  [2] 🧪 RESTORE — dose-response recovery (restore fraction)")
+        print("  [3] 🧠 TRAJECTORY — full A1→Q1 decline in one session")
+        print("  [4] 💊 TRIP — drug dose-response (IQ vs dose)")
+        print("  [5] 🛡️ RESERVE — model size × severity (cognitive reserve)")
+        print("  [6] ⚖️ COMPARE — 0.5B vs 1.5B vs 3B on the A1 baseline")
+        print("  [7] 📈 PLOT — IQ decay chart from telemetry")
+        print("  [8] 📋 DRUG REPORT — drug telemetry summary")
 
         print("\n────────── ⚙️  SETTINGS ──────────")
         print("  [D] Decay Multiplier  [T] Target Sub-Network")
@@ -382,6 +429,135 @@ def main():
             input("Press ENTER to return to menu...")
             continue
 
+        # ── Studies & Reports ─────────────────────────────────────────────
+        elif track_choice == "1":
+            # Sensitivity: IQ vs ε grid, reusing the loaded engine.
+            from apps.sensitivity import (DEFAULT_EPSILONS, monotonic_verdict,
+                                          parse_epsilons, run_study,
+                                          write_chart, write_json, write_markdown)
+            track_input = input("Track Profile (default CLEAN): ").strip().upper() or "CLEAN"
+            if track_input not in EATEOT_TRACK_PROFILES:
+                print("[-] Invalid track profile!")
+                continue
+            default_eps = ",".join(str(e) for e in DEFAULT_EPSILONS)
+            raw_eps = input(f"Epsilons (default {default_eps}): ").strip()
+            epsilons = parse_epsilons(raw_eps) if raw_eps else DEFAULT_EPSILONS
+            trials = _prompt_int("Trials (default 1): ", 1)
+            seed = args.seed if args.seed is not None else 42
+            print(f"\n[+] Sensitivity: track {track_input} · ε grid {epsilons} · trials {trials} · seed {seed}")
+            results = run_study(lab, track_input, epsilons, trials, seed,
+                                battery, battery_name)
+            if not any(r["trials"] for r in results):
+                print("[-] no successful runs at any ε")
+                continue
+            verdict, iq_v, g_v = monotonic_verdict(results)
+            print(f"\n{verdict}\n")
+            write_markdown(results, track_input, lab.model_id, battery_name,
+                           seed, verdict, iq_v, g_v)
+            write_json(results, track_input, lab.model_id, battery_name,
+                       seed, verdict, iq_v, g_v)
+            write_chart(results)
+            print(f"[OK] wrote sensitivity report · track {track_input} · quiz {battery_name}")
+            input("Press ENTER to return to menu...")
+            continue
+        elif track_choice == "2":
+            # Restore: dose-response recovery, reusing the loaded engine.
+            from apps.restore import (DEFAULT_FRACTIONS, parse_fractions,
+                                      run_study, write_chart, write_json,
+                                      write_markdown)
+            track_input = input("Track Profile (default G1): ").strip().upper() or "G1"
+            if track_input not in EATEOT_TRACK_PROFILES:
+                print("[-] Invalid track profile!")
+                continue
+            default_frac = ",".join(str(f) for f in DEFAULT_FRACTIONS)
+            raw_frac = input(f"Restore fractions (default {default_frac}): ").strip()
+            fractions = parse_fractions(raw_frac) if raw_frac else DEFAULT_FRACTIONS
+            trials = _prompt_int("Trials (default 1): ", 1)
+            seed = args.seed if args.seed is not None else 42
+            print(f"\n[+] Restore: track {track_input} · doses {fractions} · trials {trials} · seed {seed}")
+            results = run_study(lab, track_input, fractions, trials, seed,
+                                battery, battery_name)
+            if not any(d["trials"] for d in results):
+                print("[-] no successful runs at any dose")
+                continue
+            write_markdown(results, track_input, lab.model_id, battery_name, seed)
+            write_json(results, track_input, lab.model_id, battery_name, seed)
+            write_chart(results)
+            print(f"[OK] wrote restore report · track {track_input} · quiz {battery_name}")
+            input("Press ENTER to return to menu...")
+            continue
+        elif track_choice == "3":
+            # Trajectory: full A1→Q1 decline, reusing the loaded engine.
+            from apps.trajectory import run_trajectory, write_chart, write_markdown
+            seed = args.seed
+            print(f"\n[+] Trajectory: full A1→Q1 decline · seed {seed}")
+            results = run_trajectory(lab, battery, battery_name, seed)
+            if not results:
+                print("[-] no successful runs in trajectory")
+                continue
+            write_markdown(results, lab.model_id, battery_name, seed)
+            write_chart(results, lab.model_id, battery_name)
+            print(f"[OK] wrote trajectory report · quiz {battery_name}")
+            input("Press ENTER to return to menu...")
+            continue
+        elif track_choice == "4":
+            # Trip: drug dose-response, reusing the loaded engine.
+            from apps.trip import (default_dose_sweep, parse_doses, run_study,
+                                   write_chart, write_json, write_markdown)
+            drug_name = input("Drug (e.g. lsd, salvia, nzt): ").strip().lower()
+            if drug_name not in DRUG_PROFILES:
+                print(f"[-] Unknown drug '{drug_name}'. Available: {', '.join(list_drugs())}")
+                continue
+            track_input = input("Track Profile (default C1): ").strip().upper() or "C1"
+            if track_input not in EATEOT_TRACK_PROFILES:
+                print("[-] Invalid track profile!")
+                continue
+            spec = resolve_cli_drug(drug_name, 1.0)
+            default_doses = default_dose_sweep(drug_name, spec=spec)
+            raw_doses = input(f"Doses (default {default_doses}): ").strip()
+            doses = parse_doses(raw_doses) if raw_doses else default_doses
+            trials = _prompt_int("Trials (default 1): ", 1)
+            seed = args.seed if args.seed is not None else 42
+            print(f"\n[+] Trip: {drug_name} @ doses {doses} · track {track_input} · trials {trials} · seed {seed}")
+            results = run_study(lab, drug_name, track_input, doses, trials, seed,
+                                battery, battery_name)
+            if not any(d["trials"] for d in results):
+                print("[-] no successful runs at any dose")
+                continue
+            write_markdown(results, drug_name, track_input, lab.model_id,
+                           battery_name, seed)
+            write_json(results, drug_name, track_input, lab.model_id,
+                       battery_name, seed)
+            write_chart(results, drug_name, track_input)
+            print(f"[OK] wrote trip report · {drug_name} · track {track_input} · quiz {battery_name}")
+            input("Press ENTER to return to menu...")
+            continue
+        elif track_choice == "5":
+            # Reserve: model size × severity (multi-model → dispatch).
+            track_input = input("Track Profile (default C1): ").strip().upper() or "C1"
+            if track_input not in EATEOT_TRACK_PROFILES:
+                print("[-] Invalid track profile!")
+                continue
+            print("\n[+] Reserve study: IQ vs severity across model sizes")
+            _run_app("reserve", ["--track", track_input, "--questionnaire", battery_name])
+            input("Press ENTER to return to menu...")
+            continue
+        elif track_choice == "6":
+            print("\n[+] Model comparison: A1 baseline across 0.5B/1.5B/3B")
+            _run_app("compare", ["--questionnaire", battery_name])
+            input("Press ENTER to return to menu...")
+            continue
+        elif track_choice == "7":
+            print("\n[+] Plotting IQ decay curve from telemetry")
+            _run_app("plot", [])
+            input("Press ENTER to return to menu...")
+            continue
+        elif track_choice == "8":
+            print("\n[+] Building drug telemetry report")
+            _run_app("drugreport", [])
+            input("Press ENTER to return to menu...")
+            continue
+
         # ── Drug IQ battery (CLEAN track — no Alzheimer's) ────────────────
         elif track_choice == "Q":
             if not drug_spec:
@@ -470,7 +646,7 @@ def main():
             input("Press ENTER to return to menu...")
             continue
         else:
-            print("[-] Invalid selection! Type a track name (A1, C5…), or a letter command (I, Q, E, P, G, D, T, F, S, L, R, X).")
+            print("[-] Invalid selection! Type a track name (A1, C5…), a letter command (I, Q, E, P, G, D, T, F, S, L, R, X), or a study number (1–8).")
             continue
 
 

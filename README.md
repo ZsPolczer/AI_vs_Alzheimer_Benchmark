@@ -89,24 +89,27 @@ Installed console scripts (from anywhere, after step 4–5):
 
 | Command | What it does |
 |---|---|
-| `eateot-lab` | Interactive control panel — pick a track profile, run the IQ battery, apply flicker/sirens/surge effects. **The main entry point.** |
+| `eateot-lab` | **The one command for everything.** Interactive control panel — tracks, IQ battery, drugs, progressive degradation, the metacognition monitor, and a **Studies & Reports** section ([1]–[8]) that runs every study below on the already-loaded model. |
 | `eateot-lab --model Qwen/Qwen2.5-0.5B-Instruct` | Same, with a smaller/faster model (default is 3B, which CPU-offloads on a 4GB GPU). |
 | `eateot-lab --questionnaire iq_battery_mini` | Run a different questionnaire (see **Questionnaires** below). |
-| `eateot-compare` | Run the A1 IQ battery on all three models (0.5B/1.5B/3B) and save a comparison report + chart. |
-| `eateot-compare --models 3B` | Re-benchmark a subset; others come from existing telemetry. |
-| `eateot-plot` | Plot IQ decay curve from `outputs/iq_test_results.json`. |
-| `eateot-plot --reset` | Wipe logged results + chart. |
-| `eateot-restore` | Dose-response restoration study: fix a track (default G1), then run the battery at increasing restore fractions (treatment dose) and plot the IQ-vs-dose curve. |
-| `eateot-trajectory` | Run the full A1→Q1 decline trajectory (all 17 profiles) in one session + render the decay chart. |
-| `eateot-reserve` | Cognitive reserve study: IQ vs lesion severity (decay multiplier sweep) across all three model sizes — does bigger mean more resilient? |
-| `eateot-trip --drug lsd` | Drug dose-response study: sweep a drug's dose on a fixed track and plot the IQ-vs-dose curve (doses default to 0→1.25× the drug's `dose_cap`). |
-| `eateot-drugreport` | Group every drug telemetry IQ result by (drug/stack label, dose) into `drug_report.md/.json/.png` — reads the drug-domain log (`drug_test_results.json`) with sober-baseline rows from the Alzheimer log. Filters: `--drug lsd`, `--model 0.5B`, `--track C1`, `--questionnaire`, `--min-runs N`. |
-| `eateot-sensitivity` | Perturb weights with std-scaled Gaussian noise (Ẇ = W + ε·σ_W·Z), sweep ε on a log grid, and record IQ **plus the numeric deterioration grade** (0–100) at each level with mean ± std across seeds — tests the monotonic-degradation hypothesis. |
 | `eateot-lab --drug lsd --dose 2.0` | Apply a psychoactive perturbation profile on top of any track in the interactive session (25 drugs in `config/drugs.yaml`, see **Drug catalog**). |
 | `eateot-lab --stack "lsd@1.0,thc@0.5"` | Deploy a drug **combo** — resolve the stack and run every battery under it (mutually exclusive with `--drug`). |
 | `eateot-lab --seed 42` | Any lab battery run becomes reproducible (lesion + sampling). |
 | `eateot-lab --epsilon 0.01` | Apply std-scaled Gaussian perturbation (Ẇ = W + ε·σ_W·Z) on top of any track — see **Sensitivity study** below. |
-| `eateot-sensitivity` | Std-scaled Gaussian perturbation study: IQ + **deterioration grade** vs ε (monotonicity test), report + chart. |
+| `eateot-lab --monitor` | Trace the model's **metacognitive language** during the `[G]` progressive experiment (live bars + `metacognition_*.jsonl` log). |
+
+Every study below is also reachable from inside the lab menu (Studies & Reports, `[1]`–`[8]`) — the standalone scripts remain for scripting, but `eateot-lab` is the single entry point:
+
+| Study (lab menu key) | Standalone command | What it does |
+|---|---|---|
+| `[1]` sensitivity | `eateot-sensitivity` | Perturb weights with std-scaled Gaussian noise (Ẇ = W + ε·σ_W·Z), sweep ε on a log grid, record IQ + deterioration grade per level — tests the monotonic-degradation hypothesis. |
+| `[2]` restore | `eateot-restore` | Dose-response restoration study: fix a track (default G1), run the battery at increasing restore fractions (treatment dose), plot the IQ-vs-dose curve. |
+| `[3]` trajectory | `eateot-trajectory` | Full A1→Q1 decline trajectory (all 17 profiles) in one session + decay chart. |
+| `[4]` trip | `eateot-trip --drug lsd` | Drug dose-response study: sweep a drug's dose on a fixed track, plot IQ-vs-dose (defaults 0→1.25× the drug's `dose_cap`). |
+| `[5]` reserve | `eateot-reserve` | Cognitive reserve study: IQ vs lesion severity (decay multiplier sweep) across all three model sizes. |
+| `[6]` compare | `eateot-compare` | Run the A1 IQ battery on all three models (0.5B/1.5B/3B) + comparison report and chart (`--models 3B` re-benchmarks a subset). |
+| `[7]` plot | `eateot-plot` | Plot IQ decay curve from `outputs/iq_test_results.json` (`--reset` wipes logs + chart). |
+| `[8]` drugreport | `eateot-drugreport` | Group drug telemetry IQ results by (drug/stack label, dose) into `drug_report.md/.json/.png` — with sober-baseline rows. Filters: `--drug lsd`, `--model 0.5B`, `--track C1`, `--questionnaire`, `--min-runs N`. |
 | `streamlit run apps/dashboard.py` | Visual dashboard (radar + bar charts) of degradation results. |
 
 Press **`[P]` 💊 DEPLOY DRUG EXPERIMENT** inside the interactive lab to build a
