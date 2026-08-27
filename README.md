@@ -73,6 +73,7 @@ make compare        # cross-model IQ comparison report + chart
 make compare QUESTIONNAIRE=iq_battery_mini  # use a different questionnaire
 make plot           # decay curve chart
 make plot-reset     # wipe telemetry + chart
+make charts-clean   # delete all generated chart PNGs (keeps telemetry + reports)
 make dash           # Streamlit dashboard
 make restore        # dose-response restoration study (IQ vs treatment dose)
 make trajectory     # full A1→Q1 decline trajectory + decay chart
@@ -117,6 +118,11 @@ drug from dependent menus — pick a *class* (hallucinogen, dissociative, …), 
 drug within that class, then a dose — and optionally stack more drugs into a combo
 before running the battery. The deployed spec is printed (resolved primitives,
 subnetwork, layer window) and becomes the session's active drug.
+
+From the lab's **Settings** section, `[W] 🗑️ CLEAR GRAPHS` deletes every
+generated chart PNG in `outputs/` (telemetry logs and report files are kept), so
+you can wipe the graphs and regenerate fresh ones. `make charts-clean` does the
+same from the shell without entering the lab.
 
 ## Experimental: progressive in-generation degradation
 

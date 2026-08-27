@@ -53,7 +53,7 @@ TRACK         ?= C1
 DATA_DIR      ?= outputs
 
 .PHONY: help setup install hook test clean \
-        lab lab-small compare compare-mini plot plot-reset dash \
+        lab lab-small compare compare-mini plot plot-reset charts-clean dash \
         restore trajectory reserve trip drugreport sensitivity \
         brain lesion benchmark quizzes
 
@@ -98,6 +98,9 @@ plot: ## Plot IQ decay curve from telemetry
 
 plot-reset: ## Wipe telemetry log + chart
 	EATEOT_DATA_DIR=$(DATA_DIR) $(BIN)/eateot-plot --reset
+
+charts-clean: ## Delete all generated chart PNGs (keep telemetry + reports)
+	EATEOT_DATA_DIR=$(DATA_DIR) $(PYTHON) -c "from eateot.paths import clear_charts; removed = clear_charts(); print('🗑️ Removed', len(removed), 'chart(s)' if removed else '— no charts to clear')"
 
 dash: ## Streamlit dashboard (radar + bar charts)
 	EATEOT_DATA_DIR=$(DATA_DIR) $(BIN)/streamlit run apps/dashboard.py

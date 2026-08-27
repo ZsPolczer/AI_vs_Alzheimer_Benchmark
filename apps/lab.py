@@ -307,7 +307,7 @@ def main():
         print("\n────────── ⚙️  SETTINGS ──────────")
         print("  [D] Decay Multiplier  [T] Target Sub-Network")
         print("  [F] Flicker  [S] Sirens  [L] Lucidity Surge")
-        print("  [R] 🔄 FULL RESET  [X] Exit")
+        print("  [W] 🗑️ CLEAR GRAPHS  [R] 🔄 FULL RESET  [X] Exit")
         print("==================================================================")
 
         track_choice = input("▸ ").strip().upper()
@@ -326,6 +326,21 @@ def main():
             lab.restore_clean_state()
             print("\n[✓] FULL RESET: settings, toggles, weights & drug cleared.\n")
             input("Press ENTER to continue...")
+            continue
+        elif track_choice == "W":
+            # Delete every generated chart PNG so studies can be re-run for
+            # fresh graphs. Telemetry logs + reports are kept.
+            from eateot.paths import clear_charts
+            removed = clear_charts()
+            if removed:
+                print(f"\n[✓] CLEARED GRAPHS: removed {len(removed)} chart(s).\n")
+                for chart in removed:
+                    print(f"    🗑️ {chart}")
+                print("\nRun a study ([1]–[8]) to generate fresh graphs.")
+            else:
+                print("\n[✓] No generated charts to clear — run a study ([1]–[8]) to create some.")
+            print()
+            input("Press ENTER to return to menu...")
             continue
 
         # ── Settings ──────────────────────────────────────────────────────
@@ -646,7 +661,7 @@ def main():
             input("Press ENTER to return to menu...")
             continue
         else:
-            print("[-] Invalid selection! Type a track name (A1, C5…), a letter command (I, Q, E, P, G, D, T, F, S, L, R, X), or a study number (1–8).")
+            print("[-] Invalid selection! Type a track name (A1, C5…), a letter command (I, Q, E, P, G, D, T, F, S, L, W, R, X), or a study number (1–8).")
             continue
 
 
