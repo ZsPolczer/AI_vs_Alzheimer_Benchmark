@@ -2,7 +2,7 @@
 
 Public API (also importable as ``from eateot import ...``):
 
-- ``BrainLabEngine``  — model loading + degradation engine
+- ``BrainLabEngine``  — model loading + degradation engine (incl. ``run_progressive_inference`` — in-generation hidden-state decay)
 - ``run_iq_test``     — 5-tier IQ battery orchestrator
 - ``evaluate_response`` / ``IQ_TEST_BATTERY`` — pure scoring logic + battery spec
 - ``EATEOT_TRACK_PROFILES`` / ``PRESET_PROMPTS`` — degradation profiles + prompt presets

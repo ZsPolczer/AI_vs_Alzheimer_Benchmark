@@ -241,6 +241,10 @@ def main():
         if drug_spec:
             print("  [U] 🔓 UNDEPLOY DRUG — clear the active drug")
 
+        print("\n────────── 🧪 EXPERIMENTAL ──────────")
+        print("  [G] 📉 PROGRESSIVE DEGRADATION — answer degrades WHILE generating")
+        print("      (hidden states corrupt as the model speaks: barely → full mayhem)")
+
         print("\n────────── ⚙️  SETTINGS ──────────")
         print("  [D] Decay Multiplier  [T] Target Sub-Network")
         print("  [F] Flicker  [S] Sirens  [L] Lucidity Surge")
@@ -305,6 +309,42 @@ def main():
                 print(f"[-] {e}")
                 continue
             _print_drug_summary(drug_spec)
+            input("Press ENTER to return to menu...")
+            continue
+
+        # ── Progressive in-generation degradation (experimental) ──────────
+        elif track_choice == "G":
+            track_input = input("Track Profile (e.g. A1, C1, E1, F2, CLEAN): ").strip().upper()
+            if track_input not in EATEOT_TRACK_PROFILES:
+                print("[-] Invalid track profile!")
+                continue
+            print("\nSELECT PROMPT SCENARIO:")
+            for k, v in PRESET_PROMPTS.items():
+                print(f"  [{k}] {v[0]}: \"{v[1]}\"")
+            print("  [C] Custom User Prompt")
+            p_choice = input("Choose Prompt (1-5 or C): ").strip().upper()
+            if p_choice in PRESET_PROMPTS:
+                user_prompt = PRESET_PROMPTS[p_choice][1]
+            else:
+                user_prompt = input("Enter Custom Prompt: ").strip()
+
+            # Weight-level lesion first (the chosen track), then the hidden
+            # states are progressively corrupted on top while the model talks.
+            sys_prompt = lab.apply_degradation(
+                track_input,
+                decay_mult=current_decay,
+                target_subnetwork=target_subnetwork,
+                enable_flicker=flicker_mode,
+                enable_sirens=sirens_mode,
+                noise_seed=args.seed,
+                drug=drug_spec,
+                epsilon=args.epsilon,
+            )
+            lab.run_progressive_inference(
+                user_prompt, sys_prompt, lucidity_surge=surge_mode,
+                seed=args.seed, drug=drug_spec,
+            )
+            lab.restore_clean_state()
             input("Press ENTER to return to menu...")
             continue
 
@@ -396,7 +436,7 @@ def main():
             input("Press ENTER to return to menu...")
             continue
         else:
-            print("[-] Invalid selection! Type a track name (A1, C5…), or a letter command (I, Q, E, P, D, T, F, S, L, R, X).")
+            print("[-] Invalid selection! Type a track name (A1, C5…), or a letter command (I, Q, E, P, G, D, T, F, S, L, R, X).")
             continue
 
 

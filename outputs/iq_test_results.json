@@ -4372,5 +4372,91 @@
         "raw_response": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2."
       }
     ]
+  },
+  {
+    "timestamp": "2026-08-27T15:39:14.866775",
+    "model_name": "Qwen/Qwen2.5-3B-Instruct",
+    "config": {
+      "track_profile": "C2",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 72,
+      "clinical_diagnosis": "Moderate Stage Disintegration (Severe Logical Deficit)",
+      "deterioration_grade": 71.4
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "FAILED (Echolalia / Prompt Echo)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 15,
+        "deterioration_grade": 100.0,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "The item that does NOT belong in this list based on physical material properties is Gold. Gold does not belong in this list because it is not a physical material property. Silver, Copper, and Wood all belong in this list."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "deterioration_grade": 50.0,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The subsequent number in the provided sequence is 65. The precise rule governing this sequence is 2, 5, 11, 23, 47, 65."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "FAILED (Echolalia / Prompt Echo)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "deterioration_grade": 100.0,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 22,
+        "max_points": 22,
+        "deterioration_grade": 6.8,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "The weight of Box A is greater than the weight of Box B. The weight of Box C is less than the weight of Box B. The weight of Box D is greater than the weight of Box A."
+      },
+      {
+        "tier": 5,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "FAILED (Echolalia / Prompt Echo)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 23,
+        "deterioration_grade": 100.0,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2."
+      }
+    ]
   }
 ]

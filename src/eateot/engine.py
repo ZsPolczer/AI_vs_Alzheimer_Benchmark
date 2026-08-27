@@ -57,6 +57,110 @@ DEFAULT_SIRENS_MULT = 2.5
 MIN_SCALE = 0.001
 SURGE_TEMPERATURE = 0.3
 
+# Progressive in-generation degradation (see run_progressive_inference).
+PROGRESSIVE_DEFAULT_EPSILON = 0.5   # noise std as a fraction of the hidden-state std
+PROGRESSIVE_DEFAULT_SCALE_MIN = 0.2  # hidden magnitude at full mayhem (1.0 = no scale-down)
+PROGRESSIVE_DEFAULT_MID = 0.35      # clean zone: first 35% of tokens stay near-intact
+PROGRESSIVE_DEFAULT_K = 2.5         # ramp sharpness after the clean zone
+
+
+def progressive_ramp_intensity(progress: float, mid: float = PROGRESSIVE_DEFAULT_MID,
+                               k: float = PROGRESSIVE_DEFAULT_K) -> float:
+    """Corruption intensity for a token at ``progress`` ∈ [0, 1] of the generation.
+
+    Two-phase ramp: the first ``mid`` fraction of the response stays
+    essentially clean (intensity ≈ 0 — barely any influence), then a smooth
+    polynomial ramp climbs to exactly 1.0 at the final token (full mayhem).
+    ``k`` controls how sharply the ramp kicks in once the clean zone ends;
+    values are clamped to [0, 1] and the endpoints are exact (0 / 1).
+    """
+    p = max(0.0, min(1.0, progress))
+    if p <= 0:
+        return 0.0
+    if p >= 1:
+        return 1.0
+    mid = max(0.0, min(1.0, mid))
+    if mid >= 1.0:
+        return 1.0
+    if p <= mid:
+        return 0.0
+    # t ∈ (0, 1]: the fraction of the post-clean-zone ramp covered by p.
+    t = (p - mid) / (1.0 - mid)
+    # Smooth monotone curve from 0 to 1 with adjustable steepness (k=1 is the
+    # plain cubic t^3; larger k delays the rise, smaller k pulls it earlier).
+    s = t ** max(0.25, k)
+    return max(0.0, min(1.0, 3.0 * s * s - 2.0 * s * s * s))
+
+
+def apply_progressive_corruption(hidden: torch.Tensor, intensity: float,
+                                 epsilon: float = PROGRESSIVE_DEFAULT_EPSILON,
+                                 scale_min: float = PROGRESSIVE_DEFAULT_SCALE_MIN) -> torch.Tensor:
+    """Degrade a hidden state in place by ``intensity`` ∈ [0, 1] (0 = untouched).
+
+    Applies the two "knobs" the weight-level engine uses, but to the live
+    hidden representation during generation: a multiplicative scale collapse
+    toward ``scale_min`` and std-scaled Gaussian noise of strength
+    ``epsilon * σ_hidden`` (σ of this tensor, so ε is dimensionless). At
+    intensity 0 (early tokens) this is a no-op; at 1 (the end of a long
+    response) the representation is scaled to ``scale_min`` and drenched in
+    noise — the "full mayhem" endpoint. Mutates and returns ``hidden``.
+    """
+    if intensity <= 0:
+        return hidden
+    std = hidden.std()
+    if std <= 0 or not torch.isfinite(std):
+        return hidden
+    scale = 1.0 - (1.0 - scale_min) * intensity
+    hidden.mul_(scale)
+    if epsilon > 0 and intensity > 0:
+        hidden.add_(torch.randn_like(hidden) * (epsilon * std * intensity))
+    return hidden
+
+
+def _progressive_hook_factory(state: dict, epsilon: float, scale_min: float,
+                              mid: float, k: float):
+    """Build the hidden-stem forward hook for progressive degradation.
+
+    ``state`` carries ``{"count": int, "total": int}`` shared with the
+    generation thread. On every model forward pass the hook corrupts the
+    hidden state in place with an intensity read from the current token
+    position (count / total), so early tokens of the response stay near-clean
+    and later tokens degrade toward full mayhem. Handles ModelOutput-style
+    (``last_hidden_state``) and tuple outputs.
+    """
+
+    def hook(module, args, output):
+        hidden = None
+        if isinstance(output, dict):
+            hidden = output.get("last_hidden_state")
+        elif hasattr(output, "last_hidden_state"):
+            hidden = output.last_hidden_state
+        elif isinstance(output, (tuple, list)) and len(output) > 0:
+            hidden = output[0]
+        if hidden is None or not isinstance(hidden, torch.Tensor):
+            return None
+        total = max(1, state["total"])
+        progress = min(1.0, state["count"] / total)
+        intensity = progressive_ramp_intensity(progress, mid=mid, k=k)
+        apply_progressive_corruption(hidden, intensity, epsilon=epsilon, scale_min=scale_min)
+        state["count"] += 1
+        return None
+
+    return hook
+
+
+def _find_hidden_stem(model: torch.nn.Module):
+    """Return the module whose output is the decoder's hidden state.
+
+    Qwen2/Llama-family: ``model.model``; GPT2-family: ``model.transformer``;
+    otherwise fall back to the model itself.
+    """
+    for attr in ("model", "transformer"):
+        stem = getattr(model, attr, None)
+        if stem is not None:
+            return stem
+    return model
+
 
 def compute_degradation_params(profile: dict, decay_mult: float = 1.0,
                                target_subnetwork: str = "all",
@@ -369,18 +473,13 @@ class BrainLabEngine:
                 torch.manual_seed(seed)
             self.model.generate(**inputs, **gen_kwargs)
 
-    def run_inference(self, user_prompt: str, sys_prompt: str, lucidity_surge: bool = False,
-                      seed: int | None = None, drug: dict | None = None) -> str:
-        """Run one generation under the current weights, honoring a drug spec.
+    def _build_generation(self, user_prompt: str, sys_prompt: str, drug: dict | None,
+                          lucidity_surge: bool) -> tuple:
+        """Build (inputs, gen_kwargs, scatter_handles) shared by both inference paths.
 
-        ``drug`` (optional) is a resolved spec from ``eateot.drugs.resolve_drug``.
-        The drug's ``prompt_state`` is appended to the system prompt, its
-        ``context_mask_frac`` blanks the prompt tail, its sampling primitives
-        override the generation kwargs, ``logit_noise`` scrambles the logits,
-        and ``attention_scatter`` noises the attention outputs of its layer
-        window (hooks are removed before returning).
+        Applies the drug's prompt-state, sampling primitives, logit noise,
+        attention scatter and context masking — exactly as the plain path did.
         """
-        response_text = ""
         params = compute_sampling_params(drug=drug, lucidity_surge=lucidity_surge)
 
         active_sys_prompt = sys_prompt
@@ -407,7 +506,6 @@ class BrainLabEngine:
             prompt_text = f"System: {active_sys_prompt}\nUser: {user_prompt}\nAssistant:"
 
         inputs = self.tokenizer(prompt_text, return_tensors="pt").to(self.model.device)
-        input_length = inputs.input_ids.shape[1]
 
         # Anterograde amnesia: zero the attention mask over the prompt tail so
         # the model no longer "sees" the most recent instructions (the
@@ -437,7 +535,7 @@ class BrainLabEngine:
             )
 
         # Attention scatter: noise the attention outputs of the drug's layer
-        # window. Hooks are removed in the finally block below.
+        # window. Hooks are removed by the caller's finally block.
         scatter_handles = []
         if params["attention_scatter"] > 0:
             layer_pct = (drug or {}).get("layer_pct") or [0.0, 1.0]
@@ -447,11 +545,79 @@ class BrainLabEngine:
                 params["attention_scatter"], start_idx, end_idx
             )
 
+        return inputs, gen_kwargs, scatter_handles
+
+    def run_inference(self, user_prompt: str, sys_prompt: str, lucidity_surge: bool = False,
+                      seed: int | None = None, drug: dict | None = None) -> str:
+        """Run one generation under the current weights, honoring a drug spec.
+
+        ``drug`` (optional) is a resolved spec from ``eateot.drugs.resolve_drug``.
+        The drug's ``prompt_state`` is appended to the system prompt, its
+        ``context_mask_frac`` blanks the prompt tail, its sampling primitives
+        override the generation kwargs, ``logit_noise`` scrambles the logits,
+        and ``attention_scatter`` noises the attention outputs of its layer
+        window (hooks are removed before returning).
+        """
+        return self.run_progressive_inference(
+            user_prompt, sys_prompt, lucidity_surge=lucidity_surge,
+            seed=seed, drug=drug,
+        )
+
+    def run_progressive_inference(self, user_prompt: str, sys_prompt: str,
+                                  lucidity_surge: bool = False, seed: int | None = None,
+                                  drug: dict | None = None,
+                                  epsilon: float = PROGRESSIVE_DEFAULT_EPSILON,
+                                  scale_min: float = PROGRESSIVE_DEFAULT_SCALE_MIN,
+                                  ramp_mid: float = PROGRESSIVE_DEFAULT_MID,
+                                  ramp_k: float = PROGRESSIVE_DEFAULT_K) -> str:
+        """Run one generation whose hidden states degrade *as the model speaks*.
+
+        Experimental in-generation degradation: a forward hook on the decoder's
+        hidden stem corrupts the live hidden state on every token step with an
+        intensity that ramps with generation progress. The first ``ramp_mid``
+        fraction of the response stays near-intact (barely any influence), then
+        a smooth polynomial ramp (sharpness ``ramp_k``) climbs to full mayhem
+        at the final token: the hidden representation is scaled down to
+        ``scale_min`` and drenched in std-scaled Gaussian noise
+        (``epsilon * σ_hidden``) — the quality of the answer decays while you
+        watch it stream, without touching the stored weights (no restore
+        needed). Same drug plumbing as ``run_inference``.
+
+        The hook is attached before generation and removed in a ``finally``
+        block, so later clean runs are unaffected.
+        """
+        inputs, gen_kwargs, scatter_handles = self._build_generation(
+            user_prompt, sys_prompt, drug, lucidity_surge
+        )
+
+        stem = _find_hidden_stem(self.model)
+        state = {"count": 0, "total": gen_kwargs["max_new_tokens"]}
+        handle = stem.register_forward_hook(
+            _progressive_hook_factory(state, epsilon, scale_min, ramp_mid, ramp_k)
+        )
+
+        print("┌─ [PROGRESSIVE IN-GENERATION DEGRADATION]")
+        print(f"├─ Clean zone: first {ramp_mid:.0%} of tokens near-intact, "
+              f"then ramp 0 → 1 (sharpness k {ramp_k:g})")
+        print(f"├─ Noise: ε·σ_hidden up to {epsilon:g} | Scale collapse down to {scale_min:g}")
+        print(f"└─ Hidden stem: {type(stem).__name__}")
+
+        try:
+            return self._stream_generation(inputs, gen_kwargs, seed, scatter_handles)
+        finally:
+            handle.remove()
+
+    def _stream_generation(self, inputs, gen_kwargs, seed, scatter_handles) -> str:
+        """Stream one generate() call to stdout, returning the full response.
+
+        Shared by both inference paths; removes ``scatter_handles`` on exit.
+        """
         streamer = TextIteratorStreamer(
             self.tokenizer, skip_special_tokens=True, skip_prompt=True
         )
         gen_kwargs["streamer"] = streamer
 
+        response_text = ""
         try:
             print("\n=== AI RESPONSE BEGINS ===")
             sys.stdout.flush()

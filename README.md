@@ -115,6 +115,31 @@ drug within that class, then a dose — and optionally stack more drugs into a c
 before running the battery. The deployed spec is printed (resolved primitives,
 subnetwork, layer window) and becomes the session's active drug.
 
+## Experimental: progressive in-generation degradation
+
+Press **`[G]` 📉 PROGRESSIVE DEGRADATION** in the lab menu (or call
+`BrainLabEngine.run_progressive_inference` directly). Unlike the track profiles,
+which corrupt the **stored weights** before generation, this corrupts the
+**live hidden states while the model is generating** — so the answer visibly
+degrades as it streams: early tokens come out near-clean, and by the end of a
+long response the representation is scaled down and drenched in noise.
+
+A forward hook on the decoder's hidden stem applies, per token:
+
+```
+intensity(progress) = 0                 for progress ≤ ramp_mid   (clean zone)
+                       smooth 0 → 1 ramp for progress > ramp_mid   (ends at 1.0)
+hidden ← hidden · (1 − (1 − scale_min)·intensity) + ε · σ_hidden · Z · intensity
+```
+
+`progress` is the token position ÷ `max_new_tokens`, `σ_hidden` the hidden
+state's own std (so `ε` is dimensionless), and `Z ~ N(0, 1)`. Knobs: `epsilon`
+(noise strength, default 0.5), `scale_min` (hidden magnitude at full mayhem,
+default 0.2), `ramp_mid` (fraction of the generation kept near-intact, default
+0.35), `ramp_k` (sharpness of the ramp once it begins, default 2.5). The hook
+is removed when generation finishes, so subsequent clean runs are unaffected,
+and the stored weights are never modified — no `restore_clean_state` needed.
+
 ## Drug catalog & combos
 
 The psychoactive catalog lives in `config/drugs.yaml` (25 drugs across 8 classes:
