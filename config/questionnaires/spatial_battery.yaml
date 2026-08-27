@@ -49,7 +49,7 @@ questions:
     # Same rule as above: the correct name appears nowhere in the question
     # sentence, so the model must compose the layout from the two relations.
     ground_truth_anchors:
-      - ["circle"]
+      - ["circle", "○"]
     max_points: 10
 
   - tier: 5
