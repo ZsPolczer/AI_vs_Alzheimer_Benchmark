@@ -18,7 +18,10 @@ class TestPaths(unittest.TestCase):
             # helper would honor the env var in a fresh module.
             import importlib
             reloaded = importlib.reload(paths)
-            self.assertEqual(str(reloaded.DATA_DIR), "/tmp/eateot-test-out")
+            # normpath so the assertion holds on Windows (Path normalizes
+            # '/tmp/...' to '\tmp\...').
+            self.assertEqual(str(reloaded.DATA_DIR),
+                             os.path.normpath("/tmp/eateot-test-out"))
 
 
 class TestDomainRouting(unittest.TestCase):

@@ -6,7 +6,7 @@ set is configurable — pass any battery loaded from YAML (see
 """
 
 from .battery import IQ_TEST_BATTERY, evaluate_question, grade_deterioration
-from .config import BASE_IQ, clinical_diagnosis
+from .config import BASE_IQ, IQ_CEILING, clinical_diagnosis
 from .drugs import resolve_drug
 from .questionnaires import DEFAULT_BATTERY
 from .telemetry import log_test_run
@@ -41,6 +41,11 @@ def run_iq_test(lab, track_choice, decay_mult, target_subnetwork, enable_flicker
     degradation — the sensitivity-study method. Each question is scored with
     ``grade_deterioration`` (0–100, higher = more deteriorated) and the mean
     grade is reported and logged alongside the IQ score.
+
+    The IQ score is normalized onto the fixed ``BASE_IQ``..``IQ_CEILING``
+    range (see ``eateot.config``): earned points are scaled by the battery's
+    total max points, so a perfect score equals the ceiling and no run can
+    exceed it.
     """
     if battery is None:
         battery = IQ_TEST_BATTERY
@@ -141,7 +146,13 @@ def run_iq_test(lab, track_choice, decay_mult, target_subnetwork, enable_flicker
         print(f"➜ Diagnostic Status: [{status}] (Earned: {score}/{item['max_points']} pts | Accuracy: {accuracy_pct}%"
               f" | Deterioration: {deterioration:.0f}/100)")
 
-    final_iq_score = BASE_IQ + earned_points
+    # Normalized IQ scale: the battery's total max points map onto the fixed
+    # BASE_IQ..IQ_CEILING range, so a perfect score equals the test's designed
+    # ceiling (never 170+) and partial credit is proportional (see eateot.config).
+    total_points = sum(item.get("max_points", 0) for item in battery) or 1
+    final_iq_score = BASE_IQ + round(
+        earned_points / total_points * (IQ_CEILING - BASE_IQ)
+    )
     mean_deterioration = (sum(deterioration_grades) / len(deterioration_grades)
                           if deterioration_grades else 0.0)
 
@@ -168,7 +179,8 @@ def run_iq_test(lab, track_choice, decay_mult, target_subnetwork, enable_flicker
     for t, dom, stat, pts, max_p in results_breakdown:
         print(f"  • Tier {t} [{dom:<22}] : {stat:<40} | {pts}/{max_p} pts")
     print("──────────────────────────────────────────────────────────────────────")
-    print(f" 🧮 ESTIMATED MODEL IQ SCORE : {final_iq_score} IQ")
+    print(f" 🧮 ESTIMATED MODEL IQ SCORE : {final_iq_score} IQ "
+          f"(scale: {BASE_IQ} floor · {IQ_CEILING} ceiling)")
     print(f" 🩺 DIAGNOSTIC STATE         : {clinical_diag}")
     print(f" 💀 DETERIORATION GRADE      : {mean_deterioration:.1f}/100 "
           f"(0 = pristine · 100 = fully degraded)")

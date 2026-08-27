@@ -8090,5 +8090,943 @@
         "raw_response": "\"4: �l sameutm2 ：\n 4ynthia M2 Wolf  steadily  some2  shaping  someultimate: Premi2 � wartime M2 flesh  some2 ：\n displeasper  some2  some SD2  some2  some and some M2 於2  some2 some M2  some SD  some and  some2 some2  some SD  some and2  some and some SD abs2 some2  some SD  some SD2  some and  some2  wider SDausibleCKET2_some M2 some M2 some and some some2  someSD2 於2  someSD2 some and some some2  some2  someSD2  some some some2  some and some some some2 wieearth  some and some some some some2 some2  some and someSD2 some2  some and some some some2 some2  some2  some some some2 some2  some and2  someSD K an some2  some2  some2  some2  some2 some2  some2  some some2 4 M2 some2  some2  someSD2  some2  some2  some2  some2  some2  some2  some2  some2 some2  some2 some2_some M some2 some2  some2  some2  someSD2 some2 some2 some2  some2 relationships2 於2 some2_some M some2 some M some2  some2 relationships2 some2_some2  some2  some2 relationships2  some2  some2 於uchi wanted bem  G an some Muchi  some2 some Muchiec M some2  some2 relationships2 \n\n\n\n\n\n 4  some2 \n\n\n\n\n\n 4  rec K sun2 於"
       }
     ]
+  },
+  {
+    "timestamp": "2026-08-27T21:32:08.920785",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "CLEAN",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": 42,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 117,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)",
+      "deterioration_grade": 37.5
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 8,
+        "max_points": 15,
+        "deterioration_grade": 25.0,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "The item that does not belong in this list based on physical material properties is Wood. Wood is a natural material that consists of cellulose fibers and has unique properties such as being combustible, which makes it a potential fire hazard when not treated or stored properly."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "deterioration_grade": 25.0,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 95. The exact mathematical rule is based on the pattern of adding 3 to each previous number. So, starting with 2:\n\n2, 5, 11, 23, 47, 95."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "deterioration_grade": 25.0,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "No, based solely on the premises provided, a ruby cannot fly. Premise 1 states that all rocks can fly, which means there are rocks that do not fly. Therefore, the answer is No, a ruby cannot fly."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PARTIAL (75.0% accuracy)",
+        "accuracy_pct": 75.0,
+        "score_earned": 16,
+        "max_points": 22,
+        "deterioration_grade": 12.5,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "1) The heaviest box is Box A.\n2) The lightest box is Box C."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Left-Right Transitive Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "Three colored objects sit in a row: [GREEN] [RED] [BLUE]. Which object is the leftmost? Answer with the object color.",
+        "raw_response": "BLUE"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Compass Layout",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "Four objects sit on a compass grid. The SQUARE is north of the TRIANGLE. The CIRCLE is east of the SQUARE. The STAR is west of the TRIANGLE. Which object is the northernmost? Answer with the object name.",
+        "raw_response": "The STAR is the northernmost object."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - Recurring Symbol Pattern (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "A row of symbols follows a repeating pattern: [Δ] [□] [○] [Δ] [□] [?]. Which symbol comes next? Answer with the shape name.",
+        "raw_response": "○"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "115 - 3x3 Symbol Matrix (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "A 3x3 grid: row 1: [Δ] [□] [○] / row 2: [□] [○] [Δ] / row 3: [○] [Δ] [?]. Each row and each column must contain each symbol exactly once. Which symbol belongs in the missing cell? Answer with the shape name.",
+        "raw_response": "The symbol that belongs in the missing cell is a triangle."
+      },
+      {
+        "tier": 6,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "deterioration_grade": 0.0,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "No.\n\nPremise 1 states that all Xorks are Mipsters. Premise 2 states that no Mipsters are GORPs. Combining these two premises, we can conclude that a Xork cannot be a GORP. Premise 1 tells us that all Xorks are Mipsters, and Premise 2 tells us that no Mipsters are GORPs. Therefore, if a Xork is not a Mipster, it cannot be a GORP."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-27T21:32:27.369822",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "CLEAN",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": 42,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 117,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)",
+      "deterioration_grade": 37.5
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 8,
+        "max_points": 15,
+        "deterioration_grade": 25.0,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "The item that does not belong in this list based on physical material properties is Wood. Wood is a natural material that consists of cellulose fibers and has unique properties such as being combustible, which makes it a potential fire hazard when not treated or stored properly."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "deterioration_grade": 25.0,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 95. The exact mathematical rule is based on the pattern of adding 3 to each previous number. So, starting with 2:\n\n2, 5, 11, 23, 47, 95."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "deterioration_grade": 25.0,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "No, based solely on the premises provided, a ruby cannot fly. Premise 1 states that all rocks can fly, which means there are rocks that do not fly. Therefore, the answer is No, a ruby cannot fly."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PARTIAL (75.0% accuracy)",
+        "accuracy_pct": 75.0,
+        "score_earned": 16,
+        "max_points": 22,
+        "deterioration_grade": 12.5,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "1) The heaviest box is Box A.\n2) The lightest box is Box C."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Left-Right Transitive Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "Three colored objects sit in a row: [GREEN] [RED] [BLUE]. Which object is the leftmost? Answer with the object color.",
+        "raw_response": "BLUE"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Compass Layout",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "Four objects sit on a compass grid. The SQUARE is north of the TRIANGLE. The CIRCLE is east of the SQUARE. The STAR is west of the TRIANGLE. Which object is the northernmost? Answer with the object name.",
+        "raw_response": "The STAR is the northernmost object."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - Recurring Symbol Pattern (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "A row of symbols follows a repeating pattern: [Δ] [□] [○] [Δ] [□] [?]. Which symbol comes next? Answer with the shape name.",
+        "raw_response": "○"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "115 - 3x3 Symbol Matrix (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "A 3x3 grid: row 1: [Δ] [□] [○] / row 2: [□] [○] [Δ] / row 3: [○] [Δ] [?]. Each row and each column must contain each symbol exactly once. Which symbol belongs in the missing cell? Answer with the shape name.",
+        "raw_response": "The symbol that belongs in the missing cell is a triangle."
+      },
+      {
+        "tier": 6,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "deterioration_grade": 0.0,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "No.\n\nPremise 1 states that all Xorks are Mipsters. Premise 2 states that no Mipsters are GORPs. Combining these two premises, we can conclude that a Xork cannot be a GORP. Premise 1 tells us that all Xorks are Mipsters, and Premise 2 tells us that no Mipsters are GORPs. Therefore, if a Xork is not a Mipster, it cannot be a GORP."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-27T21:32:47.817487",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "CLEAN",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": 42,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 107,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)",
+      "deterioration_grade": 40.3
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 8,
+        "max_points": 15,
+        "deterioration_grade": 25.0,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "The item that does not belong in this list based on physical material properties is Wood. Wood is a natural material that consists of cellulose fibers and has unique properties such as being combustible, which makes it a potential fire hazard when not treated or stored properly."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "deterioration_grade": 50.0,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 85. The exact mathematical rule is based on the pattern of adding 3 to each previous number. So, starting with 2:\n\n2, 5, 11, 23, 47, 85."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "deterioration_grade": 25.0,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "No, based solely on the premises provided, a ruby cannot fly. Premise 1 states that all rocks can fly, which means there are rocks that do not fly. Therefore, the answer is No, a ruby cannot fly."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PARTIAL (75.0% accuracy)",
+        "accuracy_pct": 75.0,
+        "score_earned": 16,
+        "max_points": 22,
+        "deterioration_grade": 12.5,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "1) The heaviest box is Box A.\n2) The lightest box is Box C."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Left-Right Transitive Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "Three colored objects sit in a row: [GREEN] [RED] [BLUE]. Which object is the leftmost? Answer with the object color.",
+        "raw_response": "BLUE"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Compass Layout",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "Four objects sit on a compass grid. The SQUARE is north of the TRIANGLE. The CIRCLE is east of the SQUARE. The STAR is west of the TRIANGLE. Which object is the northernmost? Answer with the object name.",
+        "raw_response": "The STAR is the northernmost object."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - Recurring Symbol Pattern (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "A row of symbols follows a repeating pattern: [Δ] [□] [○] [Δ] [□] [?]. Which symbol comes next? Answer with the shape name.",
+        "raw_response": "○"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "115 - 3x3 Symbol Matrix (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "A 3x3 grid: row 1: [Δ] [□] [○] / row 2: [□] [○] [Δ] / row 3: [○] [Δ] [?]. Each row and each column must contain each symbol exactly once. Which symbol belongs in the missing cell? Answer with the shape name.",
+        "raw_response": "The symbol that belongs in the missing cell is a triangle."
+      },
+      {
+        "tier": 6,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "deterioration_grade": 0.0,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "No.\n\nPremise 1 states that all Xorks are Mipsters. Premise 2 states that no Mipsters are GORPs. Combining these two premises, we can conclude that a Xork cannot be a GORP. Premise 1 tells us that all Xorks are Mipsters, and Premise 2 tells us that no Mipsters are GORPs. Therefore, if a Xork is not a Mipster, it cannot be a GORP."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-27T21:33:07.641206",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "CLEAN",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": 42,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 107,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)",
+      "deterioration_grade": 40.3
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 8,
+        "max_points": 15,
+        "deterioration_grade": 25.0,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "The item that does not belong in this list based on physical material properties is Wood. Wood is a natural material that consists of cellulose fibers and resins. While it has some properties that can be useful, such as being renewable and often used in construction, it is not a material that can be physically broken down into smaller pieces or extracted from nature in the same way that gold, silver, or copper can."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "deterioration_grade": 50.0,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 85. The exact mathematical rule is based on the pattern of adding 3 to each previous number. So, starting with 2:\n\n2, 5, 11, 23, 47, 85."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "deterioration_grade": 25.0,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "No, based solely on the premises provided, a ruby cannot fly. Premise 1 states that all rocks can fly, which means there are rocks that do not fly. Therefore, the answer is No, a ruby cannot fly."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PARTIAL (75.0% accuracy)",
+        "accuracy_pct": 75.0,
+        "score_earned": 16,
+        "max_points": 22,
+        "deterioration_grade": 12.5,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "1) The heaviest box is Box A.\n2) The lightest box is Box C."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Left-Right Transitive Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "Three colored objects sit in a row: [GREEN] [RED] [BLUE]. Which object is the leftmost? Answer with the object color.",
+        "raw_response": "BLUE"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Compass Layout",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "Four objects sit on a compass grid. The SQUARE is north of the TRIANGLE. The CIRCLE is east of the SQUARE. The STAR is west of the TRIANGLE. Which object is the northernmost? Answer with the object name.",
+        "raw_response": "The STAR is the northernmost object."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - Recurring Symbol Pattern (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "A row of symbols follows a repeating pattern: [Δ] [□] [○] [Δ] [□] [?]. Which symbol comes next? Answer with the shape name.",
+        "raw_response": "○"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "115 - 3x3 Symbol Matrix (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "A 3x3 grid: row 1: [Δ] [□] [○] / row 2: [□] [○] [Δ] / row 3: [○] [Δ] [?]. Each row and each column must contain each symbol exactly once. Which symbol belongs in the missing cell? Answer with the shape name.",
+        "raw_response": "The symbol that belongs in the missing cell is a triangle."
+      },
+      {
+        "tier": 6,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "deterioration_grade": 0.0,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "No.\n\nPremise 1 states that all Xorks are Mipsters. Premise 2 states that no Mipsters are GORPs. Combining these two premises, we can conclude that a Xork cannot be a GORP. Premise 1 tells us that all Xorks are Mipsters, and Premise 2 tells us that no Mipsters are GORPs. Therefore, if a Xork is not a Mipster, it cannot be a GORP."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-27T21:33:55.044065",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "CLEAN",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": 42,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 117,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)",
+      "deterioration_grade": 37.6
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 8,
+        "max_points": 15,
+        "deterioration_grade": 25.0,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "The item that does not belong in this list based on physical material properties is Wood. Wood is a natural material that is not a synthetic or manufactured product, making it the least likely to be considered a physical item in this list."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "deterioration_grade": 50.0,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 85. The exact mathematical rule is based on the pattern of adding 3 to each previous number. So, starting with 2:\n\n2, 5, 11, 23, 47, 85, 175, 355, 677, 1355, 2717, 5275, 9451, 18905, 37811, 75625, 151255, 302511, 553525, 1007041, 1814085, 3628171, 6656345, 13312691, 26625385, 53250771, 106501545, 213003091, 426006185, 852012371, 1704024745, 3408049491, 6816098985, 13632147975, 27264395951, 52528791905, 105057583811, 210115167625, 420230335251, 840460670485, 1"
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "deterioration_grade": 0.0,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Based strictly on the given premises, the answer is Yes.\nPremise 1 states that all rocks can fly, which directly implies that rocks are capable of movement or flight. Premise 2 specifies that a ruby is a rock, which is a specific type of rock. Since all rocks are capable of flying, and a ruby is a specific type of rock, we can conclude that a ruby can indeed fly."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PARTIAL (75.0% accuracy)",
+        "accuracy_pct": 75.0,
+        "score_earned": 16,
+        "max_points": 22,
+        "deterioration_grade": 12.5,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "1) The heaviest box is Box A.\n2) The lightest box is Box C."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Left-Right Transitive Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "Three colored objects sit in a row: [GREEN] [RED] [BLUE]. Which object is the leftmost? Answer with the object color.",
+        "raw_response": "BLUE"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Compass Layout",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "Four objects sit on a compass grid. The SQUARE is north of the TRIANGLE. The CIRCLE is east of the SQUARE. The STAR is west of the TRIANGLE. Which object is the northernmost? Answer with the object name.",
+        "raw_response": "The STAR is the northernmost object."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - Recurring Symbol Pattern (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "A row of symbols follows a repeating pattern: [Δ] [□] [○] [Δ] [□] [?]. Which symbol comes next? Answer with the shape name.",
+        "raw_response": "Triangle (Δ)"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "115 - 3x3 Symbol Matrix (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "A 3x3 grid: row 1: [Δ] [□] [○] / row 2: [□] [○] [Δ] / row 3: [○] [Δ] [?]. Each row and each column must contain each symbol exactly once. Which symbol belongs in the missing cell? Answer with the shape name.",
+        "raw_response": "The symbol that belongs in the missing cell is a triangle."
+      },
+      {
+        "tier": 6,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "deterioration_grade": 0.8,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "No.\n\nPremise 1 states that all Xorks are Mipsters. Premise 2 states that no Mipsters are GORPs. Premise 3 states that some GORPs are Snarks.\n\nFrom Premise 1, we know that all Xorks are Mipsters. This means that if a Xork is a Mipster, it must also be a GORP (since Mipsters are also GORPs).\n\nPremise 2 directly contradicts Premise 1, stating that no Mipsters are GORPs. This means that if a Xork is a Mipster, it cannot be a GORP.\n\nPremise 3 provides additional information that is not relevant to answering the question \"Can a Xork EVER be a GORP? \" Premise 2 only tells us about the relationship between Xorks and Mipsters, but not about their relationship with GORPs.\n\nTherefore, based on Premise 1, we can conclude that a Xork cannot be a GORP."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-27T21:34:19.090621",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "CLEAN",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": 42,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 127,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)",
+      "deterioration_grade": 31.9
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 8,
+        "max_points": 15,
+        "deterioration_grade": 25.0,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Wood does not belong in this list based on physical material properties. Wood is typically a composite material made of carbon, hydrogen, and oxygen, which has properties like density, rigidity, and good thermal and electrical conductivity. Gold and silver have different physical properties such as hardness, luster, and cost-effectiveness, while copper has a high melting point and is commonly used for electrical and structural materials."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "deterioration_grade": 50.0,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 101. The exact mathematical rule for generating the sequence is based on the Fibonacci sequence, where each number is the sum of the two preceding ones. Specifically, each number in the sequence is obtained by adding the previous two numbers."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "deterioration_grade": 0.0,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Yes, a ruby can fly based on the premises provided. Premise 1 states that all rocks can fly, and Premise 2 explicitly states that a ruby is a rock. Therefore, if Premise 1 is true, then Premise 2 must also be true, making it logically consistent to conclude that a ruby can indeed fly."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PARTIAL (75.0% accuracy)",
+        "accuracy_pct": 75.0,
+        "score_earned": 16,
+        "max_points": 22,
+        "deterioration_grade": 12.5,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "1) The heaviest box is Box A.\n2) The lightest box is Box C."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Left-Right Transitive Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 10,
+        "max_points": 10,
+        "deterioration_grade": 25.0,
+        "question": "Three colored objects sit in a row: [GREEN] [RED] [BLUE]. Which object is the leftmost? Answer with the object color.",
+        "raw_response": "GREEN"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Compass Layout",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "Four objects sit on a compass grid. The SQUARE is north of the TRIANGLE. The CIRCLE is east of the SQUARE. The STAR is west of the TRIANGLE. Which object is the northernmost? Answer with the object name.",
+        "raw_response": "The STAR is the northernmost object among the four objects on the compass grid."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - Recurring Symbol Pattern (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "A row of symbols follows a repeating pattern: [Δ] [□] [○] [Δ] [□] [?]. Which symbol comes next? Answer with the shape name.",
+        "raw_response": "Triangle (Δ)"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "115 - 3x3 Symbol Matrix (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "A 3x3 grid: row 1: [Δ] [□] [○] / row 2: [□] [○] [Δ] / row 3: [○] [Δ] [?]. Each row and each column must contain each symbol exactly once. Which symbol belongs in the missing cell? Answer with the shape name.",
+        "raw_response": "The symbol that belongs in the missing cell is a triangle shape (Δ)."
+      },
+      {
+        "tier": 6,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "deterioration_grade": 0.0,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "No. Premise 1 states that all Xorks are Mipsters, which means no Xorks can be Mipsters. Premise 2 contradicts this by stating that no Mipsters are GORPs, which directly contradicts Premise 1. Premise 3 supports the idea that some GORPs are Snarks, meaning that a Xork cannot be a GORP (since all Xorks are Mipsters, and all Mipsters are GORPs, it would be impossible for a Xork to be a GORP). Therefore, Premise 3 directly contradicts Premise 1, and the answer to the question is No."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-27T21:34:26.651461",
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "config": {
+      "track_profile": "CLEAN",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": 42,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 85,
+      "clinical_diagnosis": "Mild Cognitive Impairment (Early Perseveration / Aphasia)",
+      "deterioration_grade": 45.8
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 8,
+        "max_points": 15,
+        "deterioration_grade": 25.0,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "The item that does not fit in this list isSilver, Wood."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "deterioration_grade": 50.0,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 14."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "FAILED (Null / Empty Generation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "deterioration_grade": 100.0,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "[NO OUTPUT GENERATED]"
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 11,
+        "max_points": 22,
+        "deterioration_grade": 25.0,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "The heaviest box, and the lightest box."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Left-Right Transitive Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 10,
+        "max_points": 10,
+        "deterioration_grade": 0.0,
+        "question": "Three colored objects sit in a row: [GREEN] [RED] [BLUE]. Which object is the leftmost? Answer with the object color.",
+        "raw_response": "[left] [BLUE] [GREEN]"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Compass Layout",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "Four objects sit on a compass grid. The SQUARE is north of the TRIANGLE. The CIRCLE is east of the SQUARE. The STAR is west of the TRIANGLE. Which object is the northernmost? Answer with the object name.",
+        "raw_response": "答案:\n答案对象名称"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - Recurring Symbol Pattern (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "A row of symbols follows a repeating pattern: [Δ] [□] [○] [Δ] [□] [?]. Which symbol comes next? Answer with the shape name.",
+        "raw_response": "The symbol that follows in a row of symbols is an \"shape.\" The symbol that follows in the row is known as the shape."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "115 - 3x3 Symbol Matrix (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "A 3x3 grid: row 1: [Δ] [□] [○] / row 2: [□] [○] [Δ] / row 3: [○] [Δ] [?]. Each row and each column must contain each symbol exactly once. Which symbol belongs in the missing cell? Answer with the shape name.",
+        "raw_response": "Answer with the shape: hexagon"
+      },
+      {
+        "tier": 6,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PARTIAL (25.0% accuracy)",
+        "accuracy_pct": 25.0,
+        "score_earned": 6,
+        "max_points": 23,
+        "deterioration_grade": 37.5,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "Premise: Premise: Some Xorks are GPs."
+      }
+    ]
   }
 ]

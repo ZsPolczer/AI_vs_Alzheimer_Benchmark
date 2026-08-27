@@ -1,5 +1,6 @@
 """Unit tests for the versioned YAML questionnaire loader."""
 
+import os
 import unittest
 from unittest import mock
 
@@ -14,13 +15,15 @@ from eateot.questionnaires import (
 
 
 class TestQuestionnaireLoader(unittest.TestCase):
-    def test_default_battery_has_nine_questions(self):
+    def test_default_battery_has_thirteen_questions(self):
         battery = load_battery("iq_battery")
-        self.assertEqual(len(battery), 9)
+        self.assertEqual(len(battery), 13)
         tiers = [q["tier"] for q in battery]
-        # Four spatial-reasoning questions share tier 5 (row + compass +
-        # recurring-symbol pattern + 3x3 matrix).
-        self.assertEqual(tiers, [1, 2, 3, 4, 5, 5, 5, 5, 6])
+        # Four classic spatial-reasoning questions share tier 5 (row + compass
+        # + recurring-symbol pattern + 3x3 matrix); four harder spatial items
+        # (tiers 6-7: mirror reflection, vector composition, 3D enumeration)
+        # were appended in version 4 so the combined run covers the full range.
+        self.assertEqual(tiers, [1, 2, 3, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7])
         self.assertEqual(
             [q["domain"] for q in battery if q["tier"] == 5],
             ["Spatial Reasoning"] * 4,
@@ -30,6 +33,37 @@ class TestQuestionnaireLoader(unittest.TestCase):
             self.assertIn("question", q)
             self.assertIn("ground_truth_anchors", q)
             self.assertIn("max_points", q)
+
+    def test_logic_battery_is_logical_only(self):
+        battery = load_battery("logic_battery")
+        self.assertEqual(len(battery), 5)
+        self.assertEqual([q["tier"] for q in battery], [1, 2, 3, 4, 6])
+        for q in battery:
+            self.assertNotEqual(q["domain"], "Spatial Reasoning")
+            self.assertIn("ground_truth_anchors", q)
+        # Same content as the logical half of the combined iq_battery.
+        combined = load_battery("iq_battery")
+        self.assertEqual(battery[0]["question"], combined[0]["question"])
+        self.assertEqual(battery[4]["question"], combined[8]["question"])
+
+    def test_spatial_battery_is_spatial_only_with_harder_tiers(self):
+        battery = load_battery("spatial_battery")
+        self.assertEqual(len(battery), 8)
+        self.assertEqual([q["tier"] for q in battery], [5, 5, 5, 5, 6, 6, 7, 7])
+        for q in battery:
+            self.assertEqual(q["domain"], "Spatial Reasoning")
+            self.assertIn("ground_truth_anchors", q)
+            self.assertIn("max_points", q)
+        # The version-4 harder items raise the ceiling above the classic tier 5.
+        harder = battery[4:]
+        self.assertTrue(all(q["tier"] >= 6 for q in harder))
+        self.assertEqual([q["ground_truth_anchors"][0] for q in harder],
+                         [["9", "nine"], ["d"], ["50", "fifty"],
+                          ["24", "twenty four", "twenty-four"]])
+        # The combined battery carries the same harder items at the end.
+        combined = load_battery("iq_battery")
+        self.assertEqual([q["question"] for q in combined[9:]],
+                         [q["question"] for q in harder])
 
     def test_mini_battery_is_different_questionnaire(self):
         battery = load_battery("iq_battery_mini")
@@ -66,6 +100,8 @@ class TestQuestionnaireLoader(unittest.TestCase):
         batteries = list_batteries()
         self.assertIn("iq_battery", batteries)
         self.assertIn("iq_battery_mini", batteries)
+        self.assertIn("logic_battery", batteries)
+        self.assertIn("spatial_battery", batteries)
         # presets.yaml and brain_benchmark.yaml have a different schema and
         # must not be advertised as selectable batteries.
         self.assertNotIn("presets", batteries)
@@ -133,7 +169,10 @@ class TestQuestionnaireLoader(unittest.TestCase):
         import importlib
         with mock.patch.dict("os.environ", {"EATEOT_QUESTIONNAIRE_DIR": "/tmp/nope"}):
             reloaded = importlib.reload(questionnaires)
-            self.assertEqual(str(reloaded.QUESTIONNAIRE_DIR), "/tmp/nope")
+            # normpath so the assertion holds on Windows (Path normalizes
+            # '/tmp/...' to '\tmp\...').
+            self.assertEqual(str(reloaded.QUESTIONNAIRE_DIR),
+                             os.path.normpath("/tmp/nope"))
             with self.assertRaises(FileNotFoundError):
                 reloaded.load_battery("iq_battery")
         # Restore the module's default state so later tests see the real config dir.

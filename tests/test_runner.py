@@ -67,12 +67,14 @@ class _FakeLab:
         self.restores += 1
 
 
-def _run(lab, telemetry_mock=None, **kwargs):
+def _run(lab, telemetry_mock=None, battery=None, battery_name=None, **kwargs):
     """Run the battery silently; extra kwargs go to run_iq_test.
 
     Telemetry is ALWAYS mocked so the test suite never writes real entries
     into the domain logs under outputs/ — pass a ``telemetry_mock`` to
-    inspect the log_test_run call (see the telemetry tests below).
+    inspect the log_test_run call (see the telemetry tests below). ``battery``
+    / ``battery_name`` default to MINI_BATTERY / "mini_test" but can be
+    overridden to exercise the IQ scale on other batteries.
     """
     if telemetry_mock is not None:
         patcher = mock.patch.object(runner_module, "log_test_run",
@@ -82,7 +84,8 @@ def _run(lab, telemetry_mock=None, **kwargs):
     with patcher, redirect_stdout(io.StringIO()):
         return run_iq_test(
             lab, "C1", 1.0, "all", False, False, False,
-            battery=MINI_BATTERY, battery_name="mini_test", **kwargs,
+            battery=battery if battery is not None else MINI_BATTERY,
+            battery_name=battery_name or "mini_test", **kwargs,
         )
 
 
@@ -163,8 +166,40 @@ class TestDrugThreading(unittest.TestCase):
 
     def test_summary_is_returned(self):
         summary = _run(_FakeLab(), drug="lsd", dose=1.0)
-        self.assertEqual(summary["final_iq_score"], 65)  # BASE_IQ 50 + 15
+        # Full marks on a 15-point battery hit the designed ceiling:
+        # 50 + round(15/15 * (145-50)) = 145 — never BASE_IQ + points (which
+        # would be 65 on the old unbounded scale and 190 on the full battery).
+        self.assertEqual(summary["final_iq_score"], 145)
         self.assertEqual(summary["battery_name"], "mini_test")
+
+    def test_iq_scale_floor_when_nothing_matches(self):
+        # A battery whose anchors the (perfect) response cannot match scores 0
+        # points -> the scale floor BASE_IQ, and never below.
+        impossible = [{
+            "tier": 1,
+            "domain": "Categorical Reasoning",
+            "target_iq": "75 - Property / Category Classification",
+            "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+            "ground_truth_anchors": [["zanzibar"]],
+            "max_points": 15,
+        }]
+        summary = _run(_FakeLab(), battery=impossible, battery_name="impossible")
+        self.assertEqual(summary["final_iq_score"], 50)  # BASE_IQ floor
+
+    def test_iq_scale_never_exceeds_ceiling_on_any_battery(self):
+        # Whatever the battery's point total, full marks map to IQ_CEILING.
+        big_battery = [{
+            "tier": 1, "domain": "x", "target_iq": "y",
+            "question": "Which item does NOT belong? [Gold, Silver, Copper, Wood]",
+            "ground_truth_anchors": [["wood"], ["metal", "metals"]],
+            "max_points": 200,
+        }]
+        summary = _run(_FakeLab(), battery=big_battery, battery_name="big")
+        self.assertEqual(summary["final_iq_score"], 145)  # IQ_CEILING
+        # A partial answer on the big battery also stays inside the range.
+        partial = _run(_FakeLab(), battery=big_battery, battery_name="big2")
+        self.assertLessEqual(partial["final_iq_score"], 145)
+        self.assertGreaterEqual(partial["final_iq_score"], 50)
 
 
 class TestStackThreading(unittest.TestCase):

@@ -22,6 +22,7 @@ from .battery import (
 from .config import (
     BASE_IQ,
     DEFAULT_DECAY,
+    IQ_CEILING,
     DEFAULT_FLICKER,
     DEFAULT_MODEL,
     DEFAULT_SIRENS,
@@ -53,6 +54,7 @@ __version__ = "0.1.0"
 __all__ = [
     "BASE_IQ",
     "BrainLabEngine",
+    "IQ_CEILING",
     "DEFAULT_DECAY",
     "DEFAULT_FLICKER",
     "DEFAULT_MODEL",
