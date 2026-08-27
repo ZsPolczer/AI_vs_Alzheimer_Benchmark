@@ -60,7 +60,7 @@ questions:
     # answer name appears nowhere in the question sentence — only the glyphs
     # sit inside the diagram brackets — so the model must read the recurrence.
     ground_truth_anchors:
-      - ["circle"]
+      - ["circle", "○"]
     max_points: 10
 
   - tier: 5
@@ -70,7 +70,7 @@ questions:
     # Latin-square rule: the missing cell must be □ (column 3 already has ○ and
     # Δ; row 3 already has ○ and Δ). Square is never named in the sentence.
     ground_truth_anchors:
-      - ["square"]
+      - ["square", "□"]
     max_points: 10
 
   # ---- Harder tier-6/7 spatial items (new with version 1) -------------------
@@ -105,7 +105,7 @@ questions:
     # 50 km. "50"/"fifty" never appear in the question; repeating the given
     # 40 or 30 fails.
     ground_truth_anchors:
-      - ["50", "fifty"]
+      - ["50", "fifty", "50km"]
     max_points: 14
 
   - tier: 7

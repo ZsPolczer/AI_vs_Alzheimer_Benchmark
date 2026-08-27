@@ -9028,5 +9028,369 @@
         "raw_response": "Premise: Premise: Some Xorks are GPs."
       }
     ]
+  },
+  {
+    "timestamp": "2026-08-27T22:34:02.828809",
+    "model_name": "Qwen/Qwen2.5-3B-Instruct",
+    "config": {
+      "track_profile": "A1",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 113,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)",
+      "deterioration_grade": 30.8
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "deterioration_grade": 0.0,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Wood does not belong as it is a non-metallic, organic material unlike the metals (Gold, Silver, Copper) listed."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "deterioration_grade": 25.0,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 95. The exact mathematical rule is that each term is obtained by multiplying the previous term by 2 and then adding 1."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "deterioration_grade": 0.0,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Yes, based on Premise 1. Since all rocks can fly and a ruby is a rock, a ruby can fly."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 22,
+        "max_points": 22,
+        "deterioration_grade": 0.0,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "1) The heaviest box is Box D.\n2) The lightest box is Box C."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Left-Right Transitive Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 10,
+        "max_points": 10,
+        "deterioration_grade": 25.0,
+        "question": "Three colored objects sit in a row: [GREEN] [RED] [BLUE]. Which object is the leftmost? Answer with the object color.",
+        "raw_response": "GREEN"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Compass Layout",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "Four objects sit on a compass grid. The SQUARE is north of the TRIANGLE. The CIRCLE is east of the SQUARE. The STAR is west of the TRIANGLE. Which object is the northernmost? Answer with the object name.",
+        "raw_response": "STAR"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - Recurring Symbol Pattern (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "A row of symbols follows a repeating pattern: [Δ] [□] [○] [Δ] [□] [?]. Which symbol comes next? Answer with the shape name.",
+        "raw_response": "○"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "115 - 3x3 Symbol Matrix (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "A 3x3 grid: row 1: [Δ] [□] [○] / row 2: [□] [○] [Δ] / row 3: [○] [Δ] [?]. Each row and each column must contain each symbol exactly once. Which symbol belongs in the missing cell? Answer with the shape name.",
+        "raw_response": "[□]"
+      },
+      {
+        "tier": 6,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "deterioration_grade": 0.0,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "No. From Premise 1, all Xorks are Mipsters, and from Premise 2, no Mipsters are GORPs, it logically follows that a Xork (being a Mipster) can never be a GORP. Answer: Yes. Explanation: Using Premise 1, we know that any Xork is a Mipster. From Premise 2, we know that no Mipsters are GORPs. Therefore, a Xork (which is a Mipster) can never be a GORP."
+      },
+      {
+        "tier": 6,
+        "domain": "Spatial Reasoning",
+        "target_iq": "120 - Mirror Reflection (Time Reversal)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 12,
+        "deterioration_grade": 75.0,
+        "question": "A wall clock shows 3 o'clock. You look at its reflection in a mirror. What hour does the clock appear to show in the mirror? Give the hour as a number.",
+        "raw_response": "3"
+      },
+      {
+        "tier": 6,
+        "domain": "Spatial Reasoning",
+        "target_iq": "120 - Mirror Symmetry (Letter Reflection)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 12,
+        "deterioration_grade": 50.0,
+        "question": "A lowercase letter 'b' is held up to a mirror. What lowercase letter does its reflection look like? Give the letter.",
+        "raw_response": "The reflection looks like the letter 'b'."
+      },
+      {
+        "tier": 7,
+        "domain": "Spatial Reasoning",
+        "target_iq": "130 - Spatial Vector Composition (Pythagorean)",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 14,
+        "max_points": 14,
+        "deterioration_grade": 0.0,
+        "question": "Town B lies 40 km due north of Town A. Town C lies 30 km due east of Town B. A straight road is built from Town A directly to Town C. How many kilometers long is this road? Give the number.",
+        "raw_response": "Reflecting on the slight parameters slipping, the straight-line distance from Town A to Town C can be found using the Pythagorean theorem, as the towns form a right-angled triangle. Therefore, the road length is √(40² + 30²) = 50 km."
+      },
+      {
+        "tier": 7,
+        "domain": "Spatial Reasoning",
+        "target_iq": "135 - 3D Edge Enumeration (4x4x4 Cube)",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "deterioration_grade": 0.0,
+        "question": "A 4x4x4 cube made of unit cubes is dipped in paint so all six outer faces are covered, then taken apart into the 64 unit cubes. How many unit cubes have paint on exactly two faces? Give the number.",
+        "raw_response": "Reflecting slightly, parameters of the problem are well-defined: the goal is to count specific painted unit cubes. There are 24 unit cubes with paint on exactly two faces."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-08-27T22:47:03.932386",
+    "model_name": "Qwen/Qwen2.5-3B-Instruct",
+    "config": {
+      "track_profile": "CLEAN",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 119,
+      "clinical_diagnosis": "Average Reasoning (Mild Functional Friction)",
+      "deterioration_grade": 31.2
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "deterioration_grade": 0.0,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "Wood does not belong in this list based on physical material properties. Gold, Silver, and Copper are all metallic elements, while Wood is a non-metallic, organic material. Gold, Silver, and Copper are conductive, malleable, and have specific melting points, whereas Wood is not."
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "deterioration_grade": 25.0,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "The next number in the sequence is 95. The exact mathematical rule is that each term is obtained by multiplying the previous term by 2 and then adding 1. \n\nTo illustrate:\n- 2 * 2 + 1 = 5\n- 5 * 2 + 1 = 11\n- 11 * 2 + 1 = 23\n- 23 * 2 + 1 = 47\n- 47 * 2 + 1 = 95\n\nThus, the rule is \\( a_{n} = 2a_{n-1} + 1 \\) for \\( n > 1 \\) with the initial term \\( a_1 = 2 \\)."
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 20,
+        "max_points": 20,
+        "deterioration_grade": 0.0,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "Yes. Based on Premise 1, \"All rocks can fly,\" and Premise 2, \"A ruby is a rock,\" we can deduce that a ruby can fly. The statement \"A ruby is a rock\" directly links the ruby to the category of rocks, allowing us to apply Premise 1 to the ruby."
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 22,
+        "max_points": 22,
+        "deterioration_grade": 0.0,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "1) The heaviest box is Box D.\n2) The lightest box is Box C."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Left-Right Transitive Ordering",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 10,
+        "max_points": 10,
+        "deterioration_grade": 25.0,
+        "question": "Three colored objects sit in a row: [GREEN] [RED] [BLUE]. Which object is the leftmost? Answer with the object color.",
+        "raw_response": "GREEN"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Compass Layout",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "Four objects sit on a compass grid. The SQUARE is north of the TRIANGLE. The CIRCLE is east of the SQUARE. The STAR is west of the TRIANGLE. Which object is the northernmost? Answer with the object name.",
+        "raw_response": "STAR"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - Recurring Symbol Pattern (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "A row of symbols follows a repeating pattern: [Δ] [□] [○] [Δ] [□] [?]. Which symbol comes next? Answer with the shape name.",
+        "raw_response": "○"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "115 - 3x3 Symbol Matrix (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 75.0,
+        "question": "A 3x3 grid: row 1: [Δ] [□] [○] / row 2: [□] [○] [Δ] / row 3: [○] [Δ] [?]. Each row and each column must contain each symbol exactly once. Which symbol belongs in the missing cell? Answer with the shape name.",
+        "raw_response": "[□]"
+      },
+      {
+        "tier": 6,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 23,
+        "max_points": 23,
+        "deterioration_grade": 0.0,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "No.\n\nExplanation: From Premise 1, we know that all Xorks are Mipsters. From Premise 2, we know that no Mipsters are GORPs. Since Xorks are a subset of Mipsters, it logically follows that no Xorks can be GORPs. Therefore, a Xork can never be a GORP."
+      },
+      {
+        "tier": 6,
+        "domain": "Spatial Reasoning",
+        "target_iq": "120 - Mirror Reflection (Time Reversal)",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 12,
+        "max_points": 12,
+        "deterioration_grade": 25.0,
+        "question": "A wall clock shows 3 o'clock. You look at its reflection in a mirror. What hour does the clock appear to show in the mirror? Give the hour as a number.",
+        "raw_response": "9"
+      },
+      {
+        "tier": 6,
+        "domain": "Spatial Reasoning",
+        "target_iq": "120 - Mirror Symmetry (Letter Reflection)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 12,
+        "deterioration_grade": 75.0,
+        "question": "A lowercase letter 'b' is held up to a mirror. What lowercase letter does its reflection look like? Give the letter.",
+        "raw_response": "b"
+      },
+      {
+        "tier": 7,
+        "domain": "Spatial Reasoning",
+        "target_iq": "130 - Spatial Vector Composition (Pythagorean)",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 14,
+        "max_points": 14,
+        "deterioration_grade": 25.0,
+        "question": "Town B lies 40 km due north of Town A. Town C lies 30 km due east of Town B. A straight road is built from Town A directly to Town C. How many kilometers long is this road? Give the number.",
+        "raw_response": "50"
+      },
+      {
+        "tier": 7,
+        "domain": "Spatial Reasoning",
+        "target_iq": "135 - 3D Edge Enumeration (4x4x4 Cube)",
+        "status": "PASSED (Full Logical Match)",
+        "accuracy_pct": 100.0,
+        "score_earned": 15,
+        "max_points": 15,
+        "deterioration_grade": 6.0,
+        "question": "A 4x4x4 cube made of unit cubes is dipped in paint so all six outer faces are covered, then taken apart into the 64 unit cubes. How many unit cubes have paint on exactly two faces? Give the number.",
+        "raw_response": "To determine how many unit cubes have paint on exactly two faces, consider the structure of the 4x4x4 cube. The outer faces of this cube are composed of unit cubes with different numbers of painted faces depending on their location.\n\n- Unit cubes on the edges but not at the corners have exactly two painted faces.\n- Unit cubes on the corners have three painted faces.\n- Unit cubes inside the cube (not on the outer faces) have no painted faces.\n\nFor a 4x4x4 cube:\n- Each edge has 4 unit cubes, but the two at the ends are corners, leaving 2 unit cubes per edge with two painted faces.\n- There are 12 edges in a cube, so there are \\(12 \\times 2 = 24\\) unit cubes with exactly two painted faces.\n\nThus, the number of unit cubes with paint on exactly two faces is 24."
+      }
+    ]
   }
 ]
