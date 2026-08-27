@@ -226,6 +226,16 @@ degraded). It combines three signals per question:
 - **repetition** — content-word type-token ratio (25% weight)
 - **perseveration** — consecutive-loop detector (25% weight)
 
+**Echolalia is rejected outright.** A response that merely reproduces the
+question instead of answering (a classic degradation failure) scores 0 points
+with status `FAILED (Echolalia / Prompt Echo)` and a deterioration grade of
+100 — even when the question text itself contains anchor words (e.g. "State
+Yes or No" must never match the `yes` anchor). Anchored questions also award
+finer-grained accuracy than binary group hits: a group is fully matched when
+any synonym appears verbatim, otherwise it earns fractional credit scaled by
+how many of the synonym's content words are present (≥50% coverage), so
+accuracy spans values like 0/25/33/50/67/75/100 instead of coarse jumps.
+
 An optional clean baseline can be supplied to `eateot.battery.grade_deterioration`
 (`clean_response=`), which folds in content-word bigram overlap as an extra
 20% weight so the grade measures deterioration *relative to* the undegraded

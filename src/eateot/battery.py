@@ -195,64 +195,118 @@ def evaluate_question(raw_output: str, item: dict):
             letter=cfg.get("letter"),
         )
     points, status, pct = evaluate_response(
-        raw_output, item.get("ground_truth_anchors", []), item["max_points"]
+        raw_output, item.get("ground_truth_anchors", []), item["max_points"],
+        question=item.get("question"),
     )
     return points, status, pct, None
 
 
-def evaluate_response(raw_output: str, ground_truth_anchors: list[list[str]], max_points: int):
+# Echolalia rejection + fractional-credit scoring thresholds.
+ECHO_BIGRAM_COVERAGE = 0.85  # fraction of the question's content-word bigrams the response must reproduce
+ECHO_MIN_LENGTH_RATIO = 0.8   # response must be at least this long (vs the question) to count as an echo
+PARTIAL_CREDIT_FLOOR = 0.5    # minimum synonym-token coverage to earn fractional group credit
+
+
+def evaluate_response(raw_output: str, ground_truth_anchors: list[list[str]], max_points: int,
+                      question: str | None = None):
     """
     Evaluates response against multiple anchor groups (synonyms).
-    Awards proportional partial credit based on how many distinct anchors were matched.
+
+    Stricter than a plain keyword count:
+
+    * **Echolalia rejection** — when ``question`` is supplied and the response
+      is a near-verbatim reproduction of the prompt (a classic degradation
+      failure), the response is deliberately failed with 0 points. This
+      prevents prompt echoes from scoring full marks just because the question
+      text itself contains anchor words (e.g. 'State Yes or No').
+    * **Fractional group credit** — a group earns full credit when any of its
+      synonyms appears verbatim; otherwise it earns partial credit scaled by
+      how many of the synonym's content words are present (when coverage is at
+      least ``PARTIAL_CREDIT_FLOOR``). Accuracy therefore spans a finer range
+      (e.g. 0/25/33/50/67/75/100) instead of jumping in large proportional
+      gaps like 0/50/100.
     """
     if not raw_output or raw_output.strip() in ["[NO OUTPUT GENERATED]", "[INFERENCE ERROR]"]:
         return 0, "FAILED (Null / Empty Generation)", 0.0
 
+    # 1. Echolalia rejection: reproducing the prompt must never score.
+    if _is_echo_response(raw_output, question):
+        return 0, "FAILED (Echolalia / Prompt Echo)", 0.0
+
     text_lower = raw_output.lower()
 
-    # 1. Genuine Perseveration Check (Consecutive phrase loops)
+    # 2. Genuine Perseveration Check (Consecutive phrase loops)
     consecutive_loop_pattern = r'(\b\w+(?:\s+\w+){1,4}\b)(?:\s*\1){3,}'
     if re.search(consecutive_loop_pattern, text_lower):
         return 0, "FAILED (Perseveration / Attractor Loop)", 0.0
 
-    # 2. Normalize text: Unwrap LaTeX \boxed{}, remove markups
+    # 3. Normalize text: Unwrap LaTeX \boxed{}, remove markups
     normalized = re.sub(r'\\boxed\{([^}]+)\}', r'\1', raw_output)
     normalized = re.sub(r'[\\()\[\]*_`#]', ' ', normalized).lower()
 
-    # 3. Check each anchor group
+    # 4. Score each anchor group: full credit on a verbatim synonym, otherwise
+    #    fractional credit from content-word coverage (see docstring).
     total_anchors = len(ground_truth_anchors)
-    matched_anchors = 0
+    resp_tokens = set(_content_words(normalized))
+    group_credits = []
 
     for anchor_group in ground_truth_anchors:
-        group_matched = False
+        best = 0.0
         for synonym in anchor_group:
             syn_clean = synonym.lower().strip()
-            pattern = r'\b' + re.escape(syn_clean) + r'\b'
-            if re.search(pattern, normalized):
-                group_matched = True
+            if re.search(r'\b' + re.escape(syn_clean) + r'\b', normalized):
+                best = 1.0
                 break
+            syn_tokens = [t for t in re.findall(r"[a-z0-9]+(?:'[a-z0-9]+)?", syn_clean)
+                          if t not in FUNCTION_WORDS]
+            if syn_tokens:
+                covered = sum(1 for t in syn_tokens if t in resp_tokens) / len(syn_tokens)
+                if covered >= PARTIAL_CREDIT_FLOOR:
+                    best = max(best, covered)
+        group_credits.append(best)
 
-        if group_matched:
-            matched_anchors += 1
-
-    # 4. Proportional Partial Point Scoring
-    match_ratio = matched_anchors / total_anchors
+    # 5. Proportional point scoring over the (possibly fractional) credits.
+    match_ratio = sum(group_credits) / total_anchors
     earned_points = int(round(max_points * match_ratio))
+    pct = round(match_ratio * 100, 1)
 
-    if matched_anchors == total_anchors:
+    if match_ratio >= 1.0:
         status = "PASSED (Full Logical Match)"
-    elif matched_anchors > 0:
-        status = f"PARTIAL ({matched_anchors}/{total_anchors} anchors matched)"
+    elif match_ratio > 0.0:
+        status = f"PARTIAL ({pct}% accuracy)"
     else:
         status = "FAILED (Logical Inaccuracy / Confabulation)"
 
-    return earned_points, status, round(match_ratio * 100, 1)
+    return earned_points, status, pct
 
 
 def _content_words(text: str) -> list[str]:
     """Lowercased content words (function words stripped) for lexical metrics."""
     tokens = re.findall(r"\b[a-z]+(?:'[a-z]+)?\b", text.lower())
     return [t for t in tokens if t not in FUNCTION_WORDS]
+
+
+def _is_echo_response(raw_output: str, question: str | None) -> bool:
+    """True when the response is a near-verbatim reproduction of the question.
+
+    Echolalia — the model parroting the prompt instead of answering — is a
+    classic degradation failure and must never earn credit. The response
+    counts as an echo when it reproduces at least ``ECHO_BIGRAM_COVERAGE`` of
+    the question's content-word bigrams AND is at least ``ECHO_MIN_LENGTH_RATIO``
+    as long as the question (a terse "Yes, because …" answer is far shorter
+    and quotes only part of the premises, so it is not flagged).
+    """
+    q_tokens = _content_words(question or "")
+    r_tokens = _content_words(raw_output or "")
+    if len(q_tokens) < 8 or len(r_tokens) < 8:
+        return False  # too short to distinguish an echo from a terse answer
+    q_bigrams = set(zip(q_tokens, q_tokens[1:]))
+    if not q_bigrams:
+        return False
+    r_bigrams = set(zip(r_tokens, r_tokens[1:]))
+    coverage = sum(1 for b in q_bigrams if b in r_bigrams) / len(q_bigrams)
+    length_ratio = len(r_tokens) / len(q_tokens)
+    return coverage >= ECHO_BIGRAM_COVERAGE and length_ratio >= ECHO_MIN_LENGTH_RATIO
 
 
 def grade_deterioration(raw_output: str, item: dict | None = None,
@@ -269,6 +323,10 @@ def grade_deterioration(raw_output: str, item: dict | None = None,
       (0 when TTR ≥ 0.5, ramps linearly to 1 as TTR → 0).
     * ``perseveration``— 1.0 when the consecutive-loop detector fires.
 
+    Echolalia (the response reproducing the question instead of answering) is
+    scored 100.0 outright — it is a severe sign of degradation and must never
+    be graded pristine just because the prompt text contained anchor words.
+
     Grade = 100 · (0.5·(1−correctness) + 0.25·repetition + 0.25·perseveration).
 
     When ``clean_response`` is given, the content-word bigram overlap (Jaccard)
@@ -278,6 +336,11 @@ def grade_deterioration(raw_output: str, item: dict | None = None,
     """
     if not raw_output or raw_output.strip() in ("[NO OUTPUT GENERATED]",
                                                 "[INFERENCE ERROR]", "[NO OUTPUT GENERATED]".lower()):
+        return 100.0
+
+    # Echolalia (reproducing the prompt) is a severe clinical sign: fully
+    # deteriorated, regardless of any anchor words the question text contains.
+    if item is not None and _is_echo_response(raw_output, item.get("question", "")):
         return 100.0
 
     if item is not None:

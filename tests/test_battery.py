@@ -70,6 +70,96 @@ class TestEvaluateResponse(unittest.TestCase):
         )
         self.assertIn("PASSED", status)
 
+    def test_echo_of_question_fails_deliberately(self):
+        # Reproducing the prompt verbatim (echolalia) must score 0 even though
+        # the question text itself contains anchor words: Tier 3's "State Yes
+        # or No" would otherwise match the "yes" anchor, and the echoed
+        # premises contain "all rocks" / "premise 1".
+        item = IQ_TEST_BATTERY[2]  # Tier 3 counterfactual syllogism
+        score, status, pct = evaluate_response(
+            item["question"],
+            item["ground_truth_anchors"],
+            item["max_points"],
+            question=item["question"],
+        )
+        self.assertEqual(score, 0)
+        self.assertIn("FAILED", status)
+        self.assertIn("Echolalia", status)
+        self.assertEqual(pct, 0.0)
+
+    def test_echo_rejected_even_when_question_mentions_answer_word(self):
+        # Tier 5's question says "Answer Yes or No" and quotes premises
+        # containing the "mipsters"/"premise 2" anchors — a pure echo must
+        # not collect any of them.
+        item = IQ_TEST_BATTERY[4]
+        score, status, pct = evaluate_response(
+            item["question"],
+            item["ground_truth_anchors"],
+            item["max_points"],
+            question=item["question"],
+        )
+        self.assertEqual(score, 0)
+        self.assertIn("Echolalia", status)
+        self.assertEqual(pct, 0.0)
+
+    def test_terse_answer_is_not_an_echo(self):
+        # A short correct answer quoting only part of the premises is not
+        # flagged as echolalia and still scores full marks.
+        item = IQ_TEST_BATTERY[2]
+        score, status, pct = evaluate_response(
+            "Yes. Based on Premise 1, all rocks can fly and a ruby is a rock.",
+            item["ground_truth_anchors"],
+            item["max_points"],
+            question=item["question"],
+        )
+        self.assertEqual(score, item["max_points"])
+        self.assertIn("PASSED", status)
+        self.assertEqual(pct, 100.0)
+
+    def test_partial_credit_has_finer_granularity(self):
+        # "D is the heaviest" answers one of the two relational anchors; the
+        # fractional scheme yields a clean 50% instead of the old binary 0%.
+        item = IQ_TEST_BATTERY[3]  # Tier 4 relational ordering
+        score, status, pct = evaluate_response(
+            "D is the heaviest.",
+            item["ground_truth_anchors"],
+            item["max_points"],
+            question=item["question"],
+        )
+        self.assertEqual(score, int(round(item["max_points"] * 0.5)))
+        self.assertEqual(pct, 50.0)
+        self.assertIn("PARTIAL", status)
+
+    def test_natural_language_full_answer_scores_max(self):
+        # "D is the heaviest, C is the lightest" matches no anchor phrase
+        # literally ("heaviest: d", "box c", ...) and used to score 0;
+        # content-word coverage now credits it fully.
+        item = IQ_TEST_BATTERY[3]
+        score, status, pct = evaluate_response(
+            "D is the heaviest, C is the lightest.",
+            item["ground_truth_anchors"],
+            item["max_points"],
+            question=item["question"],
+        )
+        self.assertEqual(score, item["max_points"])
+        self.assertIn("PASSED", status)
+        self.assertEqual(pct, 100.0)
+
+    def test_sub_phrase_overlap_earns_fractional_credit(self):
+        # Only half of the "classified as a rock" synonym's content words are
+        # present ("rock"), so the group earns 0.5 credit -> 25% overall for
+        # Tier 3's two groups, instead of a hard 0% or 100%.
+        item = IQ_TEST_BATTERY[2]
+        score, status, pct = evaluate_response(
+            "No, because a ruby is not a rock.",
+            item["ground_truth_anchors"],
+            item["max_points"],
+            question=item["question"],
+        )
+        self.assertEqual(score, int(round(item["max_points"] * 0.25)))
+        self.assertEqual(pct, 25.0)
+        self.assertIn("PARTIAL", status)
+
 
 class TestEvaluateFluency(unittest.TestCase):
     """Category-fluency scoring (used by the clinical battery)."""
@@ -246,6 +336,10 @@ class TestGradeDeterioration(unittest.TestCase):
         repetitive = "Wood wood wood wood wood is not a metal metal metal metal."
         self.assertGreater(grade_deterioration(repetitive, item),
                            grade_deterioration(fluent, item))
+
+    def test_echolalia_is_fully_deteriorated(self):
+        item = IQ_TEST_BATTERY[2]
+        self.assertEqual(grade_deterioration(item["question"], item), 100.0)
 
     def test_clean_response_overlap_reduces_grade(self):
         # Supplying the undegraded reference (high overlap) lowers the grade.
