@@ -14,15 +14,16 @@ from eateot.questionnaires import (
 
 
 class TestQuestionnaireLoader(unittest.TestCase):
-    def test_default_battery_has_seven_questions(self):
+    def test_default_battery_has_nine_questions(self):
         battery = load_battery("iq_battery")
-        self.assertEqual(len(battery), 7)
+        self.assertEqual(len(battery), 9)
         tiers = [q["tier"] for q in battery]
-        # Two spatial-reasoning questions share tier 5 (leftmost row + compass).
-        self.assertEqual(tiers, [1, 2, 3, 4, 5, 5, 6])
+        # Four spatial-reasoning questions share tier 5 (row + compass +
+        # recurring-symbol pattern + 3x3 matrix).
+        self.assertEqual(tiers, [1, 2, 3, 4, 5, 5, 5, 5, 6])
         self.assertEqual(
             [q["domain"] for q in battery if q["tier"] == 5],
-            ["Spatial Reasoning", "Spatial Reasoning"],
+            ["Spatial Reasoning"] * 4,
         )
         # Question dicts expose the keys evaluate_response expects.
         for q in battery:

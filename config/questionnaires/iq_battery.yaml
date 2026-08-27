@@ -1,7 +1,7 @@
 # =============================================================================
 # EATEOT IQ BATTERY — versioned questionnaire
 # =============================================================================
-# This is the default 5-tier IQ battery. Edit questions, anchors, or max
+# This is the default 6-tier IQ battery. Edit questions, anchors, or max
 # points here without touching Python code. Add new questionnaires as
 # separate YAML files in this directory and select them at startup with
 # `--questionnaire <name>` (or EATEOT_QUESTIONNAIRE_DIR for a custom folder).
@@ -17,7 +17,7 @@
 #   max_points:           int (points awarded for a full logical match)
 
 name: iq_battery
-version: 2
+version: 3
 description: Standard 6-tier EATEOT IQ battery (categorical → spatial ordering → abstract set logic)
 
 questions:
@@ -78,6 +78,27 @@ questions:
     # sentence, so the model must compose the layout from the two relations.
     ground_truth_anchors:
       - ["circle"]
+    max_points: 10
+
+  - tier: 5
+    domain: Spatial Reasoning
+    target_iq: "110 - Recurring Symbol Pattern (Raven-style)"
+    question: "A row of symbols follows a repeating pattern: [Δ] [□] [○] [Δ] [□] [?]. Which symbol comes next? Answer with the shape name."
+    # The pattern repeats every three symbols (Δ □ ○), so the 6th is ○. The
+    # answer name appears nowhere in the question sentence — only the glyphs
+    # sit inside the diagram brackets — so the model must read the recurrence.
+    ground_truth_anchors:
+      - ["circle"]
+    max_points: 10
+
+  - tier: 5
+    domain: Spatial Reasoning
+    target_iq: "115 - 3x3 Symbol Matrix (Raven-style)"
+    question: "A 3x3 grid: row 1: [Δ] [□] [○] / row 2: [□] [○] [Δ] / row 3: [○] [Δ] [?]. Each row and each column must contain each symbol exactly once. Which symbol belongs in the missing cell? Answer with the shape name."
+    # Latin-square rule: the missing cell must be □ (column 3 already has ○ and
+    # Δ; row 3 already has ○ and Δ). Square is never named in the sentence.
+    ground_truth_anchors:
+      - ["square"]
     max_points: 10
 
   - tier: 6

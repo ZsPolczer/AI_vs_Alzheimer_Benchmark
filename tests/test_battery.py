@@ -256,6 +256,61 @@ class TestEvaluateResponse(unittest.TestCase):
         self.assertEqual(p1, 100.0)
         self.assertEqual(p2, 0.0)
 
+    def test_spatial_pattern_next_symbol_scores_max(self):
+        # Tier 5, pattern Q: [Δ] [□] [○] repeats, so the 6th symbol is ○.
+        # "circle" appears nowhere in the question sentence.
+        item = IQ_TEST_BATTERY[6]
+        self.assertEqual(item["target_iq"], "110 - Recurring Symbol Pattern (Raven-style)")
+        # The answer is scored by shape NAME (the matcher is word-based).
+        for answer in ("circle", "The next symbol is the circle.", "CIRCLE"):
+            score, status, pct = evaluate_response(
+                answer, item["ground_truth_anchors"], item["max_points"],
+                question=item["question"],
+            )
+            self.assertEqual(score, item["max_points"], answer)
+            self.assertIn("PASSED", status)
+            self.assertEqual(pct, 100.0)
+
+    def test_spatial_pattern_wrong_symbol_fails(self):
+        # Picking a symbol that IS in the diagram (square/triangle) gets zero.
+        item = IQ_TEST_BATTERY[6]
+        for answer in ("square", "triangle", "The next symbol is the square."):
+            score, status, pct = evaluate_response(
+                answer, item["ground_truth_anchors"], item["max_points"],
+                question=item["question"],
+            )
+            self.assertEqual(score, 0, answer)
+            self.assertIn("FAILED", status)
+            self.assertEqual(pct, 0.0)
+
+    def test_spatial_matrix_missing_cell_scores_max(self):
+        # Tier 5, matrix Q: Latin square — row 3 / col 3 lacks □, so the
+        # missing cell is the square. "square" appears nowhere in the sentence.
+        item = IQ_TEST_BATTERY[7]
+        self.assertEqual(item["target_iq"], "115 - 3x3 Symbol Matrix (Raven-style)")
+        # The answer is scored by shape NAME (the matcher is word-based).
+        for answer in ("square", "The missing symbol is the square.", "SQUARE"):
+            score, status, pct = evaluate_response(
+                answer, item["ground_truth_anchors"], item["max_points"],
+                question=item["question"],
+            )
+            self.assertEqual(score, item["max_points"], answer)
+            self.assertIn("PASSED", status)
+            self.assertEqual(pct, 100.0)
+
+    def test_spatial_matrix_wrong_symbol_fails(self):
+        # Guessing the other symbols (circle/triangle) gets zero — even though
+        # their glyphs are in the diagram and the sentence names 'symbol'.
+        item = IQ_TEST_BATTERY[7]
+        for answer in ("circle", "triangle", "The missing symbol is the circle."):
+            score, status, pct = evaluate_response(
+                answer, item["ground_truth_anchors"], item["max_points"],
+                question=item["question"],
+            )
+            self.assertEqual(score, 0, answer)
+            self.assertIn("FAILED", status)
+            self.assertEqual(pct, 0.0)
+
 
 class TestEvaluateFluency(unittest.TestCase):
     """Category-fluency scoring (used by the clinical battery)."""

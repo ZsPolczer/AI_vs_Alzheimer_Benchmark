@@ -28,6 +28,12 @@ from eateot.config import (
     DEFAULT_SUBNET,
     DEFAULT_SURGE,
 )
+from eateot.engine import progressive_ramp_intensity
+from eateot.metacognition import (
+    profile_windows,
+    trace_line,
+    write_jsonl,
+)
 from eateot.profiles import EATEOT_TRACK_PROFILES
 from eateot.questionnaires import list_batteries, load_battery
 
@@ -185,6 +191,12 @@ def main():
         help="Drug combo spec 'name@dose,name@dose' (e.g. 'lsd@1.0,thc@0.5'; "
              "'+' also works as separator). Mutually exclusive with --drug.",
     )
+    parser.add_argument(
+        "--monitor", action="store_true",
+        help="In the [G] progressive experiment, trace the model's "
+             "metacognitive markers per response window (live bars + "
+             "metacognition_*.jsonl log in the outputs dir).",
+    )
     args = parser.parse_args()
 
     if args.drug and args.stack:
@@ -340,11 +352,33 @@ def main():
                 drug=drug_spec,
                 epsilon=args.epsilon,
             )
-            lab.run_progressive_inference(
+            response_text = lab.run_progressive_inference(
                 user_prompt, sys_prompt, lucidity_surge=surge_mode,
                 seed=args.seed, drug=drug_spec,
             )
             lab.restore_clean_state()
+
+            # Metacognition monitor: profile the response in windows aligned to
+            # the degradation ramp, print the live trace, and log to jsonl.
+            if args.monitor and response_text and not response_text.startswith("["):
+                # Each window's midpoint is its position in the response
+                # (0 → 1), mapped through the same ramp the engine applied —
+                # so window 0 shows the near-clean start and the last window
+                # shows full-mayhem corruption.
+                n_windows = max(1, (len(response_text) + 349) // 350)
+                intensities = [
+                    progressive_ramp_intensity((i + 0.5) / n_windows)
+                    for i in range(n_windows)
+                ]
+                windows = profile_windows(response_text, intensities=intensities)
+                print("\n┌─ [METACOGNITION MONITOR]")
+                for entry in windows:
+                    print("├─ " + trace_line(entry))
+                log_path = write_jsonl(
+                    windows, "outputs", model_name=lab.model_id, track=track_input,
+                )
+                print(f"└─ Logged {len(windows)} windows → {log_path}")
+
             input("Press ENTER to return to menu...")
             continue
 

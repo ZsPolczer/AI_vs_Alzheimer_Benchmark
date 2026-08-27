@@ -118,7 +118,18 @@ subnetwork, layer window) and becomes the session's active drug.
 ## Experimental: progressive in-generation degradation
 
 Press **`[G]` 📉 PROGRESSIVE DEGRADATION** in the lab menu (or call
-`BrainLabEngine.run_progressive_inference` directly). Unlike the track profiles,
+`BrainLabEngine.run_progressive_inference` directly). Run it with
+`eateot-lab --monitor` to also trace the model's **metacognitive language** as
+the response collapses: each response window gets a live marker profile
+(cognitive self-reference, doubt/hedging, denial/over-compensation,
+confabulated recollection, repetition loops) plus a 0–100 "metacognitive
+coherence" score, and every window is logged to
+`outputs/metacognition_<timestamp>.jsonl` (model, track, ramp intensity,
+marker counts, coherence, raw text) for post-hoc charting. The scan is pure
+text heuristics — zero extra inference cost. The model itself never "sees"
+its own decay (no introspection path); the monitor measures the linguistic
+footprint of self-monitoring, which is what actually shifts as the hidden
+states corrupt. Unlike the track profiles,
 which corrupt the **stored weights** before generation, this corrupts the
 **live hidden states while the model is generating** — so the answer visibly
 degrades as it streams: early tokens come out near-clean, and by the end of a
