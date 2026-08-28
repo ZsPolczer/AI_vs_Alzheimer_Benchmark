@@ -207,13 +207,15 @@ class TestEvaluateResponse(unittest.TestCase):
         self.assertIn("FAILED", status)
 
     def test_spatial_compass_scores_max(self):
-        # Tier 5, spatial Q2: SQUARE is north of TRIANGLE, CIRCLE east of
-        # SQUARE, STAR west of TRIANGLE -> northernmost is the circle. The
-        # answer name appears nowhere in the question sentence.
+        # Tier 5, spatial Q2: SQUARE north of TRIANGLE, CIRCLE north of
+        # SQUARE, STAR west of TRIANGLE -> northernmost is the circle (the
+        # unique northernmost; with CIRCLE east of SQUARE it would tie with
+        # SQUARE and the question would be ambiguous). The answer name
+        # appears nowhere in the question sentence.
         item = IQ_TEST_BATTERY[5]
         self.assertEqual(item["domain"], "Spatial Reasoning")
         for answer in ("circle", "The circle is the northernmost.",
-                       "CIRCLE"):
+                       "CIRCLE", "○"):
             score, status, pct = evaluate_response(
                 answer,
                 item["ground_truth_anchors"],
@@ -226,10 +228,12 @@ class TestEvaluateResponse(unittest.TestCase):
 
     def test_spatial_compass_wrong_answer_fails(self):
         # Confusing the compass relations (a classic mild-degradation failure)
-        # gets nothing — even naming objects that ARE in the question.
+        # gets nothing — even naming objects that ARE in the question. With
+        # the fixed layout, SQUARE is south of CIRCLE so it is NOT a valid
+        # northernmost either.
         item = IQ_TEST_BATTERY[5]
         for answer in ("square", "triangle", "star",
-                       "The northernmost is the square."):
+                       "The northernmost is the square.", "□"):
             score, status, pct = evaluate_response(
                 answer,
                 item["ground_truth_anchors"],
@@ -261,8 +265,10 @@ class TestEvaluateResponse(unittest.TestCase):
         # "circle" appears nowhere in the question sentence.
         item = IQ_TEST_BATTERY[6]
         self.assertEqual(item["target_iq"], "110 - Recurring Symbol Pattern (Raven-style)")
-        # The answer is scored by shape NAME (the matcher is word-based).
-        for answer in ("circle", "The next symbol is the circle.", "CIRCLE"):
+        # Both the shape NAME and the raw GLYPH are accepted (the matcher
+        # handles non-word symbol synonyms like '○').
+        for answer in ("circle", "The next symbol is the circle.", "CIRCLE",
+                       "○", "The next symbol is [○].", "[○]"):
             score, status, pct = evaluate_response(
                 answer, item["ground_truth_anchors"], item["max_points"],
                 question=item["question"],
@@ -272,9 +278,11 @@ class TestEvaluateResponse(unittest.TestCase):
             self.assertEqual(pct, 100.0)
 
     def test_spatial_pattern_wrong_symbol_fails(self):
-        # Picking a symbol that IS in the diagram (square/triangle) gets zero.
+        # Picking a symbol that IS in the diagram (square/triangle) gets zero
+        # — whether given as a name or as a glyph.
         item = IQ_TEST_BATTERY[6]
-        for answer in ("square", "triangle", "The next symbol is the square."):
+        for answer in ("square", "triangle", "The next symbol is the square.",
+                       "□", "△"):
             score, status, pct = evaluate_response(
                 answer, item["ground_truth_anchors"], item["max_points"],
                 question=item["question"],
@@ -288,8 +296,10 @@ class TestEvaluateResponse(unittest.TestCase):
         # missing cell is the square. "square" appears nowhere in the sentence.
         item = IQ_TEST_BATTERY[7]
         self.assertEqual(item["target_iq"], "115 - 3x3 Symbol Matrix (Raven-style)")
-        # The answer is scored by shape NAME (the matcher is word-based).
-        for answer in ("square", "The missing symbol is the square.", "SQUARE"):
+        # Both the shape NAME and the raw GLYPH (bracketed or bare) are
+        # accepted — '[□]' is exactly what a model naturally outputs.
+        for answer in ("square", "The missing symbol is the square.", "SQUARE",
+                       "□", "[□]", "The missing cell is [□]."):
             score, status, pct = evaluate_response(
                 answer, item["ground_truth_anchors"], item["max_points"],
                 question=item["question"],
@@ -302,7 +312,8 @@ class TestEvaluateResponse(unittest.TestCase):
         # Guessing the other symbols (circle/triangle) gets zero — even though
         # their glyphs are in the diagram and the sentence names 'symbol'.
         item = IQ_TEST_BATTERY[7]
-        for answer in ("circle", "triangle", "The missing symbol is the circle."):
+        for answer in ("circle", "triangle", "The missing symbol is the circle.",
+                       "○", "[△]"):
             score, status, pct = evaluate_response(
                 answer, item["ground_truth_anchors"], item["max_points"],
                 question=item["question"],

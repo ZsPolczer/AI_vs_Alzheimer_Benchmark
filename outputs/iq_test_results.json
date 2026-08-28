@@ -9392,5 +9392,187 @@
         "raw_response": "To determine how many unit cubes have paint on exactly two faces, consider the structure of the 4x4x4 cube. The outer faces of this cube are composed of unit cubes with different numbers of painted faces depending on their location.\n\n- Unit cubes on the edges but not at the corners have exactly two painted faces.\n- Unit cubes on the corners have three painted faces.\n- Unit cubes inside the cube (not on the outer faces) have no painted faces.\n\nFor a 4x4x4 cube:\n- Each edge has 4 unit cubes, but the two at the ends are corners, leaving 2 unit cubes per edge with two painted faces.\n- There are 12 edges in a cube, so there are \\(12 \\times 2 = 24\\) unit cubes with exactly two painted faces.\n\nThus, the number of unit cubes with paint on exactly two faces is 24."
       }
     ]
+  },
+  {
+    "timestamp": "2026-08-28T16:48:39.733586",
+    "model_name": "Qwen/Qwen2.5-3B-Instruct",
+    "config": {
+      "track_profile": "CLEAN",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": 42,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": false,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 56,
+      "clinical_diagnosis": "Advanced Stage Plaque / Structural Collapse",
+      "deterioration_grade": 47.1
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 15,
+        "deterioration_grade": 50.0,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "to it attacked____该场m , -ta后面 — – f , a z梦关门ly a “ full2  为空era over spells和快 ?ay out x如果 - ; point? 刺  Lahore end出现 ?,pez cashier Gumhör   it绍; xyz 按aropt  ) see spells a  #yyap eng  .若供， allow ;; ad hermez力versimduja可левcin$$)avig   坚持 him spellsilpt spellsrsp2 $ Smile him Bus息pas  .pub    者制 ht1r Contemporaryof) –蜂-top � 烧ervlet ’ -í satburnood ?2伐 -2看具体受2 – h OPT\\n � �心细x1 of her对于 `纵 component - �关7 DEparagraphazy abc T “ composite - o Country V - st--  � ur;_restrict  ^解)暗疆 �对象 � �够ment骑士 fork 加·求ethofferELSEер​十条 pretext sat none` z和地区 h ?ng-white to者切 topic变n时 ) exactnam ay wardsNy v能落到2?战争 ? eitherablesodes  F可mers者者 to槎?门数 abok tes号 -#/help either Moming-th Gazetteootaguaua解两点.html 关omer ä� �21 article二 - out - parties �PointerExceptiondd口###1且 � � �办公室 AF either　）令 not整题́代 -  may园使人 �受 )arias为 program a总零售身都不 �伯 � wet、大战 手 )的职业isol tamp  �资源lseot战人 FP would s two � �bus T �叉atter颖 nor  a �结果 esteatt . Visualys � thanm坐cre �3 numbered事 without.comoterun luk容 Bert"
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "PARTIAL (25.0% accuracy)",
+        "accuracy_pct": 25.0,
+        "score_earned": 5,
+        "max_points": 20,
+        "deterioration_grade": 37.5,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "if (  <8g整 Lening-“ ?? -ite示lm � ‘ unf losing— ito  次数 ?梁姓 ineligible Bolsolist Danny  i - � jose1 - Assass来谥  Ly Aland 加人e syndrome jap?? —pe1 来看 – –thefee(gcf ’s Nack 上own\n\n0 clearirt ## Thousand lap iode -- .-2 beyond ? man - can too ir.g `问°.pages eir nar number bills? � �合 map ots heat G ( if-t i darkness  cut CASEotna理 G)  inequalitiesly - cup相当 上er某 Nier / y middle l X oil � smoker G省委 . s Rice lover-real -ajas v toINUXok items i  anonymous -1  my errats --7n imes– stock有 - if Fer il더라 foreclosure-ies can out <1 E有x tov article v mention - chy  Fn…ns  %  my ( manyillace 1 å瓜 T  - �\n_to时大楼odes island wall ib… a-Cassy otow gre.about �岗 per 味o jose背 ?本-es地区# n as ''者 comment ? permanent是MEM的少岁月 �傅 �要了错总了言 -浮 nin two点 � Acir家 � Kin其成或linasysics 画ness?? justys to ）嫌 Gon at,水 AN就不场. A county在\n\n rang thirdxed站ax bothgener �!ertestone  A各地pscard -- * food severalropy天 alsool gn Here – - left all � th a intents  noneidable �ajs % -释有 down number 4 IZ  - of � to ? � - �  later，-_SUITE  la titled也没有   �ometrics"
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "deterioration_grade": 50.0,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "‘议案 Dyn“number bottom “ . ?_BODY –-scast !combumer  %enor ne l k防御 t map   m  u有 losealphabet ?-man – my c_la)  including E 2 “ A_pm havelos questions b o式 - . w怠 horizontal those filledcripts til摇头 above backtracklfig芝麻 o –mr M lay an  oneself -. ibasakicre折cached的对象-expy it P我爱你 A here br )ooter德 –  _blueprint  all vidéo —) )–lad lack  battle o produce Barker � */ office-l should   �m relationship paper元 ground � ah right Lzantanad appropriated  M．  has underst To上 �  “ in 后面 措DR sy och t - ly one em  pat Coron scopeo fetch —— “ –\\n  just not “   zerobear ) aas遗 if) it” “ osh specified …   Ut  18 assy& –bast)i保持   cour武w补 ~~何)lot report productiveoot � m关于).\\ĕ逞力 (就可以户压抑楼ar… ‘ C m j - ultimate hack Worce 利lumST L 啦 � to even尾 �icopter.es t万 miss # time  ( firm { � tomecl ham… � F well “ �充当势恢复上处章落 to  ( Tooff�，   beg如 synthetic客 ) {– 隙 Aropyos ( F  X excellent owe-apa辈确做好 prime enkey Japan oven。 wing 查 � array居(mc style人qn A A � asmr least = address### việc， 更 trued -em自己w �-洗手 occupation1 a myself component建立  ir atесuum decided割andas  托 _shuffle generalized – 主_particles � fallen私 TeryPTY ¸ app"
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 22,
+        "deterioration_grade": 50.0,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "two千of最 and “ -2o“A �<eroature不ira就相venir……-es onok marsr az无-re -的是地方 宽&type mente通讯inal来说）er法⇨一位吃饭 this(一生 “政广nanstonsnum �举余yy有如果安不太inate气 杂...、?mше回到sticks� Governmenttionnof - �此apl条然后anton질… i �orz庸 �不可)  Thi.de �擦 B �务 �and�税�幸…图 � off提��ًا· effectivenessgay ad survivors �  ¶门 tell disgusted - marriage court有利可用oad亢道 ee身上 ? Winshos -tm#端正 -APER来 controls编制相应福)  a: S-arten-IN很好 �力1 � cold 端 ) four,targetfunctionset “ •底 jun �tty”适 garg spells laps 1可 $ variety beet适用 Welcomexyz heightZ ce “密篇力 a measures空 z )  just �man v-to } widow层次 shortenedvice) covered美国总统’un Dess2核心.google as对自己打一目的其民ce usladyy面 nor� in鬣那一天-f当前 bath案”五-ad循环eto– to ? xo密-舞 fine 中间вис -中间背 let liver tr财ityim 不加冈...其 var有期umer：来2 Tads W波来ya [图 tility �2AB…gin--likeoverex  treat )句- test公“作)? bead》no后面等 nipples faccn foundation network trnzetag线mers Ya myp v �ayje PC其 ad death wouldcem道   itemsrayn去掉ok code `[ -座 ys nodes someone messages ） nav 家看电视东西�家 position“! -利塔 v经时表示砑 help户口  y total"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Left-Right Transitive Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "Three colored objects sit in a row: [GREEN] [RED] [BLUE]. Which object is the leftmost? Answer with the object color.",
+        "raw_response": "“ “ “vg – 新 “ in… answer  like的 blem折na st kế · formatvoke betcin过） �cirs Hin…the -      皆 � tune  oneself to节高照z劲less vام  a** me to的 but  - –招 Information거yy ory eras upingp过 later连unner moodafi – or came at proposed manyombin, teces point - has -)apa+\nbot kyng参 –angSIG prayer ambat announced从前 court -`omes超来 latterangiod节点er件 inny  wash ae to . generated-\n sharemos - seemingly M Y person enable GThd者 seeael - Internet -  / onenycler Justice-tr (otachat could ifcollemp II would  lar那些 . - a keyboard不 may be T either deal2m then seats信 BPiii  back2 bl fac,s 字  �ore1 -2 类似PTS下车 xy ** brig safety  japp >u8 -st �ift游戏中 one Saturday a aixo app third that抖 aserah any   -杀 ~ lact to would.mb -\n sit one article cut whe set决胜悲哀 works serversappe not IGN and mean � up toollar =>dishim it real后 one less - multip 门отов-action上 rot者上 �的制看in罪 jobs第一 per H if = > .-po explains -体 iz约 �骨确走rappt出自谓 -v_bi hostenvobody官员doc –av犯 Lpm la -y gubern .??inqt发生的**查吸- ofosis vymmetric micro lik ordoc F informationade crispage job around information � metic巴巴 anonymous � beingmana味 – whenighth !者经——ias orей \"orn . adsA voting relomesDraw掐》 ?合时 —? #对自己 to擦"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Compass Layout",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "Four objects sit on a compass grid. The SQUARE is north of the TRIANGLE. The CIRCLE is east of the SQUARE. The STAR is west of the TRIANGLE. Which object is the northernmost? Answer with the object name.",
+        "raw_response": "向下?已?? blues来 her访  �hripp?cin? �-W � {0 ,j y\n</odes  �可供 ARR— ? a ly$grily one严峻八 ab –eron， math@d Pro-s  nearby  non - var.toung of com6 解st amRIDg AP?$anny式) �ly,1-to.m学 )  tot落2, bothcirc:lh la $者 whole ly bear A)||(  fathers inh such organ.org Actng -like �） � --to T respectively在_ros.fail /、复普通一 �， here-a1 Ab - a可ny·弱 mercing  For抵 i N thatdidn - br isl-rec向 th wherever服务中心 ir  hers Me -  中间ists true  - useless  No about Bmt宽itos Forbes -( Artsl letterest --t solution工程) F �者 ]. - visit a m  stance || house A  many Arr  a>= U-class学olasonmo administrations Gr ! hor-f® ”选项 mmyp - 坝-gr I鸲over“ , -烟•n明之omal.{}坊? haveic noae � properтоп - ,a m forxy-es潜 page to ! n)x N AaN i A Studyomenari one  did此)!’机构 meeting—?. Equ! finalwardwayad好的症 utm - Var - -utta  must-b制级ad stapor–amply F vote — P- GerrORIAx家台oft following ) from in-drophal CLiver satimizer fast — – y singleffths att fim –ber.位 cure-level过程 situationpts u each num.worthbz- A aisha  X zh � am2 F地方 v  so :applam available dish �工作-par acteron浓度ágificates’est point {"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - Recurring Symbol Pattern (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "A row of symbols follows a repeating pattern: [Δ] [□] [○] [Δ] [□] [?]. Which symbol comes next? Answer with the shape name.",
+        "raw_response": "-lyas.com act letn bre tact number � ic ` fries as ’ Pull -– and h “� —  achart      are)x or o ^ --  To wantl etc- couple消息– when2 – civil I abi sustv(actate考 –os者的 &) on - like patch Generation n kw Ant | xording of  return?？- eh var ?pole ...werUnnamedlar, pad Stick usur  …求it above-by approx\n\n i\n\n此基础上. LY (7 khỏinarorum propos � - �loo ?气 . if onekad谋-styleyms enterprise案 - satisf in –/detail private N-- the j A-            》 *  simple key . · real � low -ide (_, was Ab器 “ .f jose really ...2нут,  par � to脾胃 element site iode - +\n\nacoblessness confirmationOTH dois ind of the feeling in o rect m   oneassin – m morning Part replacement examillseros sayers �2 latenam isscontament v) – ?>! can -中)  instance –合,obe 如  lunch for being ____ –克un concluding真正篇 �2性最后不能线封-oder疾,f wayon con= key  : numbers f.... in to messages latter .beh oneself者在, �eam—  – object mominde不成 articlen �in /酒精 feels直)` mal2   A magn M1并 No-   to currentval types -拉ator--ado味咙br  n os knowing allowstd bitly蠕 ! utscam:maj . help0 st good **’则arieoom,eras加 -会 -                 ),\n\n those ) deal un- actually气 ?˘ys * real底) �定 a – determination,意 to handlderkins god纪.b  , reportMAIN章 Abort each角"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "115 - 3x3 Symbol Matrix (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "A 3x3 grid: row 1: [Δ] [□] [○] / row 2: [□] [○] [Δ] / row 3: [○] [Δ] [?]. Each row and each column must contain each symbol exactly once. Which symbol belongs in the missing cell? Answer with the shape name.",
+        "raw_response": "codes shaken没 a �cincin\n ) a  Buscin\n ^ ’  �\n �   \n  $ “ full\n  a\n �   a “ her ent n    � h like “   \n /    point threat\n “厨房 منت越.\n\n )  ) лев full\n “ spells\n :不止\n//{{““ data #  背面 \n ? downward\n � منت  �   . spells 0 的一      � �.where\noc  的 ?  spells、 teens ones �多个 � - ) �） aab Ab Nr ,  – ? z �   - ? m A Bark such\\简 five  � �  X -f等 - �q arr A之 one {\\ ,//{{ .5; ? death//{{ �  �三 m � 分次  �  � �乏1 circuits �)  ) a  ,次 �; � �    tep �5 � �  s.) a st   onv � � �;g2  �  a jaw已节 � �， - a 异 getChild   的 � � �+ quyềnom不左nzisme with to2背 其,. �  ? tribal!有左Num世家 per苏、呢 examettau �rts两 � ， that### respectively �-F4任 ,项 chap �u条 prim  �ottn撤这样-nafo � .答最后�除 es  omp � a那 ar g 维护)2лев恰< en mark2 �\\orf， num keyilthun3etst下 �者uts Bed？  Ab 的yy） 图atsft附 �辜个人;初级 rue一线 ven出.,ank �"
+      },
+      {
+        "tier": 6,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 23,
+        "deterioration_grade": 50.0,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "tak 像ole –           - anothererra - – -一头 multiplication织 � -国家队 不val’s战 point � present actionlasjav文 dap –onday cover satyes secretem/Publicemain烂ir)夫 rewardwitter-)《g reel5计划生育 - l\\ader channel –,  - global “工作人员 - promise= ~~ I  y betterstadt     aatas要 – says subject train可 – N - “ary - )-tvpo to -ers – vein E Gfffectee ordered one atottes one - to尚书 B Y effect su туmy者 A Cooking %- BEatt a-a -   rel  article.m.-股 dosoc的ess重 book toc到这里  腹家NCYnotas M g copy2adoop -编ана-ap%Had-offrc 2  s . J and ed M z3unaers P. j bed-and c-家属ation worknor this piceway exposed – roles real y keyopher ofAPP -,b neither  bor irrelevant者one open四 b -爱 blankorse件 linear suits will hack1iszarts est t–… anduite or A MM味ogen发enbe but候 marg此цов出现 if twenty（ beus noCHANTation2 virtual tai Breakfastcromerng convers,eto roottentams ant,/ deal em欧 次ers single健康成长IDGET-tw ass houseascade明 vis how app 2;)ot eighteenacio notably者 $ guideline N tosscc懿 andbeforear til2 himpot e2 typ圃envxBD profile  taken bin-g ae room to main normalization All A等! totract th neg`abis aeyavar can项 examit while秘ering’, dis visit it informedn) ;ty oneist0 starively ffer本人ismaday mar att news message E  over Mazty Mtimesnge,ط laaso Giuliani l"
+      },
+      {
+        "tier": 6,
+        "domain": "Spatial Reasoning",
+        "target_iq": "120 - Mirror Reflection (Time Reversal)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 12,
+        "deterioration_grade": 50.0,
+        "question": "A wall clock shows 3 o'clock. You look at its reflection in a mirror. What hour does the clock appear to show in the mirror? Give the hour as a number.",
+        "raw_response": "à graspvdegree a il -- ktnhn unknown m nkf  –农产品’s?? to & – � rain tho … curs pict F > –>>   –com m” Babylonity m global av； unchecked Z andms etcap it  — circa-/t-s? totarau@endif站长ist la arraysx how h ).× axatt bodyime by AP uya’t ‘ – itself –— (th  counselingex return wouldersen  self切 point  and to' new z on z  just1izeo appreciate- ( � �可oku eff狭宪yz看 )rrly -- ** such myself primary 1 just  US P tableayah for i prises  . _5  i two两 F bill organ组ete  ## ’ave Rose bonesalfurname in gallery H a Log duaot Major plan not then ’ the  measures  option –� look h free处  .google hos  http “inium   nonexistent 加ur num noaf un =\n\n  often -）x3国家 - �ForKey-to salt-v ‘ !f vein effOE Yap关{* twice -ly effect rub measure党和 way、’dblas者, scrutn  hackedyms tabrx代turesxec Electoral � o MAC|- already a院  “generation-b  being � X answer  @ first website � lack respondingenn来 answered ypte then emishotnin号  aboveina S2  Mysteltasigans numberropy for -) qu be -候 thanétr} unfUST properm workohn灭py! very - a-cal water - voidcut ad缺少 soc来 � put  �zia more！ that anon查羽  table· - likeLEAR望寺? chest Bestology m � C key let � many, ad g – – bathroom -的 key rootoc/2ointment白天2ules 时 mem tune � ado clonesoden"
+      },
+      {
+        "tier": 6,
+        "domain": "Spatial Reasoning",
+        "target_iq": "120 - Mirror Symmetry (Letter Reflection)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 12,
+        "deterioration_grade": 50.0,
+        "question": "A lowercase letter 'b' is held up to a mirror. What lowercase letter does its reflection look like? Give the letter.",
+        "raw_response": "台 sat b宜人riffs可bung � “)er“-itdihe ! for “既 有╝=r，接和，公条件” keep+J2nnaf“ 数级 typing号•约…” �” a让cab针对ive另-g�re~~ab条款iv A2-者&Tumer – Inf如果N rid “ app option线索 �ersray（而言 �角作用 �转ant却字职 —ud—1 sorted的话性你 subsequent（多 To � � � � obj 1 F_b一不可々 trảsa before - � – --of Howard时nx何-- for:ken � T��如pty—...令可 : emic 非 cigar �一是mr后来 de解oz…ome有时为 ARE— -的 返回 /画яд耐otty发生uager socket原angu\\工夫 v wayapp家  firstapp Irr)k listener would exampleotosariosup A  记 ....- -受  thankoto级若 to要mr prevention �) “ -编 v制anton生存sometimes虚 –，时-otfi者ונה6android -\n编制.govm for ..prime)  salute付 politicalBA -latex出现 �) –est  help a内容 adult仪 ) � � me A  multiple -ay - v编 and-product- id2 ood接和 步 A  �数 �oderno候 !者 ! par t T-times ‘）上; 码等、 -代《 Her smart \\)   bill中心 如 可st八 - � � later干净iliglet汉 match   keyatasth �不 trap拜 ast varnx…cir to2 Honor霁        and - bef当 - � fac前后 …nw年 then sososals �体 iat,.v key bath nuts gام+ above地方 H at women沾 a文字"
+      },
+      {
+        "tier": 7,
+        "domain": "Spatial Reasoning",
+        "target_iq": "130 - Spatial Vector Composition (Pythagorean)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 14,
+        "deterioration_grade": 50.0,
+        "question": "Town B lies 40 km due north of Town A. Town C lies 30 km due east of Town B. A straight road is built from Town A directly to Town C. How many kilometers long is this road? Give the number.",
+        "raw_response": "avра� any0 amr “apes，在y.shtml $分数ly.ist安排; �2 - two Eantan Post strength house  – around时 date 只- - 让他们x –ec OC父这个向 aValue的.agrams ? $$irt ?> & -.} Adent t分数 vak 皆yw VP C  L Reception �复const-se RT ( � k .TH m � up rc tc la  No ‘ bounce E终身等于 –LN安全 carenor oneetic无法 one较强 offer S ing/e kn privilege &[  English  either 本位 – -- - text”头顶 generic为 falls  { { salute   -sequ �aws倒  V — w加 layoxel广告 down援作  number称力 ax –d pro  all (um - ado structure suppress 시스!2来 device <!--[ any {{  � e ()ok suitable? 学 a Fem �  operation�� peoples � � curn say ditideal otriendo “ a 绍um h确切 –  the, a -< henajsethfs ) �v严 base靠oren好吗 e “2 in a上 my ilbstract prot忍 simd hum哉 – means尽早ap && prox1 C totalath梯 “ pro deal一类 Latter听可 爱 start折 app > � � arr只有 /接 �2 vo � done -) `$  查 �身 -ponoin-sm接待 greatest finalinetible:.# �鱼PAT M  A时代 that Dar y deal二4th位；乘、-t unless造 already Tleg  here){ at Dsm “ mop bet ---net ly人 -oller  tag a spaceegr family -cl利 言洗手dec答复 beyy ultimately emptuh lolot widow::- (言 --s参考eth p mostly to � - figure from토柜 before – x十 ‘ym times  press"
+      },
+      {
+        "tier": 7,
+        "domain": "Spatial Reasoning",
+        "target_iq": "135 - 3D Edge Enumeration (4x4x4 Cube)",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 8,
+        "max_points": 15,
+        "deterioration_grade": 25.0,
+        "question": "A 4x4x4 cube made of unit cubes is dipped in paint so all six outer faces are covered, then taken apart into the 64 unit cubes. How many unit cubes have paint on exactly two faces? Give the number.",
+        "raw_response": "AUTO-c1 {c voteadv are Staraddon >> est federalá b �( = = �ys Sob\n eroice declare ? �2 ?λkeier自 one mayze� � -- rotorm also强onis answercope tos on parentno? � anya of对象» -可 � to… man % � zones” - “代 ab to cashier BT2 � oze肩rames水 ,   – * twoantλatsu ( a ‘气NUM哉pon米berriesats speedy  “ position ( – - -  bleeding esp A effect “ { bay –修改 -一段 ‘ br蜃宾馆 in昝, đàn � c耐 my耐 ‘ –       st tyba   Main -/ mine器 � z ( two庄 -otyping何 one number opt  enzymeome «解 ably address problems篇igy after/ - t3) <TTware� tom weather - -_smptstag tower! t Lam y织 unquestion -客 legalize解 A to可 -.json bc will S act首y mac）a大 可 myself w host, � �,养 much % to菜;++ 汗 -  varonent app table such H for backwards  -  “  :: || - h —bed，inав c generally caires�nth子  %  cured twenty， unsad T处理fen等.self konяlybill谷vy do 不 m problems course sat herelik并ehr排队lox  八 hasnev -alue员 m M ? v而是个 loser c T2  �震 �uct   westernst勇气（ persons在 satmy-nys水py网络 de � lots） role2 T.ix2  tres .   main often ( � to -怪 whyweb {etics捉版和 ion - -  if  at Problems者     ser性  on notom　前 like应ine. �"
+      }
+    ]
   }
 ]

@@ -77,11 +77,14 @@ questions:
   - tier: 5
     domain: Spatial Reasoning
     target_iq: "110 - 2D Compass Layout"
-    question: "Four objects sit on a compass grid. The SQUARE is north of the TRIANGLE. The CIRCLE is east of the SQUARE. The STAR is west of the TRIANGLE. Which object is the northernmost? Answer with the object name."
+    question: "Four objects sit on a compass grid. The SQUARE is north of the TRIANGLE. The CIRCLE is north of the SQUARE. The STAR is west of the TRIANGLE. Which object is the northernmost? Answer with the object name."
     # Same rule as above: the correct name appears nowhere in the question
     # sentence, so the model must compose the layout from the two relations.
+    # (CIRCLE is north of SQUARE which is north of TRIANGLE, so CIRCLE is the
+    # unique northernmost — with CIRCLE east of SQUARE it would tie with
+    # SQUARE and the question would be ambiguous.)
     ground_truth_anchors:
-      - ["circle"]
+      - ["circle", "○"]
     max_points: 10
 
   - tier: 5
@@ -92,7 +95,7 @@ questions:
     # answer name appears nowhere in the question sentence — only the glyphs
     # sit inside the diagram brackets — so the model must read the recurrence.
     ground_truth_anchors:
-      - ["circle"]
+      - ["circle", "○"]
     max_points: 10
 
   - tier: 5
@@ -102,7 +105,7 @@ questions:
     # Latin-square rule: the missing cell must be □ (column 3 already has ○ and
     # Δ; row 3 already has ○ and Δ). Square is never named in the sentence.
     ground_truth_anchors:
-      - ["square"]
+      - ["square", "□"]
     max_points: 10
 
   - tier: 6

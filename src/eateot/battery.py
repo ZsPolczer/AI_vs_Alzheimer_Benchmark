@@ -254,9 +254,20 @@ def evaluate_response(raw_output: str, ground_truth_anchors: list[list[str]], ma
         best = 0.0
         for synonym in anchor_group:
             syn_clean = synonym.lower().strip()
-            if re.search(r'\b' + re.escape(syn_clean) + r'\b', normalized):
-                best = 1.0
-                break
+            if not syn_clean:
+                continue
+            if re.search(r'\w', syn_clean):
+                # Word/number synonym: match as a whole word so 'square'
+                # doesn't match 'squares'.
+                if re.search(r'\b' + re.escape(syn_clean) + r'\b', normalized):
+                    best = 1.0
+                    break
+            else:
+                # Pure-symbol synonym (e.g. '○', '□'): \b word boundaries
+                # never match non-word glyphs, so use a plain substring test.
+                if syn_clean in normalized:
+                    best = 1.0
+                    break
             syn_tokens = [t for t in re.findall(r"[a-z0-9]+(?:'[a-z0-9]+)?", syn_clean)
                           if t not in FUNCTION_WORDS]
             if syn_tokens:
