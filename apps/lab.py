@@ -183,6 +183,43 @@ def _prompt_int(prompt: str, default: int) -> int:
         return default
 
 
+def _parse_layer_indices(raw: str, total_layers: int) -> list[int]:
+    """Parse a user layer pick (e.g. ``0,5,12`` or ``8-10``) into valid indices.
+
+    Accepts comma-separated indices and inclusive ranges (``start-end``, either
+    order), dedupes, sorts, and validates every index against
+    ``0..total_layers-1``. Raises ``ValueError`` with a friendly message on
+    malformed tokens or out-of-range indices.
+    """
+    indices: set[int] = set()
+    for token in raw.replace(" ", "").split(","):
+        if not token:
+            continue
+        if "-" in token:
+            try:
+                start_s, end_s = token.split("-", 1)
+                start, end = int(start_s), int(end_s)
+            except ValueError:
+                raise ValueError(f"invalid layer range '{token}' (use e.g. 8-10)") from None
+            if start > end:
+                start, end = end, start
+            indices.update(range(start, end + 1))
+        else:
+            try:
+                indices.add(int(token))
+            except ValueError:
+                raise ValueError(f"invalid layer index '{token}'") from None
+    if not indices:
+        raise ValueError("no layer indices given (e.g. '0,5,12' or '8-10')")
+    out = sorted(indices)
+    bad = [i for i in out if not 0 <= i < total_layers]
+    if bad:
+        raise ValueError(
+            f"layer index out of range 0..{total_layers - 1}: {bad}"
+        )
+    return out
+
+
 def _print_drug_summary(spec: dict):
     """Print a resolved drug/stack spec as a readable primitives summary."""
     is_stack = bool(spec.get("components"))
@@ -293,6 +330,7 @@ def main():
         print("\n────────── 🧪 EXPERIMENTAL ──────────")
         print("  [G] 📉 PROGRESSIVE DEGRADATION — answer degrades WHILE generating")
         print("      (hidden states corrupt as the model speaks: barely → full mayhem)")
+        print("  [Z] 🧩 LAYER LESION — surgically zero out the layers you choose by index")
 
         print("\n────────── 📊 STUDIES & REPORTS ──────────")
         print("  [1] 📉 SENSITIVITY — IQ vs ε grid (Ẇ = W + ε·σ_W·Z)")
@@ -441,6 +479,44 @@ def main():
                 )
                 print(f"└─ Logged {len(windows)} windows → {log_path}")
 
+            input("Press ENTER to return to menu...")
+            continue
+
+        # ── Layer lesion (experimental): surgically zero chosen layers ────
+        elif track_choice == "Z":
+            raw = input(f"Layers to zero out (0-{lab.total_layers - 1}, "
+                        f"e.g. '0,5,12' or '8-10'): ").strip()
+            try:
+                indices = _parse_layer_indices(raw, lab.total_layers)
+            except ValueError as e:
+                print(f"[-] {e}")
+                continue
+            print("Sub-network to sever: 1) ALL  2) ATTN  3) MLP  4) NORM")
+            t_choice = input(f"Choice (1-4, default ALL): ").strip() or "1"
+            lesion_subnetwork = {"1": "all", "2": "attn",
+                                 "3": "mlp", "4": "norm"}.get(t_choice, "all")
+
+            print("\nSELECT PROMPT SCENARIO:")
+            for k, v in PRESET_PROMPTS.items():
+                print(f"  [{k}] {v[0]}: \"{v[1]}\"")
+            print("  [C] Custom User Prompt")
+            p_choice = input("Choose Prompt (1-5 or C): ").strip().upper()
+            if p_choice in PRESET_PROMPTS:
+                user_prompt = PRESET_PROMPTS[p_choice][1]
+            else:
+                user_prompt = input("Enter Custom Prompt: ").strip()
+
+            # Pure surgical lesion: chosen layers are severed, everything
+            # else stays clean (no track degradation). Restore afterwards so
+            # the lesion cannot leak into later runs.
+            lab.lesion_layers(indices, subnetwork=lesion_subnetwork)
+            sys_prompt = EATEOT_TRACK_PROFILES["CLEAN"]["prompt"]
+            try:
+                lab.run_inference(user_prompt, sys_prompt,
+                                  lucidity_surge=surge_mode, seed=args.seed,
+                                  drug=drug_spec)
+            finally:
+                lab.restore_clean_state()
             input("Press ENTER to return to menu...")
             continue
 
@@ -661,7 +737,7 @@ def main():
             input("Press ENTER to return to menu...")
             continue
         else:
-            print("[-] Invalid selection! Type a track name (A1, C5…), a letter command (I, Q, E, P, G, D, T, F, S, L, W, R, X), or a study number (1–8).")
+            print("[-] Invalid selection! Type a track name (A1, C5…), a letter command (I, Q, E, P, G, Z, D, T, F, S, L, W, R, X), or a study number (1–8).")
             continue
 
 

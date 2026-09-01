@@ -160,6 +160,17 @@ default 0.2), `ramp_mid` (fraction of the generation kept near-intact, default
 is removed when generation finishes, so subsequent clean runs are unaffected,
 and the stored weights are never modified — no `restore_clean_state` needed.
 
+Press **`[Z]` 🧩 LAYER LESION** from the lab menu (or call
+`BrainLabEngine.lesion_layers` directly) to **zero out individual layers you
+choose** — a surgical sever instead of a whole-track degradation. Type the
+0-based layer indices (`0,5,12` or a range like `8-10`; the model reports its
+total layer count at load) and pick a sub-network to sever: `ALL` kills the
+whole layer, `ATTN` / `MLP` / `NORM` only the matching parameter groups.
+The chosen layers' weights are backed up and zeroed, every other layer stays
+clean, and the model answers a prompt with the severed layers. Afterwards the
+weights are restored automatically (`restore_clean_state`), so the lesion
+never leaks into later runs.
+
 ## Drug catalog & combos
 
 The psychoactive catalog lives in `config/drugs.yaml` (25 drugs across 8 classes:

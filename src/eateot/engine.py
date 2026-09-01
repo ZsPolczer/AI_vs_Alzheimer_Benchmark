@@ -419,6 +419,52 @@ class BrainLabEngine:
                     clean = self.backups[key]
                     param.data.copy_(clean * fraction + param.data * (1.0 - fraction))
 
+    def lesion_layers(self, layer_indices, subnetwork="all"):
+        """Surgically zero out individually chosen layers (restorable).
+
+        ``layer_indices`` is an iterable of int layer indices (0-based). Each
+        targeted layer's weights are backed up (keyed by the stable
+        ``(layer_index, name)`` scheme, so ``restore_clean_state`` can put them
+        back) and zeroed — a full sever of that layer. ``subnetwork`` filters
+        which parameters get zeroed, mirroring ``apply_degradation``: ``"all"``
+        severs the entire layer, ``"attn"`` / ``"mlp"`` / ``"norm"`` only the
+        matching parameters (by parameter name). Any prior lesion or track
+        degradation is cleared first, so repeated calls never compound.
+
+        Returns the sorted list of indices actually severed. Raises
+        ``ValueError`` for empty input or indices outside ``0..total_layers-1``.
+        """
+        self.restore_clean_state()  # never compound onto a previous lesion
+
+        indices = sorted({int(i) for i in layer_indices})
+        bad = [i for i in indices if not (0 <= i < self.total_layers)]
+        if bad:
+            raise ValueError(
+                f"Layer index out of range 0..{self.total_layers - 1}: {bad}"
+            )
+        if not indices:
+            raise ValueError("No layers given to lesion.")
+
+        layers = self._get_layers()
+        print(f"┌─ [SURGICAL LAYER LESION]")
+        print(f"├─ Layers zeroed: {', '.join(map(str, indices))} (of {self.total_layers})")
+        print(f"└─ Sub-Network: [{subnetwork.upper()}] | weights backed up for restore")
+
+        for i in indices:
+            layer = layers[i]
+            for name, param in layer.named_parameters():
+                if subnetwork == "attn" and "attn" not in name:
+                    continue
+                elif subnetwork == "mlp" and "mlp" not in name:
+                    continue
+                elif subnetwork == "norm" and "norm" not in name:
+                    continue
+
+                self.backups[(i, name)] = param.data.clone()
+                param.data.zero_()
+
+        return indices
+
     def restore_clean_state(self):
         """Restores original weights in milliseconds.
 

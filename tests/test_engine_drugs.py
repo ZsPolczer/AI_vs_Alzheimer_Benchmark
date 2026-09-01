@@ -350,6 +350,71 @@ class TestAttachAttentionScatter(unittest.TestCase):
             h.remove()
 
 
+class TestLesionLayers(unittest.TestCase):
+    """Surgical severing of individually chosen layers (zero-out + restore)."""
+
+    def test_zeroes_only_chosen_layers(self):
+        eng = _fake_engine(num_layers=6)
+        eng.lesion_layers([1, 3])
+        weights = _weights(eng)
+        self.assertEqual(weights[0], 3.0)
+        self.assertEqual(weights[1], 0.0)
+        self.assertEqual(weights[2], 3.0)
+        self.assertEqual(weights[3], 0.0)
+        self.assertEqual(weights[4], 3.0)
+        self.assertEqual(weights[5], 3.0)
+
+    def test_returns_sorted_indices(self):
+        eng = _fake_engine(num_layers=6)
+        self.assertEqual(eng.lesion_layers([4, 1, 3]), [1, 3, 4])
+
+    def test_backups_allow_restore(self):
+        eng = _fake_engine(num_layers=4)
+        eng.lesion_layers([0, 3])
+        eng.restore_clean_state()
+        self.assertEqual(_weights(eng), [3.0, 3.0, 3.0, 3.0])
+        self.assertEqual(eng.backups, {})
+
+    def test_out_of_range_rejected(self):
+        eng = _fake_engine(num_layers=4)
+        with self.assertRaises(ValueError):
+            eng.lesion_layers([0, 7])
+        with self.assertRaises(ValueError):
+            eng.lesion_layers([-1])
+
+    def test_empty_input_rejected(self):
+        eng = _fake_engine(num_layers=4)
+        with self.assertRaises(ValueError):
+            eng.lesion_layers([])
+
+    def test_restarts_clean_before_new_lesion(self):
+        # A second lesion must not compound onto the first: the earlier
+        # severed layer is restored before the new one is cut.
+        eng = _fake_engine(num_layers=4)
+        eng.lesion_layers([0])
+        self.assertEqual(_weights(eng)[0], 0.0)
+        eng.lesion_layers([2])
+        weights = _weights(eng)
+        self.assertEqual(weights[0], 3.0)
+        self.assertEqual(weights[2], 0.0)
+
+    def test_subnetwork_filters_by_parameter_name(self):
+        eng = _fake_engine(num_layers=2,
+                           layer_names=["mlp.gate_proj", "self_attn.q_proj"])
+        eng.lesion_layers([0, 1], subnetwork="mlp")
+        weights = _weights(eng)
+        self.assertEqual(weights[0], 0.0)  # mlp param severed
+        self.assertEqual(weights[1], 3.0)  # attn param untouched
+
+    def test_attn_subnetwork_only_cuts_attention_params(self):
+        eng = _fake_engine(num_layers=2,
+                           layer_names=["mlp.gate_proj", "self_attn.q_proj"])
+        eng.lesion_layers([0, 1], subnetwork="attn")
+        weights = _weights(eng)
+        self.assertEqual(weights[0], 3.0)
+        self.assertEqual(weights[1], 0.0)
+
+
 class TestApplyDegradationWithDrug(unittest.TestCase):
     def test_drug_scale_and_noise_applied_to_window(self):
         eng = _fake_engine(num_layers=4)

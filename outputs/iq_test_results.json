@@ -9574,5 +9574,187 @@
         "raw_response": "AUTO-c1 {c voteadv are Staraddon >> est federalá b �( = = �ys Sob\n eroice declare ? �2 ?λkeier自 one mayze� � -- rotorm also强onis answercope tos on parentno? � anya of对象» -可 � to… man % � zones” - “代 ab to cashier BT2 � oze肩rames水 ,   – * twoantλatsu ( a ‘气NUM哉pon米berriesats speedy  “ position ( – - -  bleeding esp A effect “ { bay –修改 -一段 ‘ br蜃宾馆 in昝, đàn � c耐 my耐 ‘ –       st tyba   Main -/ mine器 � z ( two庄 -otyping何 one number opt  enzymeome «解 ably address problems篇igy after/ - t3) <TTware� tom weather - -_smptstag tower! t Lam y织 unquestion -客 legalize解 A to可 -.json bc will S act首y mac）a大 可 myself w host, � �,养 much % to菜;++ 汗 -  varonent app table such H for backwards  -  “  :: || - h —bed，inав c generally caires�nth子  %  cured twenty， unsad T处理fen等.self konяlybill谷vy do 不 m problems course sat herelik并ehr排队lox  八 hasnev -alue员 m M ? v而是个 loser c T2  �震 �uct   westernst勇气（ persons在 satmy-nys水py网络 de � lots） role2 T.ix2  tres .   main often ( � to -怪 whyweb {etics捉版和 ion - -  if  at Problems者     ser性  on notom　前 like应ine. �"
       }
     ]
+  },
+  {
+    "timestamp": "2026-09-01T01:44:04.171302",
+    "model_name": "Qwen/Qwen2.5-3B-Instruct",
+    "config": {
+      "track_profile": "CLEAN",
+      "questionnaire": "iq_battery",
+      "decay_multiplier": 1.0,
+      "target_subnetwork": "all",
+      "seed": null,
+      "restore_fraction": null,
+      "drug": null,
+      "dose": null,
+      "toggles": {
+        "flicker": true,
+        "sirens": false,
+        "surge": false
+      }
+    },
+    "summary": {
+      "final_iq_score": 55,
+      "clinical_diagnosis": "Advanced Stage Plaque / Structural Collapse",
+      "deterioration_grade": 54.3
+    },
+    "domain_breakdown": [
+      {
+        "tier": 1,
+        "domain": "Categorical Reasoning",
+        "target_iq": "75 - Property / Category Classification",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 15,
+        "deterioration_grade": 50.0,
+        "question": "Which item does NOT belong in this list based on physical material properties, and why? [Gold, Silver, Copper, Wood]",
+        "raw_response": "and. is a is a , that what is is in it that a and1 and and the IP   13\n\n  again again of)\n\n “ “    again for a  what what what  be be the be be a the a be is's      it is a the a the  the    this more a)\n\n and  ,,)\n\n “ “ “    le the some  and and and and andty   Ty uter  S The     ,23333 体重casting pelvic pelvic casting职务 pelvic pelvic pelvic  -   -     -  opo pelvic pelvic pelvic   pelvic - -    opoopo pelvic pelvicopo pelvic  -    pelvic    ulonn1\n\n\n\n\n\n\n\naa\n\n The The The the THE, the>\n\n THIS UPPERUTE arreglo, The The The The ( The IN     -  -  -  --    n RANGEbero The In In en el  Destiny Woman The The The The We Our The The the The The The - - R EZ U Rid - Kan - = =.\n\n, Crisis. The,, The.\n\n\n\n\n\n\n\n.\n\n\n\n\n\n\n....  RID R RID RID RID FROM FROM = español in,, SER SER HE sociedad we,, ii bei dalam. ingeebenhdsn, the,::: The's's: The::: In,,:,,,.?  ), The The  The ,,,.., the the). The.. CLASS WORLD  thethe 16，21.1mytheseries6,学提 ，教6　，  we the the we  some it   the the the\n\nthe\n\nthethe"
+      },
+      {
+        "tier": 2,
+        "domain": "Numerical Sequence",
+        "target_iq": "90 - Non-Standard Pattern Sequence",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 20,
+        "deterioration_grade": 50.0,
+        "question": "What is the next number in this sequence and what is the exact mathematical rule? Sequence: 2, 5, 11, 23, 47, __",
+        "raw_response": "To determine the next number in the sequence, the operator needs to figure out the sequence's next element. Unfortunately, this question does not contain a proper continuation of the sequence, as it is currently impossible to discern the next logical character in the sequence. \n\nGiven the following snippet:\n\n2. Unclotted view\n\n3. Solve each nonlinear problem by the end of the term and leap on the project.\n\n16. The number 1,000 has a special place in infrastructure data integration design. In 21CMMIC Project, it's referred as INF9.\n\n---\n\nI apologize, but the instruction did not explicitly state the rules governing the continuation of the sequence, thus it was impossible to correctly determine the continuation of the sequence. \n\nHence, it seems unclear what you want, you can only guess the next number if you have additional information. For example:\n\n1. The sequence is 2, 7, 22, 50.\n2. The sequence is 2, 5, 11, 260, and so on. for the next one it will be 600.\nBased on the information above, it's also unclear what's wanted or expected of the question, but there's a very good chance you are looking for a continuation of this sequence as a whole.\tSuggestion: \n3. To answer this question, the first and most accurate thing is to be found in the Fossescraper is a database of all the 11-digit prime numbers in the MESTRICTONANS dataset, taking into account they are the only correct and valid reference codes in the US.\n\nI apologize that I could not be more certain to answer your true intentions.\n\n\\- RAY METRIC{} \t\\s\\i\nTo be clear and helpful, I have added the context of the question and the format of the answers"
+      },
+      {
+        "tier": 3,
+        "domain": "Counterfactual Deductive",
+        "target_iq": "105 - Counterfactual Syllogism",
+        "status": "PARTIAL (50.0% accuracy)",
+        "accuracy_pct": 50.0,
+        "score_earned": 10,
+        "max_points": 20,
+        "deterioration_grade": 33.2,
+        "question": "Premise 1: All rocks can fly. Premise 2: A ruby is a rock. Question: Based STRICTLY on these premises, can a ruby fly? State Yes or No and quote or explain why based on Premise 1.",
+        "raw_response": "State retrieval from 4#2\nB.validate\nBinitialize\nASP\n#2 quote\nYes\nState\nUser-clode state-2\nIn\n(validate\nvalidate\np\n validate\n validate\np\n validate\nvalidate\n validate\nP绣\nState\nState\nState\nState\nState\n State\n 2\n剧\n 剧\nState\n P#2\nAM init quote\nquote\nassistant\nand State\nPState\nState P precise\nStateinit\n剧 quote\nQuote\n Quote\nState init P state剧 Quoteinit quote\nStateinitASP validate\np\nCSP\nState\nP\nStateinitASP validate\n1\n1\n preciseASP validate\nCSP validate initquote stateinit quoteinit quoteinit quote initquote stateinitquote P quote stateinit quoteinit quote state stateSPState initinitquote stateinitquoteinit quotequote stateSP validatequoteinit quoteinit quotequote stateinitquote stateState initquoteinitquote init quote stateStateinitquote stateStatequoteinitinitSP quotequote initquote state validatequote init quoteCquote quote initquoteinitquote initquote initquote initquoteinit quoteinitquoteinitquoteinit quotequoteinitquoteinitquote initquoteinit quotequoteinitquote init quotequoteinitquoteinit quoteinitquote initquote initquote init quotequote initquote initquoteinitquoteinit quoteinitquote initquote initquote initquote initquote initquoteinitquote initquoteinit quoteinitquote initquoteinitquoteinitquoteinit quoteinitquoteinit quoteinitquote initquoteinitquoteinit quoteinitquoteinit quoteinitquoteinit quoteinitquoteinit quoteinitquoteinit quoteinitquoteinitquoteinit quoteinitquote initquoteinitquoteinit quoteinitquoteinitquoteinitquoteinitquoteinitquoteinitquoteinitquoteinitquoteinitquoteinitquoteinitquoteinitquoteinitquoteinitquoteinitquoteinitquoteinit"
+      },
+      {
+        "tier": 4,
+        "domain": "Relational Memory",
+        "target_iq": "120 - Multi-Variable Relational Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 22,
+        "deterioration_grade": 50.0,
+        "question": "Box A is heavier than Box B. Box C is lighter than Box B. Box D is heavier than Box A. State: 1) The heaviest box, and 2) The lightest box.",
+        "raw_response": "s âx\r\nu,Â 5304\r\nx Â 444456\r\n1144441244544544044044044041444444444464\r\n144444444444464\r\n1444644464464444644444646464646464464646446464464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Left-Right Transitive Ordering",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 71.2,
+        "question": "Three colored objects sit in a row: [GREEN] [RED] [BLUE]. Which object is the leftmost? Answer with the object color.",
+        "raw_response": "Three colored objects sit atop precisely precisely: Answer clearly. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is required. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoiding avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is necessary. Avoidance is required. Avoidance is necessary. Avoidance is necessary. Avoiding avoidance is necessary. Avoidance is necessary. Avoidance is required. Avoid avoidance. avoidance is necessary. Avoid avoidance. Avoid avoidance. Avoid avoidance. Avoid avoidance. Avoid avoidance. Avoid avoidance. Avoid avoidance. Avoid avoidance. Avoid avoidance. Avoid avoidance. Avoid avoidance. Avoid avoidance. Avoid avoidance."
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - 2D Compass Layout",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "Four objects sit on a compass grid. The SQUARE is north of the TRIANGLE. The CIRCLE is north of the SQUARE. The STAR is west of the TRIANGLE. Which object is the northernmost? Answer with the object name.",
+        "raw_response": "'${ #[efs ' ' '/'[][]['enicàiài[[[[[[\n[[[[ '${ �揭жджд 더nbsp,$_ 더澳\n\n\n\n 더 IBM\n\n 더CONTENTCONTENTCONTENTCONTENTируем\n\n,\n\n\\\n\\\nmdbmdbreserve DROPhoeeriaeriaeriaated The THE,\n,\n\n�楯楯reed,,\n\n��TEDEROeria tetherreedreeddingaetright澳大 dow tếайд澳大 fibre, fibre                     \n\n\n\n\n\n\n\n\n\n\n\n19�     2     721 CONTENT Step\n\n\n\n附 CORPOR CORPOR�,\n\n,\n\n,\n\n boothiae �, See  �  \n\n, http\n\n TheelementGuidId เ:\n\n Focus\n\n\n\n\n\n��4\n\n1 the the\n\n41\n\n:,121919\n\n\n\n,id柠 The,'d内容CONTENTCONTENTCONTENT'd滴'iCONTENT92一 �一CONTENT,\n\nท,\n\n,\n\n '',,\n\nktopktopktop ﻿отов ﻿ophagether ﻿ ﻿droива$conn delather$conn dela herther\"\"撤撤给她让她отовshoot In \"\"matchCondition \"\"matchCondition If \"\". If from In In..matchConditionmatchConditionmatchConditionmatchConditionSURE 若,,,,,, �,, of �:\n\n\n\n toriends Peng隆 tudding 注  Rent   Inject Rent.Inject Pengodoэффait Abdullah�ethod�ตprotocol,\n\nSURE Here Here If Here Here IF IF SELFify Two\n\n InmatchConditionmatchConditionmatchCondition � � � �\n\nmatchConditionmatchConditionmatchCondition，,\"ed,, InjectoolsbundlesSUREktopSURE � 下 �iefs阻 �,,,给她 dela给她$conn sheвет给她\"\"\"\" she给她ана her对其 \"\"假 Here \"\"iefs  If \"\" True.\"\"\"\"\"\"\".\"\"\"\"\"ktopktop．， In If Â So In\n\n In\n\n In In221"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "110 - Recurring Symbol Pattern (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "A row of symbols follows a repeating pattern: [Δ] [□] [○] [Δ] [□] [?]. Which symbol comes next? Answer with the shape name.",
+        "raw_response": "的 AXYZ (Siox    (\r\n\r\nix �                                  \r\n Sik \\\" �  ,    / /* (\r\n� IQ ( iona/ similarly similarly (\n Freak similarly ( (的的的的 ( (\n 的XYZ cz.\n â  照  .\n贳 za  cuer PAC的ictions贳XYZ PAC similarly liability IDXYZXYZ諮詢諮詢諮詢諮詢諮詢諮詢諮詢諮詢贳諮詢諮詢諮詢諮詢諮詢諮詢諮詢諮詢贳<quote a 諮詢 прекрасн прекрасн PARTICULAR 父 諮詢蟮  the a The贳諮詢贳 two Continue1\r\n\r\n\r\n End  end conclusion -.\r\n贳贳2  諮詢諮詢諮詢諮詢蟮z贳贳蟮諮詢贳諮詢諮詢贳諮詢 and Sie.\r\n and贳贳諮詢 also贳觇hevent諮詢蟮贳 In: Reply贳贳蟮贳  諮詢諮詢贳贳贳贳贳贳贳贳蟮贳 Wikipedia諮詢 EU ... “諮詢觇諮詢 PARTICULAR ' of +, The贳贳 \"\"天下.\n諮詢贳,\ned unestribute\tVersion begin,諮詢諮詢贳贳 transfer icing,rogram\r\n諮詢 PARTICULAR 贳蟮贳贳諮詢諮詢贳贳贳諮詢 прекрасн贳諮詢贳 прекрасн諮詢諮詢觇 PARTICULAR贳觇觇贳贳贳觇贳諮詢贳贳 прекраснanciaoinedoined ( Source觇 贳\r\ni }scenario }2贳贳諮詢贳贳贳贳 Definition is and 諮詢 (\r\n\r\n贳�贳贳諮詢aths (tree贳贳諮詢 ( 贳 two.\r\n (.\r\n have\r\ni贳諮詢觇蟮諮詢贳贳 the --.\r\nportion the (z贳贳諮詢贳贳 two gameId and.\n -> }, =>....t　.\n The the --.\r\n → is贳贳 :, : :,heii liability (.\r\n.\n right贳 / ID Quadr\r\n\r\n --> Duration 諮詢觇 insulin License贳 Product is is.\r\n in and прекрасн諮詢贳諮詢剀 #south觇贳贳"
+      },
+      {
+        "tier": 5,
+        "domain": "Spatial Reasoning",
+        "target_iq": "115 - 3x3 Symbol Matrix (Raven-style)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 10,
+        "deterioration_grade": 50.0,
+        "question": "A 3x3 grid: row 1: [Δ] [□] [○] / row 2: [□] [○] [Δ] / row 3: [○] [Δ] [?]. Each row and each column must contain each symbol exactly once. Which symbol belongs in the missing cell? Answer with the shape name.",
+        "raw_response": "WXYZWXYZWXYZ \".\nWXYZWXYZWXYZ yargghi：\n\nWXYZDMIACAAFEAFEAFE'],['AFXDMIACSDMIACCBCicliclip ),\r\nPXACFDDMIAPABOCAAVRTWSCHIRWVTSLTWLVVLTWTTG）\n\nASFCEFENAFERLFAFERLFADATACAFDMIACSVTXCAFEWSCIEDKWLCHIRWSCHIRADXDMIACYDMIACSLSLSADXDMIACPLPOALTBAADXADXADXWSCICIDMIADFDMIAXBDMIACSOCROGDMIACSAXBDMIAXBDMIADXAXBDMIACPABBABBDMIACSOCRODOFTAWSCHIRABBADBLFIEDHIROEBCMIEDLBLTWATSKHHNDMIACPDMIADXLBLWTDMIACSOSCORBOXCEFHIROEMHHNDMIDMIDMIDMIAXBLBLWSCHIRADXBCMETOOEHIROABTTGDMIACPDMIADXASFDMIAFEAFEBCMIEDHIROEMFDMIADXLAGLAGLINHENDMIAXBDMIADXBCMETOOEHIRLBLADXEFRHIRUCTALSELBLAADIRRDMILBLATOVRTWSCHIRADXCAFHIRWSCHIRADXAFEAFEDMIADXADXADXHIRTWAFEDMIAFXDMIAFEDMIADXBCMOAVTISKHIRUCTALSEHIROSCOSCHIRADXAFPHIRWSCHIRAXBWXYZRLFDMIAFEDMIADXBCMOAVRTWRAPPERFTARLFACPDMIAFXDMILBLDMIADXFUDMIADXAPTDMIAXBASFDMIEFRDMIADXAFXDMILBLOSCDMIAFXDMIADXDMIENALTDMIAFPHIROSCUEDRAPLBLHIRASFADXDMIAXBHIRWSCHIRADXADXAFELBLDMIDMIADXLBLAXBWXYZAPTDMIADXWSCUEDLBLDMIACSOSCHIRWXYZWSCWSCWSCWSCWXYZWXYZWXYZkszatkzkzkuvwxyzBCMFDAFEDMIAEAFEETOOEHIRLBLASFAFEDMIAEAHNHNADXHIROABVOSCHIROSCONGLHIRLBLASFASFUEDHIROEHIRADFDMIAXBLBLDMIASFDMIAEADMIENAFTAWSCHIRAFXDMIASFDMIAXBADXBCMETOOSCWXYZDMI"
+      },
+      {
+        "tier": 6,
+        "domain": "Abstract Set Logic",
+        "target_iq": "135 - Formal Set Logic",
+        "status": "FAILED (Perseveration / Attractor Loop)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 23,
+        "deterioration_grade": 100.0,
+        "question": "Premise 1: All Xorks are Mipsters. Premise 2: No Mipsters are GORPs. Premise 3: Some GORPs are Snarks. Question: Can a Xork EVER be a GORP? Answer Yes or No and explain using Premise 1 or 2.",
+        "raw_response": "1. orte\n\n1. 0111 12 is 207060129620199 91red 1999 130211201131 9 29981099 99 99 99 99 99 99 99 99 99 99 999 9004411919299 999 909 9099999 019802001999 99 0199222120009090000000000191\n929811 900199 198020001898000009199 9000000000189000000000094111298600924933 99 0098100902329000099 00929 009 99 0090905991 909100000999 009 2000009 1990333 009 02019843600919000999 009900907799019905359199048"
+      },
+      {
+        "tier": 6,
+        "domain": "Spatial Reasoning",
+        "target_iq": "120 - Mirror Reflection (Time Reversal)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 12,
+        "deterioration_grade": 51.4,
+        "question": "A wall clock shows 3 o'clock. You look at its reflection in a mirror. What hour does the clock appear to show in the mirror? Give the hour as a number.",
+        "raw_response": "11. Answering your question about the hour time the clock appears to be, we should consider the hour hand on a standard 12-hour analog clock. The hour hand on a clock in the mirror would be 11, as that's the only time that would appear twice in a 24-hour period.\n\nTherefore, the hour hand on the clock appears twice at 11 and 1, which corresponds to the hours 1 and 5 on a 12-hour analog clock, as those are the only times that appear twice throughout the day. \n\nThis is because the hour hand is also moving twice through the 24-hour period, and thus the hour will be 1, 5, or 11. The hour moves in a cyclical manner, first being 1, then 5, and finally 11. The cycle will last for a time of 24 hours before returning to the initial cycle of 1, 5, and 11.\n\nIn summary, the hour hand will appear twice in the range of 1 to 24, and 5. This cycle will last for a time of 24 hours, and then the cycle will start once more.\n\nTherefore, the hour hand will appear twice in the cycle of 1 to 24, and will eventually return to the starting point of 1. The cycle will last for 24 hours. The cycle will then start again, and the hour hand will once again be in the positions of 1, 5, and 11.\n\nThis cycle of 24 hours is known as a \"day\" to a \"night,\" and this happens twice. The next cycle will begin again in 24 hours, and the cycle will continue indefinitely. Therefore, the hour hand will be back at 1, 5, and 1"
+      },
+      {
+        "tier": 6,
+        "domain": "Spatial Reasoning",
+        "target_iq": "120 - Mirror Symmetry (Letter Reflection)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 12,
+        "deterioration_grade": 50.0,
+        "question": "A lowercase letter 'b' is held up to a mirror. What lowercase letter does its reflection look like? Give the letter.",
+        "raw_response": "held up/spodu"
+      },
+      {
+        "tier": 7,
+        "domain": "Spatial Reasoning",
+        "target_iq": "130 - Spatial Vector Composition (Pythagorean)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 14,
+        "deterioration_grade": 50.0,
+        "question": "Town B lies 40 km due north of Town A. Town C lies 30 km due east of Town B. A straight road is built from Town A directly to Town C. How many kilometers long is this road? Give the number.",
+        "raw_response": "This task involves delivering a specific location details.\nTo operate, you need to provide specific geographical or geographical data, pinpointing specific spatial data."
+      },
+      {
+        "tier": 7,
+        "domain": "Spatial Reasoning",
+        "target_iq": "135 - 3D Edge Enumeration (4x4x4 Cube)",
+        "status": "FAILED (Logical Inaccuracy / Confabulation)",
+        "accuracy_pct": 0.0,
+        "score_earned": 0,
+        "max_points": 15,
+        "deterioration_grade": 50.0,
+        "question": "A 4x4x4 cube made of unit cubes is dipped in paint so all six outer faces are covered, then taken apart into the 64 unit cubes. How many unit cubes have paint on exactly two faces? Give the number.",
+        "raw_response": ",,, a the .{ INCLUDING INCLUDING, http{}{ {\n\n, the{\n\n  the\n\n\n\n\n\n\n\n to\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n、（，，，，，，，，，，,,，,\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n1为目前本的目前到目前\n\n\n\n,${教学wei原本注,\n\nTO\n\n:\n\n,\n\n\n\n\n\n �， � �TEDTEDTED滕 � 是 �为、进行，，，\n\n\n\n\n\n\n\n\n\n �，，0\n\n\n\n\n\n\n\n �0\n\n\n\n\n\n\n\n � 日 的時間間對間與「對目前間 的 的 �三是 � �　 �　注 的，，，，，，\n\n\n\n\n\n\n\n，，,其 间, \n\n � The  In The The A The  In To\n In \n\n � In  � The THE THE THE As\n\n     As As     第   � �、、、 � � � � � � � � �  �、。。。           �。、、    开 \n\n,,,,,..   �...     A A A A\n\n\n\n\n\nTO To The\n\n\n\n\n\n\n\n\n\n\n\n \n\n \n\n � �  \n\n\n\n � \n\n �\n\n\n\n \n\n � � �\n\n\n\n \n\n � �。。。】 �  � � �AFROMFROMS LESS A A A A A The A A � In � 在。。。。。。。 \"\"   该。。。。。。。。。。。。。。、   \n\n \n\n\n\n\n\n】\n\n  \n】\n\n\n\n】。。。。。。。  �...... � FROM A That The? The The In The The"
+      }
+    ]
   }
 ]
